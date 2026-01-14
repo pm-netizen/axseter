@@ -674,12 +674,12 @@ h1, h2, h3, h4, h5, h6 {
     background-image: var(--bg-image);
     background-size: cover;
     background-position: center;
-    opacity: 0.4;
-    transition: opacity var(--transition-base);
+    opacity: 1;
+    transition: transform var(--transition-base);
 }
 
 .industry-card:hover::before {
-    opacity: 0.6;
+    transform: scale(1.05);
 }
 
 .industry-card:hover {
@@ -692,7 +692,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: var(--space-8);
     position: relative;
     z-index: 1;
-    background: linear-gradient(to bottom, transparent 0%, var(--color-white) 40%);
+    background: linear-gradient(to bottom, transparent 0%, transparent 60%, var(--color-white) 100%);
     padding-top: calc(var(--space-8) + 80px);
 }
 
@@ -1072,5 +1072,6 @@ h1, h2, h3, h4, h5, h6 {
         grid-template-columns: 1fr;
     }
 }
+
 
 
