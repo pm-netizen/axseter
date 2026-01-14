@@ -1075,3 +1075,526 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
+
+
+/* --------------------------------------------------------------------------
+   Service Pages - Additional Styles
+   -------------------------------------------------------------------------- */
+
+/* Header BEM variants */
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4) 0;
+}
+
+.header__logo {
+    text-decoration: none;
+}
+
+.header__logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+}
+
+/* Nav BEM variants */
+.nav__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav__item {
+    position: relative;
+}
+
+.nav__link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: var(--space-2) 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-gray-700);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.nav__link:hover {
+    color: var(--color-primary);
+}
+
+.nav__link svg {
+    width: 16px;
+    height: 16px;
+}
+
+.nav__dropdown {
+    position: absolute;
+    top: 100%;
+    left: -1rem;
+    min-width: 200px;
+    padding: var(--space-4);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all var(--transition-fast);
+}
+
+.nav__item:hover .nav__dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav__dropdown-link {
+    display: block;
+    padding: var(--space-2) var(--space-3);
+    font-size: 0.875rem;
+    color: var(--color-gray-700);
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all var(--transition-fast);
+}
+
+.nav__dropdown-link:hover {
+    background: var(--color-gray-100);
+    color: var(--color-primary);
+}
+
+.nav__cta {
+    margin-left: var(--space-4);
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4) 0;
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+}
+
+.breadcrumbs a {
+    color: var(--color-gray-500);
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    color: var(--color-primary);
+}
+
+.breadcrumbs__current {
+    color: var(--color-gray-900);
+}
+
+/* Section variants */
+.section {
+    padding: var(--space-20) 0;
+}
+
+.section--gray {
+    background: var(--color-gray-50);
+}
+
+.section--dark {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.section--dark .eyebrow {
+    color: var(--color-accent);
+}
+
+.section--dark h2,
+.section--dark h3 {
+    color: var(--color-white);
+}
+
+.section--dark p {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Container variants */
+.container--narrow {
+    max-width: 800px;
+}
+
+/* Typography helpers */
+.eyebrow {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-4);
+}
+
+.lead {
+    font-size: 1.25rem;
+    color: var(--color-gray-600);
+    max-width: 720px;
+}
+
+.mb-12 {
+    margin-bottom: var(--space-12);
+}
+
+/* Two column layout */
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+}
+
+.two-col--reverse {
+    direction: rtl;
+}
+
+.two-col--reverse > * {
+    direction: ltr;
+}
+
+.two-col__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.two-col__visual {
+    position: relative;
+}
+
+.two-col__visual img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Image placeholder - replaced with actual images */
+.image-placeholder {
+    display: none;
+}
+
+/* Value prop grid */
+.value-prop__header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.value-prop__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+}
+
+/* Feature cards */
+.feature-card {
+    padding: var(--space-6);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    transition: all var(--transition-base);
+}
+
+.feature-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card__icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-gray-100);
+    border-radius: 8px;
+    margin-bottom: var(--space-4);
+    color: var(--color-accent);
+}
+
+.feature-card__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--space-2);
+}
+
+.feature-card__description {
+    font-size: 0.9375rem;
+    color: var(--color-gray-600);
+    line-height: 1.6;
+}
+
+/* Content section */
+.content-section {
+    padding: var(--space-16) 0;
+}
+
+.content-section h2 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-6);
+}
+
+.content-section p {
+    margin-bottom: var(--space-4);
+    color: var(--color-gray-700);
+}
+
+.content-section ul {
+    margin: var(--space-4) 0;
+    padding-left: var(--space-6);
+}
+
+.content-section li {
+    margin-bottom: var(--space-2);
+    color: var(--color-gray-700);
+}
+
+/* Industries grid on service pages */
+.industries-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+}
+
+/* Industry card BEM variants */
+.industry-card__icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-gray-100);
+    border-radius: 8px;
+    margin-bottom: var(--space-4);
+    color: var(--color-accent);
+}
+
+.industry-card__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--space-2);
+}
+
+.industry-card__description {
+    font-size: 0.9375rem;
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-4);
+}
+
+.industry-card__link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+.industry-card__link:hover {
+    text-decoration: underline;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: var(--space-20) 0;
+    background: var(--color-gray-100);
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-4);
+}
+
+.cta-section p {
+    font-size: 1.125rem;
+    color: var(--color-gray-600);
+    max-width: 600px;
+    margin: 0 auto var(--space-8);
+}
+
+.cta-section__buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+}
+
+/* Button BEM variants */
+.btn--primary {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn--primary:hover {
+    background: var(--color-primary-light);
+}
+
+.btn--outline {
+    background: transparent;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+}
+
+.btn--outline:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn--lg {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+}
+
+/* Footer BEM variants */
+.footer__grid {
+    display: grid;
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: var(--space-12);
+    padding-bottom: var(--space-12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__brand {
+    max-width: 280px;
+}
+
+.footer__logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--color-white);
+    margin-bottom: var(--space-4);
+}
+
+.footer__tagline {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: var(--space-6);
+}
+
+.footer__contact-info {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer__contact-info a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+}
+
+.footer__contact-info a:hover {
+    color: var(--color-white);
+}
+
+.footer__heading {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-white);
+    margin-bottom: var(--space-4);
+}
+
+.footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.footer__link {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.footer__link:hover {
+    color: var(--color-white);
+}
+
+.footer__social {
+    display: flex;
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+}
+
+.footer__social a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color var(--transition-fast);
+}
+
+.footer__social a:hover {
+    color: var(--color-white);
+}
+
+.footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-6);
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive adjustments for service pages */
+@media (max-width: 1024px) {
+    .two-col {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+    }
+    
+    .two-col--reverse {
+        direction: ltr;
+    }
+    
+    .value-prop__grid,
+    .industries-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-8);
+    }
+}
+
+@media (max-width: 640px) {
+    .nav__list {
+        display: none;
+    }
+    
+    .value-prop__grid,
+    .industries-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-section__buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .footer__grid {
+        grid-template-columns: 1fr;
+    }
+}
