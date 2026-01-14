@@ -1657,3 +1657,71 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 640px;
     line-height: 1.6;
 }
+
+
+/* --------------------------------------------------------------------------
+   Page Header (Industry pages - alias for page-hero)
+   -------------------------------------------------------------------------- */
+.page-header {
+    padding: var(--space-16) 0 var(--space-12);
+    background-color: var(--color-primary);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10, 25, 47, 0.9) 0%, rgba(10, 25, 47, 0.8) 50%, rgba(10, 25, 47, 0.7) 100%);
+    z-index: 0;
+}
+
+.page-header .container {
+    position: relative;
+    z-index: 1;
+}
+
+.page-header .breadcrumb,
+.page-header .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: var(--space-6);
+}
+
+.page-header .breadcrumb a,
+.page-header .breadcrumbs a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+}
+
+.page-header .breadcrumb a:hover,
+.page-header .breadcrumbs a:hover {
+    color: var(--color-white);
+}
+
+.page-header h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 500;
+    color: var(--color-white);
+    margin-bottom: var(--space-4);
+}
+
+.page-header p {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 640px;
+    line-height: 1.6;
+}
+
+.page-header__subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 640px;
+    line-height: 1.6;
+}
