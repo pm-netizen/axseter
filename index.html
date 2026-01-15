@@ -291,56 +291,90 @@
             <!-- Divider -->
             <div class="border-t border-gray-700/50 mb-12"></div>
 
-            <!-- With Axseter - Clean Hub & Spoke -->
+            <!-- With Axseter - Premium Hub & Spoke -->
             <div>
-              <p class="text-xs text-emerald-400/80 uppercase tracking-widest font-medium mb-6 flex items-center gap-2">
+              <p class="text-xs text-emerald-400/80 uppercase tracking-widest font-medium mb-8 flex items-center gap-2">
                 <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
                 With Axseter
               </p>
-              <div class="relative h-56 flex items-center justify-center">
-                <!-- Spoke lines -->
-                <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 200">
-                  <!-- Lines from center to outer dots -->
-                  <line x1="200" y1="100" x2="60" y2="40" stroke="url(#blueGrad)" stroke-width="1.5" opacity="0.6"/>
-                  <line x1="200" y1="100" x2="120" y2="25" stroke="url(#blueGrad)" stroke-width="1.5" opacity="0.6"/>
-                  <line x1="200" y1="100" x2="280" y2="25" stroke="url(#blueGrad)" stroke-width="1.5" opacity="0.6"/>
-                  <line x1="200" y1="100" x2="340" y2="40" stroke="url(#blueGrad)" stroke-width="1.5" opacity="0.6"/>
-                  <line x1="200" y1="100" x2="40" y2="120" stroke="url(#blueGrad)" stroke-width="1.5" opacity="0.6"/>
-                  <line x1="200" y1="100" x2="360" y2="120" stroke="url(#blueGrad)" stroke-width="1.5" opacity="0.6"/>
-                  <line x1="200" y1="100" x2="80" y2="175" stroke="url(#blueGrad)" stroke-width="1.5" opacity="0.6"/>
-                  <line x1="200" y1="100" x2="150" y2="185" stroke="url(#blueGrad)" stroke-width="1.5" opacity="0.6"/>
-                  <line x1="200" y1="100" x2="250" y2="185" stroke="url(#blueGrad)" stroke-width="1.5" opacity="0.6"/>
-                  <line x1="200" y1="100" x2="320" y2="175" stroke="url(#blueGrad)" stroke-width="1.5" opacity="0.6"/>
+              <div class="relative h-64 flex items-center justify-center">
+                <!-- Animated rings -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-48 h-48 rounded-full border border-blue-500/10"></div>
+                  <div class="absolute w-64 h-64 rounded-full border border-blue-500/5"></div>
+                  <div class="absolute w-80 h-80 rounded-full border border-blue-500/5"></div>
+                </div>
+                
+                <!-- Spoke lines with dots -->
+                <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid meet">
                   <defs>
-                    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.8"/>
-                      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.2"/>
+                    <linearGradient id="spokeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.6"/>
+                      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.1"/>
                     </linearGradient>
+                    <filter id="glow">
+                      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                      <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
                   </defs>
-                  <!-- Outer location dots -->
-                  <circle cx="60" cy="40" r="4" fill="#3b82f6" opacity="0.7"/>
-                  <circle cx="120" cy="25" r="4" fill="#3b82f6" opacity="0.7"/>
-                  <circle cx="280" cy="25" r="4" fill="#3b82f6" opacity="0.7"/>
-                  <circle cx="340" cy="40" r="4" fill="#3b82f6" opacity="0.7"/>
-                  <circle cx="40" cy="120" r="4" fill="#3b82f6" opacity="0.7"/>
-                  <circle cx="360" cy="120" r="4" fill="#3b82f6" opacity="0.7"/>
-                  <circle cx="80" cy="175" r="4" fill="#3b82f6" opacity="0.7"/>
-                  <circle cx="150" cy="185" r="4" fill="#3b82f6" opacity="0.7"/>
-                  <circle cx="250" cy="185" r="4" fill="#3b82f6" opacity="0.7"/>
-                  <circle cx="320" cy="175" r="4" fill="#3b82f6" opacity="0.7"/>
+                  
+                  <!-- Clean straight lines -->
+                  <g stroke="#3b82f6" stroke-width="1" opacity="0.4">
+                    <line x1="200" y1="120" x2="70" y2="45"/>
+                    <line x1="200" y1="120" x2="135" y2="30"/>
+                    <line x1="200" y1="120" x2="200" y2="20"/>
+                    <line x1="200" y1="120" x2="265" y2="30"/>
+                    <line x1="200" y1="120" x2="330" y2="45"/>
+                    <line x1="200" y1="120" x2="70" y2="195"/>
+                    <line x1="200" y1="120" x2="135" y2="210"/>
+                    <line x1="200" y1="120" x2="200" y2="220"/>
+                    <line x1="200" y1="120" x2="265" y2="210"/>
+                    <line x1="200" y1="120" x2="330" y2="195"/>
+                  </g>
+                  
+                  <!-- Outer dots with glow -->
+                  <g filter="url(#glow)">
+                    <circle cx="70" cy="45" r="5" fill="#3b82f6"/>
+                    <circle cx="135" cy="30" r="5" fill="#3b82f6"/>
+                    <circle cx="200" cy="20" r="5" fill="#3b82f6"/>
+                    <circle cx="265" cy="30" r="5" fill="#3b82f6"/>
+                    <circle cx="330" cy="45" r="5" fill="#3b82f6"/>
+                    <circle cx="70" cy="195" r="5" fill="#3b82f6"/>
+                    <circle cx="135" cy="210" r="5" fill="#3b82f6"/>
+                    <circle cx="200" cy="220" r="5" fill="#3b82f6"/>
+                    <circle cx="265" cy="210" r="5" fill="#3b82f6"/>
+                    <circle cx="330" cy="195" r="5" fill="#3b82f6"/>
+                  </g>
                 </svg>
-                <!-- Center hub -->
+                
+                <!-- Center hub - elevated -->
                 <div class="relative z-10">
-                  <div class="absolute -inset-4 bg-blue-500/30 blur-2xl rounded-full"></div>
-                  <div class="relative bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl px-10 py-6 text-center border border-blue-400/30 shadow-lg shadow-blue-500/30">
-                    <span class="text-2xl font-black tracking-tight">AXSETER</span>
+                  <div class="absolute -inset-8 bg-blue-500/20 blur-3xl rounded-full"></div>
+                  <div class="absolute -inset-4 bg-blue-500/10 blur-xl rounded-full"></div>
+                  <div class="relative bg-gradient-to-b from-blue-500 to-blue-600 rounded-2xl px-12 py-5 text-center shadow-2xl shadow-blue-500/30 border border-blue-400/20">
+                    <span class="text-xl font-black tracking-tight text-white">AXSETER</span>
+                    <p class="text-blue-200 text-xs mt-1 font-medium tracking-wide">SINGLE POINT OF CONTACT</p>
                   </div>
                 </div>
               </div>
-              <div class="flex items-center gap-4 mt-4 text-xs text-gray-400 justify-center">
-                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>1 contract</span>
-                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>1 invoice</span>
-                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>1 standard</span>
+              
+              <!-- Stats row -->
+              <div class="flex items-center justify-center gap-12 mt-8 pt-6 border-t border-gray-700/30">
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-white">1</div>
+                  <div class="text-xs text-gray-500 uppercase tracking-wider">Contract</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-white">1</div>
+                  <div class="text-xs text-gray-500 uppercase tracking-wider">Invoice</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-white">1</div>
+                  <div class="text-xs text-gray-500 uppercase tracking-wider">Standard</div>
+                </div>
               </div>
             </div>
 
