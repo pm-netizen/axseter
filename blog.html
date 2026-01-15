@@ -62,11 +62,21 @@
   <!-- Blog Posts Grid -->
   <section class="py-16">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      
+      <!-- Audience Filter -->
+      <div class="flex flex-wrap gap-3 mb-12">
+        <span class="text-sm text-gray-500 font-medium py-2">Filter by audience:</span>
+        <button class="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-full">All</button>
+        <button class="px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-full hover:bg-gray-200 transition-colors">Facilities Managers</button>
+        <button class="px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-full hover:bg-gray-200 transition-colors">Real Estate Managers</button>
+        <button class="px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-full hover:bg-gray-200 transition-colors">IT Managers</button>
+      </div>
+
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         
-        <!-- Post 1 -->
+        <!-- Post 1 - Facilities -->
         <article class="group">
-          <a href="/blog/why-multi-location-enterprises-need-single-vendor" class="block">
+          <a href="/blog/vendor-consolidation-facilities" class="block">
             <div class="aspect-[16/10] bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl mb-5 overflow-hidden">
               <div class="w-full h-full flex items-center justify-center text-blue-400">
                 <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
@@ -74,112 +84,112 @@
             </div>
             <div class="space-y-3">
               <div class="flex items-center gap-3 text-sm text-gray-500">
-                <span>Infrastructure</span>
+                <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full text-xs font-medium">Facilities Managers</span>
                 <span>•</span>
                 <span>8 min read</span>
               </div>
-              <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Why Multi-Location Enterprises Need a Single Vendor Strategy</h2>
-              <p class="text-gray-600 line-clamp-2">Managing 50+ vendors across 200 locations creates hidden costs. Here's how consolidation changes the game.</p>
+              <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Why Facilities Teams Are Moving to Single-Vendor Low Voltage</h2>
+              <p class="text-gray-600 line-clamp-2">Managing dozens of regional contractors creates hidden costs that don't show up on any invoice.</p>
             </div>
           </a>
         </article>
 
-        <!-- Post 2 -->
+        <!-- Post 2 - Real Estate -->
         <article class="group">
-          <a href="/blog/structured-cabling-standards-2026" class="block">
+          <a href="/blog/buildout-timelines-real-estate" class="block">
             <div class="aspect-[16/10] bg-gradient-to-br from-green-100 to-green-200 rounded-xl mb-5 overflow-hidden">
               <div class="w-full h-full flex items-center justify-center text-green-400">
+                <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 text-sm text-gray-500">
+                <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded-full text-xs font-medium">Real Estate Managers</span>
+                <span>•</span>
+                <span>7 min read</span>
+              </div>
+              <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Low Voltage: The Hidden Variable in Site Buildout Timelines</h2>
+              <p class="text-gray-600 line-clamp-2">Why low voltage is often the last 10% of work that takes 30% of the timeline.</p>
+            </div>
+          </a>
+        </article>
+
+        <!-- Post 3 - IT -->
+        <article class="group">
+          <a href="/blog/cabling-standards-it-managers" class="block">
+            <div class="aspect-[16/10] bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl mb-5 overflow-hidden">
+              <div class="w-full h-full flex items-center justify-center text-purple-400">
                 <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
               </div>
             </div>
             <div class="space-y-3">
               <div class="flex items-center gap-3 text-sm text-gray-500">
-                <span>Cabling</span>
+                <span class="bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full text-xs font-medium">IT Managers</span>
                 <span>•</span>
-                <span>6 min read</span>
+                <span>10 min read</span>
               </div>
-              <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Structured Cabling Standards in 2026: What's Changed</h2>
-              <p class="text-gray-600 line-clamp-2">Cat6A is now baseline. Here's what enterprise IT teams need to know about current requirements.</p>
+              <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Structured Cabling Standards for Multi-Site IT Teams</h2>
+              <p class="text-gray-600 line-clamp-2">Cat6 vs Cat6A, fiber considerations, and specs that matter across 100+ locations.</p>
             </div>
           </a>
         </article>
 
-        <!-- Post 3 -->
+        <!-- Post 4 - IT -->
         <article class="group">
           <a href="/blog/access-control-healthcare-compliance" class="block">
-            <div class="aspect-[16/10] bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl mb-5 overflow-hidden">
-              <div class="w-full h-full flex items-center justify-center text-purple-400">
+            <div class="aspect-[16/10] bg-gradient-to-br from-red-100 to-red-200 rounded-xl mb-5 overflow-hidden">
+              <div class="w-full h-full flex items-center justify-center text-red-400">
                 <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
               </div>
             </div>
             <div class="space-y-3">
               <div class="flex items-center gap-3 text-sm text-gray-500">
-                <span>Healthcare</span>
+                <span class="bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full text-xs font-medium">IT Managers</span>
                 <span>•</span>
-                <span>10 min read</span>
+                <span>9 min read</span>
               </div>
               <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Access Control for Healthcare: Compliance Without Complexity</h2>
-              <p class="text-gray-600 line-clamp-2">HIPAA, Joint Commission, and state requirements—unified into a single access control framework.</p>
+              <p class="text-gray-600 line-clamp-2">HIPAA, Joint Commission, and state requirements unified into a single framework.</p>
             </div>
           </a>
         </article>
 
-        <!-- Post 4 -->
+        <!-- Post 5 - Real Estate -->
         <article class="group">
-          <a href="/blog/surveillance-roi-retail" class="block">
+          <a href="/blog/infrastructure-budget-predictability" class="block">
             <div class="aspect-[16/10] bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl mb-5 overflow-hidden">
               <div class="w-full h-full flex items-center justify-center text-orange-400">
-                <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
             </div>
             <div class="space-y-3">
               <div class="flex items-center gap-3 text-sm text-gray-500">
-                <span>Retail</span>
+                <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded-full text-xs font-medium">Real Estate Managers</span>
                 <span>•</span>
                 <span>5 min read</span>
               </div>
-              <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">The Real ROI of Surveillance in Multi-Unit Retail</h2>
-              <p class="text-gray-600 line-clamp-2">Beyond loss prevention: how modern surveillance systems drive operational insights.</p>
+              <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Infrastructure Budget Predictability: Know Your Costs Before You Sign</h2>
+              <p class="text-gray-600 line-clamp-2">How to lock in low voltage costs during site selection, not after construction starts.</p>
             </div>
           </a>
         </article>
 
-        <!-- Post 5 -->
+        <!-- Post 6 - Facilities -->
         <article class="group">
-          <a href="/blog/scaling-infrastructure-100-locations" class="block">
-            <div class="aspect-[16/10] bg-gradient-to-br from-red-100 to-red-200 rounded-xl mb-5 overflow-hidden">
-              <div class="w-full h-full flex items-center justify-center text-red-400">
-                <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-              </div>
-            </div>
-            <div class="space-y-3">
-              <div class="flex items-center gap-3 text-sm text-gray-500">
-                <span>Operations</span>
-                <span>•</span>
-                <span>7 min read</span>
-              </div>
-              <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Scaling Infrastructure to 100+ Locations: A Playbook</h2>
-              <p class="text-gray-600 line-clamp-2">The operational framework behind enterprises that open a new location every week.</p>
-            </div>
-          </a>
-        </article>
-
-        <!-- Post 6 -->
-        <article class="group">
-          <a href="/blog/network-closet-best-practices" class="block">
+          <a href="/blog/service-response-multi-location" class="block">
             <div class="aspect-[16/10] bg-gradient-to-br from-cyan-100 to-cyan-200 rounded-xl mb-5 overflow-hidden">
               <div class="w-full h-full flex items-center justify-center text-cyan-400">
-                <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
+                <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
             </div>
             <div class="space-y-3">
               <div class="flex items-center gap-3 text-sm text-gray-500">
-                <span>Technical</span>
+                <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full text-xs font-medium">Facilities Managers</span>
                 <span>•</span>
-                <span>4 min read</span>
+                <span>6 min read</span>
               </div>
-              <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Network Closet Best Practices for Retail Locations</h2>
-              <p class="text-gray-600 line-clamp-2">Small spaces, big requirements. How to build MDF/IDF rooms that last.</p>
+              <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Service Response Across 200 Locations: What Good Looks Like</h2>
+              <p class="text-gray-600 line-clamp-2">SLAs, escalation paths, and the service infrastructure behind consistent support.</p>
             </div>
           </a>
         </article>
