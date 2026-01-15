@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Axseter - National Low Voltage Contractor</title>
+  <meta name="description" content="Insights on structured cabling, access control, surveillance, and multi-location infrastructure deployment.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', system-ui, sans-serif; }
+    .nav-blur { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .btn-primary { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); transition: all 0.3s ease; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px -10px rgba(59, 130, 246, 0.5); }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 nav-blur border-b border-gray-200/50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="/" class="flex items-center">
+          <span class="text-3xl font-black tracking-tight text-navy-900" style="font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">AXSETER<sup class="text-sm font-semibold text-gray-400 ml-0.5">™</sup></span>
+        </a>
+        
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="/services" class="text-gray-600 hover:text-gray-900 font-medium transition-colors">Services</a>
+          <div class="relative group">
+            <button class="text-gray-600 hover:text-gray-900 font-medium transition-colors flex items-center gap-1">
+              Industries
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              <div class="bg-white rounded-xl shadow-2xl border border-gray-100 py-2 w-52">
+                <a href="/industries/healthcare" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-all">Healthcare</a>
+                <a href="/industries/financial-services" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-all">Financial Services</a>
+                <a href="/industries/retail-qsr" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-all">Retail & QSR</a>
+              </div>
+            </div>
+          </div>
+          <a href="/case-studies" class="text-gray-600 hover:text-gray-900 font-medium transition-colors">Case Studies</a>
+          <a href="/blog" class="text-gray-900 font-medium transition-colors">Blog</a>
+        </div>
+
+        <a href="/contact" class="hidden lg:flex btn-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <section class="pt-32 pb-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <p class="text-xs text-gray-500 uppercase tracking-widest font-medium mb-4">Insights & Updates</p>
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Blog</h1>
+      <p class="text-xl text-gray-600 max-w-2xl">Perspectives on multi-location infrastructure, low voltage systems, and scaling physical operations nationwide.</p>
+    </div>
+  </section>
+
+  <!-- Blog Posts Grid -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Post 1 -->
+        <article class="group">
+          <a href="/blog/why-multi-location-enterprises-need-single-vendor" class="block">
+            <div class="aspect-[16/10] bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl mb-5 overflow-hidden">
+              <div class="w-full h-full flex items-center justify-center text-blue-400">
+                <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 text-sm text-gray-500">
+                <span>Infrastructure</span>
+                <span>•</span>
+                <span>8 min read</span>
+              </div>
+              <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Why Multi-Location Enterprises Need a Single Vendor Strategy</h2>
+              <p class="text-gray-600 line-clamp-2">Managing 50+ vendors across 200 locations creates hidden costs. Here's how consolidation changes the game.</p>
+            </div>
+          </a>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="group">
+          <a href="/blog/structured-cabling-standards-2026" class="block">
+            <div class="aspect-[16/10] bg-gradient-to-br from-green-100 to-green-200 rounded-xl mb-5 overflow-hidden">
+              <div class="w-full h-full flex items-center justify-center text-green-400">
+                <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 text-sm text-gray-500">
+                <span>Cabling</span>
+                <span>•</span>
+                <span>6 min read</span>
+              </div>
+              <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Structured Cabling Standards in 2026: What's Changed</h2>
+              <p class="text-gray-600 line-clamp-2">Cat6A is now baseline. Here's what enterprise IT teams need to know about current requirements.</p>
+            </div>
+          </a>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="group">
+          <a href="/blog/access-control-healthcare-compliance" class="block">
+            <div class="aspect-[16/10] bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl mb-5 overflow-hidden">
+              <div class="w-full h-full flex items-center justify-center text-purple-400">
+                <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 text-sm text-gray-500">
+                <span>Healthcare</span>
+                <span>•</span>
+                <span>10 min read</span>
+              </div>
+              <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Access Control for Healthcare: Compliance Without Complexity</h2>
+              <p class="text-gray-600 line-clamp-2">HIPAA, Joint Commission, and state requirements—unified into a single access control framework.</p>
+            </div>
+          </a>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="group">
+          <a href="/blog/surveillance-roi-retail" class="block">
+            <div class="aspect-[16/10] bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl mb-5 overflow-hidden">
+              <div class="w-full h-full flex items-center justify-center text-orange-400">
+                <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 text-sm text-gray-500">
+                <span>Retail</span>
+                <span>•</span>
+                <span>5 min read</span>
+              </div>
+              <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">The Real ROI of Surveillance in Multi-Unit Retail</h2>
+              <p class="text-gray-600 line-clamp-2">Beyond loss prevention: how modern surveillance systems drive operational insights.</p>
+            </div>
+          </a>
+        </article>
+
+        <!-- Post 5 -->
+        <article class="group">
+          <a href="/blog/scaling-infrastructure-100-locations" class="block">
+            <div class="aspect-[16/10] bg-gradient-to-br from-red-100 to-red-200 rounded-xl mb-5 overflow-hidden">
+              <div class="w-full h-full flex items-center justify-center text-red-400">
+                <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 text-sm text-gray-500">
+                <span>Operations</span>
+                <span>•</span>
+                <span>7 min read</span>
+              </div>
+              <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Scaling Infrastructure to 100+ Locations: A Playbook</h2>
+              <p class="text-gray-600 line-clamp-2">The operational framework behind enterprises that open a new location every week.</p>
+            </div>
+          </a>
+        </article>
+
+        <!-- Post 6 -->
+        <article class="group">
+          <a href="/blog/network-closet-best-practices" class="block">
+            <div class="aspect-[16/10] bg-gradient-to-br from-cyan-100 to-cyan-200 rounded-xl mb-5 overflow-hidden">
+              <div class="w-full h-full flex items-center justify-center text-cyan-400">
+                <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 text-sm text-gray-500">
+                <span>Technical</span>
+                <span>•</span>
+                <span>4 min read</span>
+              </div>
+              <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Network Closet Best Practices for Retail Locations</h2>
+              <p class="text-gray-600 line-clamp-2">Small spaces, big requirements. How to build MDF/IDF rooms that last.</p>
+            </div>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Stay Updated</h2>
+        <p class="text-gray-600 mb-8">Get insights on multi-location infrastructure delivered to your inbox.</p>
+        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+          <button type="submit" class="btn-primary text-white font-semibold px-6 py-3 rounded-lg">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-12">
+        <div>
+          <span class="text-2xl font-black tracking-tight text-white" style="letter-spacing: -0.03em;">AXSETER<sup class="text-xs font-semibold text-gray-500 ml-0.5">™</sup></span>
+          <p class="mt-4 text-sm">National low voltage contractor for multi-location enterprises.</p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Services</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/services#cabling" class="hover:text-white transition-colors">Structured Cabling</a></li>
+            <li><a href="/services#access" class="hover:text-white transition-colors">Access Control</a></li>
+            <li><a href="/services#surveillance" class="hover:text-white transition-colors">Surveillance</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Industries</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/industries/healthcare" class="hover:text-white transition-colors">Healthcare</a></li>
+            <li><a href="/industries/financial-services" class="hover:text-white transition-colors">Financial Services</a></li>
+            <li><a href="/industries/retail-qsr" class="hover:text-white transition-colors">Retail & QSR</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Company</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/case-studies" class="hover:text-white transition-colors">Case Studies</a></li>
+            <li><a href="/blog" class="hover:text-white transition-colors">Blog</a></li>
+            <li><a href="/contact" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 text-sm text-center">
+        © 2026 Axseter. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
