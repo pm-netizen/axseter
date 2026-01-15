@@ -13,8 +13,8 @@
         extend: {
           colors: {
             'navy': { 50: '#f0f4f8', 100: '#d9e2ec', 200: '#bcccdc', 300: '#9fb3c8', 400: '#829ab1', 500: '#627d98', 600: '#486581', 700: '#334e68', 800: '#243b53', 900: '#102a43', 950: '#0a1929' },
-            'teal': { 50: '#effcf9', 100: '#c6f7e9', 200: '#8eedd1', 300: '#5fe3c0', 400: '#2dcca7', 500: '#17b897', 600: '#079a82', 700: '#048271', 800: '#016457', 900: '#004440' },
-            'accent': '#00D4AA'
+            'blue': { 50: '#effcf9', 100: '#c6f7e9', 200: '#8eedd1', 300: '#5fe3c0', 400: '#2dcca7', 500: '#2563EB', 600: '#079a82', 700: '#048271', 800: '#016457', 900: '#004440' },
+            'accent': '#3B82F6'
           },
           fontFamily: { 'display': ['Inter', 'system-ui', 'sans-serif'] }
         }
@@ -25,14 +25,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * { font-family: 'Inter', system-ui, sans-serif; }
-    .gradient-text { background: linear-gradient(135deg, #00D4AA 0%, #17b897 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-text { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .hero-gradient { background: linear-gradient(135deg, #0a1929 0%, #102a43 50%, #162d4a 100%); }
     .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
     .card-hover:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); }
     .nav-blur { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
     .animate-fade-up { animation: fadeUp 0.6s ease-out forwards; opacity: 0; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    .btn-primary { background: linear-gradient(135deg, #00D4AA 0%, #17b897 100%); transition: all 0.3s ease; }
+    .btn-primary { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); transition: all 0.3s ease; }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px -10px rgba(0, 212, 170, 0.5); }
     .stat-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
   </style>
@@ -44,7 +44,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex justify-between items-center h-20">
         <a href="/" class="flex items-center gap-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
             <span class="text-white font-bold text-lg">A</span>
           </div>
           <span class="text-xl font-bold text-navy-900 tracking-tight">Axseter</span>
@@ -60,15 +60,15 @@
             <div class="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <div class="bg-white rounded-2xl shadow-2xl border border-gray-100 py-3 w-56 overflow-hidden">
                 <a href="/industries/healthcare" class="flex items-center gap-3 px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">
-                  <span class="w-8 h-8 bg-teal-50 rounded-lg flex items-center justify-center"><svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></span>
+                  <span class="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center"><svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></span>
                   Healthcare
                 </a>
                 <a href="/industries/financial-services" class="flex items-center gap-3 px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">
-                  <span class="w-8 h-8 bg-teal-50 rounded-lg flex items-center justify-center"><svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>
+                  <span class="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center"><svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>
                   Financial Services
                 </a>
                 <a href="/industries/retail-qsr" class="flex items-center gap-3 px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">
-                  <span class="w-8 h-8 bg-teal-50 rounded-lg flex items-center justify-center"><svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg></span>
+                  <span class="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center"><svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg></span>
                   Retail & QSR
                 </a>
               </div>
@@ -87,15 +87,15 @@
   <!-- Hero -->
   <section class="hero-gradient min-h-screen flex items-center pt-20 relative overflow-hidden">
     <div class="absolute inset-0 opacity-30">
-      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl"></div>
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
     </div>
     
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32 relative z-10">
       <div class="max-w-4xl">
         <div class="animate-fade-up" style="animation-delay: 0.1s">
-          <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-teal-300 text-sm font-medium mb-8 border border-white/10">
-            <span class="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></span>
+          <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-blue-300 text-sm font-medium mb-8 border border-white/10">
+            <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
             National Coverage · 50 States
           </span>
         </div>
@@ -121,11 +121,11 @@
 
         <div class="grid grid-cols-3 gap-6 lg:gap-12 animate-fade-up" style="animation-delay: 0.5s">
           <div class="stat-card rounded-2xl p-6">
-            <div class="text-4xl lg:text-5xl font-bold text-white mb-2">500<span class="text-teal-400">+</span></div>
+            <div class="text-4xl lg:text-5xl font-bold text-white mb-2">500<span class="text-blue-400">+</span></div>
             <div class="text-gray-400 text-sm lg:text-base">Locations Deployed</div>
           </div>
           <div class="stat-card rounded-2xl p-6">
-            <div class="text-4xl lg:text-5xl font-bold text-white mb-2">98<span class="text-teal-400">%</span></div>
+            <div class="text-4xl lg:text-5xl font-bold text-white mb-2">98<span class="text-blue-400">%</span></div>
             <div class="text-gray-400 text-sm lg:text-base">On-Time Delivery</div>
           </div>
           <div class="stat-card rounded-2xl p-6">
@@ -154,14 +154,14 @@
   <section class="py-24 lg:py-32 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="max-w-3xl mb-16">
-        <span class="text-teal-600 font-semibold text-sm uppercase tracking-wider">Services</span>
+        <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Services</span>
         <h2 class="text-4xl lg:text-5xl font-bold text-navy-900 mt-4 mb-6">Enterprise Infrastructure,<br>Nationwide Scale</h2>
         <p class="text-xl text-gray-600 leading-relaxed">Six core capabilities deployed through a single relationship. No more vendor fragmentation.</p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <a href="/services" class="card-hover group bg-white rounded-3xl p-8 border border-gray-100">
-          <div class="w-14 h-14 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-navy-900 mb-3">Structured Cabling</h3>
@@ -169,7 +169,7 @@
         </a>
 
         <a href="/services" class="card-hover group bg-white rounded-3xl p-8 border border-gray-100">
-          <div class="w-14 h-14 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-navy-900 mb-3">Access Control</h3>
@@ -177,7 +177,7 @@
         </a>
 
         <a href="/services" class="card-hover group bg-white rounded-3xl p-8 border border-gray-100">
-          <div class="w-14 h-14 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-navy-900 mb-3">Video Surveillance</h3>
@@ -185,7 +185,7 @@
         </a>
 
         <a href="/services" class="card-hover group bg-white rounded-3xl p-8 border border-gray-100">
-          <div class="w-14 h-14 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-navy-900 mb-3">Audio-Visual</h3>
@@ -193,7 +193,7 @@
         </a>
 
         <a href="/services" class="card-hover group bg-white rounded-3xl p-8 border border-gray-100">
-          <div class="w-14 h-14 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.829a5 5 0 010-7.07m7.072 0a5 5 0 010 7.07M13 12a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-navy-900 mb-3">Sound Masking</h3>
@@ -201,7 +201,7 @@
         </a>
 
         <a href="/services" class="card-hover group bg-white rounded-3xl p-8 border border-gray-100">
-          <div class="w-14 h-14 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-navy-900 mb-3">Break-Fix Support</h3>
@@ -216,27 +216,27 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
-          <span class="text-teal-600 font-semibold text-sm uppercase tracking-wider">The SPoC Model</span>
+          <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">The SPoC Model</span>
           <h2 class="text-4xl lg:text-5xl font-bold text-navy-900 mt-4 mb-6">Eliminate Vendor<br>Fragmentation</h2>
           <p class="text-xl text-gray-600 leading-relaxed mb-10">Managing low-voltage installations across 100+ locations means coordinating dozens of regional contractors. Inconsistent quality. Unpredictable costs. Constant firefighting.</p>
           
           <div class="space-y-6">
             <div class="flex gap-5">
-              <div class="flex-shrink-0 w-12 h-12 bg-teal-500 text-white rounded-2xl flex items-center justify-center font-bold">01</div>
+              <div class="flex-shrink-0 w-12 h-12 bg-blue-500 text-white rounded-2xl flex items-center justify-center font-bold">01</div>
               <div>
                 <h3 class="text-lg font-bold text-navy-900 mb-1">One Relationship</h3>
                 <p class="text-gray-600">Single account team, contract, and escalation path.</p>
               </div>
             </div>
             <div class="flex gap-5">
-              <div class="flex-shrink-0 w-12 h-12 bg-teal-500 text-white rounded-2xl flex items-center justify-center font-bold">02</div>
+              <div class="flex-shrink-0 w-12 h-12 bg-blue-500 text-white rounded-2xl flex items-center justify-center font-bold">02</div>
               <div>
                 <h3 class="text-lg font-bold text-navy-900 mb-1">One Standard</h3>
                 <p class="text-gray-600">Consistent quality and documentation at every site.</p>
               </div>
             </div>
             <div class="flex gap-5">
-              <div class="flex-shrink-0 w-12 h-12 bg-teal-500 text-white rounded-2xl flex items-center justify-center font-bold">03</div>
+              <div class="flex-shrink-0 w-12 h-12 bg-blue-500 text-white rounded-2xl flex items-center justify-center font-bold">03</div>
               <div>
                 <h3 class="text-lg font-bold text-navy-900 mb-1">One Invoice</h3>
                 <p class="text-gray-600">Simplified procurement, transparent pricing.</p>
@@ -259,9 +259,9 @@
               <div class="bg-gray-700/50 rounded-lg p-3 text-center text-xs text-gray-400">Vendor 8</div>
             </div>
             <p class="text-sm text-gray-400 uppercase tracking-wider mb-6">With Axseter</p>
-            <div class="bg-gradient-to-r from-teal-500 to-teal-600 rounded-2xl p-8 text-center">
+            <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-8 text-center">
               <span class="text-2xl font-bold">AXSETER</span>
-              <p class="text-teal-100 text-sm mt-1">Single Point of Contact</p>
+              <p class="text-blue-100 text-sm mt-1">Single Point of Contact</p>
             </div>
           </div>
         </div>
@@ -273,7 +273,7 @@
   <section class="py-24 lg:py-32 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-teal-600 font-semibold text-sm uppercase tracking-wider">Industries</span>
+        <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Industries</span>
         <h2 class="text-4xl lg:text-5xl font-bold text-navy-900 mt-4 mb-6">Built for Rapid Expansion</h2>
         <p class="text-xl text-gray-600">We specialize in industries where speed, consistency, and compliance matter most.</p>
       </div>
@@ -312,7 +312,7 @@
   <!-- CTA -->
   <section class="py-24 lg:py-32 hero-gradient relative overflow-hidden">
     <div class="absolute inset-0 opacity-20">
-      <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-teal-500/30 rounded-full blur-3xl"></div>
+      <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
     </div>
     <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
       <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">Ready to Scale Nationally?</h2>
@@ -329,7 +329,7 @@
       <div class="grid md:grid-cols-4 gap-12 mb-12">
         <div>
           <div class="flex items-center gap-3 mb-6">
-            <div class="w-10 h-10 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center">
+            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
               <span class="text-white font-bold text-lg">A</span>
             </div>
             <span class="text-xl font-bold">Axseter</span>
