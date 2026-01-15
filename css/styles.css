@@ -580,8 +580,11 @@ h1, h2, h3, h4, h5, h6 {
 .service-card {
     background: var(--color-white);
     padding: var(--space-8);
+    padding-top: 140px;
     position: relative;
     transition: all var(--transition-base);
+    overflow: hidden;
+    border-radius: 12px;
 }
 
 .service-card::before {
@@ -589,22 +592,36 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     left: 0;
     top: 0;
-    bottom: 0;
-    width: 4px;
-    background: var(--color-accent);
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform var(--transition-base);
+    right: 0;
+    height: 120px;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.85;
+    transition: all var(--transition-base);
+}
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent 60%, var(--color-white) 100%);
 }
 
 .service-card:hover::before {
-    transform: scaleY(1);
+    opacity: 1;
+    transform: scale(1.05);
 }
 
 .service-card:hover {
-    background: var(--color-off-white);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
 }
 
+.service-card-number {
 .service-card-number {
     font-family: var(--font-serif);
     font-size: 0.875rem;
@@ -1735,4 +1752,5 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 640px;
     line-height: 1.6;
 }
+
 
