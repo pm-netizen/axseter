@@ -30,6 +30,17 @@
     .nav-blur { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
     .btn-primary { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); transition: all 0.3s ease; }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px -10px rgba(59, 130, 246, 0.5); }
+    .logo-carousel {
+      animation: scroll 30s linear infinite;
+      width: max-content;
+    }
+    .logo-carousel:hover {
+      animation-play-state: paused;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
     .grid-bg {
       background-image: 
         linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
@@ -116,18 +127,29 @@
     </div>
   </section>
 
-  <!-- Trust Logos -->
-  <section class="py-16 border-b border-gray-100 bg-white">
+  <!-- Trust Logos Carousel -->
+  <section class="py-12 border-b border-gray-100 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <p class="text-center text-sm text-gray-500 uppercase tracking-wider mb-10 font-medium">Trusted by Industry Leaders</p>
-      <div class="flex flex-wrap justify-center items-center gap-x-10 lg:gap-x-14 gap-y-8">
-        <img src="/logos/oak-street-health.png" alt="Oak Street Health" class="h-10 lg:h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity">
-        <img src="/logos/ati-physical-therapy.png" alt="ATI Physical Therapy" class="h-10 lg:h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity">
-        <img src="/logos/gallagher.png" alt="Gallagher" class="h-10 lg:h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity">
-        <img src="/logos/leopardo.png" alt="Leopardo" class="h-10 lg:h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity">
-        <img src="/logos/soar-autism.png" alt="Soar Autism Center" class="h-10 lg:h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity">
-        <img src="/logos/pronto-insurance.png" alt="Pronto Insurance" class="h-10 lg:h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity">
-        <img src="/logos/cvs.png" alt="CVS Pharmacy" class="h-10 lg:h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity">
+      <p class="text-center text-sm text-gray-500 uppercase tracking-wider mb-8 font-medium">Trusted by Industry Leaders</p>
+    </div>
+    <div class="relative">
+      <div class="logo-carousel flex items-center gap-16">
+        <!-- First set -->
+        <img src="/logos/oak-street-health.png" alt="Oak Street Health" class="h-8 w-auto object-contain flex-shrink-0 opacity-70">
+        <img src="/logos/ati-physical-therapy.png" alt="ATI Physical Therapy" class="h-7 w-auto object-contain flex-shrink-0 opacity-70">
+        <img src="/logos/gallagher.png" alt="Gallagher" class="h-12 w-auto object-contain flex-shrink-0 opacity-70">
+        <img src="/logos/leopardo.png" alt="Leopardo" class="h-8 w-auto object-contain flex-shrink-0 opacity-70">
+        <img src="/logos/soar-autism.png" alt="Soar Autism Center" class="h-10 w-auto object-contain flex-shrink-0 opacity-70">
+        <img src="/logos/pronto-insurance.png" alt="Pronto Insurance" class="h-8 w-auto object-contain flex-shrink-0 opacity-70">
+        <img src="/logos/cvs.png" alt="CVS Pharmacy" class="h-10 w-auto object-contain flex-shrink-0 opacity-70">
+        <!-- Duplicate set for seamless loop -->
+        <img src="/logos/oak-street-health.png" alt="Oak Street Health" class="h-8 w-auto object-contain flex-shrink-0 opacity-70">
+        <img src="/logos/ati-physical-therapy.png" alt="ATI Physical Therapy" class="h-7 w-auto object-contain flex-shrink-0 opacity-70">
+        <img src="/logos/gallagher.png" alt="Gallagher" class="h-12 w-auto object-contain flex-shrink-0 opacity-70">
+        <img src="/logos/leopardo.png" alt="Leopardo" class="h-8 w-auto object-contain flex-shrink-0 opacity-70">
+        <img src="/logos/soar-autism.png" alt="Soar Autism Center" class="h-10 w-auto object-contain flex-shrink-0 opacity-70">
+        <img src="/logos/pronto-insurance.png" alt="Pronto Insurance" class="h-8 w-auto object-contain flex-shrink-0 opacity-70">
+        <img src="/logos/cvs.png" alt="CVS Pharmacy" class="h-10 w-auto object-contain flex-shrink-0 opacity-70">
       </div>
     </div>
   </section>
