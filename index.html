@@ -28,8 +28,8 @@
     .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
     .card-hover:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); }
     .nav-blur { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-    .btn-primary { background: #3B82F6; transition: all 0.3s ease; }
-    .btn-primary:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 10px 40px -10px rgba(59, 130, 246, 0.5); }
+    .btn-primary { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); transition: all 0.3s ease; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px -10px rgba(59, 130, 246, 0.5); }
     .grid-bg {
       background-image: 
         linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
@@ -41,7 +41,7 @@
     }
   </style>
 </head>
-<body class="bg-[#0B1120] text-gray-900 antialiased">
+<body class="bg-white text-gray-900 antialiased">
 
   <!-- Navigation -->
   <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0B1120]/80 nav-blur border-b border-white/5">
@@ -79,8 +79,8 @@
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="relative min-h-screen grid-bg hero-glow">
+  <!-- Hero - Rearden Style -->
+  <section class="relative min-h-screen bg-[#0B1120] grid-bg hero-glow">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-40 pb-20">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <!-- Left Content -->
@@ -146,20 +146,20 @@
   </section>
 
   <!-- Trust Logos -->
-  <section class="py-16 bg-[#0B1120] border-t border-white/5">
+  <section class="py-16 border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <p class="text-center text-sm text-gray-500 uppercase tracking-wider mb-10 font-medium">Trusted by Industry Leaders</p>
       <div class="flex flex-wrap justify-center items-center gap-x-16 gap-y-8">
-        <span class="text-2xl font-semibold text-gray-600 hover:text-gray-500 transition-colors">Oak Street Health</span>
-        <span class="text-2xl font-semibold text-gray-600 hover:text-gray-500 transition-colors">ATI Physical Therapy</span>
-        <span class="text-2xl font-semibold text-gray-600 hover:text-gray-500 transition-colors">Gallagher</span>
-        <span class="text-2xl font-semibold text-gray-600 hover:text-gray-500 transition-colors">Leopardo</span>
+        <span class="text-2xl font-semibold text-gray-300 hover:text-gray-400 transition-colors">Oak Street Health</span>
+        <span class="text-2xl font-semibold text-gray-300 hover:text-gray-400 transition-colors">ATI Physical Therapy</span>
+        <span class="text-2xl font-semibold text-gray-300 hover:text-gray-400 transition-colors">Gallagher</span>
+        <span class="text-2xl font-semibold text-gray-300 hover:text-gray-400 transition-colors">Leopardo</span>
       </div>
     </div>
   </section>
 
   <!-- Services -->
-  <section class="py-24 lg:py-32 bg-white">
+  <section class="py-24 lg:py-32 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="max-w-3xl mb-16">
         <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Services</span>
@@ -168,59 +168,59 @@
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="/services" class="card-hover group bg-gray-50 rounded-2xl p-8 border border-gray-100">
-          <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+        <a href="/services" class="card-hover group bg-white rounded-3xl p-8 border border-gray-100">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-navy-900 mb-3">Structured Cabling</h3>
-          <p class="text-gray-600">Cat6, Cat6A, and fiber infrastructure designed for performance across hundreds of locations.</p>
+          <p class="text-gray-600 leading-relaxed">Cat6, Cat6A, and fiber infrastructure designed for performance across hundreds of locations.</p>
         </a>
 
-        <a href="/services" class="card-hover group bg-gray-50 rounded-2xl p-8 border border-gray-100">
-          <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        <a href="/services" class="card-hover group bg-white rounded-3xl p-8 border border-gray-100">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-navy-900 mb-3">Access Control</h3>
-          <p class="text-gray-600">Card readers, biometrics, and visitor management integrated with your security infrastructure.</p>
+          <p class="text-gray-600 leading-relaxed">Card readers, biometrics, and visitor management integrated with your security infrastructure.</p>
         </a>
 
-        <a href="/services" class="card-hover group bg-gray-50 rounded-2xl p-8 border border-gray-100">
-          <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        <a href="/services" class="card-hover group bg-white rounded-3xl p-8 border border-gray-100">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-navy-900 mb-3">Video Surveillance</h3>
-          <p class="text-gray-600">IP camera systems with centralized monitoring, analytics, and scalable storage.</p>
+          <p class="text-gray-600 leading-relaxed">IP camera systems with centralized monitoring, analytics, and scalable storage.</p>
         </a>
 
-        <a href="/services" class="card-hover group bg-gray-50 rounded-2xl p-8 border border-gray-100">
-          <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <a href="/services" class="card-hover group bg-white rounded-3xl p-8 border border-gray-100">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-navy-900 mb-3">Audio-Visual</h3>
-          <p class="text-gray-600">Conference rooms, digital signage, and presentation systems that work reliably.</p>
+          <p class="text-gray-600 leading-relaxed">Conference rooms, digital signage, and presentation systems that work reliably.</p>
         </a>
 
-        <a href="/services" class="card-hover group bg-gray-50 rounded-2xl p-8 border border-gray-100">
-          <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.829a5 5 0 010-7.07m7.072 0a5 5 0 010 7.07M13 12a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
+        <a href="/services" class="card-hover group bg-white rounded-3xl p-8 border border-gray-100">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.829a5 5 0 010-7.07m7.072 0a5 5 0 010 7.07M13 12a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-navy-900 mb-3">Sound Masking</h3>
-          <p class="text-gray-600">Speech privacy for healthcare, financial services, and professional environments.</p>
+          <p class="text-gray-600 leading-relaxed">Speech privacy for healthcare, financial services, and professional environments.</p>
         </a>
 
-        <a href="/services" class="card-hover group bg-gray-50 rounded-2xl p-8 border border-gray-100">
-          <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <a href="/services" class="card-hover group bg-white rounded-3xl p-8 border border-gray-100">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-navy-900 mb-3">Break-Fix Support</h3>
-          <p class="text-gray-600">Nationwide dispatch for urgent repairs. Same-day response in major metros.</p>
+          <p class="text-gray-600 leading-relaxed">Nationwide dispatch for urgent repairs. Same-day response in major metros.</p>
         </a>
       </div>
     </div>
   </section>
 
   <!-- Value Prop -->
-  <section class="py-24 lg:py-32 bg-gray-50">
+  <section class="py-24 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
@@ -230,21 +230,21 @@
           
           <div class="space-y-6">
             <div class="flex gap-5">
-              <div class="flex-shrink-0 w-12 h-12 bg-blue-500 text-white rounded-xl flex items-center justify-center font-bold">01</div>
+              <div class="flex-shrink-0 w-12 h-12 bg-blue-500 text-white rounded-2xl flex items-center justify-center font-bold">01</div>
               <div>
                 <h3 class="text-lg font-bold text-navy-900 mb-1">One Relationship</h3>
                 <p class="text-gray-600">Single account team, contract, and escalation path.</p>
               </div>
             </div>
             <div class="flex gap-5">
-              <div class="flex-shrink-0 w-12 h-12 bg-blue-500 text-white rounded-xl flex items-center justify-center font-bold">02</div>
+              <div class="flex-shrink-0 w-12 h-12 bg-blue-500 text-white rounded-2xl flex items-center justify-center font-bold">02</div>
               <div>
                 <h3 class="text-lg font-bold text-navy-900 mb-1">One Standard</h3>
                 <p class="text-gray-600">Consistent quality and documentation at every site.</p>
               </div>
             </div>
             <div class="flex gap-5">
-              <div class="flex-shrink-0 w-12 h-12 bg-blue-500 text-white rounded-xl flex items-center justify-center font-bold">03</div>
+              <div class="flex-shrink-0 w-12 h-12 bg-blue-500 text-white rounded-2xl flex items-center justify-center font-bold">03</div>
               <div>
                 <h3 class="text-lg font-bold text-navy-900 mb-1">One Invoice</h3>
                 <p class="text-gray-600">Simplified procurement, transparent pricing.</p>
@@ -254,7 +254,7 @@
         </div>
 
         <div class="relative">
-          <div class="bg-navy-900 rounded-2xl p-10 text-white">
+          <div class="bg-navy-900 rounded-3xl p-10 text-white">
             <p class="text-sm text-gray-400 uppercase tracking-wider mb-6">Without Axseter</p>
             <div class="grid grid-cols-4 gap-2 mb-10">
               <div class="bg-gray-700/50 rounded-lg p-3 text-center text-xs text-gray-400">Vendor 1</div>
@@ -267,7 +267,7 @@
               <div class="bg-gray-700/50 rounded-lg p-3 text-center text-xs text-gray-400">Vendor 8</div>
             </div>
             <p class="text-sm text-gray-400 uppercase tracking-wider mb-6">With Axseter</p>
-            <div class="bg-blue-500 rounded-xl p-8 text-center">
+            <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-8 text-center">
               <span class="text-2xl font-bold">AXSETER</span>
               <p class="text-blue-100 text-sm mt-1">Single Point of Contact</p>
             </div>
@@ -278,7 +278,7 @@
   </section>
 
   <!-- Industries -->
-  <section class="py-24 lg:py-32 bg-white">
+  <section class="py-24 lg:py-32 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16">
         <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Industries</span>
@@ -287,30 +287,30 @@
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
-        <a href="/industries/healthcare" class="group relative overflow-hidden rounded-2xl h-80 card-hover">
+        <a href="/industries/healthcare" class="group relative overflow-hidden rounded-3xl h-96 card-hover">
           <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80" alt="Healthcare facility" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-900/60 to-transparent"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-6">
-            <h3 class="text-xl font-bold text-white mb-2">Healthcare</h3>
-            <p class="text-gray-300 text-sm">HIPAA-compliant infrastructure for clinics and specialty practices.</p>
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-900/70 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-8">
+            <h3 class="text-2xl font-bold text-white mb-2">Healthcare</h3>
+            <p class="text-gray-300">HIPAA-compliant infrastructure for clinics and specialty practices.</p>
           </div>
         </a>
 
-        <a href="/industries/financial-services" class="group relative overflow-hidden rounded-2xl h-80 card-hover">
+        <a href="/industries/financial-services" class="group relative overflow-hidden rounded-3xl h-96 card-hover">
           <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Financial services" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-900/60 to-transparent"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-6">
-            <h3 class="text-xl font-bold text-white mb-2">Financial Services</h3>
-            <p class="text-gray-300 text-sm">High-security systems for bank branches and insurance offices.</p>
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-900/70 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-8">
+            <h3 class="text-2xl font-bold text-white mb-2">Financial Services</h3>
+            <p class="text-gray-300">High-security systems for bank branches and insurance offices.</p>
           </div>
         </a>
 
-        <a href="/industries/retail-qsr" class="group relative overflow-hidden rounded-2xl h-80 card-hover">
+        <a href="/industries/retail-qsr" class="group relative overflow-hidden rounded-3xl h-96 card-hover">
           <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80" alt="Retail store" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-900/60 to-transparent"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-6">
-            <h3 class="text-xl font-bold text-white mb-2">Retail & QSR</h3>
-            <p class="text-gray-300 text-sm">Fast-paced deployment for chains opening 100+ locations/year.</p>
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-900/70 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-8">
+            <h3 class="text-2xl font-bold text-white mb-2">Retail & QSR</h3>
+            <p class="text-gray-300">Fast-paced deployment for chains opening 100+ locations/year.</p>
           </div>
         </a>
       </div>
@@ -318,23 +318,26 @@
   </section>
 
   <!-- CTA -->
-  <section class="py-24 lg:py-32 bg-navy-900">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+  <section class="py-24 lg:py-32 bg-navy-900 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
       <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">Ready to Scale Nationally?</h2>
       <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Tell us about your expansion plans. We'll show you how Axseter can simplify your infrastructure.</p>
-      <a href="/contact" class="inline-flex btn-primary text-white text-lg font-semibold px-8 py-4 rounded-lg">
-        Start a Conversation
+      <a href="/contact" class="inline-flex btn-primary text-white text-lg font-semibold px-10 py-5 rounded-xl">
+        Request a Consultation
       </a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-[#0B1120] text-white py-16 border-t border-white/5">
+  <footer class="bg-navy-950 text-white py-16">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid md:grid-cols-4 gap-12 mb-12">
         <div>
           <div class="flex items-center gap-3 mb-6">
-            <div class="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center">
+            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
               <span class="text-white font-bold text-lg">A</span>
             </div>
             <span class="text-xl font-bold">Axseter</span>
@@ -343,7 +346,7 @@
         </div>
         <div>
           <h4 class="font-semibold mb-6 text-gray-200">Services</h4>
-          <ul class="space-y-3 text-gray-400">
+          <ul class="space-y-4 text-gray-400">
             <li><a href="/services" class="hover:text-white transition-colors">Structured Cabling</a></li>
             <li><a href="/services" class="hover:text-white transition-colors">Access Control</a></li>
             <li><a href="/services" class="hover:text-white transition-colors">Video Surveillance</a></li>
@@ -352,7 +355,7 @@
         </div>
         <div>
           <h4 class="font-semibold mb-6 text-gray-200">Industries</h4>
-          <ul class="space-y-3 text-gray-400">
+          <ul class="space-y-4 text-gray-400">
             <li><a href="/industries/healthcare" class="hover:text-white transition-colors">Healthcare</a></li>
             <li><a href="/industries/financial-services" class="hover:text-white transition-colors">Financial Services</a></li>
             <li><a href="/industries/retail-qsr" class="hover:text-white transition-colors">Retail & QSR</a></li>
@@ -360,7 +363,7 @@
         </div>
         <div>
           <h4 class="font-semibold mb-6 text-gray-200">Contact</h4>
-          <ul class="space-y-3 text-gray-400">
+          <ul class="space-y-4 text-gray-400">
             <li>info@axseter.com</li>
             <li>(312) 555-1234</li>
             <li>Chicago, IL</li>
