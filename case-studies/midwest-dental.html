@@ -47,17 +47,27 @@
   </nav>
 
   <!-- Hero -->
-  <section class="pt-32 pb-16 bg-gray-50">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8">
-      <a href="/case-studies" class="inline-flex items-center gap-2 text-blue-600 font-medium mb-8">← Back to Case Studies</a>
-      <span class="inline-block px-3 py-1 bg-emerald-50 text-emerald-700 text-sm font-semibold rounded-full mb-6">Healthcare</span>
-      <h1 class="text-4xl lg:text-5xl font-bold text-navy-900 leading-tight mb-6">Midwest Dental Partners</h1>
-      <p class="text-xl text-gray-600 leading-relaxed">How a regional DSO eliminated infrastructure inconsistencies by switching from GC-managed to owner-direct low voltage installation.</p>
+  <section class="pt-32 pb-16 bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
+      <a href="/case-studies" class="inline-flex items-center gap-2 text-gray-400 hover:text-white font-medium mb-8 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        Back to Case Studies
+      </a>
+      <div class="flex items-center gap-4 mb-6">
+        <span class="text-emerald-400 text-sm font-medium uppercase tracking-wider">Healthcare</span>
+        <span class="text-gray-600">—</span>
+        <span class="text-gray-400 text-sm">Case Study</span>
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">Midwest Dental Partners</h1>
+      <p class="text-xl text-gray-300 leading-relaxed max-w-3xl">How a regional DSO eliminated infrastructure inconsistencies by switching from GC-managed to owner-direct low voltage installation.</p>
     </div>
   </section>
 
   <!-- Stats Bar -->
-  <section class="py-8 bg-navy-900">
+  <section class="py-8 bg-navy-900 border-t border-white/10">
     <div class="max-w-4xl mx-auto px-6 lg:px-8">
       <div class="grid grid-cols-3 gap-8 text-center">
         <div>
@@ -82,12 +92,12 @@
       
       <div class="prose prose-lg max-w-none">
         
-        <h2 class="text-2xl font-bold text-navy-900 mb-4">The Challenge</h2>
+        <h2 class="text-2xl font-bold text-navy-900 mt-12 mb-6">The Challenge</h2>
         <p class="text-gray-600 leading-relaxed mb-6">Midwest Dental Partners had grown to 85 locations across the upper Midwest through a combination of de novo builds and acquisitions. Like most DSOs, they let their general contractors handle low voltage as part of the construction package.</p>
         <p class="text-gray-600 leading-relaxed mb-8">The result: 85 locations with 85 different interpretations of "standard" infrastructure.</p>
         
         <div class="bg-red-50 border-l-4 border-red-400 p-6 my-8 rounded-r-xl">
-          <h3 class="text-lg font-bold text-red-900 mb-3">What GC-Managed Looked Like</h3>
+          <h3 class="text-lg font-semibold text-red-900 mb-3">What GC-Managed Looked Like</h3>
           <ul class="text-red-800 space-y-2">
             <li>Different cable labeling conventions at every location</li>
             <li>Inconsistent rack layouts—IT couldn't deploy equipment remotely</li>
@@ -99,14 +109,14 @@
 
         <p class="text-gray-600 leading-relaxed mb-8">The IT team was spending 60% of their time on infrastructure firefighting instead of supporting clinical operations. Every new location opening was a surprise—would the cabling match their standards or not?</p>
 
-        <h2 class="text-2xl font-bold text-navy-900 mb-4">The Turning Point</h2>
+        <h2 class="text-2xl font-bold text-navy-900 mt-12 mb-6">The Turning Point</h2>
         <p class="text-gray-600 leading-relaxed mb-6">When Midwest Dental planned their next wave of 15 de novo locations, the VP of IT made the case for carving low voltage out of the GC scope. The construction team was skeptical—wouldn't this create coordination headaches?</p>
         <p class="text-gray-600 leading-relaxed mb-8">They ran a pilot: five locations with Axseter as an owner-direct contractor, five locations GC-managed as usual.</p>
 
-        <h2 class="text-2xl font-bold text-navy-900 mb-4">The Results</h2>
+        <h2 class="text-2xl font-bold text-navy-900 mt-12 mb-6">The Results</h2>
         
         <div class="bg-emerald-50 border-l-4 border-emerald-400 p-6 my-8 rounded-r-xl">
-          <h3 class="text-lg font-bold text-emerald-900 mb-3">Owner-Direct Outcomes</h3>
+          <h3 class="text-lg font-semibold text-emerald-900 mb-3">Owner-Direct Outcomes</h3>
           <ul class="text-emerald-800 space-y-2">
             <li>100% documentation compliance on day one</li>
             <li>Identical rack layouts—IT could deploy equipment without site visits</li>
@@ -119,7 +129,7 @@
         <p class="text-gray-600 leading-relaxed mb-6">The GC-managed locations? Two had documentation. One had a cable labeling scheme that matched their standard. The IT team spent the first two weeks at each location re-documenting and remediating.</p>
         <p class="text-gray-600 leading-relaxed mb-8">The pilot made the decision obvious. Midwest Dental moved all new construction to owner-direct and began a remediation program for existing locations.</p>
 
-        <h2 class="text-2xl font-bold text-navy-900 mb-4">Three Years Later</h2>
+        <h2 class="text-2xl font-bold text-navy-900 mt-12 mb-6">Three Years Later</h2>
         <p class="text-gray-600 leading-relaxed mb-6">Midwest Dental has grown to 127 locations. The IT team now spends their time on clinical technology initiatives instead of infrastructure triage. New locations open with predictable, standardized infrastructure every time.</p>
         
         <blockquote class="border-l-4 border-blue-500 pl-6 py-2 my-8">
@@ -127,7 +137,7 @@
           <cite class="text-gray-500 not-italic">— VP of Information Technology, Midwest Dental Partners</cite>
         </blockquote>
 
-        <h2 class="text-2xl font-bold text-navy-900 mb-4">Scope of Work</h2>
+        <h2 class="text-2xl font-bold text-navy-900 mt-12 mb-6">Scope of Work</h2>
         <ul class="text-gray-600 space-y-2 mb-8">
           <li>Structured cabling (Cat6A throughout)</li>
           <li>Wireless infrastructure and site surveys</li>
