@@ -14,11 +14,11 @@
     .btn-primary { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); transition: all 0.3s ease; }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px -10px rgba(59, 130, 246, 0.5); }
     .post-card { transition: all 0.2s ease; }
-    .post-card:hover { background: #f9fafb; }
+    .post-card:hover { border-color: #3B82F6; }
     .post-card.hidden { display: none; }
   </style>
 </head>
-<body class="bg-white text-gray-900 antialiased">
+<body class="bg-gray-50 text-gray-900 antialiased">
 
   <!-- Navigation -->
   <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 nav-blur border-b border-gray-200/50">
@@ -56,181 +56,179 @@
   </nav>
 
   <!-- Header -->
-  <section class="pt-32 pb-12 border-b border-gray-100">
+  <section class="pt-32 pb-8 bg-white border-b border-gray-200">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <h1 class="text-4xl lg:text-5xl font-bold text-navy-900 mb-4">Insights</h1>
       <p class="text-xl text-gray-500 max-w-2xl">Perspectives on multi-location infrastructure and scaling physical operations nationwide.</p>
+      
+      <!-- Filters -->
+      <div class="flex flex-wrap items-center gap-3 mt-8">
+        <button onclick="filterPosts('all')" data-filter="all" class="filter-btn px-4 py-1.5 bg-navy-900 text-white text-sm font-medium rounded-full transition-colors">All</button>
+        <button onclick="filterPosts('facilities')" data-filter="facilities" class="filter-btn px-4 py-1.5 bg-white border border-gray-200 text-gray-600 text-sm font-medium rounded-full hover:border-gray-300 transition-colors">Facilities</button>
+        <button onclick="filterPosts('realestate')" data-filter="realestate" class="filter-btn px-4 py-1.5 bg-white border border-gray-200 text-gray-600 text-sm font-medium rounded-full hover:border-gray-300 transition-colors">Real Estate</button>
+        <button onclick="filterPosts('it')" data-filter="it" class="filter-btn px-4 py-1.5 bg-white border border-gray-200 text-gray-600 text-sm font-medium rounded-full hover:border-gray-300 transition-colors">IT</button>
+      </div>
     </div>
   </section>
 
-  <!-- Blog Posts -->
+  <!-- Blog Grid -->
   <section class="py-12">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      
-      <!-- Audience Filter -->
-      <div class="flex flex-wrap items-center gap-3 mb-12 pb-8 border-b border-gray-100">
-        <span class="text-sm text-gray-400 font-medium">Filter:</span>
-        <button onclick="filterPosts('all')" data-filter="all" class="filter-btn px-4 py-1.5 bg-navy-900 text-white text-sm font-medium rounded-full transition-colors">All</button>
-        <button onclick="filterPosts('facilities')" data-filter="facilities" class="filter-btn px-4 py-1.5 bg-gray-100 text-gray-600 text-sm font-medium rounded-full hover:bg-gray-200 transition-colors">Facilities</button>
-        <button onclick="filterPosts('realestate')" data-filter="realestate" class="filter-btn px-4 py-1.5 bg-gray-100 text-gray-600 text-sm font-medium rounded-full hover:bg-gray-200 transition-colors">Real Estate</button>
-        <button onclick="filterPosts('it')" data-filter="it" class="filter-btn px-4 py-1.5 bg-gray-100 text-gray-600 text-sm font-medium rounded-full hover:bg-gray-200 transition-colors">IT</button>
-      </div>
-
-      <div id="posts-grid" class="space-y-0">
+      <div id="posts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         
         <!-- Post 1 -->
-        <article class="post-card border-l-4 border-blue-500 pl-6 py-6 -ml-6" data-audience="facilities">
-          <a href="/insights/vendor-consolidation-facilities" class="block">
-            <div class="flex items-center gap-3 text-sm text-gray-400 mb-2">
+        <article class="post-card bg-white rounded-xl border border-gray-200 p-6 flex flex-col" data-audience="facilities">
+          <a href="/insights/vendor-consolidation-facilities" class="flex flex-col h-full">
+            <div class="flex items-center gap-3 text-sm mb-3">
               <span class="text-blue-600 font-medium">Facilities</span>
-              <span>·</span>
-              <span>8 min read</span>
+              <span class="text-gray-300">·</span>
+              <span class="text-gray-400">8 min</span>
             </div>
-            <h2 class="text-xl lg:text-2xl font-bold text-navy-900 mb-2 hover:text-blue-600 transition-colors">Why Facilities Teams Are Moving to Single-Vendor Low Voltage</h2>
-            <p class="text-gray-500 max-w-2xl">Managing dozens of regional contractors creates hidden costs that don't show up on any invoice.</p>
+            <h2 class="text-lg font-bold text-navy-900 mb-2 leading-snug">Why Facilities Teams Are Moving to Single-Vendor Low Voltage</h2>
+            <p class="text-gray-500 text-sm flex-grow">Managing dozens of regional contractors creates hidden costs that don't show up on any invoice.</p>
           </a>
         </article>
 
         <!-- Post 2 -->
-        <article class="post-card border-l-4 border-emerald-500 pl-6 py-6 -ml-6" data-audience="realestate">
-          <a href="/insights/buildout-timelines-real-estate" class="block">
-            <div class="flex items-center gap-3 text-sm text-gray-400 mb-2">
+        <article class="post-card bg-white rounded-xl border border-gray-200 p-6 flex flex-col" data-audience="realestate">
+          <a href="/insights/buildout-timelines-real-estate" class="flex flex-col h-full">
+            <div class="flex items-center gap-3 text-sm mb-3">
               <span class="text-emerald-600 font-medium">Real Estate</span>
-              <span>·</span>
-              <span>7 min read</span>
+              <span class="text-gray-300">·</span>
+              <span class="text-gray-400">7 min</span>
             </div>
-            <h2 class="text-xl lg:text-2xl font-bold text-navy-900 mb-2 hover:text-blue-600 transition-colors">Low Voltage: The Hidden Variable in Site Buildout Timelines</h2>
-            <p class="text-gray-500 max-w-2xl">Why low voltage is often the last 10% of work that takes 30% of the timeline.</p>
+            <h2 class="text-lg font-bold text-navy-900 mb-2 leading-snug">Low Voltage: The Hidden Variable in Site Buildout Timelines</h2>
+            <p class="text-gray-500 text-sm flex-grow">Why low voltage is often the last 10% of work that takes 30% of the timeline.</p>
           </a>
         </article>
 
         <!-- Post 3 -->
-        <article class="post-card border-l-4 border-purple-500 pl-6 py-6 -ml-6" data-audience="it">
-          <a href="/insights/cabling-standards-it-managers" class="block">
-            <div class="flex items-center gap-3 text-sm text-gray-400 mb-2">
+        <article class="post-card bg-white rounded-xl border border-gray-200 p-6 flex flex-col" data-audience="it">
+          <a href="/insights/cabling-standards-it-managers" class="flex flex-col h-full">
+            <div class="flex items-center gap-3 text-sm mb-3">
               <span class="text-purple-600 font-medium">IT</span>
-              <span>·</span>
-              <span>10 min read</span>
+              <span class="text-gray-300">·</span>
+              <span class="text-gray-400">10 min</span>
             </div>
-            <h2 class="text-xl lg:text-2xl font-bold text-navy-900 mb-2 hover:text-blue-600 transition-colors">Structured Cabling Standards for Multi-Site IT Teams</h2>
-            <p class="text-gray-500 max-w-2xl">Cat6 vs Cat6A, fiber considerations, and specs that matter across 100+ locations.</p>
+            <h2 class="text-lg font-bold text-navy-900 mb-2 leading-snug">Structured Cabling Standards for Multi-Site IT Teams</h2>
+            <p class="text-gray-500 text-sm flex-grow">Cat6 vs Cat6A, fiber considerations, and specs that matter across 100+ locations.</p>
           </a>
         </article>
 
         <!-- Post 4 -->
-        <article class="post-card border-l-4 border-purple-500 pl-6 py-6 -ml-6" data-audience="it">
-          <a href="/insights/access-control-healthcare-compliance" class="block">
-            <div class="flex items-center gap-3 text-sm text-gray-400 mb-2">
+        <article class="post-card bg-white rounded-xl border border-gray-200 p-6 flex flex-col" data-audience="it">
+          <a href="/insights/access-control-healthcare-compliance" class="flex flex-col h-full">
+            <div class="flex items-center gap-3 text-sm mb-3">
               <span class="text-purple-600 font-medium">IT</span>
-              <span>·</span>
-              <span>9 min read</span>
+              <span class="text-gray-300">·</span>
+              <span class="text-gray-400">9 min</span>
             </div>
-            <h2 class="text-xl lg:text-2xl font-bold text-navy-900 mb-2 hover:text-blue-600 transition-colors">Access Control for Healthcare: Compliance Without Complexity</h2>
-            <p class="text-gray-500 max-w-2xl">HIPAA, Joint Commission, and state requirements unified into a single framework.</p>
+            <h2 class="text-lg font-bold text-navy-900 mb-2 leading-snug">Access Control for Healthcare: Compliance Without Complexity</h2>
+            <p class="text-gray-500 text-sm flex-grow">HIPAA, Joint Commission, and state requirements unified into a single framework.</p>
           </a>
         </article>
 
         <!-- Post 5 -->
-        <article class="post-card border-l-4 border-emerald-500 pl-6 py-6 -ml-6" data-audience="realestate">
-          <a href="/insights/infrastructure-budget-predictability" class="block">
-            <div class="flex items-center gap-3 text-sm text-gray-400 mb-2">
+        <article class="post-card bg-white rounded-xl border border-gray-200 p-6 flex flex-col" data-audience="realestate">
+          <a href="/insights/infrastructure-budget-predictability" class="flex flex-col h-full">
+            <div class="flex items-center gap-3 text-sm mb-3">
               <span class="text-emerald-600 font-medium">Real Estate</span>
-              <span>·</span>
-              <span>5 min read</span>
+              <span class="text-gray-300">·</span>
+              <span class="text-gray-400">5 min</span>
             </div>
-            <h2 class="text-xl lg:text-2xl font-bold text-navy-900 mb-2 hover:text-blue-600 transition-colors">Infrastructure Budget Predictability: Know Your Costs Before You Sign</h2>
-            <p class="text-gray-500 max-w-2xl">How to lock in low voltage costs during site selection, not after construction starts.</p>
+            <h2 class="text-lg font-bold text-navy-900 mb-2 leading-snug">Infrastructure Budget Predictability: Know Your Costs Before You Sign</h2>
+            <p class="text-gray-500 text-sm flex-grow">How to lock in low voltage costs during site selection, not after construction starts.</p>
           </a>
         </article>
 
         <!-- Post 6 -->
-        <article class="post-card border-l-4 border-blue-500 pl-6 py-6 -ml-6" data-audience="facilities">
-          <a href="/insights/service-response-multi-location" class="block">
-            <div class="flex items-center gap-3 text-sm text-gray-400 mb-2">
+        <article class="post-card bg-white rounded-xl border border-gray-200 p-6 flex flex-col" data-audience="facilities">
+          <a href="/insights/service-response-multi-location" class="flex flex-col h-full">
+            <div class="flex items-center gap-3 text-sm mb-3">
               <span class="text-blue-600 font-medium">Facilities</span>
-              <span>·</span>
-              <span>6 min read</span>
+              <span class="text-gray-300">·</span>
+              <span class="text-gray-400">6 min</span>
             </div>
-            <h2 class="text-xl lg:text-2xl font-bold text-navy-900 mb-2 hover:text-blue-600 transition-colors">Service Response Across 200 Locations: What Good Looks Like</h2>
-            <p class="text-gray-500 max-w-2xl">SLAs, escalation paths, and the service infrastructure required for reliable multi-location support.</p>
+            <h2 class="text-lg font-bold text-navy-900 mb-2 leading-snug">Service Response Across 200 Locations: What Good Looks Like</h2>
+            <p class="text-gray-500 text-sm flex-grow">SLAs, escalation paths, and the service infrastructure required for reliable support.</p>
           </a>
         </article>
 
         <!-- Post 7 -->
-        <article class="post-card border-l-4 border-purple-500 pl-6 py-6 -ml-6" data-audience="it">
-          <a href="/insights/wifi-site-surveys" class="block">
-            <div class="flex items-center gap-3 text-sm text-gray-400 mb-2">
+        <article class="post-card bg-white rounded-xl border border-gray-200 p-6 flex flex-col" data-audience="it">
+          <a href="/insights/wifi-site-surveys" class="flex flex-col h-full">
+            <div class="flex items-center gap-3 text-sm mb-3">
               <span class="text-purple-600 font-medium">IT</span>
-              <span>·</span>
-              <span>7 min read</span>
+              <span class="text-gray-300">·</span>
+              <span class="text-gray-400">7 min</span>
             </div>
-            <h2 class="text-xl lg:text-2xl font-bold text-navy-900 mb-2 hover:text-blue-600 transition-colors">WiFi Site Surveys: Getting Coverage Right the First Time</h2>
-            <p class="text-gray-500 max-w-2xl">Predictive vs. post-install surveys, AP placement, and avoiding expensive dead zone fixes.</p>
+            <h2 class="text-lg font-bold text-navy-900 mb-2 leading-snug">WiFi Site Surveys: Getting Coverage Right the First Time</h2>
+            <p class="text-gray-500 text-sm flex-grow">Predictive vs. post-install surveys, AP placement, and avoiding expensive dead zone fixes.</p>
           </a>
         </article>
 
         <!-- Post 8 -->
-        <article class="post-card border-l-4 border-blue-500 pl-6 py-6 -ml-6" data-audience="facilities">
-          <a href="/insights/gc-coordination" class="block">
-            <div class="flex items-center gap-3 text-sm text-gray-400 mb-2">
+        <article class="post-card bg-white rounded-xl border border-gray-200 p-6 flex flex-col" data-audience="facilities">
+          <a href="/insights/gc-coordination" class="flex flex-col h-full">
+            <div class="flex items-center gap-3 text-sm mb-3">
               <span class="text-blue-600 font-medium">Facilities</span>
-              <span>·</span>
-              <span>5 min read</span>
+              <span class="text-gray-300">·</span>
+              <span class="text-gray-400">5 min</span>
             </div>
-            <h2 class="text-xl lg:text-2xl font-bold text-navy-900 mb-2 hover:text-blue-600 transition-colors">Coordinating with General Contractors: A Low Voltage Checklist</h2>
-            <p class="text-gray-500 max-w-2xl">Pre-wire timing, rough-in coordination, and avoiding costly rework after drywall closes.</p>
+            <h2 class="text-lg font-bold text-navy-900 mb-2 leading-snug">Coordinating with General Contractors: A Low Voltage Checklist</h2>
+            <p class="text-gray-500 text-sm flex-grow">Pre-wire timing, rough-in coordination, and avoiding costly rework after drywall closes.</p>
           </a>
         </article>
 
         <!-- Post 9 -->
-        <article class="post-card border-l-4 border-emerald-500 pl-6 py-6 -ml-6" data-audience="realestate">
-          <a href="/insights/ma-infrastructure-playbook" class="block">
-            <div class="flex items-center gap-3 text-sm text-gray-400 mb-2">
+        <article class="post-card bg-white rounded-xl border border-gray-200 p-6 flex flex-col" data-audience="realestate">
+          <a href="/insights/ma-infrastructure-playbook" class="flex flex-col h-full">
+            <div class="flex items-center gap-3 text-sm mb-3">
               <span class="text-emerald-600 font-medium">Real Estate</span>
-              <span>·</span>
-              <span>9 min read</span>
+              <span class="text-gray-300">·</span>
+              <span class="text-gray-400">9 min</span>
             </div>
-            <h2 class="text-xl lg:text-2xl font-bold text-navy-900 mb-2 hover:text-blue-600 transition-colors">The M&A Infrastructure Playbook: Standardizing Acquired Locations</h2>
-            <p class="text-gray-500 max-w-2xl">Assessment frameworks, prioritization, and bringing 50+ acquired sites to corporate standards.</p>
+            <h2 class="text-lg font-bold text-navy-900 mb-2 leading-snug">The M&A Infrastructure Playbook: Standardizing Acquired Locations</h2>
+            <p class="text-gray-500 text-sm flex-grow">Assessment frameworks, prioritization, and bringing 50+ acquired sites to corporate standards.</p>
           </a>
         </article>
 
         <!-- Post 10 -->
-        <article class="post-card border-l-4 border-purple-500 pl-6 py-6 -ml-6" data-audience="it">
-          <a href="/insights/surveillance-retention-policies" class="block">
-            <div class="flex items-center gap-3 text-sm text-gray-400 mb-2">
+        <article class="post-card bg-white rounded-xl border border-gray-200 p-6 flex flex-col" data-audience="it">
+          <a href="/insights/surveillance-retention-policies" class="flex flex-col h-full">
+            <div class="flex items-center gap-3 text-sm mb-3">
               <span class="text-purple-600 font-medium">IT</span>
-              <span>·</span>
-              <span>6 min read</span>
+              <span class="text-gray-300">·</span>
+              <span class="text-gray-400">6 min</span>
             </div>
-            <h2 class="text-xl lg:text-2xl font-bold text-navy-900 mb-2 hover:text-blue-600 transition-colors">Video Surveillance Retention: Storage, Compliance, and Cost Tradeoffs</h2>
-            <p class="text-gray-500 max-w-2xl">NVR sizing, cloud vs. on-prem storage, and meeting industry-specific retention requirements.</p>
+            <h2 class="text-lg font-bold text-navy-900 mb-2 leading-snug">Video Surveillance Retention: Storage, Compliance, and Cost Tradeoffs</h2>
+            <p class="text-gray-500 text-sm flex-grow">NVR sizing, cloud vs. on-prem storage, and meeting industry-specific retention requirements.</p>
           </a>
         </article>
 
         <!-- Post 11 -->
-        <article class="post-card border-l-4 border-blue-500 pl-6 py-6 -ml-6" data-audience="facilities">
-          <a href="/insights/move-add-change-process" class="block">
-            <div class="flex items-center gap-3 text-sm text-gray-400 mb-2">
+        <article class="post-card bg-white rounded-xl border border-gray-200 p-6 flex flex-col" data-audience="facilities">
+          <a href="/insights/move-add-change-process" class="flex flex-col h-full">
+            <div class="flex items-center gap-3 text-sm mb-3">
               <span class="text-blue-600 font-medium">Facilities</span>
-              <span>·</span>
-              <span>4 min read</span>
+              <span class="text-gray-300">·</span>
+              <span class="text-gray-400">4 min</span>
             </div>
-            <h2 class="text-xl lg:text-2xl font-bold text-navy-900 mb-2 hover:text-blue-600 transition-colors">Streamlining MAC Requests Across Your Portfolio</h2>
-            <p class="text-gray-500 max-w-2xl">Move, add, change workflows that actually work—from request to completion in days, not weeks.</p>
+            <h2 class="text-lg font-bold text-navy-900 mb-2 leading-snug">Streamlining MAC Requests Across Your Portfolio</h2>
+            <p class="text-gray-500 text-sm flex-grow">Move, add, change workflows that actually work—from request to completion in days.</p>
           </a>
         </article>
 
         <!-- Post 12 -->
-        <article class="post-card border-l-4 border-emerald-500 pl-6 py-6 -ml-6" data-audience="realestate">
-          <a href="/insights/lease-negotiation-infrastructure" class="block">
-            <div class="flex items-center gap-3 text-sm text-gray-400 mb-2">
+        <article class="post-card bg-white rounded-xl border border-gray-200 p-6 flex flex-col" data-audience="realestate">
+          <a href="/insights/lease-negotiation-infrastructure" class="flex flex-col h-full">
+            <div class="flex items-center gap-3 text-sm mb-3">
               <span class="text-emerald-600 font-medium">Real Estate</span>
-              <span>·</span>
-              <span>8 min read</span>
+              <span class="text-gray-300">·</span>
+              <span class="text-gray-400">8 min</span>
             </div>
-            <h2 class="text-xl lg:text-2xl font-bold text-navy-900 mb-2 hover:text-blue-600 transition-colors">Infrastructure Questions to Ask Before Signing a Lease</h2>
-            <p class="text-gray-500 max-w-2xl">Existing cabling, riser access, and landlord requirements that affect your buildout costs.</p>
+            <h2 class="text-lg font-bold text-navy-900 mb-2 leading-snug">Infrastructure Questions to Ask Before Signing a Lease</h2>
+            <p class="text-gray-500 text-sm flex-grow">Existing cabling, riser access, and landlord requirements that affect your buildout costs.</p>
           </a>
         </article>
 
@@ -239,7 +237,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-navy-950 text-gray-400 py-16 mt-16">
+  <footer class="bg-navy-950 text-gray-400 py-16">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid md:grid-cols-4 gap-12">
         <div>
@@ -284,11 +282,11 @@
       
       buttons.forEach(btn => {
         if (btn.dataset.filter === audience) {
-          btn.classList.remove('bg-gray-100', 'text-gray-600');
+          btn.classList.remove('bg-white', 'border', 'border-gray-200', 'text-gray-600');
           btn.classList.add('bg-navy-900', 'text-white');
         } else {
           btn.classList.remove('bg-navy-900', 'text-white');
-          btn.classList.add('bg-gray-100', 'text-gray-600');
+          btn.classList.add('bg-white', 'border', 'border-gray-200', 'text-gray-600');
         }
       });
       
