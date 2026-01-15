@@ -69,32 +69,34 @@
     </div>
   </nav>
 
-  <header class="pt-32 pb-12 bg-gray-50">
-    <div class="max-w-3xl mx-auto px-6 lg:px-8">
-      <a href="/insights" class="inline-flex items-center gap-2 text-blue-600 font-medium mb-6">← Back to Insights</a>
-      <div class="flex items-center gap-3 text-sm text-gray-500 mb-4">
-        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full font-medium">IT Managers</span>
-        <span>•</span><span>10 min read</span>
+  <header class="pt-32 pb-20 bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
+      <a href="/insights" class="inline-flex items-center gap-2 text-gray-400 hover:text-white font-medium mb-8 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        Back to Insights
+      </a>
+      <div class="flex items-center gap-4 mb-6">
+        <span class="text-blue-400 text-sm font-medium uppercase tracking-wider">IT Managers</span>
+        <span class="text-gray-600">—</span>
+        <span class="text-gray-400 text-sm">10 min read</span>
       </div>
-      <h1 class="text-3xl lg:text-4xl font-bold text-navy-900 leading-tight">Structured Cabling Standards for Multi-Site IT Teams</h1>
+      <h1 class="text-4xl lg:text-5xl font-bold text-white leading-tight">Structured Cabling Standards for Multi-Site IT Teams</h1>
     </div>
   </header>
 
   <article class="py-12">
     <div class="max-w-3xl mx-auto px-6 lg:px-8 prose">
-      <p class="text-xl text-gray-600 leading-relaxed">When you're managing network infrastructure across 100+ locations, <strong>structured cabling installation</strong> standards aren't optional—they're the foundation that determines whether your IT operations scale smoothly or become a constant source of problems.</p>
+      <p class="text-xl text-gray-600 leading-relaxed mb-12">When you're managing network infrastructure across 100+ locations, <strong>structured cabling installation</strong> standards aren't optional—they're the foundation that determines whether your IT operations scale smoothly or become a constant source of problems.</p>
 
-      <h2>Why Cabling Standards Matter at Scale</h2>
-      <p>In a single-site environment, cabling inconsistencies are manageable. At 50, 100, or 200+ locations, those quirks multiply into systemic problems. When a <strong>national low voltage installer</strong> uses different standards at different sites, your IT team inherits:</p>
-      <ul>
-        <li>Unpredictable troubleshooting—every site is different</li>
-        <li>Documentation gaps that slow down moves and changes</li>
-        <li>Performance inconsistencies that are hard to diagnose remotely</li>
-        <li>Higher support costs from field visits that could have been remote fixes</li>
-      </ul>
+      <h2 class="text-2xl font-bold text-navy-900 mt-16 mb-6">Why Cabling Standards Matter at Scale</h2>
+      <p class="text-gray-600 leading-relaxed mb-4">In a single-site environment, cabling inconsistencies are manageable. At 50, 100, or 200+ locations, those quirks multiply into systemic problems. When a <strong>national low voltage installer</strong> uses different standards at different sites, your IT team inherits:</p>
+      <div class="space-y-4 my-6"><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">Unpredictable troubleshooting—every site is different</p></div><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">Documentation gaps that slow down moves and changes</p></div><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">Performance inconsistencies that are hard to diagnose remotely</p></div><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">Higher support costs from field visits that could have been remote fixes</p></div></div>
 
-      <h2>Cat6 vs. Cat6A: Making the Right Call</h2>
-      <p>The Cat6 vs. Cat6A decision is one of the most common questions in enterprise <strong>structured cabling installation</strong>:</p>
+      <h2 class="text-2xl font-bold text-navy-900 mt-16 mb-6">Cat6 vs. Cat6A: Making the Right Call</h2>
+      <p class="text-gray-600 leading-relaxed mb-4">The Cat6 vs. Cat6A decision is one of the most common questions in enterprise <strong>structured cabling installation</strong>:</p>
       <table>
         <thead><tr><th>Factor</th><th>Cat6</th><th>Cat6A</th></tr></thead>
         <tbody>
@@ -106,9 +108,9 @@
       </table>
       <p><strong>Our recommendation:</strong> For new construction, Cat6A is almost always worth the premium. The infrastructure will outlast multiple technology refresh cycles.</p>
 
-      <h2>Fiber Backbone Requirements</h2>
-      <p>Every multi-site standard should address fiber backbone infrastructure. Even if current bandwidth needs are modest, fiber provides the runway for growth that copper simply can't match.</p>
-      <h3>Minimum Fiber Standards</h3>
+      <h2 class="text-2xl font-bold text-navy-900 mt-16 mb-6">Fiber Backbone Requirements</h2>
+      <p class="text-gray-600 leading-relaxed mb-4">Every multi-site standard should address fiber backbone infrastructure. Even if current bandwidth needs are modest, fiber provides the runway for growth that copper simply can't match.</p>
+      <h3 class="text-lg font-semibold text-navy-900 mt-8 mb-3">Minimum Fiber Standards</h3>
       <ul>
         <li><strong>IDF to MDF runs:</strong> Single-mode fiber for runs over 300m</li>
         <li><strong>Strand count:</strong> Minimum 12-strand; 24-strand preferred for larger sites</li>
@@ -116,38 +118,21 @@
         <li><strong>Testing:</strong> OTDR certification required with documentation</li>
       </ul>
 
-      <h2>Labeling and Documentation Standards</h2>
-      <p>This is where many <strong>national low voltage installation</strong> projects fail. Without consistent labeling and documentation, value degrades rapidly.</p>
-      <h3>Labeling Requirements</h3>
-      <ul>
-        <li>Every cable labeled at both ends with matching identifiers</li>
-        <li>Patch panels labeled with port numbers and destination</li>
-        <li>Consistent naming convention across all sites</li>
-        <li>Machine-printed labels only—no handwritten labels</li>
-      </ul>
-      <h3>Documentation Deliverables</h3>
-      <ul>
-        <li>As-built drawings showing all cable pathways</li>
-        <li>Port mapping spreadsheets for every patch panel</li>
-        <li>Test results for every cable run</li>
-        <li>Photos of IDF/MDF installations</li>
-      </ul>
+      <h2 class="text-2xl font-bold text-navy-900 mt-16 mb-6">Labeling and Documentation Standards</h2>
+      <p class="text-gray-600 leading-relaxed mb-4">This is where many <strong>national low voltage installation</strong> projects fail. Without consistent labeling and documentation, value degrades rapidly.</p>
+      <h3 class="text-lg font-semibold text-navy-900 mt-8 mb-3">Labeling Requirements</h3>
+      <div class="space-y-4 my-6"><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">Every cable labeled at both ends with matching identifiers</p></div><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">Patch panels labeled with port numbers and destination</p></div><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">Consistent naming convention across all sites</p></div><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">Machine-printed labels only—no handwritten labels</p></div></div>
+      <h3 class="text-lg font-semibold text-navy-900 mt-8 mb-3">Documentation Deliverables</h3>
+      <div class="space-y-4 my-6"><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">As-built drawings showing all cable pathways</p></div><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">Port mapping spreadsheets for every patch panel</p></div><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">Test results for every cable run</p></div><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">Photos of IDF/MDF installations</p></div></div>
 
-      <h2>Working with a National Low Voltage Contractor</h2>
-      <p>The advantage of working with a <strong>national low voltage contractor</strong> for structured cabling is consistency. When you establish standards once and apply them across 150 locations, you get predictable quality, consistent documentation, and faster onboarding for new IT staff.</p>
+      <h2 class="text-2xl font-bold text-navy-900 mt-16 mb-6">Working with a National Low Voltage Contractor</h2>
+      <p class="text-gray-600 leading-relaxed mb-4">The advantage of working with a <strong>national low voltage contractor</strong> for structured cabling is consistency. When you establish standards once and apply them across 150 locations, you get predictable quality, consistent documentation, and faster onboarding for new IT staff.</p>
 
-      <h2>Implementation Checklist</h2>
-      <p>Before your next <strong>structured cabling installation</strong> project, ensure you've addressed:</p>
-      <ul>
-        <li>☐ Cable category specification (Cat6 vs. Cat6A)</li>
-        <li>☐ Fiber backbone requirements</li>
-        <li>☐ Labeling convention documentation</li>
-        <li>☐ Testing and certification requirements</li>
-        <li>☐ Documentation deliverables list</li>
-        <li>☐ Warranty terms and service response expectations</li>
-      </ul>
+      <h2 class="text-2xl font-bold text-navy-900 mt-16 mb-6">Implementation Checklist</h2>
+      <p class="text-gray-600 leading-relaxed mb-4">Before your next <strong>structured cabling installation</strong> project, ensure you've addressed:</p>
+      <div class="space-y-4 my-6"><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">☐ Cable category specification (Cat6 vs. Cat6A)</p></div><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">☐ Fiber backbone requirements</p></div><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">☐ Labeling convention documentation</p></div><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">☐ Testing and certification requirements</p></div><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">☐ Documentation deliverables list</p></div><div class="pl-6 border-l-2 border-blue-500/30"><p class="text-gray-600">☐ Warranty terms and service response expectations</p></div></div>
 
-      <div class="mt-12 p-8 bg-navy-900 rounded-2xl text-center">
+      <div class="mt-16 p-10 bg-navy-900 rounded-2xl text-center">
         <h3 class="text-2xl font-bold mb-4" style="color:#ffffff">Need Help Defining Your Cabling Standards?</h3>
         <p class="mb-6" style="color:rgba(255,255,255,0.9)">Axseter works with enterprise IT teams to develop and deploy consistent structured cabling across nationwide portfolios.</p>
         <a href="/contact" class="inline-flex btn-primary text-white font-semibold px-8 py-4 rounded-xl">Request a Consultation</a>
@@ -198,6 +183,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
