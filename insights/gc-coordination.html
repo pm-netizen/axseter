@@ -11,7 +11,39 @@
   <style>*{font-family:'Inter',sans-serif}.nav-blur{backdrop-filter:blur(20px)}.btn-primary{background:linear-gradient(135deg,#3B82F6,#2563EB)}.prose h2{font-size:1.75rem;font-weight:700;color:#102a43;margin-top:2.5rem;margin-bottom:1rem}.prose p{color:#4b5563;line-height:1.8;margin-bottom:1.5rem}.prose ul{margin-bottom:1.5rem;padding-left:1.5rem}.prose li{color:#4b5563;line-height:1.8;margin-bottom:0.5rem;list-style:disc}</style>
 </head>
 <body class="bg-white antialiased">
-  <nav class="fixed top-0 left-0 right-0 z-50 nav-blur bg-white/80 border-b border-gray-100"><div class="max-w-7xl mx-auto px-6"><div class="flex justify-between items-center h-20"><a href="/"><span class="text-3xl font-black text-navy-900" style="letter-spacing:-0.03em">AXSETER<sup class="text-sm text-gray-400 ml-0.5">™</sup></span></a><a href="/contact" class="btn-primary text-white px-6 py-3 rounded-xl font-semibold text-sm">Get Started</a></div></div></nav>
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 nav-blur border-b border-gray-200/50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="/" class="flex items-center">
+          <span class="text-3xl font-black tracking-tight text-navy-900" style="font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">AXSETER<sup class="text-sm font-semibold text-gray-400 ml-0.5">™</sup></span>
+        </a>
+        
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="/services" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Services</a>
+          <div class="relative group">
+            <button class="text-gray-600 hover:text-navy-900 font-medium transition-colors flex items-center gap-1">
+              Industries
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              <div class="bg-white rounded-xl shadow-2xl border border-gray-100 py-2 w-52">
+                <a href="/industries/healthcare" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Healthcare</a>
+                <a href="/industries/financial-services" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Financial Services</a>
+                <a href="/industries/retail-qsr" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Retail & QSR</a>
+                <a href="/industries/engineering" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Engineering Firms</a>
+              </div>
+            </div>
+          </div>
+          <a href="/case-studies" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Case Studies</a>
+          <a href="/insights" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Insights</a>
+        </div>
+
+        <a href="/contact" class="hidden lg:flex btn-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </nav>
   <header class="pt-32 pb-12 bg-gray-50"><div class="max-w-3xl mx-auto px-6"><a href="/insights" class="text-blue-600 font-medium mb-6 block">← Back</a><span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">Facilities Managers</span><h1 class="text-3xl font-bold text-navy-900 mt-4">Coordinating with General Contractors: A Low Voltage Checklist</h1></div></header>
   <article class="py-12"><div class="max-w-3xl mx-auto px-6 prose">
     <p class="text-xl text-gray-600">Poor coordination between GCs and low voltage contractors is the #1 cause of project delays and rework. Here's how to prevent it.</p>
@@ -28,3 +60,4 @@
   <footer class="bg-navy-950 py-12"><div class="text-center text-gray-500 text-sm">© 2026 Axseter.</div></footer>
 </body>
 </html>
+
