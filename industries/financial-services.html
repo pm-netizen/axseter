@@ -1,86 +1,127 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Financial Services Low Voltage Installation | Bank Branch Technology | Axseter</title>
-  <meta name="description" content="High-security low voltage installation for financial services. Access control, video surveillance, and structured cabling for bank branches, insurance offices, and wealth management firms nationwide.">
+  <meta name="description" content="High-security low voltage installation for financial services. Access control, video surveillance for bank branches and insurance offices nationwide.">
   <link rel="canonical" href="https://www.axseter.com/industries/financial-services">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{navy:"#0B1A2E","navy-light":"#162D4A",teal:"#00A896","teal-dark":"#008F80"}}}}</script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>body{font-family:"Inter",system-ui,sans-serif}</style>
+  <script>tailwind.config={theme:{extend:{colors:{'navy':{50:'#f0f4f8',100:'#d9e2ec',200:'#bcccdc',300:'#9fb3c8',400:'#829ab1',500:'#627d98',600:'#486581',700:'#334e68',800:'#243b53',900:'#102a43',950:'#0a1929'},'teal':{50:'#effcf9',100:'#c6f7e9',200:'#8eedd1',300:'#5fe3c0',400:'#2dcca7',500:'#17b897',600:'#079a82',700:'#048271',800:'#016457',900:'#004440'},'accent':'#00D4AA'}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{font-family:'Inter',system-ui,sans-serif}
+    .gradient-text{background:linear-gradient(135deg,#00D4AA 0%,#17b897 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-gradient{background:linear-gradient(135deg,#0a1929 0%,#102a43 50%,#162d4a 100%)}
+    .card-hover{transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
+    .card-hover:hover{transform:translateY(-8px);box-shadow:0 25px 50px -12px rgba(0,0,0,0.15)}
+    .nav-blur{backdrop-filter:blur(20px)}
+    .btn-primary{background:linear-gradient(135deg,#00D4AA 0%,#17b897 100%);transition:all 0.3s ease}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 40px -10px rgba(0,212,170,0.5)}
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="/" class="text-2xl font-bold text-navy tracking-tight">AXSETER</a>
-      <div class="hidden md:flex items-center gap-8">
-        <a href="/services" class="text-gray-600 hover:text-teal transition font-medium">Services</a>
-        <div class="relative group"><span class="text-teal font-medium cursor-pointer">Industries</span>
-          <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-            <div class="bg-white rounded-lg shadow-xl border py-2 w-48">
-              <a href="/industries/healthcare" class="block px-4 py-2 text-gray-600 hover:bg-gray-50 hover:text-teal">Healthcare</a>
-              <a href="/industries/financial-services" class="block px-4 py-2 text-teal bg-gray-50">Financial Services</a>
-              <a href="/industries/retail-qsr" class="block px-4 py-2 text-gray-600 hover:bg-gray-50 hover:text-teal">Retail & QSR</a>
-            </div>
+<body class="bg-white text-gray-900 antialiased">
+
+  <nav class="fixed top-0 left-0 right-0 z-50 nav-blur bg-white/80 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="/" class="flex items-center gap-3"><div class="w-10 h-10 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center"><span class="text-white font-bold text-lg">A</span></div><span class="text-xl font-bold text-navy-900 tracking-tight">Axseter</span></a>
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="/services" class="px-4 py-2 text-gray-600 hover:text-navy-900 font-medium rounded-lg hover:bg-gray-50">Services</a>
+          <div class="relative group">
+            <button class="px-4 py-2 text-teal-600 font-medium rounded-lg bg-teal-50 flex items-center gap-1">Industries<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+            <div class="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300"><div class="bg-white rounded-2xl shadow-2xl border py-3 w-56"><a href="/industries/healthcare" class="block px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-navy-900">Healthcare</a><a href="/industries/financial-services" class="block px-5 py-3 text-teal-600 bg-teal-50 font-medium">Financial Services</a><a href="/industries/retail-qsr" class="block px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-navy-900">Retail & QSR</a></div></div>
           </div>
+          <a href="/case-studies" class="px-4 py-2 text-gray-600 hover:text-navy-900 font-medium rounded-lg hover:bg-gray-50">Case Studies</a>
         </div>
-        <a href="/case-studies" class="text-gray-600 hover:text-teal transition font-medium">Case Studies</a>
-        <a href="/contact" class="bg-navy text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-navy-light transition">Contact Us</a>
+        <a href="/contact" class="hidden lg:flex btn-primary text-white px-6 py-3 rounded-xl font-semibold text-sm">Get a Quote</a>
       </div>
     </div>
   </nav>
 
-  <section class="pt-24 pb-16 bg-navy">
-    <div class="max-w-7xl mx-auto px-6">
-      <p class="text-teal font-semibold uppercase tracking-wide mb-3">Financial Services</p>
-      <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Low Voltage Installation for Financial Services</h1>
-      <p class="text-xl text-gray-300 max-w-3xl">High-security infrastructure for bank branches, insurance agencies, and wealth management offices. Enterprise-grade access control and surveillance deployed nationwide.</p>
+  <section class="hero-gradient pt-32 pb-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-30"><div class="absolute top-1/4 right-1/4 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl"></div></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-teal-300 text-sm font-medium mb-6 border border-white/10"><span class="w-2 h-2 bg-teal-400 rounded-full"></span>Financial Services</span>
+      <h1 class="text-4xl lg:text-6xl font-extrabold text-white leading-tight mb-6">Low Voltage for<br><span class="gradient-text">Financial Services</span></h1>
+      <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">High-security infrastructure for bank branches, insurance agencies, and wealth management offices. Enterprise-grade access control and surveillance deployed nationwide.</p>
     </div>
   </section>
 
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+  <section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center mb-24">
         <div>
-          <h2 class="text-3xl font-bold text-navy mb-6">Security-First Infrastructure</h2>
-          <p class="text-gray-600 mb-4">Financial institutions require the highest levels of physical security. From vault access control to comprehensive surveillance, every system must meet strict regulatory and insurance requirements.</p>
-          <p class="text-gray-600 mb-4">Axseter specializes in deploying security infrastructure for financial services firms expanding their branch networks. Our Single Point of Contact model ensures consistent security standards across every location.</p>
-          <p class="text-gray-600">Whether you're opening 20 new branches or refreshing 200 existing locations, we deliver enterprise-grade systems with centralized management capabilities.</p>
+          <h2 class="text-3xl lg:text-4xl font-bold text-navy-900 mb-6">Security-First Infrastructure</h2>
+          <p class="text-lg text-gray-600 mb-6 leading-relaxed">Financial institutions require the highest levels of physical security. From vault access control to comprehensive surveillance, every system must meet strict regulatory and insurance requirements.</p>
+          <p class="text-lg text-gray-600 leading-relaxed">Axseter specializes in deploying security infrastructure for financial services firms expanding their branch networks. Our SPoC model ensures consistent security standards across every location.</p>
         </div>
-        <div class="bg-gray-100 rounded-2xl overflow-hidden"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Financial services office" class="w-full h-80 object-cover"></div>
+        <div class="relative">
+          <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-blue-600/20 rounded-3xl blur-2xl"></div>
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Financial services office" class="relative rounded-3xl shadow-2xl w-full h-96 object-cover">
+        </div>
       </div>
 
-      <div class="mb-20">
-        <h2 class="text-3xl font-bold text-navy mb-8 text-center">Financial Services Solutions</h2>
+      <div class="mb-24">
+        <h2 class="text-3xl font-bold text-navy-900 mb-12 text-center">Financial Services Solutions</h2>
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-gray-50 p-8 rounded-2xl">
-            <h3 class="text-xl font-bold text-navy mb-3">Vault & Secure Area Access</h3>
-            <p class="text-gray-600">Multi-factor authentication, time-delay locks, and auditable access logs for vaults, cash rooms, and sensitive areas.</p>
+          <div class="bg-white p-8 rounded-3xl border border-gray-100 card-hover">
+            <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-navy-900 mb-3">Vault & Secure Area Access</h3>
+            <p class="text-gray-600 leading-relaxed">Multi-factor authentication, time-delay locks, and auditable access logs for vaults, cash rooms, and sensitive areas.</p>
           </div>
-          <div class="bg-gray-50 p-8 rounded-2xl">
-            <h3 class="text-xl font-bold text-navy mb-3">Branch Surveillance</h3>
-            <p class="text-gray-600">HD camera systems with analytics, license plate recognition, and integration with central monitoring stations.</p>
+          <div class="bg-white p-8 rounded-3xl border border-gray-100 card-hover">
+            <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-navy-900 mb-3">Branch Surveillance</h3>
+            <p class="text-gray-600 leading-relaxed">HD camera systems with analytics, license plate recognition, and integration with central monitoring stations.</p>
           </div>
-          <div class="bg-gray-50 p-8 rounded-2xl">
-            <h3 class="text-xl font-bold text-navy mb-3">Network Infrastructure</h3>
-            <p class="text-gray-600">Secure, redundant cabling for trading floors, teller stations, and ATM connectivity.</p>
+          <div class="bg-white p-8 rounded-3xl border border-gray-100 card-hover">
+            <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-navy-900 mb-3">Network Infrastructure</h3>
+            <p class="text-gray-600 leading-relaxed">Secure, redundant cabling for trading floors, teller stations, and ATM connectivity.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl p-12 border border-gray-100 shadow-lg">
+        <h2 class="text-2xl font-bold text-navy-900 mb-8 text-center">Financial Services Metrics</h2>
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div>
+            <div class="text-5xl font-bold text-blue-600 mb-2">200+</div>
+            <div class="text-gray-600">Bank branches deployed</div>
+          </div>
+          <div>
+            <div class="text-5xl font-bold text-blue-600 mb-2">99.9%</div>
+            <div class="text-gray-600">System uptime</div>
+          </div>
+          <div>
+            <div class="text-5xl font-bold text-blue-600 mb-2">4hr</div>
+            <div class="text-gray-600">Emergency response SLA</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold text-white mb-4">Expanding your branch network?</h2>
-      <p class="text-gray-300 mb-8">Discuss your security infrastructure requirements with Axseter.</p>
-      <a href="/contact" class="inline-block bg-teal text-white px-8 py-4 rounded-lg font-semibold hover:bg-teal-dark transition">Request a Consultation</a>
+  <section class="py-24 hero-gradient relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20"><div class="absolute top-1/3 right-1/4 w-96 h-96 bg-teal-500/30 rounded-full blur-3xl"></div></div>
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
+      <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">Expanding Your Branch Network?</h2>
+      <p class="text-xl text-gray-300 mb-10">Discuss your security infrastructure requirements with Axseter.</p>
+      <a href="/contact" class="inline-flex btn-primary text-white text-lg font-semibold px-10 py-5 rounded-xl">Request a Consultation</a>
     </div>
   </section>
 
-  <footer class="bg-navy-light text-white py-12">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="border-t border-white/10 pt-8 text-center text-gray-400 text-sm">© 2026 Axseter Systems, LLC</div>
+  <footer class="bg-navy-950 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="border-t border-white/10 pt-8 text-center text-gray-500 text-sm">© 2026 Axseter Systems, LLC</div>
     </div>
   </footer>
-</body></html>
+</body>
+</html>
