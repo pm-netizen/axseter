@@ -257,23 +257,60 @@
         </div>
 
         <div class="relative">
-          <div class="bg-navy-900 rounded-3xl p-10 text-white">
-            <p class="text-sm text-gray-400 uppercase tracking-wider mb-6">Without Axseter</p>
-            <div class="grid grid-cols-4 gap-2 mb-10">
-              <div class="bg-gray-700/50 rounded-lg p-3 text-center text-xs text-gray-400">Vendor 1</div>
-              <div class="bg-gray-700/50 rounded-lg p-3 text-center text-xs text-gray-400">Vendor 2</div>
-              <div class="bg-gray-700/50 rounded-lg p-3 text-center text-xs text-gray-400">Vendor 3</div>
-              <div class="bg-gray-700/50 rounded-lg p-3 text-center text-xs text-gray-400">Vendor 4</div>
-              <div class="bg-gray-700/50 rounded-lg p-3 text-center text-xs text-gray-400">Vendor 5</div>
-              <div class="bg-gray-700/50 rounded-lg p-3 text-center text-xs text-gray-400">Vendor 6</div>
-              <div class="bg-gray-700/50 rounded-lg p-3 text-center text-xs text-gray-400">Vendor 7</div>
-              <div class="bg-gray-700/50 rounded-lg p-3 text-center text-xs text-gray-400">Vendor 8</div>
+          <div class="bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 rounded-3xl p-10 text-white overflow-hidden">
+            
+            <!-- Without Axseter - Chaotic -->
+            <div class="mb-12">
+              <p class="text-xs text-red-400/80 uppercase tracking-widest font-medium mb-6 flex items-center gap-2">
+                <span class="w-2 h-2 bg-red-400/60 rounded-full"></span>
+                Without Axseter
+              </p>
+              <div class="relative h-32">
+                <!-- Scattered vendors with chaos lines -->
+                <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 120">
+                  <path d="M50,60 Q100,20 150,50 T250,40 T350,70" stroke="#ef4444" fill="none" stroke-width="1" stroke-dasharray="4,4"/>
+                  <path d="M30,80 Q80,100 130,70 T230,90 T330,50" stroke="#ef4444" fill="none" stroke-width="1" stroke-dasharray="4,4"/>
+                  <path d="M70,30 Q120,60 170,40 T270,80 T370,40" stroke="#ef4444" fill="none" stroke-width="1" stroke-dasharray="4,4"/>
+                </svg>
+                <div class="absolute top-0 left-4 bg-gray-800/80 border border-gray-700/50 rounded-lg px-3 py-2 text-xs text-gray-500">Denver Vendor</div>
+                <div class="absolute top-2 left-32 bg-gray-800/80 border border-gray-700/50 rounded-lg px-3 py-2 text-xs text-gray-500">Chicago Sub</div>
+                <div class="absolute top-8 right-24 bg-gray-800/80 border border-gray-700/50 rounded-lg px-3 py-2 text-xs text-gray-500">TX Contractor</div>
+                <div class="absolute top-0 right-4 bg-gray-800/80 border border-gray-700/50 rounded-lg px-3 py-2 text-xs text-gray-500">FL Electric</div>
+                <div class="absolute bottom-8 left-8 bg-gray-800/80 border border-gray-700/50 rounded-lg px-3 py-2 text-xs text-gray-500">AZ Low Volt</div>
+                <div class="absolute bottom-4 left-36 bg-gray-800/80 border border-gray-700/50 rounded-lg px-3 py-2 text-xs text-gray-500">NV Systems</div>
+                <div class="absolute bottom-0 right-32 bg-gray-800/80 border border-gray-700/50 rounded-lg px-3 py-2 text-xs text-gray-500">CA Tech</div>
+                <div class="absolute bottom-6 right-0 bg-gray-800/80 border border-gray-700/50 rounded-lg px-3 py-2 text-xs text-gray-500">NY Install</div>
+              </div>
+              <div class="flex items-center gap-4 mt-4 text-xs text-gray-500">
+                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-red-400/60 rounded-full"></span>8+ contracts</span>
+                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-red-400/60 rounded-full"></span>8+ invoices</span>
+                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-red-400/60 rounded-full"></span>8+ quality standards</span>
+              </div>
             </div>
-            <p class="text-sm text-gray-400 uppercase tracking-wider mb-6">With Axseter</p>
-            <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-8 text-center">
-              <span class="text-2xl font-bold">AXSETER</span>
-              <p class="text-blue-100 text-sm mt-1">Single Point of Contact</p>
+
+            <!-- Divider -->
+            <div class="border-t border-gray-700/50 mb-12"></div>
+
+            <!-- With Axseter - Clean -->
+            <div>
+              <p class="text-xs text-emerald-400/80 uppercase tracking-widest font-medium mb-6 flex items-center gap-2">
+                <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
+                With Axseter
+              </p>
+              <div class="relative">
+                <div class="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full"></div>
+                <div class="relative bg-gradient-to-r from-blue-600 to-blue-500 rounded-2xl p-8 text-center border border-blue-400/20 shadow-lg shadow-blue-500/20">
+                  <span class="text-3xl font-black tracking-tight">AXSETER</span>
+                  <p class="text-blue-100 text-sm mt-2 font-medium">Single Point of Contact</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mt-6 text-xs text-gray-400 justify-center">
+                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>1 contract</span>
+                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>1 invoice</span>
+                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>1 standard</span>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
