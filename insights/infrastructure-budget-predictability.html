@@ -29,7 +29,7 @@
   <style>*{font-family:'Plus Jakarta Sans',sans-serif}.nav-blur{backdrop-filter:blur(20px)}.btn-primary{background:linear-gradient(135deg,#3B82F6,#2563EB)}.prose h2{font-size:1.75rem;font-weight:700;color:#102a43;margin-top:2.5rem;margin-bottom:1rem}.prose p{color:#4b5563;line-height:1.8;margin-bottom:1.5rem}.prose ul{margin-bottom:1.5rem;padding-left:1.5rem}.prose li{color:#4b5563;line-height:1.8;margin-bottom:0.5rem;list-style:disc}</style>
 </head>
 <body class="bg-white antialiased">
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 nav-blur border-b border-gray-200/50">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 nav-blur border-b border-gray-200/50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex justify-between items-center h-20">
         <a href="/" class="flex items-center">
@@ -56,9 +56,11 @@
           <a href="/insights" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Insights</a>
         </div>
 
-        <a href="/contact" class="hidden lg:flex btn-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm">
-          Get Started
-        </a>
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="/contact" class="btn-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm">
+            Get Started
+          </a>
+        </div>
       </div>
     </div>
   </nav>
