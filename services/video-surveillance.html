@@ -1,434 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-  <!-- Favicons -->
+  <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="shortcut icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Video Surveillance Installation | Commercial Security Cameras | Axseter</title>
-    <meta name="description" content="Enterprise video surveillance installation for multi-location organizations. IP cameras, NVR/VMS systems, cloud video platforms, and analytics deployed nationwide with a Single Point of Contact.">
-    <meta name="keywords" content="commercial video surveillance, enterprise security cameras, IP camera installation, video management system, nationwide security contractor, cloud video surveillance">
-    
-    <link rel="canonical" href="https://www.axseter.com/services/video-surveillance/">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Video Surveillance Installation | Axseter Systems">
-    <meta property="og:description" content="Enterprise video surveillance for multi-location organizations. Nationwide deployment with a Single Point of Contact.">
-    <meta property="og:url" content="https://www.axseter.com/services/video-surveillance/">
-    <meta property="og:image" content="https://www.axseter.com/images/og-video-surveillance.jpg">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Video Surveillance Installation | Axseter Systems">
-    <meta name="twitter:description" content="Enterprise video surveillance for multi-location organizations.">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="/css/styles.css">
-    
-    <!-- Schema.org Service -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "serviceType": "Video Surveillance Installation",
-        "name": "Enterprise Video Surveillance Systems",
-        "description": "Professional video surveillance installation for multi-location enterprises including IP cameras, NVR/VMS systems, cloud video platforms, and video analytics.",
-        "provider": {
-            "@type": "Organization",
-            "name": "Axseter Systems",
-            "url": "https://www.axseter.com"
-        },
-        "areaServed": {
-            "@type": "Country",
-            "name": "United States"
-        },
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Video Surveillance Services",
-            "itemListElement": [
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "IP Camera Installation"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "NVR/VMS Deployment"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cloud Video Surveillance"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Video Analytics Integration"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Remote Monitoring Setup"}}
-            ]
-        }
-    }
-    </script>
-    
-    <!-- FAQ Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "What video surveillance platforms does Axseter install?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Axseter installs all major commercial video surveillance platforms including Verkada, Rhombus, Avigilon, Genetec, Milestone, Axis, and Hanwha. We're platform-agnostic and work with your security team to select or deploy the system that best fits your requirements."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How many cameras does a typical location need?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Camera count depends on location size, layout, and security objectives. A typical 3,000 sq ft clinic might need 6-10 cameras, while a 15,000 sq ft retail location could require 20-30. We install per your camera schedules and can conduct site assessments to verify placement feasibility and flag any field conditions that may require coordination."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Does Axseter support cloud-based video surveillance?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. Cloud-based video platforms are increasingly popular for multi-location deployments because they eliminate on-site server management and provide centralized access to all locations. We're certified installers for leading cloud video providers including Verkada and Rhombus."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Can you integrate video with our access control system?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Absolutely. Video-access integration provides valuable context by associating video footage with access events. When someone badges into a secured area, you can instantly view the associated video. We configure these integrations as part of our deployment scope."
-                }
-            }
-        ]
-    }
-    </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Surveillance Installation | Enterprise Security Cameras | Axseter</title>
+  <meta name="description" content="Commercial video surveillance installation for multi-location enterprises. IP cameras, NVR systems, and cloud-based video management deployed nationwide with a Single Point of Contact.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.axseter.com/services/video-surveillance/">
+  <link rel="canonical" href="https://www.axseter.com/services/video-surveillance/">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{'navy':{900:'#102a43',950:'#0a1929'}}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .nav-blur { backdrop-filter: blur(20px); }
+    .btn-primary { background: linear-gradient(135deg, #3B82F6, #2563EB); }
+    .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+  </style>
 </head>
-<body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="container">
-            <div class="header__inner">
-                <a href="/" class="header__logo">
-                    <span class="header__logo-text">AXSETER</span>
-                </a>
-                <nav class="nav">
-                    <ul class="nav__list" id="nav-list">
-                        <li class="nav__item">
-                            <a href="/services/" class="nav__link">
-                                Services
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                            </a>
-                            <div class="nav__dropdown">
-                                <a href="/services/structured-cabling/" class="nav__dropdown-link">Structured Cabling</a>
-                                <a href="/services/access-control/" class="nav__dropdown-link">Access Control</a>
-                                <a href="/services/video-surveillance/" class="nav__dropdown-link">Video Surveillance</a>
-                                <a href="/services/audio-visual/" class="nav__dropdown-link">Audio-Visual</a>
-                                <a href="/services/break-fix/" class="nav__dropdown-link">Break-Fix Support</a>
-                                <a href="/services/sound-masking/" class="nav__dropdown-link">Sound Masking</a>
-                            </div>
-                        </li>
-                        <li class="nav__item">
-                            <a href="/industries/" class="nav__link">
-                                Industries
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                            </a>
-                            <div class="nav__dropdown">
-                                <a href="/industries/healthcare/" class="nav__dropdown-link">Healthcare / Medtail</a>
-                                <a href="/industries/financial-services/" class="nav__dropdown-link">Financial Services</a>
-                                <a href="/industries/retail/" class="nav__dropdown-link">Retail</a>
-                            </div>
-                        </li>
-                        <li class="nav__item">
-                            <a href="/case-studies/" class="nav__link">Case Studies</a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="/about/" class="nav__link">About</a>
-                        </li>
-                    </ul>
-                    <a href="/contact/" class="btn btn--primary nav__cta">Contact Us</a>
-                    <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </nav>
+<body class="bg-white antialiased">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 nav-blur border-b border-gray-200/50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="/" class="flex items-center">
+          <span class="text-3xl font-black tracking-tight text-navy-900" style="font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">AXSETER<sup class="text-sm font-semibold text-gray-400 ml-0.5">™</sup></span>
+        </a>
+        
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="/services" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Services</a>
+          <div class="relative group">
+            <button class="text-gray-600 hover:text-navy-900 font-medium transition-colors flex items-center gap-1">
+              Industries
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              <div class="bg-white rounded-xl shadow-2xl border border-gray-100 py-2 w-52">
+                <a href="/industries/healthcare" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Healthcare</a>
+                <a href="/industries/financial-services" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Financial Services</a>
+                <a href="/industries/retail-qsr" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Retail & QSR</a>
+                <a href="/industries/engineering" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Engineering Firms</a>
+              </div>
             </div>
+          </div>
+          <a href="/case-studies" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Case Studies</a>
+          <a href="/insights" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Insights</a>
         </div>
-    </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="page-hero" style="background-image: url('/images/video-surveillance.jpg');">
-            <div class="container">
-                <nav class="breadcrumb" aria-label="Breadcrumb">
-                    <a href="/">Home</a>
-                    <span>/</span>
-                    <a href="/services/">Services</a>
-                    <span>/</span>
-                    <span>Video Surveillance</span>
-                </nav>
-                <h1>Video Surveillance Installation</h1>
-                <p class="page-hero__subtitle">Enterprise video surveillance systems deployed nationwide. Unified visibility across every location with a single point of contact.</p>
-            </div>
-        </section>
-
-        <!-- Main Content -->
-        <section class="section">
-            <div class="container container--narrow">
-                <div class="content-section">
-                    <h2>Enterprise Video Surveillance at Scale</h2>
-                    <p>Video surveillance is no longer just about recording incidents—it's a business intelligence tool that protects assets, deters theft, supports operations, and provides accountability across your organization. For multi-location enterprises, the challenge is deploying and managing video systems consistently across a distributed portfolio.</p>
-                    
-                    <p>Organizations with dozens or hundreds of locations often find themselves with a patchwork of video systems: different camera brands at different sites, aging DVRs that can't be accessed remotely, and no centralized way to review footage across the enterprise. This fragmentation creates security gaps and operational inefficiencies that compound as you grow.</p>
-                    
-                    <p>Axseter brings enterprise discipline to video surveillance deployment. We serve as your nationwide installation partner, ensuring consistent execution, installation quality, and integration standards whether you're deploying cameras at a clinic in Tampa or a branch office in Portland.</p>
-                </div>
-
-                <div class="content-section">
-                    <h2>The Axseter Approach</h2>
-                    <p>Our Single Point of Contact model simplifies enterprise video surveillance programs. Instead of managing relationships with regional security contractors—each with their own installation standards and support processes—you work with one Axseter project manager who coordinates deployments nationwide.</p>
-                    
-                    <p>We begin by understanding your security objectives, compliance requirements, and operational workflows. Whether you're focused on loss prevention, workplace safety, liability protection, or operational visibility, these goals shape camera placement, retention policies, and system configuration decisions.</p>
-                    
-                    <p>From there, we develop standardized deployment specifications for your location types. A retail storefront has different surveillance needs than a medical clinic or corporate office. We define camera types, placement standards, storage requirements, and integration points for each environment, ensuring every new location deploys a system optimized for its specific use case.</p>
-                </div>
-
-                <div class="content-section">
-                    <h2>Video Surveillance Technologies</h2>
-                    
-                    <h3>IP Camera Systems</h3>
-                    <p>Modern IP cameras deliver high-resolution video over standard network infrastructure. Axseter installs cameras from leading manufacturers including Axis, Hanwha, Bosch, and Avigilon. We select camera models based on your specific requirements—indoor vs. outdoor, lighting conditions, resolution needs, and special features like wide dynamic range or low-light performance.</p>
-                    
-                    <h3>Cloud Video Platforms</h3>
-                    <p>Cloud-based video surveillance has transformed how enterprises manage distributed video systems. Platforms like Verkada and Rhombus eliminate on-site servers, provide centralized access to all locations from a single dashboard, and include built-in analytics capabilities. Axseter is a certified installer for these platforms, ensuring optimal configuration from day one.</p>
-                    
-                    <h3>On-Premise NVR/VMS Systems</h3>
-                    <p>For organizations that prefer on-premise video storage, we deploy network video recorders (NVRs) and video management systems (VMS) including Genetec, Milestone, and Avigilon. These systems provide powerful video management capabilities while keeping footage on-site—important for organizations with data sovereignty requirements or limited bandwidth.</p>
-                    
-                    <h3>Video Analytics</h3>
-                    <p>Advanced video analytics transform cameras from passive recording devices into proactive security tools. We deploy systems with people counting, occupancy monitoring, line crossing detection, and behavioral analytics. For retail clients, analytics can provide valuable business intelligence beyond security—traffic patterns, dwell times, and conversion metrics.</p>
-                    
-                    <h3>Integration Capabilities</h3>
-                    <p>Video surveillance is most powerful when integrated with other security systems. We configure integrations with access control platforms, intrusion detection systems, and alarm monitoring. When an access control event occurs, associated video is automatically bookmarked for easy retrieval.</p>
-                </div>
-
-                <div class="content-section">
-                    <h2>Platform Expertise</h2>
-                    <p>Axseter maintains certifications and expertise across the commercial video surveillance landscape:</p>
-                    
-                    <div class="platform-grid">
-                        <div class="platform-item">
-                            <h4>Cloud Platforms</h4>
-                            <p>Verkada, Rhombus, Eagle Eye Networks, Arcules</p>
-                        </div>
-                        <div class="platform-item">
-                            <h4>VMS/NVR Systems</h4>
-                            <p>Genetec, Milestone, Avigilon, Hanwha Wave</p>
-                        </div>
-                        <div class="platform-item">
-                            <h4>Camera Manufacturers</h4>
-                            <p>Axis, Hanwha, Bosch, Avigilon, Hikvision</p>
-                        </div>
-                    </div>
-                    
-                    <p>This platform flexibility means we can work with your existing systems or help you evaluate options for standardization. We don't push a particular platform—we recommend and install the system that best fits your requirements, budget, and IT infrastructure.</p>
-                </div>
-
-                <div class="content-section">
-                    <h2>Industry-Specific Video Solutions</h2>
-                    
-                    <h3>Healthcare and Medtail</h3>
-                    <p>Healthcare facilities require video surveillance that addresses patient safety, medication security, and regulatory compliance while respecting patient privacy. Axseter deploys cameras in pharmacies, medication storage areas, entrances, parking lots, and common areas—while ensuring patient treatment areas maintain appropriate privacy. We understand HIPAA considerations and install systems per your specifications to support compliance.</p>
-                    
-                    <h3>Financial Services</h3>
-                    <p>Banks, credit unions, and financial services offices need video systems that meet regulatory requirements and support investigations. We deploy high-resolution cameras at teller lines, ATMs, vaults, and entrances with retention policies that comply with financial industry standards. Integration with access control provides accountability for sensitive area access.</p>
-                    
-                    <h3>Retail</h3>
-                    <p>Multi-location retailers use video surveillance for loss prevention, operational oversight, and customer experience improvement. We deploy cameras covering entrances, sales floors, cash wrap areas, stockrooms, and loading docks. Video analytics can provide insights into customer traffic patterns and staff productivity beyond traditional security use cases.</p>
-                </div>
-
-                <div class="content-section">
-                    <h2>Benefits of the SPoC Model</h2>
-                    
-                    <h3>Consistent Camera Coverage</h3>
-                    <p>Standardized deployment specifications ensure every location receives appropriate camera coverage. No more discovering gaps in your video coverage because a local contractor cut corners or misunderstood requirements.</p>
-                    
-                    <h3>Simplified Management</h3>
-                    <p>One relationship for all your video surveillance installations nationwide. Your team works with a single Axseter project manager rather than coordinating with dozens of regional contractors.</p>
-                    
-                    <h3>Accelerated Rollouts</h3>
-                    <p>Our nationwide technician network and standardized processes enable rapid deployments. We can support aggressive expansion schedules while maintaining installation quality across all locations.</p>
-                    
-                    <h3>Unified Support</h3>
-                    <p>When a camera fails or a system needs service, one call to Axseter dispatches a technician—regardless of which location needs attention. Our national coverage means consistent service levels across your portfolio.</p>
-                </div>
-
-                <div class="content-section">
-                    <h2>Our Process</h2>
-                    
-                    <h3>1. Scope Review & Planning</h3>
-                    <p>We begin by understanding your security objectives and reviewing your location portfolio. For new construction, we work from your floor plans and camera schedules. For existing locations, we conduct site assessments to understand current conditions and coordinate any required changes with your team.</p>
-                    
-                    <h3>2. Standardization</h3>
-                    <p>We create deployment packages for your location types—defining camera models, placement standards, storage requirements, and retention policies. This standardization ensures consistency while allowing appropriate customization for location-specific needs.</p>
-                    
-                    <h3>3. Installation</h3>
-                    <p>Our technicians install cameras, run cabling, configure recording systems, and verify image quality. We coordinate with your construction schedules and other trades to minimize disruption at existing locations.</p>
-                    
-                    <h3>4. Configuration and Integration</h3>
-                    <p>Beyond physical installation, we configure video management software, set up user accounts, establish retention policies, and configure any integrations with access control or alarm systems.</p>
-                    
-                    <h3>5. Training and Handoff</h3>
-                    <p>We provide training for local staff on daily system operation—viewing live video, searching recorded footage, and basic troubleshooting. Documentation packages ensure your team can effectively use the system.</p>
-                    
-                    <h3>6. Ongoing Support</h3>
-                    <p>Post-installation support includes break-fix service, preventive maintenance, and assistance with system optimization. Our technicians can respond to hardware failures or performance issues at any of your locations.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Stats Section -->
-        <section class="section section--primary">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-item__value">5,000+</div>
-                        <div class="stat-item__label">Cameras Deployed</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-item__value">24/7</div>
-                        <div class="stat-item__label">Remote Accessibility</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-item__value">10+</div>
-                        <div class="stat-item__label">Platform Certifications</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-item__value">50</div>
-                        <div class="stat-item__label">States Covered</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="section">
-            <div class="container container--narrow">
-                <div class="value-prop__header mb-12">
-                    <span class="eyebrow">FAQ</span>
-                    <h2>Common Questions</h2>
-                </div>
-                <div class="content-section">
-                    <h3>What video surveillance platforms does Axseter install?</h3>
-                    <p>Axseter installs all major commercial video surveillance platforms including Verkada, Rhombus, Avigilon, Genetec, Milestone, Axis, and Hanwha. We're platform-agnostic and work with your security team to select or deploy the system that best fits your requirements.</p>
-                    
-                    <h3>How many cameras does a typical location need?</h3>
-                    <p>Camera count depends on location size, layout, and security objectives. A typical 3,000 sq ft clinic might need 6-10 cameras, while a 15,000 sq ft retail location could require 20-30. We install per your camera schedules and can conduct site assessments to verify placement feasibility and flag any field conditions that may require coordination.</p>
-                    
-                    <h3>Does Axseter support cloud-based video surveillance?</h3>
-                    <p>Yes. Cloud-based video platforms are increasingly popular for multi-location deployments because they eliminate on-site server management and provide centralized access to all locations. We're certified installers for leading cloud video providers including Verkada and Rhombus.</p>
-                    
-                    <h3>Can you integrate video with our access control system?</h3>
-                    <p>Absolutely. Video-access integration provides valuable context by associating video footage with access events. When someone badges into a secured area, you can instantly view the associated video. We configure these integrations as part of our deployment scope.</p>
-                    
-                    <h3>What about storage and retention requirements?</h3>
-                    <p>Storage requirements depend on camera count, resolution, frame rate, and retention period. For cloud systems, storage is included in the subscription. For on-premise systems, we size NVR storage based on your retention policies—typically 30-90 days for most commercial applications, longer for regulated industries.</p>
-                    
-                    <h3>How long does installation take?</h3>
-                    <p>Installation timelines vary by location size and camera count. A typical 10-camera installation can be completed in 1-2 days. Larger deployments of 30+ cameras may require 3-5 days. We coordinate with your schedules to minimize operational disruption.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Related Services -->
-        <section class="section section--gray">
-            <div class="container">
-                <div class="value-prop__header mb-12">
-                    <span class="eyebrow">Related Services</span>
-                    <h2>Complementary Solutions</h2>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h3 class="service-card__title">Access Control</h3>
-                        <p class="service-card__description">Card readers, biometrics, and visitor management that integrates with your video surveillance for unified security.</p>
-                        <a href="/services/access-control/" class="service-card__link">Learn More →</a>
-                    </div>
-                    <div class="service-card">
-                        <h3 class="service-card__title">Structured Cabling</h3>
-                        <p class="service-card__description">The network infrastructure that powers your IP camera systems and video transmission.</p>
-                        <a href="/services/structured-cabling/" class="service-card__link">Learn More →</a>
-                    </div>
-                    <div class="service-card">
-                        <h3 class="service-card__title">Break-Fix Support</h3>
-                        <p class="service-card__description">Ongoing maintenance and repair services to keep your surveillance systems operational.</p>
-                        <a href="/services/break-fix/" class="service-card__link">Learn More →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="container">
-                <h2>Ready to Enhance Your Security?</h2>
-                <p>Let's discuss how Axseter can support your enterprise video surveillance program.</p>
-                <div class="cta-section__buttons">
-                    <a href="/contact/" class="btn btn--primary btn--lg">Request a Quote</a>
-                        <a href="https://www.facebook.com/profile.php?id=100090782905591" target="_blank" rel="noopener" aria-label="Facebook">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Services</h4>
-                    <ul class="footer__links">
-                        <li><a href="/services/structured-cabling/" class="footer__link">Structured Cabling</a></li>
-                        <li><a href="/services/access-control/" class="footer__link">Access Control</a></li>
-                        <li><a href="/services/video-surveillance/" class="footer__link">Video Surveillance</a></li>
-                        <li><a href="/services/audio-visual/" class="footer__link">Audio-Visual</a></li>
-                        <li><a href="/services/break-fix/" class="footer__link">Break-Fix Support</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Industries</h4>
-                    <ul class="footer__links">
-                        <li><a href="/industries/healthcare/" class="footer__link">Healthcare / Medtail</a></li>
-                        <li><a href="/industries/financial-services/" class="footer__link">Financial Services</a></li>
-                        <li><a href="/industries/retail/" class="footer__link">Retail</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Company</h4>
-                    <ul class="footer__links">
-                        <li><a href="/about/" class="footer__link">About Us</a></li>
-                        <li><a href="/case-studies/" class="footer__link">Case Studies</a></li>
-                        <li><a href="/resources/" class="footer__link">Resources</a></li>
-                        <li><a href="/contact/" class="footer__link">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Offices</h4>
-                    <ul class="footer__links">
-                        <li><span class="footer__link">Chicago, IL (HQ)</span></li>
-                        <li><span class="footer__link">Indianapolis, IN</span></li>
-                        <li><span class="footer__link">Atlanta, GA</span></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <span>© 2024 Axseter Systems, LLC. All Rights Reserved.</span>
-                <div class="footer__contact-info">
-                </div>
-            </div>
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="/contact" class="btn-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm">Get Started</a>
         </div>
-    </footer>
+      </div>
+    </div>
+  </nav>
 
-    <script src="/js/main.js"></script>
+  <!-- Hero -->
+  <section class="pt-32 pb-20 bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <nav class="text-sm text-gray-400 mb-6">
+        <a href="/" class="hover:text-white">Home</a><span class="mx-2">/</span>
+        <a href="/services" class="hover:text-white">Services</a><span class="mx-2">/</span>
+        <span class="text-gray-300">Video Surveillance</span>
+      </nav>
+      <div class="max-w-3xl">
+        <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6">Video Surveillance Installation</h1>
+        <p class="text-xl text-gray-300 leading-relaxed">Enterprise-grade IP camera systems deployed nationwide. From camera placement to NVR configuration to cloud video management, we install to your specifications.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenge -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">The Challenge</span>
+          <h2 class="text-4xl font-bold text-navy-900 mt-4 mb-6">Multi-Location Video Surveillance Complexity</h2>
+          <p class="text-lg text-gray-600 leading-relaxed mb-6">Video surveillance at scale creates unique challenges. Camera placement that works at one location fails at another. Retention policies vary by jurisdiction. Network bandwidth requirements catch IT off-guard. And when loss prevention needs footage, they're navigating 15 different VMS interfaces.</p>
+          <p class="text-lg text-gray-600 leading-relaxed">Axseter brings consistency to multi-location video deployments—same camera positioning standards, same recording configurations, same access procedures at every site.</p>
+        </div>
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&q=80" alt="Professional video surveillance installation" class="rounded-2xl shadow-2xl">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="py-24 lg:py-32 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Capabilities</span>
+        <h2 class="text-4xl font-bold text-navy-900 mt-4 mb-6">Video Surveillance Technologies</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">IP Camera Installation</h3>
+          <p class="text-gray-600 leading-relaxed">Fixed, PTZ, and multi-sensor cameras positioned per your specifications. Indoor and outdoor installations with proper weatherproofing and mounting.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">NVR & Storage</h3>
+          <p class="text-gray-600 leading-relaxed">Network video recorders sized for your retention requirements. On-premise storage with proper redundancy and backup configurations.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Cloud Video Management</h3>
+          <p class="text-gray-600 leading-relaxed">Cloud-based VMS platforms with centralized management, remote viewing, and multi-site administration capabilities.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Video Analytics</h3>
+          <p class="text-gray-600 leading-relaxed">Motion detection, people counting, license plate recognition, and behavioral analytics configured to your loss prevention requirements.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Integration</h3>
+          <p class="text-gray-600 leading-relaxed">Access control integration for event-triggered recording, POS integration for transaction overlay, and alarm system tie-ins.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Service & Support</h3>
+          <p class="text-gray-600 leading-relaxed">Camera repositioning, NVR maintenance, firmware updates, and break-fix support through our nationwide service network.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section class="py-24 lg:py-32 bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-blue-400 font-semibold text-sm uppercase tracking-wider">Industry Applications</span>
+        <h2 class="text-4xl font-bold text-white mt-4 mb-6">Video Surveillance for Your Vertical</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <a href="/industries/healthcare" class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-colors">
+          <div class="text-4xl mb-4">🏥</div>
+          <h3 class="text-xl font-bold text-white mb-3">Healthcare</h3>
+          <p class="text-gray-400 leading-relaxed mb-4">Patient safety monitoring, pharmacy surveillance, and parking lot coverage while respecting patient privacy requirements.</p>
+          <span class="text-blue-400 font-semibold">Healthcare Solutions →</span>
+        </a>
+
+        <a href="/industries/financial-services" class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-colors">
+          <div class="text-4xl mb-4">🏦</div>
+          <h3 class="text-xl font-bold text-white mb-3">Financial Services</h3>
+          <p class="text-gray-400 leading-relaxed mb-4">Teller line coverage, ATM monitoring, vault surveillance, and transaction recording with regulatory retention compliance.</p>
+          <span class="text-blue-400 font-semibold">Financial Solutions →</span>
+        </a>
+
+        <a href="/industries/retail-qsr" class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-colors">
+          <div class="text-4xl mb-4">🏪</div>
+          <h3 class="text-xl font-bold text-white mb-3">Retail & QSR</h3>
+          <p class="text-gray-400 leading-relaxed mb-4">POS integration, loss prevention coverage, and customer traffic analytics for multi-location retail operations.</p>
+          <span class="text-blue-400 font-semibold">Retail Solutions →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 lg:py-32 bg-navy-900 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
+      <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">Ready to Deploy Video Surveillance?</h2>
+      <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Let's discuss how Axseter can standardize your video surveillance across all locations.</p>
+      <a href="/contact" class="inline-flex btn-primary text-white text-lg font-semibold px-10 py-5 rounded-xl">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-navy-950 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <span class="text-2xl font-black tracking-tight">AXSETER<sup class="text-xs">™</sup></span>
+          <p class="text-gray-400 mt-4">National low voltage contractor for multi-location enterprises.</p>
+          <p class="text-gray-400 mt-4"><a href="tel:+18772973871" class="hover:text-white transition-colors">1-877-AXSETR1</a></p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Services</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/services/structured-cabling" class="hover:text-white transition-colors">Structured Cabling</a></li>
+            <li><a href="/services/access-control" class="hover:text-white transition-colors">Access Control</a></li>
+            <li><a href="/services/video-surveillance" class="hover:text-white transition-colors">Video Surveillance</a></li>
+            <li><a href="/services/audio-visual" class="hover:text-white transition-colors">Audio Visual</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Industries</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/industries/healthcare" class="hover:text-white transition-colors">Healthcare</a></li>
+            <li><a href="/industries/financial-services" class="hover:text-white transition-colors">Financial Services</a></li>
+            <li><a href="/industries/retail-qsr" class="hover:text-white transition-colors">Retail & QSR</a></li>
+            <li><a href="/industries/engineering" class="hover:text-white transition-colors">Engineering Firms</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Company</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
+            <li><a href="/case-studies" class="hover:text-white transition-colors">Case Studies</a></li>
+            <li><a href="/insights" class="hover:text-white transition-colors">Insights</a></li>
+            <li><a href="/contact" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8">
+        <p class="text-gray-500 text-sm">© 2026 Axseter Systems, LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
-
