@@ -1,446 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-  <!-- Favicons -->
+  <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="shortcut icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Audio-Visual Installation | Commercial AV Systems | Axseter</title>
-    <meta name="description" content="Commercial audio-visual installation for multi-location enterprises. Conference rooms, digital signage, video walls, and presentation systems deployed nationwide with a Single Point of Contact.">
-    <meta name="keywords" content="commercial AV installation, conference room technology, digital signage installation, video wall installation, enterprise AV systems, nationwide AV contractor">
-    
-    <link rel="canonical" href="https://www.axseter.com/services/audio-visual/">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Audio-Visual Installation | Axseter Systems">
-    <meta property="og:description" content="Enterprise audio-visual systems for multi-location organizations. Nationwide deployment with a Single Point of Contact.">
-    <meta property="og:url" content="https://www.axseter.com/services/audio-visual/">
-    <meta property="og:image" content="https://www.axseter.com/images/og-audio-visual.jpg">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Audio-Visual Installation | Axseter Systems">
-    <meta name="twitter:description" content="Enterprise audio-visual systems for multi-location organizations.">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="/css/styles.css">
-    
-    <!-- Schema.org Service -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "serviceType": "Audio-Visual Installation",
-        "name": "Enterprise Audio-Visual Systems",
-        "description": "Professional audio-visual installation for multi-location enterprises including conference rooms, digital signage, video walls, and unified communications systems.",
-        "provider": {
-            "@type": "Organization",
-            "name": "Axseter Systems",
-            "url": "https://www.axseter.com"
-        },
-        "areaServed": {
-            "@type": "Country",
-            "name": "United States"
-        },
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Audio-Visual Services",
-            "itemListElement": [
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Conference Room Systems"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Digital Signage"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Video Walls"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Presentation Systems"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Audio Systems"}}
-            ]
-        }
-    }
-    </script>
-    
-    <!-- FAQ Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "What AV platforms does Axseter install?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Axseter installs conference room systems for all major platforms including Microsoft Teams, Zoom, Cisco Webex, and Google Meet. For digital signage, we work with platforms like BrightSign, Scala, and Four Winds. We're platform-agnostic and deploy the systems specified by your IT team or help evaluate options."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Can you standardize conference rooms across all our locations?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. Standardization is one of the key benefits of working with Axseter. We develop deployment packages for your conference room types—small huddle spaces, medium conference rooms, and large boardrooms. Every location receives the same equipment, configuration, and user experience."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Does Axseter handle digital signage content management?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "We focus on the physical installation—displays, media players, mounts, and connectivity. For content management, we work with your marketing team or their agency to ensure the signage system is properly configured to receive content from your chosen CMS platform."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How long does a typical conference room installation take?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "A standard conference room installation typically takes 1-2 days depending on complexity. This includes display mounting, camera and microphone installation, cabling, and system configuration. We coordinate with your schedules to minimize disruption to room availability."
-                }
-            }
-        ]
-    }
-    </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio-Visual Installation | Conference Rooms & Digital Signage | Axseter</title>
+  <meta name="description" content="Commercial AV installation for multi-location enterprises. Conference rooms, digital signage, presentation systems, and AV-over-IP deployed nationwide with a Single Point of Contact.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.axseter.com/services/audio-visual/">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{'navy':{900:'#102a43',950:'#0a1929'}}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .nav-blur { backdrop-filter: blur(20px); }
+    .btn-primary { background: linear-gradient(135deg, #3B82F6, #2563EB); }
+    .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+  </style>
 </head>
-<body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="container">
-            <div class="header__inner">
-                <a href="/" class="header__logo">
-                    <span class="header__logo-text">AXSETER</span>
-                </a>
-                <nav class="nav">
-                    <ul class="nav__list" id="nav-list">
-                        <li class="nav__item">
-                            <a href="/services/" class="nav__link">
-                                Services
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                            </a>
-                            <div class="nav__dropdown">
-                                <a href="/services/structured-cabling/" class="nav__dropdown-link">Structured Cabling</a>
-                                <a href="/services/access-control/" class="nav__dropdown-link">Access Control</a>
-                                <a href="/services/video-surveillance/" class="nav__dropdown-link">Video Surveillance</a>
-                                <a href="/services/audio-visual/" class="nav__dropdown-link">Audio-Visual</a>
-                                <a href="/services/break-fix/" class="nav__dropdown-link">Break-Fix Support</a>
-                                <a href="/services/sound-masking/" class="nav__dropdown-link">Sound Masking</a>
-                            </div>
-                        </li>
-                        <li class="nav__item">
-                            <a href="/industries/" class="nav__link">
-                                Industries
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                            </a>
-                            <div class="nav__dropdown">
-                                <a href="/industries/healthcare/" class="nav__dropdown-link">Healthcare / Medtail</a>
-                                <a href="/industries/financial-services/" class="nav__dropdown-link">Financial Services</a>
-                                <a href="/industries/retail/" class="nav__dropdown-link">Retail</a>
-                            </div>
-                        </li>
-                        <li class="nav__item">
-                            <a href="/case-studies/" class="nav__link">Case Studies</a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="/about/" class="nav__link">About</a>
-                        </li>
-                    </ul>
-                    <a href="/contact/" class="btn btn--primary nav__cta">Contact Us</a>
-                    <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </nav>
+<body class="bg-white antialiased">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 nav-blur border-b border-gray-200/50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="/" class="flex items-center">
+          <span class="text-3xl font-black tracking-tight text-navy-900" style="font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">AXSETER<sup class="text-sm font-semibold text-gray-400 ml-0.5">™</sup></span>
+        </a>
+        
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="/services" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Services</a>
+          <div class="relative group">
+            <button class="text-gray-600 hover:text-navy-900 font-medium transition-colors flex items-center gap-1">
+              Industries
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              <div class="bg-white rounded-xl shadow-2xl border border-gray-100 py-2 w-52">
+                <a href="/industries/healthcare" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Healthcare</a>
+                <a href="/industries/financial-services" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Financial Services</a>
+                <a href="/industries/retail-qsr" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Retail & QSR</a>
+                <a href="/industries/engineering" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Engineering Firms</a>
+              </div>
             </div>
+          </div>
+          <a href="/case-studies" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Case Studies</a>
+          <a href="/insights" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Insights</a>
         </div>
-    </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="page-hero" style="background-image: url('/images/audio-visual.jpg');">
-            <div class="container">
-                <nav class="breadcrumb" aria-label="Breadcrumb">
-                    <a href="/">Home</a>
-                    <span>/</span>
-                    <a href="/services/">Services</a>
-                    <span>/</span>
-                    <span>Audio-Visual</span>
-                </nav>
-                <h1>Audio-Visual Installation</h1>
-                <p class="page-hero__subtitle">Enterprise AV systems deployed nationwide. Conference rooms, digital signage, and presentation technology with consistent quality across every location.</p>
-            </div>
-        </section>
-
-        <!-- Main Content -->
-        <section class="section">
-            <div class="container container--narrow">
-                <div class="content-section">
-                    <h2>The Enterprise AV Challenge</h2>
-                    <p>In today's distributed workplace, audio-visual technology is critical infrastructure. Conference rooms need reliable video conferencing for hybrid meetings. Lobbies require digital signage that reinforces your brand. Training rooms demand presentation systems that support effective learning. And across all these applications, consistency matters—your team in Denver should have the same meeting experience as your team in Boston.</p>
-                    
-                    <p>For organizations with dozens or hundreds of locations, achieving this consistency is challenging. Different regional AV contractors install different equipment, configure systems differently, and deliver varying levels of quality. The result is a fragmented technology experience that frustrates users and creates support headaches for IT teams.</p>
-                    
-                    <p>Axseter brings the same Single Point of Contact discipline that enterprises rely on for cabling and security to the audio-visual domain. We deploy standardized AV systems nationwide, ensuring consistent equipment, configuration, and user experience across your entire location portfolio.</p>
-                </div>
-
-                <div class="content-section">
-                    <h2>Axseter's AV Approach</h2>
-                    <p>Our approach begins with understanding how your organization uses AV technology. Conference rooms have different requirements than training facilities. Executive boardrooms need different capabilities than small huddle spaces. Digital signage in a retail environment serves different purposes than lobby displays in a professional services firm.</p>
-                    
-                    <p>We work with your IT and facilities teams to develop standardized deployment packages for each room type. These packages define equipment specifications, mounting standards, cable management requirements, and system configurations. The standardization ensures every location receives a consistent installation while allowing appropriate customization for room-specific needs.</p>
-                    
-                    <p>From there, our nationwide technician network executes deployments in coordination with your construction schedules. Whether you're outfitting a new office or refreshing conference rooms across 50 locations, you work with a single Axseter project manager who coordinates the entire program.</p>
-                </div>
-
-                <div class="content-section">
-                    <h2>AV Technologies We Deploy</h2>
-                    
-                    <h3>Conference Room Systems</h3>
-                    <p>Modern conference rooms require integrated systems that make video conferencing seamless. Axseter installs complete conference room solutions including displays, cameras, microphones, speakers, and room control interfaces. We work with all major platforms—Microsoft Teams, Zoom, Cisco Webex, Google Meet—ensuring your rooms are certified and optimized for your chosen platform.</p>
-                    
-                    <p>For Microsoft Teams environments, we deploy Teams Rooms systems from Poly, Logitech, Yealink, and other certified manufacturers. For Zoom, we install Zoom Rooms hardware. Platform-agnostic deployments using bring-your-own-device (BYOD) configurations are also available for organizations that want flexibility.</p>
-                    
-                    <h3>Huddle Spaces</h3>
-                    <p>Small meeting spaces of 2-4 people need simple, reliable technology. We deploy compact all-in-one systems or streamlined camera-display combinations that minimize complexity while delivering excellent video and audio quality. These spaces typically use USB-connected peripherals with laptop-based conferencing.</p>
-                    
-                    <h3>Boardrooms and Large Conference Rooms</h3>
-                    <p>Executive boardrooms and large conference rooms require more sophisticated systems. We deploy multiple displays or video walls, ceiling microphone arrays, PTZ cameras, and professional audio systems. Room control panels provide one-touch meeting start and intuitive source selection.</p>
-                    
-                    <h3>Digital Signage</h3>
-                    <p>Digital signage communicates with employees, visitors, and customers throughout your facilities. Axseter installs commercial-grade displays, media players, and mounting systems for lobby directories, wayfinding, menu boards, promotional displays, and internal communications. We ensure proper connectivity to your content management system.</p>
-                    
-                    <h3>Video Walls</h3>
-                    <p>For high-impact visual experiences, video walls create immersive displays in lobbies, conference rooms, and public spaces. We install LED video walls and multi-panel LCD configurations with the processing hardware needed to drive content across the array.</p>
-                    
-                    <h3>Training and Presentation Rooms</h3>
-                    <p>Training facilities need flexible presentation capabilities—wireless screen sharing, document cameras, recording systems, and audience microphones. We install systems per your AV specifications that support various training scenarios from instructor-led sessions to interactive workshops.</p>
-                    
-                    <h3>Background Music and Paging</h3>
-                    <p>Commercial audio systems provide background music, paging, and announcements throughout your facilities. We install distributed speaker systems with appropriate zoning and integration with paging sources.</p>
-                </div>
-
-                <div class="content-section">
-                    <h2>Platform and Equipment Expertise</h2>
-                    <p>Axseter maintains expertise across the commercial AV landscape:</p>
-                    
-                    <div class="platform-grid">
-                        <div class="platform-item">
-                            <h4>UC Platforms</h4>
-                            <p>Microsoft Teams, Zoom, Cisco Webex, Google Meet</p>
-                        </div>
-                        <div class="platform-item">
-                            <h4>Hardware Partners</h4>
-                            <p>Poly, Logitech, Crestron, Extron, QSC, Shure</p>
-                        </div>
-                        <div class="platform-item">
-                            <h4>Display Brands</h4>
-                            <p>Samsung, LG, Sony, NEC, Planar, Christie</p>
-                        </div>
-                    </div>
-                    
-                    <p>This breadth of expertise means we can work with your specified equipment or help evaluate options based on your requirements and budget.</p>
-                </div>
-
-                <div class="content-section">
-                    <h2>Industry Applications</h2>
-                    
-                    <h3>Healthcare and Medtail</h3>
-                    <p>Healthcare environments use AV technology for telehealth consultations, patient education displays, and staff collaboration. Axseter installs systems that support HIPAA-compliant video consultations, waiting room signage, and conference facilities for care coordination.</p>
-                    
-                    <h3>Financial Services</h3>
-                    <p>Banks and financial services firms rely on AV technology for client presentations, branch signage, and internal collaboration. We deploy conference rooms that project professionalism, digital signage that communicates rates and services, and training facilities for staff development.</p>
-                    
-                    <h3>Retail</h3>
-                    <p>Retail environments use digital signage for promotions, wayfinding, and brand reinforcement. Axseter installs commercial displays, menu boards, video walls, and the infrastructure to support dynamic content across multiple locations.</p>
-                    
-                    <h3>Professional Services</h3>
-                    <p>Law firms, consulting firms, and other professional services organizations need conference room technology that impresses clients while supporting productive hybrid meetings. We deploy premium AV systems that reflect your firm's standards.</p>
-                </div>
-
-                <div class="content-section">
-                    <h2>The Standardization Advantage</h2>
-                    <p>For multi-location organizations, AV standardization delivers significant benefits:</p>
-                    
-                    <h3>Consistent User Experience</h3>
-                    <p>When every conference room works the same way, employees can walk into any location and immediately start a meeting. No learning curve, no fumbling with unfamiliar equipment—just consistent, reliable technology.</p>
-                    
-                    <h3>Simplified Support</h3>
-                    <p>Standardized equipment means your IT helpdesk can troubleshoot any room using the same procedures. Spare parts inventory is simplified. Training materials apply across all locations.</p>
-                    
-                    <h3>Volume Purchasing Power</h3>
-                    <p>Committing to standard equipment configurations enables volume pricing from manufacturers and distributors. The savings can be significant across a large deployment.</p>
-                    
-                    <h3>Faster Deployments</h3>
-                    <p>With standardized packages already defined, new location buildouts move faster. Equipment is pre-configured before it ships. Installation procedures are documented and repeatable.</p>
-                </div>
-
-                <div class="content-section">
-                    <h2>Our Process</h2>
-                    
-                    <h3>1. Scope Review & Planning</h3>
-                    <p>We begin by reviewing your AV specifications—what platforms you use, what room types you have, and your standard configurations. Site visits or floor plan reviews help us understand physical constraints and coordinate installation logistics.</p>
-                    
-                    <h3>2. Coordination</h3>
-                    <p>We align our teams with your deployment packages for each room type. A small huddle space gets one configuration, a medium conference room gets another, and executive boardrooms get premium treatment. We ensure consistent execution of your defined equipment and installation standards.</p>
-                    
-                    <h3>3. Installation</h3>
-                    <p>Our technicians install displays, mount cameras and microphones, run necessary cabling, and rack equipment. We coordinate with construction schedules and other trades to ensure installations happen at the optimal time.</p>
-                    
-                    <h3>4. Configuration and Testing</h3>
-                    <p>Systems are configured to your specifications—platform settings, room names, calling configurations, and integrations with room scheduling systems. Every system is tested to verify audio and video quality before handoff.</p>
-                    
-                    <h3>5. Training and Documentation</h3>
-                    <p>We provide end-user quick reference guides and administrator documentation. Training sessions ensure your facilities and IT teams can support day-to-day operations and basic troubleshooting.</p>
-                    
-                    <h3>6. Ongoing Support</h3>
-                    <p>Post-installation support includes break-fix service for hardware issues and assistance with configuration changes. Our nationwide coverage means we can respond to issues at any location.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Stats Section -->
-        <section class="section section--primary">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-item__value">200+</div>
-                        <div class="stat-item__label">Conference Rooms Deployed</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-item__value">4</div>
-                        <div class="stat-item__label">UC Platform Certifications</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-item__value">500+</div>
-                        <div class="stat-item__label">Digital Signs Installed</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-item__value">50</div>
-                        <div class="stat-item__label">States Covered</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="section">
-            <div class="container container--narrow">
-                <div class="value-prop__header mb-12">
-                    <span class="eyebrow">FAQ</span>
-                    <h2>Common Questions</h2>
-                </div>
-                <div class="content-section">
-                    <h3>What AV platforms does Axseter install?</h3>
-                    <p>Axseter installs conference room systems for all major platforms including Microsoft Teams, Zoom, Cisco Webex, and Google Meet. For digital signage, we work with platforms like BrightSign, Scala, and Four Winds. We're platform-agnostic and deploy the systems specified by your IT team or help evaluate options.</p>
-                    
-                    <h3>Can you standardize conference rooms across all our locations?</h3>
-                    <p>Yes. Standardization is one of the key benefits of working with Axseter. We develop deployment packages for your conference room types—small huddle spaces, medium conference rooms, and large boardrooms. Every location receives the same equipment, configuration, and user experience.</p>
-                    
-                    <h3>Does Axseter handle digital signage content management?</h3>
-                    <p>We focus on the physical installation—displays, media players, mounts, and connectivity. For content management, we work with your marketing team or their agency to ensure the signage system is properly configured to receive content from your chosen CMS platform.</p>
-                    
-                    <h3>How long does a typical conference room installation take?</h3>
-                    <p>A standard conference room installation typically takes 1-2 days depending on complexity. This includes display mounting, camera and microphone installation, cabling, and system configuration. We coordinate with your schedules to minimize disruption to room availability.</p>
-                    
-                    <h3>Do you provide training for end users?</h3>
-                    <p>Yes. We provide quick reference guides and can conduct training sessions for facilities staff or power users. The goal is to ensure your team can effectively use the systems and handle basic troubleshooting.</p>
-                    
-                    <h3>What about ongoing maintenance and support?</h3>
-                    <p>Axseter offers break-fix support for AV systems. When hardware fails or systems need service, our technicians can respond at any of your locations. We also assist with firmware updates, configuration changes, and system optimization.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Related Services -->
-        <section class="section section--gray">
-            <div class="container">
-                <div class="value-prop__header mb-12">
-                    <span class="eyebrow">Related Services</span>
-                    <h2>Complementary Solutions</h2>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h3 class="service-card__title">Structured Cabling</h3>
-                        <p class="service-card__description">The network infrastructure that powers your AV systems, video conferencing, and digital signage.</p>
-                        <a href="/services/structured-cabling/" class="service-card__link">Learn More →</a>
-                    </div>
-                    <div class="service-card">
-                        <h3 class="service-card__title">Sound Masking</h3>
-                        <p class="service-card__description">Acoustic privacy systems that complement your AV infrastructure for confidential conversations.</p>
-                        <a href="/services/sound-masking/" class="service-card__link">Learn More →</a>
-                    </div>
-                    <div class="service-card">
-                        <h3 class="service-card__title">Break-Fix Support</h3>
-                        <p class="service-card__description">Ongoing maintenance and repair services to keep your AV systems running smoothly.</p>
-                        <a href="/services/break-fix/" class="service-card__link">Learn More →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="container">
-                <h2>Ready to Transform Your Meeting Spaces?</h2>
-                <p>Let's discuss how Axseter can support your enterprise AV program.</p>
-                <div class="cta-section__buttons">
-                    <a href="/contact/" class="btn btn--primary btn--lg">Request a Quote</a>
-                        <a href="https://www.facebook.com/profile.php?id=100090782905591" target="_blank" rel="noopener" aria-label="Facebook">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Services</h4>
-                    <ul class="footer__links">
-                        <li><a href="/services/structured-cabling/" class="footer__link">Structured Cabling</a></li>
-                        <li><a href="/services/access-control/" class="footer__link">Access Control</a></li>
-                        <li><a href="/services/video-surveillance/" class="footer__link">Video Surveillance</a></li>
-                        <li><a href="/services/audio-visual/" class="footer__link">Audio-Visual</a></li>
-                        <li><a href="/services/break-fix/" class="footer__link">Break-Fix Support</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Industries</h4>
-                    <ul class="footer__links">
-                        <li><a href="/industries/healthcare/" class="footer__link">Healthcare / Medtail</a></li>
-                        <li><a href="/industries/financial-services/" class="footer__link">Financial Services</a></li>
-                        <li><a href="/industries/retail/" class="footer__link">Retail</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Company</h4>
-                    <ul class="footer__links">
-                        <li><a href="/about/" class="footer__link">About Us</a></li>
-                        <li><a href="/case-studies/" class="footer__link">Case Studies</a></li>
-                        <li><a href="/resources/" class="footer__link">Resources</a></li>
-                        <li><a href="/contact/" class="footer__link">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Offices</h4>
-                    <ul class="footer__links">
-                        <li><span class="footer__link">Chicago, IL (HQ)</span></li>
-                        <li><span class="footer__link">Indianapolis, IN</span></li>
-                        <li><span class="footer__link">Atlanta, GA</span></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <span>© 2024 Axseter Systems, LLC. All Rights Reserved.</span>
-                <div class="footer__contact-info">
-                </div>
-            </div>
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="/contact" class="btn-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm">Get Started</a>
         </div>
-    </footer>
+      </div>
+    </div>
+  </nav>
 
-    <script src="/js/main.js"></script>
+  <!-- Hero -->
+  <section class="pt-32 pb-20 bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <nav class="text-sm text-gray-400 mb-6">
+        <a href="/" class="hover:text-white">Home</a><span class="mx-2">/</span>
+        <a href="/services" class="hover:text-white">Services</a><span class="mx-2">/</span>
+        <span class="text-gray-300">Audio-Visual</span>
+      </nav>
+      <div class="max-w-3xl">
+        <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6">Audio-Visual Installation</h1>
+        <p class="text-xl text-gray-300 leading-relaxed">Conference rooms, digital signage, and presentation systems deployed nationwide. Consistent AV experiences across all your locations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenge -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">The Challenge</span>
+          <h2 class="text-4xl font-bold text-navy-900 mt-4 mb-6">AV Consistency Across Locations</h2>
+          <p class="text-lg text-gray-600 leading-relaxed mb-6">When conference rooms work differently at every location, productivity suffers. Users can't walk into any room and start a meeting. IT fields constant support calls. And the executive team presents from a different interface every time they travel.</p>
+          <p class="text-lg text-gray-600 leading-relaxed">Axseter deploys standardized AV configurations across your portfolio—same equipment, same interfaces, same user experience at every location.</p>
+        </div>
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Modern conference room with AV equipment" class="rounded-2xl shadow-2xl">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="py-24 lg:py-32 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Capabilities</span>
+        <h2 class="text-4xl font-bold text-navy-900 mt-4 mb-6">AV Technologies We Deploy</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Conference Rooms</h3>
+          <p class="text-gray-600 leading-relaxed">Displays, video bars, control systems, and room scheduling panels. Standardized configurations from huddle rooms to boardrooms.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Digital Signage</h3>
+          <p class="text-gray-600 leading-relaxed">Menu boards, wayfinding displays, lobby screens, and content management systems for multi-location deployments.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15.536a5 5 0 001.414 1.414m2.828-9.9a9 9 0 0112.728 0"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Audio Systems</h3>
+          <p class="text-gray-600 leading-relaxed">Ceiling speakers, microphone arrays, audio DSPs, and paging systems for clear communication in any space.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Video Conferencing</h3>
+          <p class="text-gray-600 leading-relaxed">Zoom, Teams, and Webex room systems with integrated cameras, microphones, and touch panel controls.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Control Systems</h3>
+          <p class="text-gray-600 leading-relaxed">Crestron, Extron, and native platform controls. One-touch meeting start, source switching, and room automation.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">AV-over-IP</h3>
+          <p class="text-gray-600 leading-relaxed">Network-based AV distribution for flexible content routing across rooms and facilities without dedicated cabling.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section class="py-24 lg:py-32 bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-blue-400 font-semibold text-sm uppercase tracking-wider">Industry Applications</span>
+        <h2 class="text-4xl font-bold text-white mt-4 mb-6">AV Solutions for Your Vertical</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <a href="/industries/healthcare" class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-colors">
+          <div class="text-4xl mb-4">🏥</div>
+          <h3 class="text-xl font-bold text-white mb-3">Healthcare</h3>
+          <p class="text-gray-400 leading-relaxed mb-4">Patient education displays, waiting room entertainment, and telehealth-enabled exam rooms for modern healthcare facilities.</p>
+          <span class="text-blue-400 font-semibold">Healthcare Solutions →</span>
+        </a>
+
+        <a href="/industries/financial-services" class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-colors">
+          <div class="text-4xl mb-4">🏦</div>
+          <h3 class="text-xl font-bold text-white mb-3">Financial Services</h3>
+          <p class="text-gray-400 leading-relaxed mb-4">Customer-facing displays, rate boards, and secure video conferencing for bank branches and insurance offices.</p>
+          <span class="text-blue-400 font-semibold">Financial Solutions →</span>
+        </a>
+
+        <a href="/industries/retail-qsr" class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-colors">
+          <div class="text-4xl mb-4">🏪</div>
+          <h3 class="text-xl font-bold text-white mb-3">Retail & QSR</h3>
+          <p class="text-gray-400 leading-relaxed mb-4">Digital menu boards, promotional displays, and background music systems for consistent brand experiences.</p>
+          <span class="text-blue-400 font-semibold">Retail Solutions →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 lg:py-32 bg-navy-900 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
+      <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">Ready to Standardize Your AV?</h2>
+      <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Let's discuss how Axseter can deploy consistent AV experiences across your organization.</p>
+      <a href="/contact" class="inline-flex btn-primary text-white text-lg font-semibold px-10 py-5 rounded-xl">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-navy-950 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <span class="text-2xl font-black tracking-tight">AXSETER<sup class="text-xs">™</sup></span>
+          <p class="text-gray-400 mt-4">National low voltage contractor for multi-location enterprises.</p>
+          <p class="text-gray-400 mt-4"><a href="tel:+18772973871" class="hover:text-white transition-colors">1-877-AXSETR1</a></p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Services</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/services/structured-cabling" class="hover:text-white transition-colors">Structured Cabling</a></li>
+            <li><a href="/services/access-control" class="hover:text-white transition-colors">Access Control</a></li>
+            <li><a href="/services/video-surveillance" class="hover:text-white transition-colors">Video Surveillance</a></li>
+            <li><a href="/services/audio-visual" class="hover:text-white transition-colors">Audio Visual</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Industries</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/industries/healthcare" class="hover:text-white transition-colors">Healthcare</a></li>
+            <li><a href="/industries/financial-services" class="hover:text-white transition-colors">Financial Services</a></li>
+            <li><a href="/industries/retail-qsr" class="hover:text-white transition-colors">Retail & QSR</a></li>
+            <li><a href="/industries/engineering" class="hover:text-white transition-colors">Engineering Firms</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Company</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
+            <li><a href="/case-studies" class="hover:text-white transition-colors">Case Studies</a></li>
+            <li><a href="/insights" class="hover:text-white transition-colors">Insights</a></li>
+            <li><a href="/contact" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8">
+        <p class="text-gray-500 text-sm">© 2026 Axseter Systems, LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
-
