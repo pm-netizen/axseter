@@ -66,6 +66,11 @@
 
   <!-- Industry Pages -->
   <url>
+    <loc>https://www.axseter.com/industries/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.axseter.com/industries/healthcare/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -77,6 +82,11 @@
   </url>
   <url>
     <loc>https://www.axseter.com/industries/retail-qsr/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.axseter.com/industries/retail/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
