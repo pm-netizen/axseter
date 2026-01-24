@@ -47,6 +47,61 @@
     }
   }
   </script>
+  
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does Axseter handle HIPAA requirements for healthcare low voltage installations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our technicians are trained on HIPAA physical safeguard requirements. We install access control systems that create audit trails for sensitive areas, position surveillance cameras to monitor access points without capturing PHI, and design network infrastructure with proper segmentation. All documentation supports your compliance program."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the typical timeline for a healthcare facility buildout?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A standard 3,000-5,000 square foot clinic typically requires 2-3 days for low voltage rough-in during construction, followed by 1-2 days for trim-out and device installation. We coordinate with your GC to align with the construction schedule and can compress timelines when needed for urgent openings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Axseter support rapid acquisitions where we're integrating multiple practices simultaneously?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Our national technician network allows us to deploy assessment and remediation teams across multiple markets simultaneously. We've supported healthcare organizations integrating 50+ acquired locations in a single year, standardizing infrastructure across the entire portfolio."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What ongoing support do you provide after installation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Axseter provides MAC (move/add/change) services and break-fix support nationwide. When a badge reader fails at your Phoenix location or you need additional drops at your Dallas clinic, one call to our operations team dispatches a technician. We maintain consistent SLAs across all markets."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.axseter.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Industries", "item": "https://www.axseter.com/industries/"},
+      {"@type": "ListItem", "position": 3, "name": "Healthcare", "item": "https://www.axseter.com/industries/healthcare/"}
+    ]
+  }
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{colors:{'navy':{50:'#f0f4f8',100:'#d9e2ec',200:'#bcccdc',300:'#9fb3c8',400:'#829ab1',500:'#627d98',600:'#486581',700:'#334e68',800:'#243b53',900:'#102a43',950:'#0a1929'},'blue':{50:'#effcf9',100:'#c6f7e9',200:'#8eedd1',300:'#5fe3c0',400:'#2dcca7',500:'#2563EB',600:'#079a82',700:'#048271',800:'#016457',900:'#004440'},'accent':'#3B82F6'}}}}</script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -141,6 +196,126 @@
             <p class="text-gray-600 leading-relaxed">Sound masking for exam rooms, waiting areas, and administrative spaces to protect patient confidentiality.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-navy-900 mb-12">Why Healthcare Organizations Choose a National Low Voltage Contractor</h2>
+      
+      <div class="grid lg:grid-cols-2 gap-12 mb-16">
+        <div>
+          <h3 class="text-xl font-bold text-navy-900 mb-4">Compliance-Ready Infrastructure</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">Healthcare facilities face stringent regulatory requirements that directly impact technology infrastructure. HIPAA mandates physical safeguards for areas containing protected health information. State licensing boards require specific security measures. CMS conditions of participation have technology implications.</p>
+          <p class="text-gray-600 leading-relaxed">Working with a national low voltage contractor that understands healthcare compliance means your infrastructure supports—rather than jeopardizes—regulatory standing. Axseter technicians are trained on healthcare-specific requirements and document installations to support audit readiness.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-navy-900 mb-4">Rapid Multi-Site Deployment</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">Healthcare real estate moves fast. When you acquire a practice group or sign a lease for a new urgent care location, time-to-open directly impacts revenue. Every week of delay costs patient visits and market position.</p>
+          <p class="text-gray-600 leading-relaxed">Axseter's national technician network means we can mobilize in any market within days, not weeks. We coordinate with your construction timeline, GC, and IT team to ensure low voltage infrastructure is never the bottleneck in your expansion schedule.</p>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 mb-16">
+        <div>
+          <h3 class="text-xl font-bold text-navy-900 mb-4">Consistent Standards Across Locations</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">When regional contractors handle your low voltage work, every location becomes unique. Different cable labeling conventions. Varying equipment choices. Inconsistent documentation. This creates ongoing support headaches for IT teams managing distributed facilities.</p>
+          <p class="text-gray-600 leading-relaxed">With Axseter, location 47 looks like location 3. Same infrastructure standards. Same documentation format. Same equipment specifications. Your IT team can support any site without learning a new configuration.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-navy-900 mb-4">Simplified Vendor Management</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">Managing low voltage vendors across 15 states means 15+ different contracts, invoicing systems, and escalation paths. It's administrative overhead that pulls focus from patient care and growth initiatives.</p>
+          <p class="text-gray-600 leading-relaxed">One national partner means one contract, one invoice, one point of contact. When issues arise at any location, you know exactly who to call. Axseter's operations team coordinates everything—you just get results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-navy-900 mb-12 text-center">Healthcare Facility Types We Serve</h2>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
+          <h3 class="font-bold text-navy-900 mb-2">Outpatient Clinics</h3>
+          <p class="text-gray-600 text-sm">Primary care, specialty practices, physical therapy</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
+          <h3 class="font-bold text-navy-900 mb-2">Urgent Care Centers</h3>
+          <p class="text-gray-600 text-sm">Walk-in clinics requiring rapid deployment</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
+          <h3 class="font-bold text-navy-900 mb-2">Dental & Orthodontic</h3>
+          <p class="text-gray-600 text-sm">DSO and multi-location dental practices</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
+          <h3 class="font-bold text-navy-900 mb-2">Behavioral Health</h3>
+          <p class="text-gray-600 text-sm">Mental health facilities with privacy requirements</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
+          <h3 class="font-bold text-navy-900 mb-2">Ambulatory Surgery</h3>
+          <p class="text-gray-600 text-sm">ASCs with high-bandwidth imaging needs</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
+          <h3 class="font-bold text-navy-900 mb-2">Dialysis Centers</h3>
+          <p class="text-gray-600 text-sm">Standardized infrastructure for treatment facilities</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
+          <h3 class="font-bold text-navy-900 mb-2">Veterinary Clinics</h3>
+          <p class="text-gray-600 text-sm">Multi-location veterinary and specialty practices</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
+          <h3 class="font-bold text-navy-900 mb-2">Medical Office Buildings</h3>
+          <p class="text-gray-600 text-sm">Multi-tenant healthcare facilities</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-navy-900 mb-12">Frequently Asked Questions</h2>
+      
+      <div class="space-y-8">
+        <div class="border-b border-gray-200 pb-8">
+          <h3 class="text-lg font-bold text-navy-900 mb-3">How does Axseter handle HIPAA requirements for healthcare low voltage installations?</h3>
+          <p class="text-gray-600 leading-relaxed">Our technicians are trained on HIPAA physical safeguard requirements. We install access control systems that create audit trails for sensitive areas, position surveillance cameras to monitor access points without capturing PHI, and design network infrastructure with proper segmentation. All documentation supports your compliance program.</p>
+        </div>
+        <div class="border-b border-gray-200 pb-8">
+          <h3 class="text-lg font-bold text-navy-900 mb-3">What is the typical timeline for a healthcare facility buildout?</h3>
+          <p class="text-gray-600 leading-relaxed">A standard 3,000-5,000 square foot clinic typically requires 2-3 days for low voltage rough-in during construction, followed by 1-2 days for trim-out and device installation. We coordinate with your GC to align with the construction schedule and can compress timelines when needed for urgent openings.</p>
+        </div>
+        <div class="border-b border-gray-200 pb-8">
+          <h3 class="text-lg font-bold text-navy-900 mb-3">Can Axseter support rapid acquisitions where we're integrating multiple practices simultaneously?</h3>
+          <p class="text-gray-600 leading-relaxed">Yes. Our national technician network allows us to deploy assessment and remediation teams across multiple markets simultaneously. We've supported healthcare organizations integrating 50+ acquired locations in a single year, standardizing infrastructure across the entire portfolio.</p>
+        </div>
+        <div class="border-b border-gray-200 pb-8">
+          <h3 class="text-lg font-bold text-navy-900 mb-3">What ongoing support do you provide after installation?</h3>
+          <p class="text-gray-600 leading-relaxed">Axseter provides MAC (move/add/change) services and break-fix support nationwide. When a badge reader fails at your Phoenix location or you need additional drops at your Dallas clinic, one call to our operations team dispatches a technician. We maintain consistent SLAs across all markets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-navy-900 mb-12">Related Resources</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <a href="/case-studies/oak-street-health/" class="block bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
+          <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Case Study</span>
+          <h3 class="text-xl font-bold text-navy-900 mt-3 mb-3">Oak Street Health</h3>
+          <p class="text-gray-600">How a rapidly expanding primary care provider standardized infrastructure across new clinic openings.</p>
+        </a>
+        <a href="/insights/access-control-healthcare-compliance/" class="block bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
+          <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Insight</span>
+          <h3 class="text-xl font-bold text-navy-900 mt-3 mb-3">Access Control for Healthcare Compliance</h3>
+          <p class="text-gray-600">HIPAA physical safeguard requirements and how access control systems support compliance.</p>
+        </a>
+        <a href="/insights/vendor-consolidation-facilities/" class="block bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
+          <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Insight</span>
+          <h3 class="text-xl font-bold text-navy-900 mt-3 mb-3">Why Teams Choose a National Contractor</h3>
+          <p class="text-gray-600">The business case for consolidating regional vendors into a single national partner.</p>
+        </a>
       </div>
     </div>
   </section>
