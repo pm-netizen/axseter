@@ -1,283 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-  <!-- Favicons -->
+  <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="shortcut icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Retail Low-Voltage Installation | Multi-Location Store Rollouts | Axseter</title>
-    <meta name="description" content="Nationwide infrastructure deployment for multi-location retailers, QSRs, and franchise operations. Structured cabling, POS connectivity, digital signage, and loss prevention systems.">
-    <meta name="keywords" content="retail store cabling, multi-location retail technology, QSR infrastructure, franchise cabling, retail video surveillance, digital signage installation">
-    
-    <link rel="canonical" href="https://www.axseter.com/industries/retail/">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="/css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retail Low-Voltage Installation | Multi-Location Store Rollouts | Axseter</title>
+  <meta name="description" content="Deploy consistent technology infrastructure across hundreds of retail locations. Structured cabling, POS networks, digital signage, and loss prevention systems for multi-location retailers.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.axseter.com/industries/retail/">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{'navy':{900:'#102a43',950:'#0a1929'}}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .nav-blur { backdrop-filter: blur(20px); }
+    .btn-primary { background: linear-gradient(135deg, #3B82F6, #2563EB); }
+    .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+  </style>
 </head>
-<body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="container">
-            <div class="header__inner">
-                <a href="/" class="header__logo"><span class="header__logo-text">AXSETER</span></a>
-                <nav class="nav">
-                    <ul class="nav__list" id="nav-list">
-                        <li class="nav__item">
-                            <a href="/services/" class="nav__link">Services <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
-                            <div class="nav__dropdown">
-                                <a href="/services/structured-cabling/" class="nav__dropdown-link">Structured Cabling</a>
-                                <a href="/services/access-control/" class="nav__dropdown-link">Access Control</a>
-                                <a href="/services/video-surveillance/" class="nav__dropdown-link">Video Surveillance</a>
-                                <a href="/services/audio-visual/" class="nav__dropdown-link">Audio-Visual</a>
-                                <a href="/services/break-fix/" class="nav__dropdown-link">Break-Fix Support</a>
-                                <a href="/services/sound-masking/" class="nav__dropdown-link">Sound Masking</a>
-                            </div>
-                        </li>
-                        <li class="nav__item">
-                            <a href="/industries/" class="nav__link">Industries <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
-                            <div class="nav__dropdown">
-                                <a href="/industries/healthcare/" class="nav__dropdown-link">Healthcare / Medtail</a>
-                                <a href="/industries/financial-services/" class="nav__dropdown-link">Financial Services</a>
-                                <a href="/industries/retail/" class="nav__dropdown-link">Retail</a>
-                            </div>
-                        </li>
-                        <li class="nav__item"><a href="/case-studies/" class="nav__link">Case Studies</a></li>
-                        <li class="nav__item"><a href="/about/" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="/resources/" class="nav__link">Resources</a></li>
-                    </ul>
-                    <a href="/contact/" class="nav__cta">Contact Us</a>
-                    <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-                </nav>
+<body class="bg-white antialiased">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 nav-blur border-b border-gray-200/50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="/" class="flex items-center">
+          <span class="text-3xl font-black tracking-tight text-navy-900" style="font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">AXSETER<sup class="text-sm font-semibold text-gray-400 ml-0.5">™</sup></span>
+        </a>
+        
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="/services" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Services</a>
+          <div class="relative group">
+            <button class="text-gray-600 hover:text-navy-900 font-medium transition-colors flex items-center gap-1">
+              Industries
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              <div class="bg-white rounded-xl shadow-2xl border border-gray-100 py-2 w-52">
+                <a href="/industries/healthcare" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Healthcare</a>
+                <a href="/industries/financial-services" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Financial Services</a>
+                <a href="/industries/retail-qsr" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Retail & QSR</a>
+                <a href="/industries/engineering" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Engineering Firms</a>
+              </div>
             </div>
+          </div>
+          <a href="/case-studies" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Case Studies</a>
+          <a href="/insights" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Insights</a>
         </div>
-    </header>
 
-    <main>
-        <!-- Page Header -->
-        <section class="page-header" style="background-image: url('/images/retail.jpg');">
-            <div class="container">
-                <div class="page-header__inner">
-                    <nav class="breadcrumbs" aria-label="Breadcrumb">
-                        <a href="/">Home</a>
-                        <span>/</span>
-                        <a href="/industries/">Industries</a>
-                        <span>/</span>
-                        <span class="breadcrumbs__current">Retail</span>
-                    </nav>
-                    <h1>Retail Infrastructure Solutions</h1>
-                    <p>Deploy consistent technology infrastructure across hundreds of retail locations. From structured cabling to loss prevention, we help multi-location retailers scale with operational excellence.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Industry Context -->
-        <section class="section">
-            <div class="container">
-                <div class="two-col">
-                    <div class="two-col__content">
-                        <span class="eyebrow">The Retail Challenge</span>
-                        <h2>Speed and Consistency at Scale</h2>
-                        <p>Retail expansion moves fast. When you're opening 100+ stores per year, every week of delay costs revenue. And inconsistent infrastructure across locations creates ongoing operational headaches—different systems, different support contacts, different quality standards.</p>
-                        <p>Your store operations team needs to focus on driving sales, not troubleshooting why the POS system at location #47 keeps dropping connectivity while location #48 works fine.</p>
-                        <p>Axseter delivers the speed and consistency retail operators need. Standardized deployment processes. Consistent quality across every location. One partner for nationwide infrastructure.</p>
-                    </div>
-                    <div class="two-col__visual">
-                        <div class="image-placeholder">[ Retail Store Technology Installation ]</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Retail Segments -->
-        <section class="section section--gray">
-            <div class="container">
-                <div class="value-prop__header mb-12">
-                    <span class="eyebrow">Segments We Serve</span>
-                    <h2>Retail Verticals</h2>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-card__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                        </div>
-                        <h3 class="service-card__title">Multi-Location Retail</h3>
-                        <p class="service-card__description">National and regional retailers deploying consistent technology stacks—POS, WiFi, digital signage, and back-office connectivity—across hundreds of stores.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-card__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-                        </div>
-                        <h3 class="service-card__title">Quick Service Restaurants</h3>
-                        <p class="service-card__description">QSR chains and fast-casual concepts requiring drive-thru systems, kitchen display connectivity, kiosks, and customer WiFi.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-card__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
-                        </div>
-                        <h3 class="service-card__title">Franchise Operations</h3>
-                        <p class="service-card__description">Franchise brands requiring standardized infrastructure across independently owned locations. Consistency for the brand, simplicity for franchisees.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-card__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                        </div>
-                        <h3 class="service-card__title">Flagship & Experiential</h3>
-                        <p class="service-card__description">High-profile retail experiences with complex AV requirements, interactive displays, and premium technology integration.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Retail Solutions -->
-        <section class="section">
-            <div class="container">
-                <div class="two-col two-col--reverse">
-                    <div class="two-col__content">
-                        <span class="eyebrow">Retail Solutions</span>
-                        <h2>Infrastructure That Drives Sales</h2>
-                        <p>Modern retail requires robust connectivity. Customer experiences, operational efficiency, and loss prevention all depend on reliable infrastructure.</p>
-                        
-                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">Structured Cabling</h4>
-                        <p>Network backbone for POS systems, back-office operations, and customer WiFi. Designed for retail environments with appropriate cable protection and aesthetic considerations.</p>
-                        
-                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">Video Surveillance</h4>
-                        <p>Loss prevention systems with high-resolution cameras, NVRs, and remote monitoring capabilities. Integration with existing LP platforms and analytics.</p>
-                        
-                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">Digital Signage</h4>
-                        <p>Menu boards, promotional displays, and interactive kiosks. Cabling infrastructure to support your digital merchandising strategy.</p>
-                        
-                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">Audio Systems</h4>
-                        <p>Background music, paging systems, and drive-thru communications. Integrated audio infrastructure for the retail environment.</p>
-                    </div>
-                    <div class="two-col__visual">
-                        <div class="image-placeholder">[ Retail POS Installation ]</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Retail Value Props -->
-        <section class="section section--dark">
-            <div class="container">
-                <div class="value-prop__header mb-12">
-                    <span class="eyebrow" style="color: var(--color-accent-light);">Why Retailers Choose Axseter</span>
-                    <h2>Built for Retail Velocity</h2>
-                </div>
-                <div class="value-prop__grid">
-                    <div class="value-card" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
-                        <div class="value-card__number" style="color: var(--color-accent-light);">01</div>
-                        <h3 class="value-card__title" style="color: white;">Rapid Deployment</h3>
-                        <p class="value-card__description" style="color: var(--color-gray-400);">Standardized processes enable fast deployment. When your new store opens, the infrastructure is ready—on time, every time.</p>
-                    </div>
-                    <div class="value-card" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
-                        <div class="value-card__number" style="color: var(--color-accent-light);">02</div>
-                        <h3 class="value-card__title" style="color: white;">Consistent Quality</h3>
-                        <p class="value-card__description" style="color: var(--color-gray-400);">Same standards, same quality, every location. Your store ops team knows what to expect regardless of geography.</p>
-                    </div>
-                    <div class="value-card" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
-                        <div class="value-card__number" style="color: var(--color-accent-light);">03</div>
-                        <h3 class="value-card__title" style="color: white;">Nationwide Support</h3>
-                        <p class="value-card__description" style="color: var(--color-gray-400);">Break-fix support across all 50 states. One call for any location. Reduced downtime, faster resolution.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Typical Retail Scope -->
-        <section class="section">
-            <div class="container">
-                <div class="value-prop__header mb-12">
-                    <span class="eyebrow">Typical Scope</span>
-                    <h2>What We Deploy in Retail Locations</h2>
-                </div>
-                <div class="services-grid" style="grid-template-columns: repeat(2, 1fr);">
-                    <div class="service-card">
-                        <h3 class="service-card__title">Front of House</h3>
-                        <ul class="content-section" style="margin-top: 1rem;">
-                            <li>POS terminal connectivity</li>
-                            <li>Customer WiFi infrastructure</li>
-                            <li>Digital signage / menu boards</li>
-                            <li>Self-service kiosk cabling</li>
-                            <li>Background music systems</li>
-                            <li>Loss prevention cameras</li>
-                        </ul>
-                    </div>
-                    <div class="service-card">
-                        <h3 class="service-card__title">Back of House</h3>
-                        <ul class="content-section" style="margin-top: 1rem;">
-                            <li>Manager workstation connectivity</li>
-                            <li>Server/IDF closet buildout</li>
-                            <li>Inventory management systems</li>
-                            <li>Employee entrance access control</li>
-                            <li>Receiving area surveillance</li>
-                            <li>Kitchen display systems (QSR)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="container">
-                <h2>Planning a Multi-Location Rollout?</h2>
-                <p>Let's discuss how Axseter can support your retail expansion.</p>
-                <div class="cta-section__buttons">
-                    <a href="/contact/" class="btn btn--primary btn--lg">Request a Quote</a>
-                        <a href="https://www.facebook.com/profile.php?id=100090782905591" target="_blank" rel="noopener" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Services</h4>
-                    <ul class="footer__links">
-                        <li><a href="/services/structured-cabling/" class="footer__link">Structured Cabling</a></li>
-                        <li><a href="/services/access-control/" class="footer__link">Access Control</a></li>
-                        <li><a href="/services/video-surveillance/" class="footer__link">Video Surveillance</a></li>
-                        <li><a href="/services/audio-visual/" class="footer__link">Audio-Visual</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Industries</h4>
-                    <ul class="footer__links">
-                        <li><a href="/industries/healthcare/" class="footer__link">Healthcare</a></li>
-                        <li><a href="/industries/financial-services/" class="footer__link">Financial Services</a></li>
-                        <li><a href="/industries/retail/" class="footer__link">Retail</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Company</h4>
-                    <ul class="footer__links">
-                        <li><a href="/about/" class="footer__link">About Us</a></li>
-                        <li><a href="/case-studies/" class="footer__link">Case Studies</a></li>
-                        <li><a href="/contact/" class="footer__link">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Offices</h4>
-                    <ul class="footer__links">
-                        <li><span class="footer__link">Chicago, IL (HQ)</span></li>
-                        <li><span class="footer__link">Indianapolis, IN</span></li>
-                        <li><span class="footer__link">Atlanta, GA</span></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <span>© 2024 Axseter Systems, LLC. All Rights Reserved.</span>
-                <div class="footer__contact-info">
-                </div>
-            </div>
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="/contact" class="btn-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm">Get Started</a>
         </div>
-    </footer>
+      </div>
+    </div>
+  </nav>
 
-    <script src="/js/main.js"></script>
+  <!-- Hero -->
+  <section class="pt-32 pb-20 bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <nav class="text-sm text-gray-400 mb-6">
+        <a href="/" class="hover:text-white">Home</a><span class="mx-2">/</span>
+        <a href="/industries" class="hover:text-white">Industries</a><span class="mx-2">/</span>
+        <span class="text-gray-300">Retail</span>
+      </nav>
+      <div class="max-w-3xl">
+        <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6">Retail Infrastructure Solutions</h1>
+        <p class="text-xl text-gray-300 leading-relaxed">Deploy consistent technology infrastructure across hundreds of retail locations. From structured cabling to loss prevention, we help multi-location retailers scale with operational excellence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenge -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">The Retail Challenge</span>
+          <h2 class="text-4xl font-bold text-navy-900 mt-4 mb-6">Speed and Consistency at Scale</h2>
+          <p class="text-lg text-gray-600 leading-relaxed mb-6">Retail expansion moves fast. When you're opening 100+ stores a year, every week of delay costs revenue. But speed without consistency creates long-term problems—different POS setups at every location, inconsistent WiFi coverage, surveillance systems that don't integrate with corporate security.</p>
+          <p class="text-lg text-gray-600 leading-relaxed">Axseter brings both velocity and standardization. One partner who understands your specifications, can deploy nationwide, and delivers the same quality at every location.</p>
+        </div>
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80" alt="Modern retail store interior" class="rounded-2xl shadow-2xl">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Retail Verticals -->
+  <section class="py-24 lg:py-32 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Retail Verticals</span>
+        <h2 class="text-4xl font-bold text-navy-900 mt-4 mb-6">Retail Types We Serve</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
+          <div class="text-4xl mb-4">🏪</div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Multi-Location Retail</h3>
+          <p class="text-gray-600 leading-relaxed">National and regional chains rolling out consistent store experiences across diverse markets.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
+          <div class="text-4xl mb-4">🍔</div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Quick Service Restaurants</h3>
+          <p class="text-gray-600 leading-relaxed">Fast casual and QSR brands deploying drive-thru, kitchen display, and customer-facing technology.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
+          <div class="text-4xl mb-4">🏢</div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Franchise Operations</h3>
+          <p class="text-gray-600 leading-relaxed">Franchise systems requiring brand-standard infrastructure across independently owned locations.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
+          <div class="text-4xl mb-4">✨</div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Flagship & Experiential</h3>
+          <p class="text-gray-600 leading-relaxed">High-complexity flagship locations with advanced AV, digital experiences, and custom installations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Deploy -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Solutions</span>
+        <h2 class="text-4xl font-bold text-navy-900 mt-4 mb-6">Infrastructure That Drives Sales</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-gray-50 rounded-2xl p-8">
+          <h3 class="text-xl font-bold text-navy-900 mb-6">Front of House</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="text-gray-600">POS network cabling and drops</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="text-gray-600">Customer WiFi infrastructure</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="text-gray-600">Digital signage and menu boards</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="text-gray-600">Background music systems</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="text-gray-600">Self-service kiosk installation</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 rounded-2xl p-8">
+          <h3 class="text-xl font-bold text-navy-900 mb-6">Back of House</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="text-gray-600">Video surveillance and loss prevention</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="text-gray-600">Access control for stockrooms</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="text-gray-600">Network closet buildouts</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="text-gray-600">Kitchen display system cabling</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="text-gray-600">Drive-thru communication systems</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose -->
+  <section class="py-24 lg:py-32 bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-blue-400 font-semibold text-sm uppercase tracking-wider">Why Axseter</span>
+        <h2 class="text-4xl font-bold text-white mt-4 mb-6">Built for Retail Velocity</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+          <div class="text-blue-400 text-4xl font-bold mb-4">01</div>
+          <h3 class="text-xl font-bold text-white mb-3">Rapid Deployment</h3>
+          <p class="text-gray-400 leading-relaxed">Our standardized processes and national technician network enable us to deploy multiple locations simultaneously without sacrificing quality.</p>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+          <div class="text-blue-400 text-4xl font-bold mb-4">02</div>
+          <h3 class="text-xl font-bold text-white mb-3">Consistent Quality</h3>
+          <p class="text-gray-400 leading-relaxed">Every location gets the same infrastructure, the same labeling, the same documentation. Your IT team can troubleshoot any store remotely.</p>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+          <div class="text-blue-400 text-4xl font-bold mb-4">03</div>
+          <h3 class="text-xl font-bold text-white mb-3">Nationwide Support</h3>
+          <p class="text-gray-400 leading-relaxed">When something breaks at any location, one call dispatches a technician. No more tracking down the local contractor who did the original install.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 lg:py-32 bg-navy-900 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
+      <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">Planning a Multi-Location Rollout?</h2>
+      <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Let's discuss how Axseter can support your retail expansion.</p>
+      <a href="/contact" class="inline-flex btn-primary text-white text-lg font-semibold px-10 py-5 rounded-xl">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-navy-950 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <span class="text-2xl font-black tracking-tight">AXSETER<sup class="text-xs">™</sup></span>
+          <p class="text-gray-400 mt-4">National low voltage contractor for multi-location enterprises.</p>
+          <p class="text-gray-400 mt-4"><a href="tel:+18772973871" class="hover:text-white transition-colors">1-877-AXSETR1</a></p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Services</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/services/structured-cabling" class="hover:text-white transition-colors">Structured Cabling</a></li>
+            <li><a href="/services/access-control" class="hover:text-white transition-colors">Access Control</a></li>
+            <li><a href="/services/video-surveillance" class="hover:text-white transition-colors">Video Surveillance</a></li>
+            <li><a href="/services/audio-visual" class="hover:text-white transition-colors">Audio Visual</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Industries</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/industries/healthcare" class="hover:text-white transition-colors">Healthcare</a></li>
+            <li><a href="/industries/financial-services" class="hover:text-white transition-colors">Financial Services</a></li>
+            <li><a href="/industries/retail-qsr" class="hover:text-white transition-colors">Retail & QSR</a></li>
+            <li><a href="/industries/engineering" class="hover:text-white transition-colors">Engineering Firms</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Company</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
+            <li><a href="/case-studies" class="hover:text-white transition-colors">Case Studies</a></li>
+            <li><a href="/insights" class="hover:text-white transition-colors">Insights</a></li>
+            <li><a href="/contact" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8">
+        <p class="text-gray-500 text-sm">© 2026 Axseter Systems, LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
-
