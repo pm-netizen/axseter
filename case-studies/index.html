@@ -1,302 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-  <!-- Favicons -->
+  <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="shortcut icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Case Studies | Enterprise Infrastructure Projects | Axseter Systems</title>
-    <meta name="description" content="See how Axseter Systems has helped enterprise clients deploy low-voltage infrastructure across hundreds of locations. Real results from healthcare, financial services, and retail organizations.">
-    
-    <link rel="canonical" href="https://www.axseter.com/case-studies/">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="/css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Studies | Enterprise Infrastructure Projects | Axseter Systems</title>
+  <meta name="description" content="See how Axseter helps multi-location enterprises deploy consistent low voltage infrastructure. Case studies from healthcare, financial services, and retail.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.axseter.com/case-studies/">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{'navy':{900:'#102a43',950:'#0a1929'}}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .nav-blur { backdrop-filter: blur(20px); }
+    .btn-primary { background: linear-gradient(135deg, #3B82F6, #2563EB); }
+    .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+  </style>
 </head>
-<body>
-    <header class="header" id="header">
-        <div class="container">
-            <div class="header__inner">
-                <a href="/" class="header__logo"><span class="header__logo-text">AXSETER</span></a>
-                <nav class="nav">
-                    <ul class="nav__list" id="nav-list">
-                        <li class="nav__item">
-                            <a href="/services/" class="nav__link">Services <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
-                            <div class="nav__dropdown">
-                                <a href="/services/structured-cabling/" class="nav__dropdown-link">Structured Cabling</a>
-                                <a href="/services/access-control/" class="nav__dropdown-link">Access Control</a>
-                                <a href="/services/video-surveillance/" class="nav__dropdown-link">Video Surveillance</a>
-                                <a href="/services/audio-visual/" class="nav__dropdown-link">Audio-Visual</a>
-                                <a href="/services/break-fix/" class="nav__dropdown-link">Break-Fix Support</a>
-                                <a href="/services/sound-masking/" class="nav__dropdown-link">Sound Masking</a>
-                            </div>
-                        </li>
-                        <li class="nav__item">
-                            <a href="/industries/" class="nav__link">Industries <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
-                            <div class="nav__dropdown">
-                                <a href="/industries/healthcare/" class="nav__dropdown-link">Healthcare / Medtail</a>
-                                <a href="/industries/financial-services/" class="nav__dropdown-link">Financial Services</a>
-                                <a href="/industries/retail/" class="nav__dropdown-link">Retail</a>
-                            </div>
-                        </li>
-                        <li class="nav__item"><a href="/case-studies/" class="nav__link">Case Studies</a></li>
-                        <li class="nav__item"><a href="/about/" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="/resources/" class="nav__link">Resources</a></li>
-                    </ul>
-                    <a href="/contact/" class="nav__cta">Contact Us</a>
-                    <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-                </nav>
+<body class="bg-white antialiased">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 nav-blur border-b border-gray-200/50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="/" class="flex items-center">
+          <span class="text-3xl font-black tracking-tight text-navy-900" style="font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">AXSETER<sup class="text-sm font-semibold text-gray-400 ml-0.5">™</sup></span>
+        </a>
+        
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="/services" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Services</a>
+          <div class="relative group">
+            <button class="text-gray-600 hover:text-navy-900 font-medium transition-colors flex items-center gap-1">
+              Industries
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              <div class="bg-white rounded-xl shadow-2xl border border-gray-100 py-2 w-52">
+                <a href="/industries/healthcare" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Healthcare</a>
+                <a href="/industries/financial-services" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Financial Services</a>
+                <a href="/industries/retail-qsr" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Retail & QSR</a>
+                <a href="/industries/engineering" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Engineering Firms</a>
+              </div>
             </div>
+          </div>
+          <a href="/case-studies" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Case Studies</a>
+          <a href="/insights" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Insights</a>
         </div>
-    </header>
 
-    <main>
-        <section class="page-header">
-            <div class="container">
-                <div class="page-header__inner">
-                    <nav class="breadcrumbs" aria-label="Breadcrumb">
-                        <a href="/">Home</a>
-                        <span>/</span>
-                        <span class="breadcrumbs__current">Case Studies</span>
-                    </nav>
-                    <h1>Case Studies</h1>
-                    <p>See how we've helped enterprise organizations deploy consistent infrastructure across hundreds of locations.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Case Study -->
-        <section class="section">
-            <div class="container">
-                <div class="case-study-card">
-                    <div class="case-study-card__visual">
-                        <div class="case-study-card__logo">Oak Street Health</div>
-                        <div class="case-study-card__metrics">
-                            <div class="case-study-metric">
-                                <div class="case-study-metric__value">200+</div>
-                                <div class="case-study-metric__label">Clinics Deployed</div>
-                            </div>
-                            <div class="case-study-metric">
-                                <div class="case-study-metric__value">27</div>
-                                <div class="case-study-metric__label">States</div>
-                            </div>
-                            <div class="case-study-metric">
-                                <div class="case-study-metric__value">99.2%</div>
-                                <div class="case-study-metric__label">On-Time Delivery</div>
-                            </div>
-                            <div class="case-study-metric">
-                                <div class="case-study-metric__value">18mo</div>
-                                <div class="case-study-metric__label">Partnership</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="case-study-card__content">
-                        <span class="eyebrow">Featured: Healthcare</span>
-                        <h2 style="color: var(--color-primary); margin-bottom: 1rem;">Oak Street Health</h2>
-                        <p style="color: var(--color-gray-600); margin-bottom: 1.5rem;"><strong>Challenge:</strong> Oak Street Health, a value-based primary care provider now part of CVS Health, needed a partner who could keep pace with aggressive clinic expansion while maintaining consistent infrastructure quality across 27 states.</p>
-                        <blockquote class="case-study-card__quote" style="font-size: 1.25rem;">
-                            "Axseter's SPoC model eliminated the coordination headaches we had managing regional contractors. One call, one invoice, consistent quality across every new clinic."
-                        </blockquote>
-                        <div class="case-study-card__attribution">
-                            <div class="case-study-card__author">Director of Facilities</div>
-                            <div class="case-study-card__role">Oak Street Health (CVS Health)</div>
-                        </div>
-                        <div style="margin-top: 1.5rem;">
-                            <strong style="display: block; margin-bottom: 0.5rem;">Services Provided:</strong>
-                            <span style="color: var(--color-gray-600);">Structured Cabling, Access Control, Video Surveillance, Sound Masking</span>
-                        </div>
-                        <a href="/case-studies/oak-street-health/" class="btn btn--primary" style="margin-top: 1.5rem;">Read Full Case Study</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Additional Case Studies -->
-        <section class="section section--gray">
-            <div class="container">
-                <div class="value-prop__header mb-12">
-                    <span class="eyebrow">More Success Stories</span>
-                    <h2>Client Partnerships</h2>
-                </div>
-                
-                <div class="services-grid" style="grid-template-columns: repeat(2, 1fr);">
-                    
-                    <!-- ATI Physical Therapy -->
-                    <div class="service-card" style="padding: 2rem;">
-                        <span class="eyebrow" style="margin-bottom: 0.5rem;">Healthcare</span>
-                        <h3 class="service-card__title">ATI Physical Therapy</h3>
-                        <p class="service-card__description">National physical therapy provider with 900+ clinics. Axseter provides ongoing infrastructure support for new clinic buildouts and break-fix services across their existing portfolio.</p>
-                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; padding: 1rem; background: var(--color-gray-100); border-radius: 4px;">
-                            <div>
-                                <div style="font-size: 1.5rem; font-weight: 600; color: var(--color-primary);">100+</div>
-                                <div style="font-size: 0.75rem; color: var(--color-gray-600);">New Clinics Supported</div>
-                            </div>
-                            <div>
-                                <div style="font-size: 1.5rem; font-weight: 600; color: var(--color-primary);">35</div>
-                                <div style="font-size: 0.75rem; color: var(--color-gray-600);">States</div>
-                            </div>
-                        </div>
-                        <p style="font-size: 0.875rem;"><strong>Services:</strong> Structured Cabling, Break-Fix Support</p>
-                        <a href="/case-studies/ati-physical-therapy/" class="service-card__link" style="margin-top: 1rem; display: inline-block;">Read Full Case Study →</a>
-                    </div>
-                    
-                    <!-- Gallagher Insurance -->
-                    <div class="service-card" style="padding: 2rem;">
-                        <span class="eyebrow" style="margin-bottom: 0.5rem;">Financial Services</span>
-                        <h3 class="service-card__title">Gallagher Insurance</h3>
-                        <p class="service-card__description">Global insurance brokerage with domestic office expansion. Axseter delivers consistent infrastructure across new office locations with enterprise-grade documentation.</p>
-                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; padding: 1rem; background: var(--color-gray-100); border-radius: 4px;">
-                            <div>
-                                <div style="font-size: 1.5rem; font-weight: 600; color: var(--color-primary);">75+</div>
-                                <div style="font-size: 0.75rem; color: var(--color-gray-600);">Offices Supported</div>
-                            </div>
-                            <div>
-                                <div style="font-size: 1.5rem; font-weight: 600; color: var(--color-primary);">18</div>
-                                <div style="font-size: 0.75rem; color: var(--color-gray-600);">States</div>
-                            </div>
-                        </div>
-                        <p style="font-size: 0.875rem;"><strong>Services:</strong> Structured Cabling, Access Control, AV</p>
-                    </div>
-                    
-                    <!-- Leopardo -->
-                    <div class="service-card" style="padding: 2rem;">
-                        <span class="eyebrow" style="margin-bottom: 0.5rem;">Construction Partnership</span>
-                        <h3 class="service-card__title">Leopardo Companies</h3>
-                        <p class="service-card__description">National construction management firm. Axseter serves as preferred low-voltage subcontractor for multi-location rollout projects, providing consistent quality across Leopardo's client portfolio.</p>
-                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; padding: 1rem; background: var(--color-gray-100); border-radius: 4px;">
-                            <div>
-                                <div style="font-size: 1.5rem; font-weight: 600; color: var(--color-primary);">50+</div>
-                                <div style="font-size: 0.75rem; color: var(--color-gray-600);">Projects Completed</div>
-                            </div>
-                            <div>
-                                <div style="font-size: 1.5rem; font-weight: 600; color: var(--color-primary);">12</div>
-                                <div style="font-size: 0.75rem; color: var(--color-gray-600);">States</div>
-                            </div>
-                        </div>
-                        <p style="font-size: 0.875rem;"><strong>Services:</strong> Full Low-Voltage Scope</p>
-                    </div>
-                    
-                    <!-- CVS Health -->
-                    <div class="service-card" style="padding: 2rem;">
-                        <span class="eyebrow" style="margin-bottom: 0.5rem;">Healthcare / Retail</span>
-                        <h3 class="service-card__title">CVS Health</h3>
-                        <p class="service-card__description">Through our Oak Street Health partnership, Axseter now supports CVS Health's integrated clinic rollouts, deploying infrastructure for combined pharmacy and primary care locations.</p>
-                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; padding: 1rem; background: var(--color-gray-100); border-radius: 4px;">
-                            <div>
-                                <div style="font-size: 1.5rem; font-weight: 600; color: var(--color-primary);">Growing</div>
-                                <div style="font-size: 0.75rem; color: var(--color-gray-600);">Partnership</div>
-                            </div>
-                            <div>
-                                <div style="font-size: 1.5rem; font-weight: 600; color: var(--color-primary);">27+</div>
-                                <div style="font-size: 0.75rem; color: var(--color-gray-600);">States</div>
-                            </div>
-                        </div>
-                        <p style="font-size: 0.875rem;"><strong>Services:</strong> Structured Cabling, Access Control, Video Surveillance</p>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
-
-        <!-- Results Summary -->
-        <section class="section">
-            <div class="container">
-                <div class="value-prop__header mb-12">
-                    <span class="eyebrow">Aggregate Results</span>
-                    <h2>By the Numbers</h2>
-                </div>
-                <div class="hero__stats" style="max-width: 800px; margin: 0 auto; background: var(--color-gray-100); border: 1px solid var(--color-border);">
-                    <div class="hero__stat">
-                        <div class="hero__stat-value" style="color: var(--color-primary);">500+</div>
-                        <div class="hero__stat-label" style="color: var(--color-gray-600);">Total Locations Deployed</div>
-                    </div>
-                    <div class="hero__stat">
-                        <div class="hero__stat-value" style="color: var(--color-primary);">50</div>
-                        <div class="hero__stat-label" style="color: var(--color-gray-600);">States Covered</div>
-                    </div>
-                    <div class="hero__stat">
-                        <div class="hero__stat-value" style="color: var(--color-primary);">98%+</div>
-                        <div class="hero__stat-label" style="color: var(--color-gray-600);">On-Time Delivery Rate</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section class="cta-section">
-            <div class="container">
-                <h2>Ready to Become Our Next Success Story?</h2>
-                <p>Let's discuss how Axseter can support your multi-location infrastructure needs.</p>
-                <div class="cta-section__buttons">
-                    <a href="/contact/" class="btn btn--primary btn--lg">Start a Conversation</a>
-                    <a href="tel:+18772973871" class="btn btn--outline btn--lg">Call 1-877-AXSETR1</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__grid">
-                <div class="footer__brand">
-                    <div class="footer__logo">AXSETER</div>
-                    <p class="footer__tagline">Reduce Costs. Improve Business Outcomes.</p>
-                    <div class="footer__social">
-                        <a href="https://www.linkedin.com/company/axseter" target="_blank" rel="noopener" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Services</h4>
-                    <ul class="footer__links">
-                        <li><a href="/services/structured-cabling/" class="footer__link">Structured Cabling</a></li>
-                        <li><a href="/services/access-control/" class="footer__link">Access Control</a></li>
-                        <li><a href="/services/video-surveillance/" class="footer__link">Video Surveillance</a></li>
-                        <li><a href="/services/audio-visual/" class="footer__link">Audio-Visual</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Industries</h4>
-                    <ul class="footer__links">
-                        <li><a href="/industries/healthcare/" class="footer__link">Healthcare</a></li>
-                        <li><a href="/industries/financial-services/" class="footer__link">Financial Services</a></li>
-                        <li><a href="/industries/retail/" class="footer__link">Retail</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Company</h4>
-                    <ul class="footer__links">
-                        <li><a href="/about/" class="footer__link">About Us</a></li>
-                        <li><a href="/case-studies/" class="footer__link">Case Studies</a></li>
-                        <li><a href="/contact/" class="footer__link">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Offices</h4>
-                    <ul class="footer__links">
-                        <li><span class="footer__link">Chicago, IL (HQ)</span></li>
-                        <li><span class="footer__link">Indianapolis, IN</span></li>
-                        <li><span class="footer__link">Atlanta, GA</span></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <span>© 2024 Axseter Systems, LLC. All Rights Reserved.</span>
-                <div class="footer__contact-info">
-                    <a href="tel:+18772973871">1-877-AXSETR1</a>
-                    <a href="mailto:info@axseter.com">info@axseter.com</a>
-                </div>
-            </div>
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="/contact" class="btn-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm">Get Started</a>
         </div>
-    </footer>
+      </div>
+    </div>
+  </nav>
 
-    <script src="/js/main.js"></script>
+  <!-- Hero -->
+  <section class="pt-32 pb-20 bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6">Case Studies</h1>
+        <p class="text-xl text-gray-300 leading-relaxed">Real results from enterprise infrastructure partnerships. See how we help multi-location organizations deploy consistent, scalable infrastructure.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Grid -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <a href="/case-studies/ati-physical-therapy" class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden card-hover group">
+          <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+            <span class="text-6xl">🏥</span>
+          </div>
+          <div class="p-8">
+            <span class="text-sm font-semibold text-blue-600 uppercase tracking-wider">Healthcare</span>
+            <h2 class="text-xl font-bold text-navy-900 mt-2 mb-3">ATI Physical Therapy</h2>
+            <p class="text-gray-600 leading-relaxed mb-4">Supporting a nationwide clinic network with scalable infrastructure services across 900+ locations.</p>
+            <span class="text-blue-600 font-semibold">Read case study →</span>
+          </div>
+        </a>
+
+        <a href="/case-studies/oak-street-health" class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden card-hover group">
+          <div class="h-48 bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center">
+            <span class="text-6xl">🏥</span>
+          </div>
+          <div class="p-8">
+            <span class="text-sm font-semibold text-emerald-600 uppercase tracking-wider">Healthcare</span>
+            <h2 class="text-xl font-bold text-navy-900 mt-2 mb-3">Oak Street Health</h2>
+            <p class="text-gray-600 leading-relaxed mb-4">Supporting rapid clinic expansion with consistent infrastructure deployment across 170+ centers.</p>
+            <span class="text-blue-600 font-semibold">Read case study →</span>
+          </div>
+        </a>
+
+        <a href="/case-studies/gallagher" class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden card-hover group">
+          <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center">
+            <span class="text-6xl">🏦</span>
+          </div>
+          <div class="p-8">
+            <span class="text-sm font-semibold text-purple-600 uppercase tracking-wider">Financial Services</span>
+            <h2 class="text-xl font-bold text-navy-900 mt-2 mb-3">Gallagher Insurance</h2>
+            <p class="text-gray-600 leading-relaxed mb-4">Enterprise infrastructure support for one of the world's largest insurance brokerages.</p>
+            <span class="text-blue-600 font-semibold">Read case study →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- By the Numbers -->
+  <section class="py-24 lg:py-32 bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-4xl font-bold text-white mb-6">By the Numbers</h2>
+        <p class="text-xl text-gray-300">Our track record of delivering consistent infrastructure at scale.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="text-5xl font-bold text-white mb-2">500+</div>
+          <div class="text-gray-400">Locations Deployed</div>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-bold text-white mb-2">50</div>
+          <div class="text-gray-400">States Covered</div>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-bold text-white mb-2">24/7</div>
+          <div class="text-gray-400">Support Coverage</div>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-bold text-white mb-2">1</div>
+          <div class="text-gray-400">Point of Contact</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Partnerships -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-4xl font-bold text-navy-900 mb-6">Client Partnerships</h2>
+        <p class="text-xl text-gray-600">We're proud to support some of the fastest-growing organizations in healthcare, financial services, and retail.</p>
+      </div>
+
+      <div class="flex flex-wrap justify-center items-center gap-12 lg:gap-16">
+        <span class="text-xl font-semibold text-gray-400">ATI Physical Therapy</span>
+        <span class="text-xl font-semibold text-gray-400">Gallagher Insurance</span>
+        <span class="text-xl font-semibold text-gray-400">Oak Street Health</span>
+        <span class="text-xl font-semibold text-gray-400">CVS Health</span>
+        <span class="text-xl font-semibold text-gray-400">Leopardo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 lg:py-32 bg-navy-900 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
+      <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">Ready to Become Our Next Success Story?</h2>
+      <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Let's discuss how Axseter can simplify your multi-location infrastructure.</p>
+      <a href="/contact" class="inline-flex btn-primary text-white text-lg font-semibold px-10 py-5 rounded-xl">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-navy-950 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <span class="text-2xl font-black tracking-tight">AXSETER<sup class="text-xs">™</sup></span>
+          <p class="text-gray-400 mt-4">National low voltage contractor for multi-location enterprises.</p>
+          <p class="text-gray-400 mt-4"><a href="tel:+18772973871" class="hover:text-white transition-colors">1-877-AXSETR1</a></p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Services</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/services/structured-cabling" class="hover:text-white transition-colors">Structured Cabling</a></li>
+            <li><a href="/services/access-control" class="hover:text-white transition-colors">Access Control</a></li>
+            <li><a href="/services/video-surveillance" class="hover:text-white transition-colors">Video Surveillance</a></li>
+            <li><a href="/services/audio-visual" class="hover:text-white transition-colors">Audio Visual</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Industries</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/industries/healthcare" class="hover:text-white transition-colors">Healthcare</a></li>
+            <li><a href="/industries/financial-services" class="hover:text-white transition-colors">Financial Services</a></li>
+            <li><a href="/industries/retail-qsr" class="hover:text-white transition-colors">Retail & QSR</a></li>
+            <li><a href="/industries/engineering" class="hover:text-white transition-colors">Engineering Firms</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Company</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
+            <li><a href="/case-studies" class="hover:text-white transition-colors">Case Studies</a></li>
+            <li><a href="/insights" class="hover:text-white transition-colors">Insights</a></li>
+            <li><a href="/contact" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8">
+        <p class="text-gray-500 text-sm">© 2026 Axseter Systems, LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
