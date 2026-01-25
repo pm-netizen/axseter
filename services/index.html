@@ -1,253 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-  <!-- Favicons -->
+  <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="shortcut icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Services | National Low-Voltage Installation | Axseter Systems</title>
-    <meta name="description" content="Full-stack low-voltage installation services: structured cabling, access control, video surveillance, audio-visual, break-fix support, and sound masking. Nationwide deployment for enterprise.">
-    
-    <link rel="canonical" href="https://www.axseter.com/services/">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="/css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | National Low-Voltage Installation | Axseter Systems</title>
+  <meta name="description" content="Full-service low voltage installation for multi-location enterprises. Structured cabling, access control, video surveillance, audio-visual, and break-fix support deployed nationwide.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.axseter.com/services/">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{'navy':{900:'#102a43',950:'#0a1929'}}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .nav-blur { backdrop-filter: blur(20px); }
+    .btn-primary { background: linear-gradient(135deg, #3B82F6, #2563EB); }
+    .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+  </style>
 </head>
-<body>
-    <header class="header" id="header">
-        <div class="container">
-            <div class="header__inner">
-                <a href="/" class="header__logo"><span class="header__logo-text">AXSETER</span></a>
-                <nav class="nav">
-                    <ul class="nav__list" id="nav-list">
-                        <li class="nav__item">
-                            <a href="/services/" class="nav__link">Services <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
-                            <div class="nav__dropdown">
-                                <a href="/services/structured-cabling/" class="nav__dropdown-link">Structured Cabling</a>
-                                <a href="/services/access-control/" class="nav__dropdown-link">Access Control</a>
-                                <a href="/services/video-surveillance/" class="nav__dropdown-link">Video Surveillance</a>
-                                <a href="/services/audio-visual/" class="nav__dropdown-link">Audio-Visual</a>
-                                <a href="/services/break-fix/" class="nav__dropdown-link">Break-Fix Support</a>
-                                <a href="/services/sound-masking/" class="nav__dropdown-link">Sound Masking</a>
-                            </div>
-                        </li>
-                        <li class="nav__item">
-                            <a href="/industries/" class="nav__link">Industries <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
-                            <div class="nav__dropdown">
-                                <a href="/industries/healthcare/" class="nav__dropdown-link">Healthcare / Medtail</a>
-                                <a href="/industries/financial-services/" class="nav__dropdown-link">Financial Services</a>
-                                <a href="/industries/retail/" class="nav__dropdown-link">Retail</a>
-                            </div>
-                        </li>
-                        <li class="nav__item"><a href="/case-studies/" class="nav__link">Case Studies</a></li>
-                        <li class="nav__item"><a href="/about/" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="/resources/" class="nav__link">Resources</a></li>
-                    </ul>
-                    <a href="/contact/" class="nav__cta">Contact Us</a>
-                    <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-                </nav>
+<body class="bg-white antialiased">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 nav-blur border-b border-gray-200/50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="/" class="flex items-center">
+          <span class="text-3xl font-black tracking-tight text-navy-900" style="font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">AXSETER<sup class="text-sm font-semibold text-gray-400 ml-0.5">™</sup></span>
+        </a>
+        
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="/services" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Services</a>
+          <div class="relative group">
+            <button class="text-gray-600 hover:text-navy-900 font-medium transition-colors flex items-center gap-1">
+              Industries
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              <div class="bg-white rounded-xl shadow-2xl border border-gray-100 py-2 w-52">
+                <a href="/industries/healthcare" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Healthcare</a>
+                <a href="/industries/financial-services" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Financial Services</a>
+                <a href="/industries/retail-qsr" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Retail & QSR</a>
+                <a href="/industries/engineering" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Engineering Firms</a>
+              </div>
             </div>
+          </div>
+          <a href="/case-studies" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Case Studies</a>
+          <a href="/insights" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Insights</a>
         </div>
-    </header>
 
-    <main>
-        <section class="page-header">
-            <div class="container">
-                <div class="page-header__inner">
-                    <nav class="breadcrumbs" aria-label="Breadcrumb">
-                        <a href="/">Home</a>
-                        <span>/</span>
-                        <span class="breadcrumbs__current">Services</span>
-                    </nav>
-                    <h1>Our Services</h1>
-                    <p>Full-stack low-voltage solutions deployed nationwide. From design through installation and ongoing support, we handle every aspect of your infrastructure.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <div class="services-grid" style="grid-template-columns: repeat(2, 1fr); gap: 2rem;">
-                    
-                    <div class="service-card" style="padding: 2.5rem;">
-                        <div class="service-card__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                        </div>
-                        <h3 class="service-card__title">Structured Cabling</h3>
-                        <p class="service-card__description">Enterprise-grade cabling infrastructure including Cat6, Cat6A, and fiber optic. Designed and installed to BICSI standards with certified test results for every cable run.</p>
-                        <ul class="content-section" style="margin: 1rem 0;">
-                            <li>Cat6/Cat6A copper cabling</li>
-                            <li>Single-mode & multi-mode fiber</li>
-                            <li>Data center & MDF/IDF buildouts</li>
-                            <li>Fluke-certified testing</li>
-                        </ul>
-                        <a href="/services/structured-cabling/" class="service-card__link">Learn More →</a>
-                    </div>
-                    
-                    <div class="service-card" style="padding: 2.5rem;">
-                        <div class="service-card__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                        </div>
-                        <h3 class="service-card__title">Access Control</h3>
-                        <p class="service-card__description">Physical security systems to protect your facilities. Card readers, biometric systems, and visitor management integrated with your existing security infrastructure.</p>
-                        <ul class="content-section" style="margin: 1rem 0;">
-                            <li>Card reader installation</li>
-                            <li>Biometric systems</li>
-                            <li>Visitor management</li>
-                            <li>Multi-zone configurations</li>
-                        </ul>
-                        <a href="/services/access-control/" class="service-card__link">Learn More →</a>
-                    </div>
-                    
-                    <div class="service-card" style="padding: 2.5rem;">
-                        <div class="service-card__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                        </div>
-                        <h3 class="service-card__title">Video Surveillance</h3>
-                        <p class="service-card__description">IP camera systems for security, loss prevention, and operational monitoring. Cloud and on-premise solutions with appropriate retention and remote access capabilities.</p>
-                        <ul class="content-section" style="margin: 1rem 0;">
-                            <li>IP camera installation</li>
-                            <li>NVR/DVR systems</li>
-                            <li>Cloud-based solutions</li>
-                            <li>Remote monitoring setup</li>
-                        </ul>
-                        <a href="/services/video-surveillance/" class="service-card__link">Learn More →</a>
-                    </div>
-                    
-                    <div class="service-card" style="padding: 2.5rem;">
-                        <div class="service-card__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
-                        </div>
-                        <h3 class="service-card__title">Audio-Visual</h3>
-                        <p class="service-card__description">Conference room technology, digital signage, and presentation systems. Modern workplace collaboration tools installed and configured for seamless operation.</p>
-                        <ul class="content-section" style="margin: 1rem 0;">
-                            <li>Conference room AV</li>
-                            <li>Digital signage infrastructure</li>
-                            <li>Presentation systems</li>
-                            <li>Background music systems</li>
-                        </ul>
-                        <a href="/services/audio-visual/" class="service-card__link">Learn More →</a>
-                    </div>
-                    
-                    <div class="service-card" style="padding: 2.5rem;">
-                        <div class="service-card__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-                        </div>
-                        <h3 class="service-card__title">Break-Fix Support</h3>
-                        <p class="service-card__description">Nationwide service dispatch for troubleshooting, repairs, and MAC (moves, adds, changes) work. 24/7 support with technicians across all 50 states.</p>
-                        <ul class="content-section" style="margin: 1rem 0;">
-                            <li>Troubleshooting & diagnostics</li>
-                            <li>Equipment repairs</li>
-                            <li>Moves, adds, changes</li>
-                            <li>24/7 emergency dispatch</li>
-                        </ul>
-                        <a href="/services/break-fix/" class="service-card__link">Learn More →</a>
-                    </div>
-                    
-                    <div class="service-card" style="padding: 2.5rem;">
-                        <div class="service-card__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-                        </div>
-                        <h3 class="service-card__title">Sound Masking</h3>
-                        <p class="service-card__description">Office privacy solutions that reduce speech intelligibility in open floor plans. Essential for healthcare compliance and professional service environments.</p>
-                        <ul class="content-section" style="margin: 1rem 0;">
-                            <li>Open office sound masking</li>
-                            <li>Healthcare speech privacy</li>
-                            <li>Conference room isolation</li>
-                            <li>System tuning & calibration</li>
-                        </ul>
-                        <a href="/services/sound-masking/" class="service-card__link">Learn More →</a>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
-
-        <section class="section section--dark">
-            <div class="container">
-                <div class="value-prop__header mb-12">
-                    <span class="eyebrow" style="color: var(--color-accent-light);">Our Approach</span>
-                    <h2>The SPoC Advantage</h2>
-                    <p class="lead">Single Point of Contact for all your low-voltage needs—nationwide.</p>
-                </div>
-                <div class="value-prop__grid">
-                    <div class="value-card" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
-                        <div class="value-card__number" style="color: var(--color-accent-light);">01</div>
-                        <h3 class="value-card__title" style="color: white;">One Relationship</h3>
-                        <p class="value-card__description" style="color: var(--color-gray-400);">One team accountable for every service, every location. No finger-pointing between vendors.</p>
-                    </div>
-                    <div class="value-card" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
-                        <div class="value-card__number" style="color: var(--color-accent-light);">02</div>
-                        <h3 class="value-card__title" style="color: white;">One Invoice</h3>
-                        <p class="value-card__description" style="color: var(--color-gray-400);">Simplified procurement and accounts payable. Consolidated billing across all services and locations.</p>
-                    </div>
-                    <div class="value-card" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
-                        <div class="value-card__number" style="color: var(--color-accent-light);">03</div>
-                        <h3 class="value-card__title" style="color: white;">One Standard</h3>
-                        <p class="value-card__description" style="color: var(--color-gray-400);">Consistent quality and documentation across your entire portfolio, regardless of geography.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section">
-            <div class="container">
-                <h2>Ready to Discuss Your Infrastructure Needs?</h2>
-                <p>Tell us about your project and we'll provide a custom scope and estimate.</p>
-                <div class="cta-section__buttons">
-                    <a href="/contact/" class="btn btn--primary btn--lg">Request a Quote</a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Services</h4>
-                    <ul class="footer__links">
-                        <li><a href="/services/structured-cabling/" class="footer__link">Structured Cabling</a></li>
-                        <li><a href="/services/access-control/" class="footer__link">Access Control</a></li>
-                        <li><a href="/services/video-surveillance/" class="footer__link">Video Surveillance</a></li>
-                        <li><a href="/services/audio-visual/" class="footer__link">Audio-Visual</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Industries</h4>
-                    <ul class="footer__links">
-                        <li><a href="/industries/healthcare/" class="footer__link">Healthcare</a></li>
-                        <li><a href="/industries/financial-services/" class="footer__link">Financial Services</a></li>
-                        <li><a href="/industries/retail/" class="footer__link">Retail</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Company</h4>
-                    <ul class="footer__links">
-                        <li><a href="/about/" class="footer__link">About Us</a></li>
-                        <li><a href="/case-studies/" class="footer__link">Case Studies</a></li>
-                        <li><a href="/contact/" class="footer__link">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Offices</h4>
-                    <ul class="footer__links">
-                        <li><span class="footer__link">Chicago, IL (HQ)</span></li>
-                        <li><span class="footer__link">Indianapolis, IN</span></li>
-                        <li><span class="footer__link">Atlanta, GA</span></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <span>© 2024 Axseter Systems, LLC. All Rights Reserved.</span>
-                <div class="footer__contact-info">
-                </div>
-            </div>
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="/contact" class="btn-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm">Get Started</a>
         </div>
-    </footer>
+      </div>
+    </div>
+  </nav>
 
-    <script src="/js/main.js"></script>
+  <!-- Hero -->
+  <section class="pt-32 pb-20 bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6">Our Services</h1>
+        <p class="text-xl text-gray-300 leading-relaxed">Full-service low voltage installation for multi-location enterprises. One partner for all your infrastructure needs, from structured cabling to ongoing support.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <a href="/services/structured-cabling" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 card-hover group">
+          <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
+            <svg class="w-7 h-7 text-blue-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Structured Cabling</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">Cat6, Cat6A, and fiber optic cabling deployed to your specifications. MDF/IDF buildouts, certification testing, and as-built documentation.</p>
+          <span class="text-blue-600 font-semibold">Learn more →</span>
+        </a>
+
+        <a href="/services/access-control" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 card-hover group">
+          <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-emerald-600 transition-colors">
+            <svg class="w-7 h-7 text-emerald-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Access Control</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">Card readers, biometrics, and cloud-based access systems. Door hardware, controllers, and integration with your security platform.</p>
+          <span class="text-blue-600 font-semibold">Learn more →</span>
+        </a>
+
+        <a href="/services/video-surveillance" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 card-hover group">
+          <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors">
+            <svg class="w-7 h-7 text-purple-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Video Surveillance</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">IP cameras, NVRs, and cloud video management. Professional positioning, configuration, and integration with your VMS platform.</p>
+          <span class="text-blue-600 font-semibold">Learn more →</span>
+        </a>
+
+        <a href="/services/audio-visual" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 card-hover group">
+          <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-600 transition-colors">
+            <svg class="w-7 h-7 text-amber-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Audio-Visual</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">Conference rooms, digital signage, and presentation systems. Standardized configurations for consistent experiences across locations.</p>
+          <span class="text-blue-600 font-semibold">Learn more →</span>
+        </a>
+
+        <a href="/services/sound-masking" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 card-hover group">
+          <div class="w-14 h-14 bg-rose-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-rose-600 transition-colors">
+            <svg class="w-7 h-7 text-rose-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Sound Masking</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">Speech privacy systems for open offices, healthcare facilities, and financial services. Protect confidential conversations at every location.</p>
+          <span class="text-blue-600 font-semibold">Learn more →</span>
+        </a>
+
+        <a href="/services/break-fix" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 card-hover group">
+          <div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-600 transition-colors">
+            <svg class="w-7 h-7 text-indigo-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Break-Fix Support</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">24/7 nationwide service dispatch for low voltage emergencies. One call gets a technician on-site at any location.</p>
+          <span class="text-blue-600 font-semibold">Learn more →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPoC Advantage -->
+  <section class="py-24 lg:py-32 bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-blue-400 font-semibold text-sm uppercase tracking-wider">The SPoC Advantage</span>
+        <h2 class="text-4xl font-bold text-white mt-4 mb-6">Single Point of Contact</h2>
+        <p class="text-xl text-gray-300">One partner for all your low voltage needs. One contract, one invoice, one relationship—no matter how many locations you operate.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+          <div class="text-blue-400 text-4xl font-bold mb-4">01</div>
+          <h3 class="text-xl font-bold text-white mb-3">Simplified Vendor Management</h3>
+          <p class="text-gray-400 leading-relaxed">Stop managing dozens of regional contractors. One relationship handles all your infrastructure needs nationwide.</p>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+          <div class="text-blue-400 text-4xl font-bold mb-4">02</div>
+          <h3 class="text-xl font-bold text-white mb-3">Consistent Standards</h3>
+          <p class="text-gray-400 leading-relaxed">Same specifications, same quality, same documentation at every location. Your IT team can troubleshoot any site remotely.</p>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+          <div class="text-blue-400 text-4xl font-bold mb-4">03</div>
+          <h3 class="text-xl font-bold text-white mb-3">Scalable Partnership</h3>
+          <p class="text-gray-400 leading-relaxed">As you grow, we scale with you. No rebuilding vendor relationships every time you enter a new market.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 lg:py-32 bg-navy-900 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
+      <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">Ready to Discuss Your Infrastructure Needs?</h2>
+      <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Let's talk about how Axseter can simplify your multi-location infrastructure.</p>
+      <a href="/contact" class="inline-flex btn-primary text-white text-lg font-semibold px-10 py-5 rounded-xl">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-navy-950 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <span class="text-2xl font-black tracking-tight">AXSETER<sup class="text-xs">™</sup></span>
+          <p class="text-gray-400 mt-4">National low voltage contractor for multi-location enterprises.</p>
+          <p class="text-gray-400 mt-4"><a href="tel:+18772973871" class="hover:text-white transition-colors">1-877-AXSETR1</a></p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Services</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/services/structured-cabling" class="hover:text-white transition-colors">Structured Cabling</a></li>
+            <li><a href="/services/access-control" class="hover:text-white transition-colors">Access Control</a></li>
+            <li><a href="/services/video-surveillance" class="hover:text-white transition-colors">Video Surveillance</a></li>
+            <li><a href="/services/audio-visual" class="hover:text-white transition-colors">Audio Visual</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Industries</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/industries/healthcare" class="hover:text-white transition-colors">Healthcare</a></li>
+            <li><a href="/industries/financial-services" class="hover:text-white transition-colors">Financial Services</a></li>
+            <li><a href="/industries/retail-qsr" class="hover:text-white transition-colors">Retail & QSR</a></li>
+            <li><a href="/industries/engineering" class="hover:text-white transition-colors">Engineering Firms</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Company</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
+            <li><a href="/case-studies" class="hover:text-white transition-colors">Case Studies</a></li>
+            <li><a href="/insights" class="hover:text-white transition-colors">Insights</a></li>
+            <li><a href="/contact" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8">
+        <p class="text-gray-500 text-sm">© 2026 Axseter Systems, LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
