@@ -1,252 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-  <!-- Favicons -->
+  <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="shortcut icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Industries | Healthcare, Financial, Retail Infrastructure | Axseter Systems</title>
-    <meta name="description" content="Industry-specific low-voltage solutions for healthcare, financial services, and retail. Nationwide deployment expertise for high-growth multi-location organizations.">
-    
-    <link rel="canonical" href="https://www.axseter.com/industries/">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="/css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industries | Healthcare, Financial, Retail Infrastructure | Axseter Systems</title>
+  <meta name="description" content="Low voltage infrastructure for healthcare, financial services, and retail enterprises. National installation and support for multi-location organizations.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.axseter.com/industries/">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{'navy':{900:'#102a43',950:'#0a1929'}}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .nav-blur { backdrop-filter: blur(20px); }
+    .btn-primary { background: linear-gradient(135deg, #3B82F6, #2563EB); }
+    .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+  </style>
 </head>
-<body>
-    <header class="header" id="header">
-        <div class="container">
-            <div class="header__inner">
-                <a href="/" class="header__logo"><span class="header__logo-text">AXSETER</span></a>
-                <nav class="nav">
-                    <ul class="nav__list" id="nav-list">
-                        <li class="nav__item">
-                            <a href="/services/" class="nav__link">Services <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
-                            <div class="nav__dropdown">
-                                <a href="/services/structured-cabling/" class="nav__dropdown-link">Structured Cabling</a>
-                                <a href="/services/access-control/" class="nav__dropdown-link">Access Control</a>
-                                <a href="/services/video-surveillance/" class="nav__dropdown-link">Video Surveillance</a>
-                                <a href="/services/audio-visual/" class="nav__dropdown-link">Audio-Visual</a>
-                                <a href="/services/break-fix/" class="nav__dropdown-link">Break-Fix Support</a>
-                                <a href="/services/sound-masking/" class="nav__dropdown-link">Sound Masking</a>
-                            </div>
-                        </li>
-                        <li class="nav__item">
-                            <a href="/industries/" class="nav__link">Industries <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
-                            <div class="nav__dropdown">
-                                <a href="/industries/healthcare/" class="nav__dropdown-link">Healthcare / Medtail</a>
-                                <a href="/industries/financial-services/" class="nav__dropdown-link">Financial Services</a>
-                                <a href="/industries/retail/" class="nav__dropdown-link">Retail</a>
-                            </div>
-                        </li>
-                        <li class="nav__item"><a href="/case-studies/" class="nav__link">Case Studies</a></li>
-                        <li class="nav__item"><a href="/about/" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="/resources/" class="nav__link">Resources</a></li>
-                    </ul>
-                    <a href="/contact/" class="nav__cta">Contact Us</a>
-                    <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-                </nav>
+<body class="bg-white antialiased">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 nav-blur border-b border-gray-200/50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="/" class="flex items-center">
+          <span class="text-3xl font-black tracking-tight text-navy-900" style="font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">AXSETER<sup class="text-sm font-semibold text-gray-400 ml-0.5">™</sup></span>
+        </a>
+        
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="/services" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Services</a>
+          <div class="relative group">
+            <button class="text-gray-600 hover:text-navy-900 font-medium transition-colors flex items-center gap-1">
+              Industries
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              <div class="bg-white rounded-xl shadow-2xl border border-gray-100 py-2 w-52">
+                <a href="/industries/healthcare" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Healthcare</a>
+                <a href="/industries/financial-services" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Financial Services</a>
+                <a href="/industries/retail-qsr" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Retail & QSR</a>
+                <a href="/industries/engineering" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Engineering Firms</a>
+              </div>
             </div>
+          </div>
+          <a href="/case-studies" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Case Studies</a>
+          <a href="/insights" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Insights</a>
         </div>
-    </header>
 
-    <main>
-        <section class="page-header">
-            <div class="container">
-                <div class="page-header__inner">
-                    <nav class="breadcrumbs" aria-label="Breadcrumb">
-                        <a href="/">Home</a>
-                        <span>/</span>
-                        <span class="breadcrumbs__current">Industries</span>
-                    </nav>
-                    <h1>Industries We Serve</h1>
-                    <p>Specialized infrastructure solutions for high-growth verticals. We understand the unique requirements of healthcare, financial services, and retail organizations.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <div class="services-grid" style="grid-template-columns: 1fr;">
-                    
-                    <!-- Healthcare -->
-                    <div class="service-card" style="padding: 3rem;">
-                        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center;">
-                            <div class="image-placeholder" style="aspect-ratio: 1; min-height: 250px;">[ Healthcare Image ]</div>
-                            <div>
-                                <span class="eyebrow">Industry</span>
-                                <h2 style="margin-bottom: 1rem;">Healthcare / Medtail</h2>
-                                <p class="service-card__description" style="font-size: 1rem; margin-bottom: 1.5rem;">HIPAA-compliant infrastructure for rapidly expanding healthcare organizations. From urgent care to physical therapy, dental to primary care—we deploy consistent infrastructure across hundreds of clinical locations.</p>
-                                
-                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
-                                    <div style="padding: 1rem; background: var(--color-gray-100); border-radius: 4px; text-align: center;">
-                                        <div style="font-size: 1.25rem; font-weight: 600; color: var(--color-primary);">200+</div>
-                                        <div style="font-size: 0.75rem; color: var(--color-gray-600);">Clinics Deployed</div>
-                                    </div>
-                                    <div style="padding: 1rem; background: var(--color-gray-100); border-radius: 4px; text-align: center;">
-                                        <div style="font-size: 1.25rem; font-weight: 600; color: var(--color-primary);">HIPAA</div>
-                                        <div style="font-size: 0.75rem; color: var(--color-gray-600);">Compliant</div>
-                                    </div>
-                                    <div style="padding: 1rem; background: var(--color-gray-100); border-radius: 4px; text-align: center;">
-                                        <div style="font-size: 1.25rem; font-weight: 600; color: var(--color-primary);">27</div>
-                                        <div style="font-size: 0.75rem; color: var(--color-gray-600);">States</div>
-                                    </div>
-                                </div>
-                                
-                                <p style="font-size: 0.875rem; margin-bottom: 1rem;"><strong>Segments:</strong> Urgent Care, Physical Therapy, Primary Care, Dental/DSO, Vision Care, Specialty Clinics</p>
-                                <a href="/industries/healthcare/" class="btn btn--primary">Explore Healthcare Solutions</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Financial Services -->
-                    <div class="service-card" style="padding: 3rem;">
-                        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; align-items: center;">
-                            <div>
-                                <span class="eyebrow">Industry</span>
-                                <h2 style="margin-bottom: 1rem;">Financial Services</h2>
-                                <p class="service-card__description" style="font-size: 1rem; margin-bottom: 1.5rem;">Secure, compliant infrastructure for banks, insurance agencies, and wealth management firms. Security-first design with comprehensive documentation for regulatory requirements and internal audits.</p>
-                                
-                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
-                                    <div style="padding: 1rem; background: var(--color-gray-100); border-radius: 4px; text-align: center;">
-                                        <div style="font-size: 1.25rem; font-weight: 600; color: var(--color-primary);">75+</div>
-                                        <div style="font-size: 0.75rem; color: var(--color-gray-600);">Offices Supported</div>
-                                    </div>
-                                    <div style="padding: 1rem; background: var(--color-gray-100); border-radius: 4px; text-align: center;">
-                                        <div style="font-size: 1.25rem; font-weight: 600; color: var(--color-primary);">Security</div>
-                                        <div style="font-size: 0.75rem; color: var(--color-gray-600);">First Design</div>
-                                    </div>
-                                    <div style="padding: 1rem; background: var(--color-gray-100); border-radius: 4px; text-align: center;">
-                                        <div style="font-size: 1.25rem; font-weight: 600; color: var(--color-primary);">100%</div>
-                                        <div style="font-size: 0.75rem; color: var(--color-gray-600);">Documentation</div>
-                                    </div>
-                                </div>
-                                
-                                <p style="font-size: 0.875rem; margin-bottom: 1rem;"><strong>Segments:</strong> Banking, Insurance, Wealth Management, Mortgage & Lending</p>
-                                <a href="/industries/financial-services/" class="btn btn--primary">Explore Financial Solutions</a>
-                            </div>
-                            <div class="image-placeholder" style="aspect-ratio: 1; min-height: 250px;">[ Financial Services Image ]</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Retail -->
-                    <div class="service-card" style="padding: 3rem;">
-                        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center;">
-                            <div class="image-placeholder" style="aspect-ratio: 1; min-height: 250px;">[ Retail Image ]</div>
-                            <div>
-                                <span class="eyebrow">Industry</span>
-                                <h2 style="margin-bottom: 1rem;">Retail</h2>
-                                <p class="service-card__description" style="font-size: 1rem; margin-bottom: 1.5rem;">Consistent technology infrastructure across hundreds of retail locations. From POS connectivity to loss prevention, digital signage to customer WiFi—deployed at the speed retail expansion demands.</p>
-                                
-                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
-                                    <div style="padding: 1rem; background: var(--color-gray-100); border-radius: 4px; text-align: center;">
-                                        <div style="font-size: 1.25rem; font-weight: 600; color: var(--color-primary);">Fast</div>
-                                        <div style="font-size: 0.75rem; color: var(--color-gray-600);">Deployment</div>
-                                    </div>
-                                    <div style="padding: 1rem; background: var(--color-gray-100); border-radius: 4px; text-align: center;">
-                                        <div style="font-size: 1.25rem; font-weight: 600; color: var(--color-primary);">Consistent</div>
-                                        <div style="font-size: 0.75rem; color: var(--color-gray-600);">Quality</div>
-                                    </div>
-                                    <div style="padding: 1rem; background: var(--color-gray-100); border-radius: 4px; text-align: center;">
-                                        <div style="font-size: 1.25rem; font-weight: 600; color: var(--color-primary);">50</div>
-                                        <div style="font-size: 0.75rem; color: var(--color-gray-600);">States</div>
-                                    </div>
-                                </div>
-                                
-                                <p style="font-size: 0.875rem; margin-bottom: 1rem;"><strong>Segments:</strong> Multi-Location Retail, QSR, Franchise Operations, Flagship Stores</p>
-                                <a href="/industries/retail/" class="btn btn--primary">Explore Retail Solutions</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
-
-        <section class="section section--dark">
-            <div class="container">
-                <div class="value-prop__header mb-12">
-                    <span class="eyebrow" style="color: var(--color-accent-light);">Common Requirements</span>
-                    <h2>What High-Growth Organizations Need</h2>
-                </div>
-                <div class="value-prop__grid">
-                    <div class="value-card" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
-                        <div class="value-card__number" style="color: var(--color-accent-light);">01</div>
-                        <h3 class="value-card__title" style="color: white;">Rapid Scale</h3>
-                        <p class="value-card__description" style="color: var(--color-gray-400);">Opening 50-500+ locations per year requires a partner who can match your velocity without sacrificing quality.</p>
-                    </div>
-                    <div class="value-card" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
-                        <div class="value-card__number" style="color: var(--color-accent-light);">02</div>
-                        <h3 class="value-card__title" style="color: white;">Consistency</h3>
-                        <p class="value-card__description" style="color: var(--color-gray-400);">Same standards, same quality, every location. Your operations team shouldn't troubleshoot infrastructure variations.</p>
-                    </div>
-                    <div class="value-card" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
-                        <div class="value-card__number" style="color: var(--color-accent-light);">03</div>
-                        <h3 class="value-card__title" style="color: white;">Accountability</h3>
-                        <p class="value-card__description" style="color: var(--color-gray-400);">One partner responsible for infrastructure everywhere. No finger-pointing between regional vendors.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section">
-            <div class="container">
-                <h2>Don't See Your Industry?</h2>
-                <p>We work with any multi-location organization that values consistent, nationwide infrastructure. Let's talk.</p>
-                <div class="cta-section__buttons">
-                    <a href="/contact/" class="btn btn--primary btn--lg">Start a Conversation</a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Services</h4>
-                    <ul class="footer__links">
-                        <li><a href="/services/structured-cabling/" class="footer__link">Structured Cabling</a></li>
-                        <li><a href="/services/access-control/" class="footer__link">Access Control</a></li>
-                        <li><a href="/services/video-surveillance/" class="footer__link">Video Surveillance</a></li>
-                        <li><a href="/services/audio-visual/" class="footer__link">Audio-Visual</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Industries</h4>
-                    <ul class="footer__links">
-                        <li><a href="/industries/healthcare/" class="footer__link">Healthcare</a></li>
-                        <li><a href="/industries/financial-services/" class="footer__link">Financial Services</a></li>
-                        <li><a href="/industries/retail/" class="footer__link">Retail</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Company</h4>
-                    <ul class="footer__links">
-                        <li><a href="/about/" class="footer__link">About Us</a></li>
-                        <li><a href="/case-studies/" class="footer__link">Case Studies</a></li>
-                        <li><a href="/contact/" class="footer__link">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer__heading">Offices</h4>
-                    <ul class="footer__links">
-                        <li><span class="footer__link">Chicago, IL (HQ)</span></li>
-                        <li><span class="footer__link">Indianapolis, IN</span></li>
-                        <li><span class="footer__link">Atlanta, GA</span></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <span>© 2024 Axseter Systems, LLC. All Rights Reserved.</span>
-                <div class="footer__contact-info">
-                </div>
-            </div>
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="/contact" class="btn-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm">Get Started</a>
         </div>
-    </footer>
+      </div>
+    </div>
+  </nav>
 
-    <script src="/js/main.js"></script>
+  <!-- Hero -->
+  <section class="pt-32 pb-20 bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6">Industries We Serve</h1>
+        <p class="text-xl text-gray-300 leading-relaxed">Low voltage infrastructure expertise for high-growth organizations in healthcare, financial services, and retail.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Grid -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-8">
+        <a href="/industries/healthcare" class="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 card-hover group relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full -mr-16 -mt-16 group-hover:bg-blue-100 transition-colors"></div>
+          <div class="relative">
+            <div class="text-5xl mb-6">🏥</div>
+            <h2 class="text-2xl font-bold text-navy-900 mb-4">Healthcare / Medtail</h2>
+            <p class="text-gray-600 leading-relaxed mb-6">Clinics, urgent care, physical therapy, and medtail facilities. Infrastructure that supports EMR connectivity, telehealth, and patient privacy requirements.</p>
+            <span class="text-blue-600 font-semibold">Learn more →</span>
+          </div>
+        </a>
+
+        <a href="/industries/financial-services" class="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 card-hover group relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full -mr-16 -mt-16 group-hover:bg-emerald-100 transition-colors"></div>
+          <div class="relative">
+            <div class="text-5xl mb-6">🏦</div>
+            <h2 class="text-2xl font-bold text-navy-900 mb-4">Financial Services</h2>
+            <p class="text-gray-600 leading-relaxed mb-6">Bank branches, insurance agencies, and financial offices. Secure infrastructure for transaction processing, customer privacy, and regulatory compliance.</p>
+            <span class="text-blue-600 font-semibold">Learn more →</span>
+          </div>
+        </a>
+
+        <a href="/industries/retail-qsr" class="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 card-hover group relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-full -mr-16 -mt-16 group-hover:bg-amber-100 transition-colors"></div>
+          <div class="relative">
+            <div class="text-5xl mb-6">🏪</div>
+            <h2 class="text-2xl font-bold text-navy-900 mb-4">Retail & QSR</h2>
+            <p class="text-gray-600 leading-relaxed mb-6">Multi-location retail, restaurants, and franchise operations. POS networks, digital signage, loss prevention, and drive-thru systems deployed at scale.</p>
+            <span class="text-blue-600 font-semibold">Learn more →</span>
+          </div>
+        </a>
+
+        <a href="/industries/engineering" class="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 card-hover group relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-full -mr-16 -mt-16 group-hover:bg-purple-100 transition-colors"></div>
+          <div class="relative">
+            <div class="text-5xl mb-6">📐</div>
+            <h2 class="text-2xl font-bold text-navy-900 mb-4">Engineering Firms</h2>
+            <p class="text-gray-600 leading-relaxed mb-6">A&E firms and technology consultants who need a national installation partner for their clients' multi-location rollouts.</p>
+            <span class="text-blue-600 font-semibold">Learn more →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What High-Growth Orgs Need -->
+  <section class="py-24 lg:py-32 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-4xl font-bold text-navy-900 mb-6">What High-Growth Organizations Need</h2>
+        <p class="text-xl text-gray-600">Companies opening 50+ locations per year share common infrastructure challenges—and common requirements for their partners.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <h3 class="text-xl font-bold text-navy-900 mb-4">Speed Without Sacrificing Quality</h3>
+          <p class="text-gray-600 leading-relaxed">When you're opening 100 locations this year, every week of delay costs revenue. You need a partner who can match your velocity without cutting corners.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <h3 class="text-xl font-bold text-navy-900 mb-4">Consistency Across Markets</h3>
+          <p class="text-gray-600 leading-relaxed">Whether it's a location in Seattle or Miami, you need the same infrastructure, the same standards, the same documentation.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <h3 class="text-xl font-bold text-navy-900 mb-4">Simplified Vendor Management</h3>
+          <p class="text-gray-600 leading-relaxed">Managing dozens of regional contractors creates overhead that doesn't scale. One national partner means one relationship to manage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 lg:py-32 bg-navy-900 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
+      <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">Don't See Your Industry?</h2>
+      <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">If you're a multi-location organization with low voltage infrastructure needs, we'd like to learn more about your requirements.</p>
+      <a href="/contact" class="inline-flex btn-primary text-white text-lg font-semibold px-10 py-5 rounded-xl">Start a Conversation</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-navy-950 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <span class="text-2xl font-black tracking-tight">AXSETER<sup class="text-xs">™</sup></span>
+          <p class="text-gray-400 mt-4">National low voltage contractor for multi-location enterprises.</p>
+          <p class="text-gray-400 mt-4"><a href="tel:+18772973871" class="hover:text-white transition-colors">1-877-AXSETR1</a></p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Services</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/services/structured-cabling" class="hover:text-white transition-colors">Structured Cabling</a></li>
+            <li><a href="/services/access-control" class="hover:text-white transition-colors">Access Control</a></li>
+            <li><a href="/services/video-surveillance" class="hover:text-white transition-colors">Video Surveillance</a></li>
+            <li><a href="/services/audio-visual" class="hover:text-white transition-colors">Audio Visual</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Industries</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/industries/healthcare" class="hover:text-white transition-colors">Healthcare</a></li>
+            <li><a href="/industries/financial-services" class="hover:text-white transition-colors">Financial Services</a></li>
+            <li><a href="/industries/retail-qsr" class="hover:text-white transition-colors">Retail & QSR</a></li>
+            <li><a href="/industries/engineering" class="hover:text-white transition-colors">Engineering Firms</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Company</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
+            <li><a href="/case-studies" class="hover:text-white transition-colors">Case Studies</a></li>
+            <li><a href="/insights" class="hover:text-white transition-colors">Insights</a></li>
+            <li><a href="/contact" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8">
+        <p class="text-gray-500 text-sm">© 2026 Axseter Systems, LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
