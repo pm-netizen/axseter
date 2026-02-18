@@ -5,183 +5,308 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>City Photo Finder</title>
 <style>
-body{font-family:system-ui;background:#111;color:#fff;padding:2rem}
-h1{text-align:center;margin-bottom:1rem}
-.status{text-align:center;margin:1rem 0;font-size:1.1rem}
-.city{margin-bottom:2rem;border:1px solid #333;border-radius:8px;overflow:hidden}
-.city-name{background:#1e3a5f;padding:0.75rem 1rem;font-weight:bold}
-.candidates{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:4px;padding:4px}
-.cand{position:relative;aspect-ratio:16/9;background:#222;cursor:pointer;border:3px solid transparent}
-.cand.selected{border-color:#16a34a}
-.cand img{width:100%;height:100%;object-fit:cover}
-.cand .info{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.8);padding:4px 8px;font-size:10px}
-.cand.broken{opacity:0.3}
-#export-btn{display:block;margin:2rem auto;padding:1rem 3rem;font-size:1.2rem;background:#2563eb;color:white;border:none;border-radius:8px;cursor:pointer}
+body{font-family:system-ui;background:#111;color:#fff;padding:1rem;max-width:1400px;margin:0 auto}
+h1{text-align:center}
+.status{text-align:center;margin:0.5rem 0;font-size:1rem}
+.city{margin-bottom:1.5rem;border:1px solid #333;border-radius:8px;overflow:hidden}
+.city-name{background:#1e3a5f;padding:0.5rem 1rem;font-weight:bold;display:flex;justify-content:space-between}
+.city-name.done{background:#166534}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:4px;padding:4px}
+.p{position:relative;aspect-ratio:16/9;background:#222;cursor:pointer;border:3px solid transparent}
+.p.pick-hero{border-color:#ef4444}.p.pick-street{border-color:#3b82f6}.p.pick-dusk{border-color:#a855f7}
+.p img{width:100%;height:100%;object-fit:cover}
+.p .lbl{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.8);padding:3px 6px;font-size:10px;word-break:break-all}
+.p.fail{opacity:0.15}
+.legend{text-align:center;margin:0.5rem 0;font-size:0.9rem}
+.legend span{margin:0 1rem;padding:2px 8px;border-radius:4px}
+.legend .h{border:2px solid #ef4444}.legend .s{border:2px solid #3b82f6}.legend .d{border:2px solid #a855f7}
+button{margin:0.5rem;padding:0.5rem 1.5rem;border:none;border-radius:6px;cursor:pointer;color:white;font-size:0.9rem}
+.export{background:#16a34a}.export:hover{background:#15803d}
 </style>
 </head>
 <body>
 <h1>🔍 City Photo Finder</h1>
-<p class="status">For each city, click the best photo for hero/street/dusk. Then export.</p>
-<button id="export-btn" onclick="exportResults()">📋 Export Selected Photo IDs</button>
-<div id="grid"></div>
+<p class="legend">Click to assign: <span class="h">🔴 Hero</span> <span class="s">🔵 Street</span> <span class="d">🟣 Dusk</span></p>
+<p class="status" id="status">Testing photo candidates...</p>
+<button class="export" onclick="doExport()">⬇️ Download Selections</button>
 
+<div id="grid"></div>
 <script>
-// Cities that need photos + known-good candidates from web research
-// Format: city -> array of Unsplash photo slugs to test
-const BROKEN = {
-  "atlanta": {needs:["hero","dusk"], keep:{street:"photo-1555396273-367ea4eb4db5"}},
-  "charlotte": {needs:["hero","street","dusk"], keep:{}},
-  "columbus": {needs:["hero","street","dusk"], keep:{}},
-  "dallas-fort-worth": {needs:["hero","dusk"], keep:{street:"photo-1570616969692-54d6ba3d0397"}},
-  "houston": {needs:["street"], keep:{hero:"photo-1530089711124-9ca31fb9e863",dusk:"photo-1530089711124-9ca31fb9e863"}},
-  "indianapolis": {needs:["hero","street","dusk"], keep:{}},
-  "jacksonville": {needs:["hero","street","dusk"], keep:{}},
-  "kansas-city": {needs:["hero","street","dusk"], keep:{}},
-  "nashville": {needs:["hero"], keep:{street:"photo-1587162146766-e06b1189b907",dusk:"photo-1543726969-a1da85a6d334"}},
-  "philadelphia": {needs:["street"], keep:{hero:"photo-1569761316261-9a8696fa2ca3",dusk:"photo-1569761316261-9a8696fa2ca3"}},
-  "phoenix": {needs:["hero"], keep:{street:"photo-1469854523086-cc02fe5d8800",dusk:"photo-1474044159687-1ee9f3a51722"}},
-  "portland": {needs:["hero","street","dusk"], keep:{}},
-  "salt-lake-city": {needs:["hero","street","dusk"], keep:{}},
-  "san-antonio": {needs:["hero","street","dusk"], keep:{}},
-  "san-diego": {needs:["hero","dusk"], keep:{street:"photo-1519046904884-53103b34b206"}},
-  "san-francisco": {needs:["dusk"], keep:{hero:"photo-1521464302861-ce943915d1c3",street:"photo-1501594907352-04cda38ebc29"}},
-  "san-juan": {needs:["hero","street","dusk"], keep:{}},
-  "seattle": {needs:["street"], keep:{hero:"photo-1502175353174-a7a70e73b362",dusk:"photo-1516912481808-3406841bd33c"}},
-  "tampa": {needs:["hero","street","dusk"], keep:{}},
-  "toronto": {needs:["hero","street","dusk"], keep:{}},
-  "vancouver": {needs:["hero","street","dusk"], keep:{}}
+// Candidate photo IDs to test for each broken city
+// Mix of photo-TIMESTAMP and slug formats - browser will verify which load
+const CANDIDATES = {
+"atlanta": [
+  "photo-1555396273-367ea4eb4db5",
+  "photo-1544547105-3b5e731a3903",
+  "photo-1575393062400-640d1fae3e53",
+  "photo-1570977834481-88d60ded1088",
+  "photo-1592492152545-9695d3f473f4",
+  "photo-1590521682819-c3192ea9cf5e"
+],
+"charlotte": [
+  "photo-1605120613393-89d8bd0de492",
+  "photo-1612831660296-0e4f42bf1bee",
+  "photo-1587009110301-c2b2baee0484",
+  "photo-1606735585379-ef0f291a7bab",
+  "photo-1573074617613-fc8ef27eaa2f",
+  "photo-1600596542815-ffad4c1539a9"
+],
+"columbus": [
+  "photo-1590076082550-9aabb3df6a98",
+  "photo-1584967918940-a7d51b064268",
+  "photo-1559827260-dc66d52bef19",
+  "photo-1599789197514-47270cd526b4",
+  "photo-1551632436-cbf8dd35adfa",
+  "photo-1600596542815-ffad4c1539a9"
+],
+"dallas-fort-worth": [
+  "photo-1570616969692-54d6ba3d0397",
+  "photo-1564352969278-efbe39e59be4",
+  "photo-1563166517-7bc04de94bf2",
+  "photo-1531218150217-54595bc2b934",
+  "photo-1557804506-669a67965ba0",
+  "photo-1600585154340-be6161a56a0c"
+],
+"houston": [
+  "photo-1530089711124-9ca31fb9e863",
+  "photo-1598277244001-6b6acb24f124",
+  "photo-1568515045052-f9a854d70bfd",
+  "photo-1558285915-44ba94361e77",
+  "photo-1597092345070-f4fe03c3aadc",
+  "photo-1600585154340-be6161a56a0c"
+],
+"indianapolis": [
+  "photo-1609342122563-a43ac8917a3a",
+  "photo-1578662996442-48f60103fc96",
+  "photo-1604093882750-3ed498f3178b",
+  "photo-1599414036481-c35e68a3f494",
+  "photo-1568515045052-f9a854d70bfd",
+  "photo-1486406146926-c627a92ad1ab"
+],
+"jacksonville": [
+  "photo-1592663527359-cf6642f54cff",
+  "photo-1600210492486-724fe5c67fb0",
+  "photo-1597073642928-48c1d876b4db",
+  "photo-1600585154340-be6161a56a0c",
+  "photo-1486406146926-c627a92ad1ab",
+  "photo-1449824913935-59a10b8d2000"
+],
+"kansas-city": [
+  "photo-1600210491892-03d54c0aaf87",
+  "photo-1598543112516-72e1dea74b73",
+  "photo-1563254223-f49a42e9afb4",
+  "photo-1564352969278-efbe39e59be4",
+  "photo-1449824913935-59a10b8d2000",
+  "photo-1486406146926-c627a92ad1ab"
+],
+"nashville": [
+  "photo-1587162146766-e06b1189b907",
+  "photo-1543726969-a1da85a6d334",
+  "photo-1584829703666-43f48d650175",
+  "photo-1551632436-cbf8dd35adfa",
+  "photo-1541535881962-3bb380daae87",
+  "photo-1574236170878-3954e tried"
+],
+"philadelphia": [
+  "photo-1569761316261-9a8696fa2ca3",
+  "photo-1569761316261-9a8696fa2ca3",
+  "photo-1544547105-3b5e731a3903",
+  "photo-1599789197514-47270cd526b4",
+  "photo-1486406146926-c627a92ad1ab",
+  "photo-1555396273-367ea4eb4db5"
+],
+"phoenix": [
+  "photo-1474044159687-1ee9f3a51722",
+  "photo-1469854523086-cc02fe5d8800",
+  "photo-1506905925346-21bda4d32df4",
+  "photo-1512495039889-52a3b799c9bc",
+  "photo-1605833556294-ea5c7a74f57d",
+  "photo-1449824913935-59a10b8d2000"
+],
+"portland": [
+  "photo-1541535881962-3bb380daae87",
+  "photo-1584829703666-43f48d650175",
+  "photo-1551632436-cbf8dd35adfa",
+  "photo-1562095241-8c6714fd4178",
+  "photo-1600585154340-be6161a56a0c",
+  "photo-1486406146926-c627a92ad1ab"
+],
+"salt-lake-city": [
+  "photo-1544547105-3b5e731a3903",
+  "photo-1600585154340-be6161a56a0c",
+  "photo-1486406146926-c627a92ad1ab",
+  "photo-1506905925346-21bda4d32df4",
+  "photo-1449824913935-59a10b8d2000",
+  "photo-1464822759023-fed622ff2c3b"
+],
+"san-antonio": [
+  "photo-1564352969278-efbe39e59be4",
+  "photo-1557804506-669a67965ba0",
+  "photo-1600585154340-be6161a56a0c",
+  "photo-1449824913935-59a10b8d2000",
+  "photo-1486406146926-c627a92ad1ab",
+  "photo-1531218150217-54595bc2b934"
+],
+"san-diego": [
+  "photo-1519046904884-53103b34b206",
+  "photo-1517483000871-1dbf64a6e1c6",
+  "photo-1605833556294-ea5c7a74f57d",
+  "photo-1512495039889-52a3b799c9bc",
+  "photo-1449824913935-59a10b8d2000",
+  "photo-1486406146926-c627a92ad1ab"
+],
+"san-francisco": [
+  "photo-1521464302861-ce943915d1c3",
+  "photo-1501594907352-04cda38ebc29",
+  "photo-1449824913935-59a10b8d2000",
+  "photo-1534050359320-02900022571e",
+  "photo-1541464522988-31b420f688b4",
+  "photo-1547333590-47fae5f58d52"
+],
+"san-juan": [
+  "photo-1580139600009-36132ee10bb1",
+  "photo-1551632436-cbf8dd35adfa",
+  "photo-1449824913935-59a10b8d2000",
+  "photo-1486406146926-c627a92ad1ab",
+  "photo-1512495039889-52a3b799c9bc",
+  "photo-1562095241-8c6714fd4178"
+],
+"seattle": [
+  "photo-1502175353174-a7a70e73b362",
+  "photo-1516912481808-3406841bd33c",
+  "photo-1551632436-cbf8dd35adfa",
+  "photo-1584829703666-43f48d650175",
+  "photo-1541535881962-3bb380daae87",
+  "photo-1562095241-8c6714fd4178"
+],
+"tampa": [
+  "photo-1551632436-cbf8dd35adfa",
+  "photo-1562095241-8c6714fd4178",
+  "photo-1449824913935-59a10b8d2000",
+  "photo-1486406146926-c627a92ad1ab",
+  "photo-1600585154340-be6161a56a0c",
+  "photo-1512495039889-52a3b799c9bc"
+],
+"toronto": [
+  "photo-1507003211169-0a1dd7228f2d",
+  "photo-1514924013411-cbf25faa35bb",
+  "photo-1551632436-cbf8dd35adfa",
+  "photo-1486406146926-c627a92ad1ab",
+  "photo-1449824913935-59a10b8d2000",
+  "photo-1512495039889-52a3b799c9bc"
+],
+"vancouver": [
+  "photo-1507003211169-0a1dd7228f2d",
+  "photo-1562095241-8c6714fd4178",
+  "photo-1551632436-cbf8dd35adfa",
+  "photo-1486406146926-c627a92ad1ab",
+  "photo-1464822759023-fed622ff2c3b",
+  "photo-1449824913935-59a10b8d2000"
+]
 };
 
-// Unsplash API - using demo access key (rate limited but works for this)
-const ACCESS_KEY = 'ab3411e4ac868c2646c0ed488dfd919ef612b04c264f3571c16571d0e996571';
-// Actually, let's use a different approach - query their public napi endpoint
+// What each city needs
+const NEEDS = {
+  "atlanta":["hero","dusk"],"charlotte":["hero","street","dusk"],"columbus":["hero","street","dusk"],
+  "dallas-fort-worth":["hero","dusk"],"houston":["street"],"indianapolis":["hero","street","dusk"],
+  "jacksonville":["hero","street","dusk"],"kansas-city":["hero","street","dusk"],
+  "nashville":["hero"],"philadelphia":["street"],"phoenix":["hero"],
+  "portland":["hero","street","dusk"],"salt-lake-city":["hero","street","dusk"],
+  "san-antonio":["hero","street","dusk"],"san-diego":["hero","dusk"],
+  "san-francisco":["dusk"],"san-juan":["hero","street","dusk"],
+  "seattle":["street"],"tampa":["hero","street","dusk"],
+  "toronto":["hero","street","dusk"],"vancouver":["hero","street","dusk"]
+};
+
+const TYPES = ['hero','street','dusk'];
+const COLORS = {hero:'#ef4444',street:'#3b82f6',dusk:'#a855f7'};
+const selections = {};
+let totalTested = 0;
+const totalPhotos = Object.values(CANDIDATES).reduce((a,b)=>a+b.length,0);
 
 const grid = document.getElementById('grid');
-const selections = {};
-let processed = 0;
 
-async function searchCity(city) {
-  const searchTerm = city.replace(/-/g,' ') + ' city skyline';
-  try {
-    // Use Unsplash's public API endpoint
-    const resp = await fetch(`https://unsplash.com/napi/search/photos?query=${encodeURIComponent(searchTerm)}&per_page=12&orientation=landscape`);
-    if (!resp.ok) throw new Error('API error');
-    const data = await resp.json();
-    return data.results.map(r => ({
-      id: r.id,
-      url: r.urls.regular,
-      thumb: r.urls.small,
-      rawUrl: r.urls.raw,
-      desc: r.description || r.alt_description || city,
-      photographer: r.user.name
-    }));
-  } catch(e) {
-    console.error(`Failed for ${city}:`, e);
-    return [];
-  }
-}
-
-async function processAll() {
-  for (const [city, info] of Object.entries(BROKEN)) {
-    const div = document.createElement('div');
-    div.className = 'city';
-    div.innerHTML = `<div class="city-name">${city} — needs: ${info.needs.join(', ')}</div><div class="candidates" id="cands-${city}">Searching...</div>`;
-    grid.appendChild(div);
-    
-    const results = await searchCity(city);
-    const candsDiv = div.querySelector('.candidates');
-    
-    if (results.length === 0) {
-      candsDiv.textContent = '❌ No results found';
-      continue;
-    }
-    
-    candsDiv.innerHTML = '';
-    selections[city] = {needs: info.needs, keep: info.keep, picks: {}};
-    
-    results.forEach((r, i) => {
-      const slot = document.createElement('div');
-      slot.className = 'cand';
-      slot.innerHTML = `<img src="${r.thumb}" loading="lazy"><div class="info">${r.id} — ${r.photographer}</div>`;
-      
-      // Extract the photo-XXXX format from rawUrl
-      const match = r.rawUrl.match(/photo-[0-9]+-[a-f0-9]+/);
-      const photoId = match ? match[0] : r.id;
-      slot.dataset.photoId = photoId;
-      slot.dataset.rawUrl = r.rawUrl;
-      slot.dataset.city = city;
-      
-      slot.onclick = () => {
-        // Cycle through: none -> hero -> street -> dusk -> none
-        const types = info.needs;
-        const current = slot.dataset.selected;
-        const currentIdx = types.indexOf(current);
-        const nextIdx = currentIdx + 1;
-        
-        if (nextIdx >= types.length) {
-          slot.dataset.selected = '';
-          slot.classList.remove('selected');
-          slot.querySelector('.info').textContent = `${photoId}`;
-          delete selections[city].picks[current];
-        } else {
-          // Remove previous selection of this type
-          const prevType = types[nextIdx];
-          document.querySelectorAll(`[data-city="${city}"][data-selected="${prevType}"]`).forEach(el => {
-            el.dataset.selected = '';
-            el.classList.remove('selected');
-            el.querySelector('.info').textContent = el.dataset.photoId;
-          });
-          
-          if (current) delete selections[city].picks[current];
-          slot.dataset.selected = prevType;
-          slot.classList.add('selected');
-          slot.querySelector('.info').textContent = `✅ ${prevType.toUpperCase()}: ${photoId}`;
-          selections[city].picks[prevType] = photoId;
-        }
-      };
-      
-      candsDiv.appendChild(slot);
-    });
-    
-    processed++;
-    document.querySelector('.status').textContent = `Processed ${processed}/${Object.keys(BROKEN).length} cities`;
-    
-    // Small delay to avoid rate limiting
-    await new Promise(r => setTimeout(r, 500));
-  }
-  document.querySelector('.status').textContent = `✅ Done! Click photos to assign as hero/street/dusk, then export.`;
-}
-
-function exportResults() {
-  const output = {};
-  for (const [city, info] of Object.entries(selections)) {
-    output[city] = {...info.keep};
-    for (const [type, id] of Object.entries(info.picks)) {
-      output[city][type] = id;
-    }
-  }
+Object.entries(CANDIDATES).sort().forEach(([city, ids]) => {
+  selections[city] = {};
+  const needs = NEEDS[city];
+  const div = document.createElement('div');
+  div.className = 'city';
+  div.id = 'city-' + city;
+  div.innerHTML = `<div class="city-name" id="cn-${city}"><span>${city} — needs: ${needs.join(', ')}</span><span id="ct-${city}"></span></div><div class="grid" id="g-${city}"></div>`;
+  const g = div.querySelector('.grid');
   
-  // Also just get the raw URLs for each city's candidates
-  const rawData = {};
-  for (const [city, info] of Object.entries(BROKEN)) {
-    const cands = document.querySelectorAll(`[data-city="${city}"]`);
-    rawData[city] = {
-      needs: info.needs,
-      candidates: Array.from(cands).map(c => ({
-        photoId: c.dataset.photoId,
-        rawUrl: c.dataset.rawUrl
-      }))
+  ids.forEach(id => {
+    const slot = document.createElement('div');
+    slot.className = 'p';
+    slot.dataset.id = id;
+    slot.dataset.city = city;
+    const img = new Image();
+    img.src = `https://images.unsplash.com/${id}?w=400&h=225&fit=crop&q=60`;
+    img.onload = () => { totalTested++; updateStatus(); };
+    img.onerror = () => { slot.classList.add('fail'); totalTested++; updateStatus(); };
+    slot.appendChild(img);
+    slot.innerHTML += `<div class="lbl">${id}</div>`;
+    
+    slot.onclick = () => {
+      if (slot.classList.contains('fail')) return;
+      // Cycle assignment
+      const cur = slot.dataset.assign || '';
+      const idx = needs.indexOf(cur);
+      const next = idx < needs.length - 1 ? needs[idx + 1] : '';
+      
+      // Clear previous of same type
+      if (next) {
+        document.querySelectorAll(`[data-city="${city}"].pick-${next}`).forEach(el => {
+          el.classList.remove(`pick-${next}`);
+          if (!el.dataset.assign || el.dataset.assign === next) el.dataset.assign = '';
+          el.querySelector('.lbl').textContent = el.dataset.id;
+          delete selections[city][next];
+        });
+      }
+      
+      // Remove current assignment
+      TYPES.forEach(t => slot.classList.remove(`pick-${t}`));
+      
+      if (next) {
+        slot.dataset.assign = next;
+        slot.classList.add(`pick-${next}`);
+        slot.querySelector('.lbl').textContent = `✅ ${next.toUpperCase()}: ${id}`;
+        selections[city][next] = id;
+      } else {
+        slot.dataset.assign = '';
+        slot.querySelector('.lbl').textContent = id;
+        if (cur) delete selections[city][cur];
+      }
+      updateCityStatus(city);
     };
+    g.appendChild(slot);
+  });
+  grid.appendChild(div);
+});
+
+function updateStatus() {
+  document.getElementById('status').textContent = `Testing: ${totalTested}/${totalPhotos}`;
+}
+function updateCityStatus(city) {
+  const needs = NEEDS[city];
+  const filled = needs.filter(n => selections[city][n]);
+  document.getElementById('ct-' + city).textContent = `${filled.length}/${needs.length}`;
+  if (filled.length === needs.length) {
+    document.getElementById('cn-' + city).classList.add('done');
   }
-  
-  const blob = new Blob([JSON.stringify({selections: output, rawData}, null, 2)], {type:'application/json'});
+}
+
+function doExport() {
+  const out = {};
+  Object.entries(selections).forEach(([city, picks]) => {
+    if (Object.keys(picks).length > 0) out[city] = picks;
+  });
+  const blob = new Blob([JSON.stringify(out, null, 2)], {type:'application/json'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'photo-selections.json';
+  a.download = 'photo-picks.json';
   a.click();
 }
-
-processAll();
 </script>
 </body>
 </html>
