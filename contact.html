@@ -225,101 +225,115 @@
     </div>
     
     <!-- Right Panel - Form -->
-    <div class="flex-1 bg-white flex items-center justify-center p-8 lg:px-20 lg:py-16">
-      <div class="w-full max-w-lg">
+    <div class="flex-1 bg-gray-50 flex items-start justify-center p-8 lg:px-20 lg:py-24 overflow-y-auto">
+      <div class="w-full max-w-md">
         
         <!-- Mobile Header -->
         <div class="lg:hidden mb-10">
           <h1 class="text-3xl font-bold text-navy-900 mb-3">Let's build your infrastructure.</h1>
           <p class="text-gray-500">Tell us about your expansion plans.</p>
         </div>
-        
-        <!-- Form Header (Desktop) -->
-        <div class="hidden lg:block mb-10">
-          <h2 class="text-2xl font-bold text-navy-900 mb-1">Request a consultation</h2>
-          <p class="text-gray-400 text-sm">Fields marked with * are required</p>
-        </div>
 
-        <form id="contact-form" action="https://formspree.io/f/xeooqpkz" method="POST" class="space-y-8" novalidate>
+        <form id="contact-form" action="https://formspree.io/f/xeooqpkz" method="POST" novalidate>
           
           <!-- Success Message (hidden by default) -->
-          <div id="form-success" class="hidden bg-emerald-50 border border-emerald-200 rounded-xl p-6 text-center">
-            <svg class="w-12 h-12 text-emerald-500 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            <h3 class="text-lg font-bold text-navy-900 mb-1">Request received</h3>
-            <p class="text-gray-600">We'll be in touch within one business day.</p>
+          <div id="form-success" class="hidden bg-white border border-emerald-200 rounded-2xl p-8 text-center shadow-sm">
+            <div class="w-14 h-14 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-7 h-7 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-navy-900 mb-2">We've received your request</h3>
+            <p class="text-gray-500 text-sm">Expect a response within one business day.</p>
           </div>
 
           <!-- Error Message (hidden by default) -->
-          <div id="form-error" class="hidden bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-700">
-            Something went wrong. Please try again or email us directly at <a href="mailto:info@axseter.com" class="underline font-medium">info@axseter.com</a>.
+          <div id="form-error" class="hidden bg-red-50 border border-red-100 rounded-xl p-4 text-sm text-red-600 mb-6">
+            Something went wrong. Please try again or email <a href="mailto:info@axseter.com" class="underline font-medium">info@axseter.com</a>.
           </div>
 
-          <div id="form-fields">
-          <div class="grid sm:grid-cols-2 gap-6">
-            <div>
-              <label for="field-name" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-2">Full Name <span class="text-red-400">*</span></label>
-              <input id="field-name" type="text" name="name" required placeholder="Jane Smith" 
-                class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-navy-900 text-sm placeholder-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent hover:border-gray-300">
+          <div id="form-fields" class="bg-white rounded-2xl shadow-sm border border-gray-200/60 p-8 lg:p-10">
+            
+            <div class="mb-8">
+              <h2 class="text-lg font-bold text-navy-900">Request a consultation</h2>
+              <p class="text-gray-400 text-sm mt-1">We'll scope your project within one business day.</p>
             </div>
-            <div>
-              <label for="field-email" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-2">Work Email <span class="text-red-400">*</span></label>
-              <input id="field-email" type="email" name="email" required placeholder="jane@company.com" 
-                class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-navy-900 text-sm placeholder-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent hover:border-gray-300">
+
+            <div class="space-y-5">
+              
+              <!-- Name + Email -->
+              <div class="grid grid-cols-2 gap-4">
+                <div class="relative">
+                  <input id="field-name" type="text" name="name" required placeholder=" "
+                    class="peer w-full px-0 py-3 bg-transparent border-0 border-b-2 border-gray-200 text-navy-900 text-[15px] placeholder-transparent transition-colors focus:outline-none focus:border-navy-900">
+                  <label for="field-name" class="absolute left-0 top-3 text-gray-400 text-[15px] transition-all pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-[15px] peer-focus:top-[-8px] peer-focus:text-[11px] peer-focus:text-navy-900 peer-focus:font-medium peer-[:not(:placeholder-shown)]:top-[-8px] peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-gray-400 peer-[:not(:placeholder-shown)]:font-medium">Full name *</label>
+                </div>
+                <div class="relative">
+                  <input id="field-email" type="email" name="email" required placeholder=" "
+                    class="peer w-full px-0 py-3 bg-transparent border-0 border-b-2 border-gray-200 text-navy-900 text-[15px] placeholder-transparent transition-colors focus:outline-none focus:border-navy-900">
+                  <label for="field-email" class="absolute left-0 top-3 text-gray-400 text-[15px] transition-all pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-[15px] peer-focus:top-[-8px] peer-focus:text-[11px] peer-focus:text-navy-900 peer-focus:font-medium peer-[:not(:placeholder-shown)]:top-[-8px] peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-gray-400 peer-[:not(:placeholder-shown)]:font-medium">Work email *</label>
+                </div>
+              </div>
+
+              <!-- Company + Phone -->
+              <div class="grid grid-cols-2 gap-4">
+                <div class="relative">
+                  <input id="field-company" type="text" name="company" required placeholder=" "
+                    class="peer w-full px-0 py-3 bg-transparent border-0 border-b-2 border-gray-200 text-navy-900 text-[15px] placeholder-transparent transition-colors focus:outline-none focus:border-navy-900">
+                  <label for="field-company" class="absolute left-0 top-3 text-gray-400 text-[15px] transition-all pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-[15px] peer-focus:top-[-8px] peer-focus:text-[11px] peer-focus:text-navy-900 peer-focus:font-medium peer-[:not(:placeholder-shown)]:top-[-8px] peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-gray-400 peer-[:not(:placeholder-shown)]:font-medium">Company *</label>
+                </div>
+                <div class="relative">
+                  <input id="field-phone" type="tel" name="phone" placeholder=" "
+                    class="peer w-full px-0 py-3 bg-transparent border-0 border-b-2 border-gray-200 text-navy-900 text-[15px] placeholder-transparent transition-colors focus:outline-none focus:border-navy-900">
+                  <label for="field-phone" class="absolute left-0 top-3 text-gray-400 text-[15px] transition-all pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-[15px] peer-focus:top-[-8px] peer-focus:text-[11px] peer-focus:text-navy-900 peer-focus:font-medium peer-[:not(:placeholder-shown)]:top-[-8px] peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-gray-400 peer-[:not(:placeholder-shown)]:font-medium">Phone</label>
+                </div>
+              </div>
+
+              <!-- Industry + Locations -->
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="field-industry" class="block text-[11px] font-medium text-gray-400 mb-1.5">Industry</label>
+                  <select id="field-industry" name="industry" 
+                    class="w-full px-0 py-2.5 bg-transparent border-0 border-b-2 border-gray-200 text-navy-900 text-[15px] transition-colors focus:outline-none focus:border-navy-900 cursor-pointer">
+                    <option value="">Select</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="financial">Financial Services</option>
+                    <option value="retail">Retail & QSR</option>
+                    <option value="engineering">Engineering</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="field-locations" class="block text-[11px] font-medium text-gray-400 mb-1.5">Locations</label>
+                  <select id="field-locations" name="locations"
+                    class="w-full px-0 py-2.5 bg-transparent border-0 border-b-2 border-gray-200 text-navy-900 text-[15px] transition-colors focus:outline-none focus:border-navy-900 cursor-pointer">
+                    <option value="">Select</option>
+                    <option value="1-10">1–10</option>
+                    <option value="11-50">11–50</option>
+                    <option value="51-200">51–200</option>
+                    <option value="200+">200+</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Message -->
+              <div class="relative pt-2">
+                <textarea id="field-message" name="message" required rows="3" placeholder=" "
+                  class="peer w-full px-0 py-3 bg-transparent border-0 border-b-2 border-gray-200 text-navy-900 text-[15px] placeholder-transparent transition-colors resize-none focus:outline-none focus:border-navy-900"></textarea>
+                <label for="field-message" class="absolute left-0 top-5 text-gray-400 text-[15px] transition-all pointer-events-none peer-placeholder-shown:top-5 peer-placeholder-shown:text-[15px] peer-focus:top-[-2px] peer-focus:text-[11px] peer-focus:text-navy-900 peer-focus:font-medium peer-[:not(:placeholder-shown)]:top-[-2px] peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-gray-400 peer-[:not(:placeholder-shown)]:font-medium">Tell us about your project *</label>
+              </div>
+
             </div>
-          </div>
-          
-          <div class="grid sm:grid-cols-2 gap-6">
-            <div>
-              <label for="field-company" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-2">Company <span class="text-red-400">*</span></label>
-              <input id="field-company" type="text" name="company" required placeholder="Acme Corp" 
-                class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-navy-900 text-sm placeholder-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent hover:border-gray-300">
-            </div>
-            <div>
-              <label for="field-phone" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-2">Phone</label>
-              <input id="field-phone" type="tel" name="phone" placeholder="(312) 555-0100" 
-                class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-navy-900 text-sm placeholder-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent hover:border-gray-300">
-            </div>
-          </div>
-          
-          <div class="grid sm:grid-cols-2 gap-6">
-            <div>
-              <label for="field-industry" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-2">Industry</label>
-              <select id="field-industry" name="industry" class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-navy-900 text-sm transition-all pr-10 focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent hover:border-gray-300">
-                <option value="">Select industry</option>
-                <option value="healthcare">Healthcare</option>
-                <option value="financial">Financial Services</option>
-                <option value="retail">Retail & QSR</option>
-                <option value="engineering">Engineering</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div>
-              <label for="field-locations" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-2">Number of Locations</label>
-              <select id="field-locations" name="locations" class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-navy-900 text-sm transition-all pr-10 focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent hover:border-gray-300">
-                <option value="">Select range</option>
-                <option value="1-10">1–10</option>
-                <option value="11-50">11–50</option>
-                <option value="51-200">51–200</option>
-                <option value="200+">200+</option>
-              </select>
-            </div>
-          </div>
-          
-          <div>
-            <label for="field-message" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-2">Tell us about your project <span class="text-red-400">*</span></label>
-            <textarea id="field-message" name="message" required rows="3" placeholder="Expansion plans, timeline, infrastructure challenges..."
-              class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-navy-900 text-sm placeholder-gray-300 transition-all resize-none focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent hover:border-gray-300"></textarea>
-          </div>
-          
-          <button id="submit-btn" type="submit" class="w-full mt-2 bg-navy-900 hover:bg-navy-800 text-white font-semibold py-3.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-navy-500 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed transition-all">
-            <span id="submit-text">Submit Request</span>
-            <span id="submit-loading" class="hidden items-center justify-center gap-2">
-              <svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
-              Sending...
-            </span>
-          </button>
-          
-          <p class="text-center text-[11px] text-gray-300 mt-2">We typically respond within one business day.</p>
+
+            <!-- Submit -->
+            <button id="submit-btn" type="submit" class="w-full mt-8 bg-navy-900 hover:bg-navy-800 text-white font-semibold py-3.5 rounded-lg text-sm tracking-wide focus:outline-none focus:ring-2 focus:ring-navy-500 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed transition-all group">
+              <span id="submit-text" class="flex items-center justify-center gap-2">
+                Submit Request
+                <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </span>
+              <span id="submit-loading" class="hidden items-center justify-center gap-2">
+                <svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+                Sending...
+              </span>
+            </button>
           </div>
           
         </form>
@@ -337,14 +351,13 @@
         </div>
 
         <!-- Trusted By -->
-        <div class="mt-10 pt-8 border-t border-gray-100">
-          <p class="text-[10px] font-semibold text-gray-300 uppercase tracking-widest mb-4 text-center">Trusted by</p>
-          <div class="flex items-center justify-center gap-7">
-            <img src="/logos/gallagher.png" alt="Gallagher" class="h-6 w-auto object-contain opacity-30 grayscale">
-            <img src="/logos/oak-street-health.png" alt="Oak Street Health" class="h-5 w-auto object-contain opacity-30 grayscale">
-            <img src="/logos/cvs.png" alt="CVS Health" class="h-6 w-auto object-contain opacity-30 grayscale">
-            <img src="/logos/ati-physical-therapy.png" alt="ATI Physical Therapy" class="h-4 w-auto object-contain opacity-30 grayscale">
-            <img src="/logos/soar-autism.png" alt="Soar Autism Center" class="h-7 w-auto object-contain opacity-30 grayscale">
+        <div class="mt-8 text-center">
+          <div class="flex items-center justify-center gap-6 opacity-25 grayscale">
+            <img src="/logos/gallagher.png" alt="Gallagher" class="h-5 w-auto object-contain">
+            <img src="/logos/oak-street-health.png" alt="Oak Street Health" class="h-4 w-auto object-contain">
+            <img src="/logos/cvs.png" alt="CVS Health" class="h-5 w-auto object-contain">
+            <img src="/logos/ati-physical-therapy.png" alt="ATI Physical Therapy" class="h-3.5 w-auto object-contain">
+            <img src="/logos/soar-autism.png" alt="Soar Autism Center" class="h-6 w-auto object-contain">
           </div>
         </div>
         
