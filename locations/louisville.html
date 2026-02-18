@@ -28,17 +28,25 @@
   <meta name="twitter:description" content="Axseter-certified low voltage installers in Louisville. Structured cabling, access control, and surveillance for multi-location enterprises.">
   <meta name="twitter:image" content="https://www.axseter.com/images/og-image.jpg">
   <link rel="canonical" href="https://www.axseter.com/locations/louisville/">
-  <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "Service", "name": "Low Voltage Installation in Louisville, KY", "provider": {"@type": "Organization", "name": "Axseter Systems", "url": "https://www.axseter.com"}, "description": "Axseter-certified low voltage installers in Louisville. Structured cabling, access control, and surveillance for multi-location enterprises.", "serviceType": "Low Voltage Installation", "areaServed": {"@type": "City", "name": "Louisville", "containedInPlace": {"@type": "State", "name": "Kentucky"}}}
-  </script>
-  <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.axseter.com/"}, {"@type": "ListItem", "position": 2, "name": "Locations", "item": "https://www.axseter.com/locations/"}, {"@type": "ListItem", "position": 3, "name": "Louisville, KY", "item": "https://www.axseter.com/locations/louisville/"}]}
-  </script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Low Voltage Installation in Louisville, KY", "provider": {"@type": "Organization", "name": "Axseter Systems", "url": "https://www.axseter.com"}, "description": "Axseter-certified low voltage installers in Louisville. Structured cabling, access control, and surveillance for multi-location enterprises.", "serviceType": "Low Voltage Installation", "areaServed": {"@type": "City", "name": "Louisville", "containedInPlace": {"@type": "State", "name": "Kentucky"}}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does Axseter have its own installers in Louisville?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Our Greater Louisville technicians are Axseter-certified installers who work exclusively within our quality management system. They follow Axseter standards for cable labeling, pathway routing, documentation, and testing\u2014ensuring your Louisville locations match every other site in your portfolio."}}, {"@type": "Question", "name": "How quickly can Axseter deploy to a new Louisville location?", "acceptedAnswer": {"@type": "Answer", "text": "For the Greater Louisville area, we can typically have a certified team on-site within 5-7 business days of scope approval. Emergency and expedited deployments are available for urgent openings. Our national dispatch coordinates scheduling so your project manager handles everything."}}, {"@type": "Question", "name": "Do your Louisville installers understand healthcare compliance requirements?", "acceptedAnswer": {"@type": "Answer", "text": "Our Greater Louisville teams regularly install in healthcare environments and are trained on the physical infrastructure requirements that support HIPAA compliance\u2014including access-controlled areas, secure network closets, and proper documentation for audit readiness. We install to your specifications and provide as-built packages for every site."}}, {"@type": "Question", "name": "Can you support multiple healthcare facility openings in Greater Louisville simultaneously?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. Our installer network in the Greater Louisville area can support parallel deployments across multiple sites. We've supported healthcare organizations opening 10+ locations simultaneously in a single metro while maintaining identical standards at each."}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.axseter.com/"}, {"@type": "ListItem", "position": 2, "name": "Locations", "item": "https://www.axseter.com/locations/"}, {"@type": "ListItem", "position": 3, "name": "Louisville, KY", "item": "https://www.axseter.com/locations/louisville/"}]}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{'navy-900':'#102a43','navy-950':'#0a1929'}}}}}</script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'navy': { 50:'#f0f4f8',100:'#d9e2ec',200:'#bcccdc',300:'#9fb3c8',400:'#829ab1',500:'#627d98',600:'#486581',700:'#334e68',800:'#243b53',900:'#102a43',950:'#0a1929' },
+            'blue': { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a' }
+          }
+        }
+      }
+    }
+  </script>
   <style>
     *{font-family:'Plus Jakarta Sans',system-ui,sans-serif}
     .gradient-text{background:linear-gradient(135deg,#1e3a5f 0%,#102a43 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -52,6 +60,10 @@
     .reveal-on-scroll.revealed{opacity:1;transform:translateY(0)}
     .skip-link{position:absolute;top:-100%;left:50%;transform:translateX(-50%);z-index:100;background:#102a43;color:white;padding:0.75rem 1.5rem;border-radius:0 0 0.5rem 0.5rem;font-weight:600;transition:top 0.2s}
     .skip-link:focus{top:0}
+    .logo-carousel-wrap{mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent)}
+    .logo-carousel{animation:scroll 30s linear infinite;width:max-content}
+    .logo-carousel:hover{animation-play-state:paused}
+    @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
   </style>
 </head>
 <body class="bg-white text-gray-900 antialiased">
@@ -65,9 +77,9 @@
           <span class="text-3xl font-black tracking-tight text-navy-900" style="font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">AXSETER<sup class="text-sm font-semibold text-gray-400 ml-0.5">™</sup></span>
         </a>
         <div class="hidden lg:flex items-center gap-8">
-          <a href="/services.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors" data-nav="services">Services</a>
+          <a href="/services.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="services">Services</a>
           <div class="relative group">
-            <button class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors flex items-center gap-1" data-nav="industries" aria-haspopup="true" aria-expanded="false">
+            <button class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="industries" aria-haspopup="true" aria-expanded="false">
               Industries
               <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
@@ -80,13 +92,13 @@
               </div>
             </div>
           </div>
-          <a href="/case-studies.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors" data-nav="case-studies">Case Studies</a>
-          <a href="/insights.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors" data-nav="insights">Insights</a>
-          <a href="/about.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors" data-nav="about">About</a>
+          <a href="/case-studies.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="case-studies">Case Studies</a>
+          <a href="/insights.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="insights">Insights</a>
+          <a href="/about.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="about">About</a>
         </div>
         <div class="flex items-center gap-4">
-          <a href="/contact.html" class="hidden lg:inline-flex btn-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm">Get Started</a>
-          <button id="mobile-menu-btn" class="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <a href="/contact.html" class="hidden lg:inline-flex btn-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Get Started</a>
+          <button id="mobile-menu-btn" class="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
             <svg id="menu-icon-open" class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             <svg id="menu-icon-close" class="w-6 h-6 text-navy-900 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
@@ -108,29 +120,35 @@
         <a href="/case-studies.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-navy-900 rounded-lg font-medium transition-colors" role="menuitem">Case Studies</a>
         <a href="/insights.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-navy-900 rounded-lg font-medium transition-colors" role="menuitem">Insights</a>
         <a href="/about.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-navy-900 rounded-lg font-medium transition-colors" role="menuitem">About</a>
-        <div class="pt-4 px-4">
-          <a href="/contact.html" class="block w-full text-center btn-primary text-white px-5 py-3 rounded-lg font-semibold text-sm">Get Started</a>
-        </div>
+        <div class="pt-4 px-4"><a href="/contact.html" class="block w-full text-center btn-primary text-white px-5 py-3 rounded-lg font-semibold text-sm">Get Started</a></div>
       </div>
     </div>
   </nav>
 
   <!-- Breadcrumb -->
-  <div class="pt-24 pb-2 bg-white">
+  <div class="pt-24 pb-2 bg-navy-950">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <nav class="text-sm text-gray-400" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-gray-600">Home</a>
+      <nav class="text-sm text-gray-500" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-gray-300 transition-colors">Home</a>
         <span class="mx-2">→</span>
-        <a href="/locations/" class="hover:text-gray-600">Locations</a>
+        <a href="/locations/" class="hover:text-gray-300 transition-colors">Locations</a>
         <span class="mx-2">→</span>
-        <span class="text-gray-700">Louisville, KY</span>
+        <span class="text-gray-300">Louisville, KY</span>
       </nav>
     </div>
   </div>
 
-  <!-- Hero -->
-  <section id="main-content" class="hero-gradient pt-12 pb-20">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+  <!-- Hero with Background Image + Glow Orbs -->
+  <section id="main-content" class="relative overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img loading="eager" src="/images/healthcare.jpg" alt="Greater Louisville commercial infrastructure" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/95 to-navy-950/70"></div>
+    </div>
+    <div class="absolute inset-0 opacity-20 z-1">
+      <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-1/3 w-64 h-64 bg-emerald-500/20 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 py-20 lg:py-28">
       <div class="max-w-3xl">
         <p class="text-blue-400 font-semibold text-sm uppercase tracking-wider mb-4">Axseter-Certified Installers · Greater Louisville</p>
         <h1 class="text-4xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">Low Voltage Contractor in Louisville, KY</h1>
@@ -139,15 +157,40 @@
         <div class="flex flex-wrap gap-4">
           <a href="/contact.html" class="inline-flex btn-primary text-white px-8 py-4 rounded-xl font-semibold">Start a Conversation</a>
           <a href="/case-studies.html" class="inline-flex items-center text-gray-300 hover:text-white font-semibold transition-colors px-4 py-4">
-            View Case Studies →
+            View Case Studies
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Stats Bar -->
+  <section class="bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <p class="text-3xl lg:text-4xl font-bold text-navy-900">50</p>
+          <p class="text-sm text-gray-500 mt-1">States Covered</p>
+        </div>
+        <div class="text-center">
+          <p class="text-3xl lg:text-4xl font-bold text-navy-900">500+</p>
+          <p class="text-sm text-gray-500 mt-1">Locations Installed</p>
+        </div>
+        <div class="text-center">
+          <p class="text-3xl lg:text-4xl font-bold text-navy-900">1</p>
+          <p class="text-sm text-gray-500 mt-1">Point of Contact</p>
+        </div>
+        <div class="text-center">
+          <p class="text-3xl lg:text-4xl font-bold text-navy-900">100%</p>
+          <p class="text-sm text-gray-500 mt-1">Certified Installers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Services Available -->
-  <section class="py-20">
+  <section class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="reveal-on-scroll text-center mb-16">
         <p class="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">Full-Service Coverage</p>
@@ -160,126 +203,220 @@
               <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 0V10m0-4a2 2 0 100-4m0 4a2 2 0 110-4m12 8a2 2 0 100-4m0 4a2 2 0 110-4m0 0V10m0-4a2 2 0 100-4m0 4a2 2 0 110-4"/></svg>
             </div>
             <h3 class="text-lg font-bold text-navy-900 mb-2">Structured Cabling</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">Cat6A, fiber optic, and pathway systems installed to consistent standards.</p>
+            <p class="text-gray-600 text-sm leading-relaxed">Cat6A, fiber optic, and pathway systems installed to consistent standards across every location.</p>
           </a>
           <a href="/services/access-control.html" class="reveal-on-scroll card-hover bg-white rounded-2xl p-6 border border-gray-100 shadow-sm group block">
             <div class="w-12 h-12 rounded-xl bg-navy-900/5 flex items-center justify-center mb-4 group-hover:bg-navy-900/10 transition-colors">
               <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
             </div>
             <h3 class="text-lg font-bold text-navy-900 mb-2">Access Control</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">Keycard, biometric, and credential management systems for every facility.</p>
+            <p class="text-gray-600 text-sm leading-relaxed">Keycard, biometric, and credential management systems for secure, auditable facility access.</p>
           </a>
           <a href="/services/video-surveillance.html" class="reveal-on-scroll card-hover bg-white rounded-2xl p-6 border border-gray-100 shadow-sm group block">
             <div class="w-12 h-12 rounded-xl bg-navy-900/5 flex items-center justify-center mb-4 group-hover:bg-navy-900/10 transition-colors">
               <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
             </div>
             <h3 class="text-lg font-bold text-navy-900 mb-2">Video Surveillance</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">IP cameras, NVRs, and video analytics deployed at enterprise scale.</p>
+            <p class="text-gray-600 text-sm leading-relaxed">IP cameras, NVRs, and video analytics deployed and documented at enterprise scale.</p>
           </a>
           <a href="/services/audio-visual.html" class="reveal-on-scroll card-hover bg-white rounded-2xl p-6 border border-gray-100 shadow-sm group block">
             <div class="w-12 h-12 rounded-xl bg-navy-900/5 flex items-center justify-center mb-4 group-hover:bg-navy-900/10 transition-colors">
               <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             </div>
             <h3 class="text-lg font-bold text-navy-900 mb-2">Audio-Visual</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">Conference rooms, digital signage, and presentation systems.</p>
+            <p class="text-gray-600 text-sm leading-relaxed">Conference rooms, digital signage, and presentation systems built for enterprise collaboration.</p>
           </a>
           <a href="/services/sound-masking.html" class="reveal-on-scroll card-hover bg-white rounded-2xl p-6 border border-gray-100 shadow-sm group block">
             <div class="w-12 h-12 rounded-xl bg-navy-900/5 flex items-center justify-center mb-4 group-hover:bg-navy-900/10 transition-colors">
               <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
             </div>
             <h3 class="text-lg font-bold text-navy-900 mb-2">Sound Masking</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">Workplace acoustic privacy for open office environments.</p>
+            <p class="text-gray-600 text-sm leading-relaxed">Workplace acoustic privacy systems for open offices, clinics, and financial environments.</p>
           </a>
           <a href="/services/break-fix.html" class="reveal-on-scroll card-hover bg-white rounded-2xl p-6 border border-gray-100 shadow-sm group block">
             <div class="w-12 h-12 rounded-xl bg-navy-900/5 flex items-center justify-center mb-4 group-hover:bg-navy-900/10 transition-colors">
               <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             </div>
             <h3 class="text-lg font-bold text-navy-900 mb-2">Break-Fix & Maintenance</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">Nationwide service response for repairs and system maintenance.</p>
+            <p class="text-gray-600 text-sm leading-relaxed">Nationwide service response for repairs, MAC work, and ongoing system maintenance.</p>
           </a>
       </div>
     </div>
   </section>
 
   <!-- Industries We Serve -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="reveal-on-scroll mb-12">
-        <p class="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">Industries in Greater Louisville</p>
-        <h2 class="text-3xl font-bold text-navy-900 mb-4">Industries We Serve in Louisville</h2>
-        <p class="text-gray-600 max-w-2xl">Our Greater Louisville installers have deep experience supporting these industries across the region.</p>
-      </div>
-      <div class="grid sm:grid-cols-3 gap-4">
-            <a href="/industries/healthcare.html" class="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-100 hover:border-blue-200 hover:shadow-md transition-all group">
-              <div class="w-10 h-10 rounded-lg bg-navy-900/5 flex items-center justify-center group-hover:bg-navy-900/10 transition-colors">
-                <svg class="w-5 h-5 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+      <div class="reveal-on-scroll grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">Industry Expertise</p>
+          <h2 class="text-3xl lg:text-4xl font-bold text-navy-900 mb-4">Industries We Serve in Greater Louisville</h2>
+          <p class="text-gray-600 leading-relaxed mb-8">Our Greater Louisville installers bring deep experience across these industries, understanding the specific compliance, security, and operational requirements each demands.</p>
+          <div class="space-y-4">
+            <a href="/industries/healthcare.html" class="flex items-center gap-4 p-5 bg-white rounded-2xl border border-gray-100 hover:border-blue-200 hover:shadow-lg transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-navy-900/5 flex items-center justify-center group-hover:bg-navy-900/10 transition-colors shrink-0">
+                <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
               </div>
-              <span class="font-medium text-gray-700 group-hover:text-navy-900 transition-colors">Healthcare</span>
-            </a>
-            <a href="/industries/retail-qsr.html" class="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-100 hover:border-blue-200 hover:shadow-md transition-all group">
-              <div class="w-10 h-10 rounded-lg bg-navy-900/5 flex items-center justify-center group-hover:bg-navy-900/10 transition-colors">
-                <svg class="w-5 h-5 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              <div>
+                <span class="font-semibold text-navy-900 group-hover:text-blue-700 transition-colors">Healthcare</span>
+                <p class="text-sm text-gray-500 mt-0.5">View industry solutions</p>
               </div>
-              <span class="font-medium text-gray-700 group-hover:text-navy-900 transition-colors">Retail & QSR</span>
             </a>
-            <a href="/industries/engineering.html" class="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-100 hover:border-blue-200 hover:shadow-md transition-all group">
-              <div class="w-10 h-10 rounded-lg bg-navy-900/5 flex items-center justify-center group-hover:bg-navy-900/10 transition-colors">
-                <svg class="w-5 h-5 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            <a href="/industries/retail-qsr.html" class="flex items-center gap-4 p-5 bg-white rounded-2xl border border-gray-100 hover:border-blue-200 hover:shadow-lg transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-navy-900/5 flex items-center justify-center group-hover:bg-navy-900/10 transition-colors shrink-0">
+                <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
               </div>
-              <span class="font-medium text-gray-700 group-hover:text-navy-900 transition-colors">Engineering</span>
+              <div>
+                <span class="font-semibold text-navy-900 group-hover:text-blue-700 transition-colors">Retail & QSR</span>
+                <p class="text-sm text-gray-500 mt-0.5">View industry solutions</p>
+              </div>
             </a>
+            <a href="/industries/engineering.html" class="flex items-center gap-4 p-5 bg-white rounded-2xl border border-gray-100 hover:border-blue-200 hover:shadow-lg transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-navy-900/5 flex items-center justify-center group-hover:bg-navy-900/10 transition-colors shrink-0">
+                <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              </div>
+              <div>
+                <span class="font-semibold text-navy-900 group-hover:text-blue-700 transition-colors">Engineering</span>
+                <p class="text-sm text-gray-500 mt-0.5">View industry solutions</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-blue-600/20 rounded-3xl blur-2xl"></div>
+          <img loading="lazy" src="/images/healthcare.jpg" alt="Greater Louisville commercial low voltage installation" class="relative rounded-3xl shadow-2xl w-full h-80 object-cover">
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Why Axseter -->
-  <section class="py-20">
+  <section class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="reveal-on-scroll mb-12">
-        <h2 class="text-3xl font-bold text-navy-900 mb-4">Why Greater Louisville Enterprises Choose Axseter</h2>
+      <div class="reveal-on-scroll text-center mb-16">
+        <p class="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">The Axseter Advantage</p>
+        <h2 class="text-3xl lg:text-4xl font-bold text-navy-900 mb-4">Why Greater Louisville Enterprises Choose Axseter</h2>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="reveal-on-scroll">
-          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
+        <div class="reveal-on-scroll bg-white p-8 rounded-2xl border border-gray-100 card-hover">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-5">
             <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-navy-900 mb-2">Certified Local Installers</h3>
-          <p class="text-gray-600 text-sm leading-relaxed">Our Louisville technicians are Axseter-certified, trained to deliver the same quality standards whether they're working here or supporting a multi-state rollout.</p>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Certified Local Installers</h3>
+          <p class="text-gray-600 leading-relaxed">Our Louisville technicians are Axseter-certified—trained, tested, and held to the same quality standards whether they're working in Greater Louisville or supporting a multi-state rollout. No subcontractor roulette.</p>
         </div>
-        <div class="reveal-on-scroll">
-          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
+        <div class="reveal-on-scroll bg-white p-8 rounded-2xl border border-gray-100 card-hover">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-5">
             <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-navy-900 mb-2">National Consistency</h3>
-          <p class="text-gray-600 text-sm leading-relaxed">Your Louisville locations get the same documentation, labeling standards, and quality benchmarks as every other site in your portfolio—guaranteed.</p>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">National Consistency</h3>
+          <p class="text-gray-600 leading-relaxed">Your Louisville locations get the same documentation, labeling standards, cable specifications, and quality benchmarks as every other site in your portfolio. Location 50 looks like location 1.</p>
         </div>
-        <div class="reveal-on-scroll">
-          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
+        <div class="reveal-on-scroll bg-white p-8 rounded-2xl border border-gray-100 card-hover">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-5">
             <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-navy-900 mb-2">Single Point of Contact</h3>
-          <p class="text-gray-600 text-sm leading-relaxed">One project manager, one invoice, one set of standards—whether you have 5 locations in Louisville or 500 across the country.</p>
+          <h3 class="text-xl font-bold text-navy-900 mb-3">Single Point of Contact</h3>
+          <p class="text-gray-600 leading-relaxed">One project manager, one invoice, one escalation path—whether you have 5 locations in Louisville or 500 across the country. We eliminate vendor management overhead.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <div class="reveal-on-scroll mb-12">
+        <p class="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">Common Questions</p>
+        <h2 class="text-3xl font-bold text-navy-900">Frequently Asked Questions</h2>
+      </div>
+      <div class="space-y-8">
+        <div class="border-b border-gray-200 pb-8">
+          <h3 class="text-lg font-bold text-navy-900 mb-3">Does Axseter have its own installers in Louisville?</h3>
+          <p class="text-gray-600 leading-relaxed">Yes. Our Greater Louisville technicians are Axseter-certified installers who work exclusively within our quality management system. They follow Axseter standards for cable labeling, pathway routing, documentation, and testing—ensuring your Louisville locations match every other site in your portfolio.</p>
+        </div>
+        <div class="border-b border-gray-200 pb-8">
+          <h3 class="text-lg font-bold text-navy-900 mb-3">How quickly can Axseter deploy to a new Louisville location?</h3>
+          <p class="text-gray-600 leading-relaxed">For the Greater Louisville area, we can typically have a certified team on-site within 5-7 business days of scope approval. Emergency and expedited deployments are available for urgent openings. Our national dispatch coordinates scheduling so your project manager handles everything.</p>
+        </div>
+        <div class="border-b border-gray-200 pb-8">
+          <h3 class="text-lg font-bold text-navy-900 mb-3">Do your Louisville installers understand healthcare compliance requirements?</h3>
+          <p class="text-gray-600 leading-relaxed">Our Greater Louisville teams regularly install in healthcare environments and are trained on the physical infrastructure requirements that support HIPAA compliance—including access-controlled areas, secure network closets, and proper documentation for audit readiness. We install to your specifications and provide as-built packages for every site.</p>
+        </div>
+        <div class="border-b border-gray-200 pb-8">
+          <h3 class="text-lg font-bold text-navy-900 mb-3">Can you support multiple healthcare facility openings in Greater Louisville simultaneously?</h3>
+          <p class="text-gray-600 leading-relaxed">Absolutely. Our installer network in the Greater Louisville area can support parallel deployments across multiple sites. We've supported healthcare organizations opening 10+ locations simultaneously in a single metro while maintaining identical standards at each.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Insights -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="reveal-on-scroll mb-12">
+        <h2 class="text-3xl font-bold text-navy-900">Related Resources</h2>
+      </div>
+      <div class="reveal-on-scroll grid md:grid-cols-2 gap-8">
+        <a href="/insights/access-control-healthcare-compliance.html" class="block bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow group">
+          <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Insight</span>
+          <h3 class="text-lg font-bold text-navy-900 mt-3 mb-3 group-hover:text-blue-700 transition-colors">Access Control for Healthcare Compliance</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">HIPAA physical safeguard requirements and how access control systems support compliance.</p>
+        </a>
+        <a href="/insights/vendor-consolidation-facilities.html" class="block bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow group">
+          <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Insight</span>
+          <h3 class="text-lg font-bold text-navy-900 mt-3 mb-3 group-hover:text-blue-700 transition-colors">Why Teams Choose a National Contractor</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">The business case for consolidating regional vendors into a single national partner.</p>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- Other Locations -->
-  <section class="py-12 bg-gray-50">
+  <section class="py-12 bg-white border-t border-gray-100">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
       <p class="text-sm text-gray-500 mb-3">We also serve</p>
       <div class="flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm">
-        <a href="/locations/baltimore.html" class="text-blue-600 hover:text-blue-800 font-medium">Baltimore, MD</a> · <a href="/locations/oklahoma-city.html" class="text-blue-600 hover:text-blue-800 font-medium">Oklahoma City, OK</a> · <a href="/locations/hartford.html" class="text-blue-600 hover:text-blue-800 font-medium">Hartford, CT</a> · <a href="/locations/birmingham.html" class="text-blue-600 hover:text-blue-800 font-medium">Birmingham, AL</a>
+        <a href="/locations/baltimore.html" class="text-blue-600 hover:text-blue-800 font-medium transition-colors">Baltimore, MD</a> · <a href="/locations/oklahoma-city.html" class="text-blue-600 hover:text-blue-800 font-medium transition-colors">Oklahoma City, OK</a> · <a href="/locations/hartford.html" class="text-blue-600 hover:text-blue-800 font-medium transition-colors">Hartford, CT</a> · <a href="/locations/birmingham.html" class="text-blue-600 hover:text-blue-800 font-medium transition-colors">Birmingham, AL</a>
       </div>
-      <a href="/locations/" class="inline-block mt-4 text-blue-600 hover:text-blue-800 text-sm font-medium">View all locations →</a>
+      <a href="/locations/" class="inline-block mt-4 text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors">View all locations →</a>
+    </div>
+  </section>
+
+  <!-- Logo Carousel -->
+  <section class="py-14 bg-gray-50 border-t border-gray-100">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+      <p class="text-center text-xs font-semibold text-gray-400 uppercase tracking-widest mb-8">Trusted by leading multi-location organizations</p>
+      <div class="overflow-hidden logo-carousel-wrap">
+        <div class="logo-carousel flex items-center gap-16">
+          <img loading="lazy" src="/logos/oak-street-health.png" alt="Oak Street Health" class="h-8 w-auto object-contain opacity-40 grayscale">
+          <img loading="lazy" src="/logos/cvs.png" alt="CVS Health" class="h-8 w-auto object-contain opacity-40 grayscale">
+          <img loading="lazy" src="/logos/ati-physical-therapy.png" alt="ATI Physical Therapy" class="h-7 w-auto object-contain opacity-40 grayscale">
+          <img loading="lazy" src="/logos/gallagher.png" alt="Gallagher" class="h-8 w-auto object-contain opacity-40 grayscale">
+          <img loading="lazy" src="/logos/soar-autism.png" alt="Soar Autism Center" class="h-11 w-auto object-contain opacity-40 grayscale">
+          <img loading="lazy" src="/logos/guidelight.png" alt="Guidelight Health" class="h-8 w-auto object-contain opacity-40 grayscale">
+          <img loading="lazy" src="/logos/pronto-insurance.png" alt="Pronto Insurance" class="h-8 w-auto object-contain opacity-40 grayscale">
+          <img loading="lazy" src="/logos/leopardo.png" alt="Leopardo Construction" class="h-8 w-auto object-contain opacity-40 grayscale">
+          <!-- duplicate set for seamless loop -->
+          <img loading="lazy" src="/logos/oak-street-health.png" alt="Oak Street Health" class="h-8 w-auto object-contain opacity-40 grayscale">
+          <img loading="lazy" src="/logos/cvs.png" alt="CVS Health" class="h-8 w-auto object-contain opacity-40 grayscale">
+          <img loading="lazy" src="/logos/ati-physical-therapy.png" alt="ATI Physical Therapy" class="h-7 w-auto object-contain opacity-40 grayscale">
+          <img loading="lazy" src="/logos/gallagher.png" alt="Gallagher" class="h-8 w-auto object-contain opacity-40 grayscale">
+          <img loading="lazy" src="/logos/soar-autism.png" alt="Soar Autism Center" class="h-11 w-auto object-contain opacity-40 grayscale">
+          <img loading="lazy" src="/logos/guidelight.png" alt="Guidelight Health" class="h-8 w-auto object-contain opacity-40 grayscale">
+          <img loading="lazy" src="/logos/pronto-insurance.png" alt="Pronto Insurance" class="h-8 w-auto object-contain opacity-40 grayscale">
+          <img loading="lazy" src="/logos/leopardo.png" alt="Leopardo Construction" class="h-8 w-auto object-contain opacity-40 grayscale">
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="hero-gradient py-20">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-      <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">Ready to standardize your Greater Louisville infrastructure?</h2>
-      <p class="text-gray-400 mb-10 max-w-2xl mx-auto">Tell us about your locations and we'll show you how Axseter-certified installers in Louisville can deliver consistent, documented low voltage infrastructure across your portfolio.</p>
+  <section class="hero-gradient py-24 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20"><div class="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div></div>
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
+      <h2 class="text-3xl lg:text-5xl font-bold text-white mb-6">Ready to standardize your Greater Louisville infrastructure?</h2>
+      <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Tell us about your locations and we'll show you how Axseter-certified installers in Louisville can deliver consistent, documented low voltage infrastructure across your portfolio.</p>
       <a href="/contact.html" class="inline-flex btn-primary text-white text-lg font-semibold px-10 py-5 rounded-xl">Request a Consultation</a>
     </div>
   </section>
@@ -289,11 +426,9 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="reveal-on-scroll grid md:grid-cols-4 gap-12 mb-12">
         <div>
-          <div class="mb-6">
-            <span class="text-3xl font-black tracking-tight text-white" style="font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">AXSETER<sup class="text-sm font-semibold text-gray-500 ml-0.5">™</sup></span>
-          </div>
+          <div class="mb-6"><span class="text-3xl font-black tracking-tight text-white" style="font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">AXSETER<sup class="text-sm font-semibold text-gray-500 ml-0.5">™</sup></span></div>
           <p class="text-gray-400 leading-relaxed">National low-voltage integrator for enterprise clients expanding across the United States.</p>
-          <p class="text-gray-400 mt-4"><a href="tel:+18772973871" class="hover:text-white transition-colors">1-877-AXSETR1</a></p>
+          <p class="text-gray-400 mt-4"><a href="tel:+18772973871" class="hover:text-white transition-colors focus:outline-none focus:text-white">1-877-AXSETR1</a></p>
         </div>
         <div>
           <h4 class="font-semibold mb-6 text-gray-200">Services</h4>
@@ -343,8 +478,18 @@
         iconOpen.classList.toggle('hidden');
         iconClose.classList.toggle('hidden');
         btn.setAttribute('aria-expanded', !isOpen);
+        btn.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
       });
     }
+    const path = window.location.pathname;
+    document.querySelectorAll('.nav-link[data-nav]').forEach(function(link) {
+      const nav = link.getAttribute('data-nav');
+      if ((nav === 'services' && path.includes('/services')) || (nav === 'industries' && path.includes('/industries')) ||
+          (nav === 'case-studies' && path.includes('/case-studies')) || (nav === 'insights' && path.includes('/insights')) ||
+          (nav === 'about' && path.includes('/about'))) {
+        link.classList.remove('text-gray-600'); link.classList.add('text-navy-900', 'font-semibold');
+      }
+    });
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
