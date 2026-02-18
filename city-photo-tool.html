@@ -3,261 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>City Photo Discovery Tool</title>
+<title>Axseter City Photo Verification Tool</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,sans-serif;background:#0a0a0a;color:#e5e5e5;padding:1rem}
-h1{text-align:center;margin-bottom:0.5rem;font-size:1.5rem}
-.instructions{text-align:center;color:#999;margin-bottom:1rem;font-size:0.85rem;line-height:1.4}
-.controls{text-align:center;margin:1rem 0}
-.controls button{padding:0.75rem 2rem;font-size:1rem;border:none;border-radius:8px;cursor:pointer;color:white;margin:0.25rem}
-.start-btn{background:#2563eb}.export-btn{background:#16a34a}.retry-btn{background:#d97706}
-.progress{text-align:center;margin:0.5rem 0;font-size:1.1rem;font-weight:bold}
-.city-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:1rem;margin-top:1rem}
-.city-card{border:2px solid #333;border-radius:12px;overflow:hidden;background:#1a1a1a}
-.city-card.done{border-color:#16a34a}
-.city-card.error{border-color:#dc2626}
-.city-card.searching{border-color:#d97706}
-.city-header{padding:0.5rem 0.75rem;background:#1e3a5f;font-weight:bold;display:flex;justify-content:space-between;align-items:center}
-.city-header .status{font-size:0.75rem;padding:2px 8px;border-radius:4px}
-.status.ok{background:#166534}.status.err{background:#991b1b}.status.wait{background:#92400e}
-.photo-row{display:flex;gap:2px;padding:4px;min-height:100px;overflow-x:auto}
-.photo-opt{flex:0 0 160px;aspect-ratio:16/9;position:relative;cursor:pointer;border:3px solid transparent;border-radius:6px;overflow:hidden;background:#222}
-.photo-opt.selected{border-color:#16a34a}
-.photo-opt img{width:100%;height:100%;object-fit:cover}
-.photo-opt .pid{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.85);padding:2px 4px;font-size:8px;color:#999;word-break:break-all}
-.selected-preview{padding:0.5rem;text-align:center}
-.selected-preview img{max-width:100%;max-height:150px;border-radius:6px}
-.selected-preview .sel-id{font-size:0.7rem;color:#4ade80;margin-top:0.25rem}
-.manual-input{padding:0.5rem;display:flex;gap:0.5rem}
-.manual-input input{flex:1;padding:0.25rem 0.5rem;background:#222;border:1px solid #444;border-radius:4px;color:#fff;font-size:0.75rem}
-.manual-input button{padding:0.25rem 0.75rem;background:#2563eb;border:none;color:#fff;border-radius:4px;cursor:pointer;font-size:0.75rem}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0a0a0a;color:#e5e5e5;padding:1rem 2rem}
+h1{text-align:center;font-size:1.6rem;margin-bottom:0.25rem}
+.subtitle{text-align:center;color:#999;margin-bottom:1rem;font-size:0.9rem}
+.process{background:#111;border:1px solid #333;border-radius:12px;padding:1rem 1.5rem;margin-bottom:1.5rem;max-width:800px;margin-left:auto;margin-right:auto}
+.process h2{font-size:1rem;margin-bottom:0.5rem;color:#60a5fa}
+.process ol{padding-left:1.5rem;color:#ccc;font-size:0.85rem;line-height:1.6}
+.process ol li strong{color:#4ade80}
+.controls{text-align:center;margin:1rem 0;display:flex;justify-content:center;gap:0.5rem;flex-wrap:wrap}
+.controls button{padding:0.6rem 1.5rem;font-size:0.9rem;border:none;border-radius:8px;cursor:pointer;color:white;font-weight:600;transition:opacity 0.2s}
+.controls button:hover{opacity:0.85}
+.controls button:disabled{opacity:0.4;cursor:not-allowed}
+.btn-start{background:#2563eb}.btn-export{background:#16a34a}.btn-retry{background:#d97706}
+.progress-bar{max-width:600px;margin:0.75rem auto;background:#222;border-radius:8px;overflow:hidden;height:28px;position:relative}
+.progress-fill{height:100%;background:linear-gradient(90deg,#2563eb,#16a34a);transition:width 0.3s;border-radius:8px}
+.progress-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:bold;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.5)}
+.stats{display:flex;justify-content:center;gap:2rem;margin:0.5rem 0;font-size:0.85rem}
+.stat{text-align:center}
+.stat .num{font-size:1.4rem;font-weight:bold}
+.stat .num.green{color:#4ade80}.stat .num.red{color:#ef4444}.stat .num.yellow{color:#fbbf24}.stat .num.blue{color:#60a5fa}
+.city-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:1rem;margin-top:1rem}
+.city-card{border:2px solid #333;border-radius:12px;overflow:hidden;background:#111;transition:border-color 0.3s}
+.city-card.verified{border-color:#16a34a}
+.city-card.failed{border-color:#dc2626}
+.city-card.searching{border-color:#d97706;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{border-color:#d97706}50%{border-color:#92400e}}
+.city-header{padding:0.5rem 0.75rem;background:#1a1a2e;font-weight:bold;display:flex;justify-content:space-between;align-items:center;font-size:0.95rem}
+.badge{font-size:0.65rem;padding:2px 8px;border-radius:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.badge.verified{background:#166534;color:#4ade80}
+.badge.failed{background:#991b1b;color:#fca5a5}
+.badge.searching{background:#92400e;color:#fbbf24}
+.badge.waiting{background:#333;color:#999}
+.candidates{display:flex;gap:4px;padding:6px;overflow-x:auto;min-height:90px;align-items:center;background:#0a0a0a}
+.candidates::-webkit-scrollbar{height:6px}
+.candidates::-webkit-scrollbar-thumb{background:#444;border-radius:3px}
+.cand{flex:0 0 140px;height:80px;position:relative;cursor:pointer;border:3px solid transparent;border-radius:6px;overflow:hidden;background:#222;transition:all 0.2s}
+.cand:hover{border-color:#60a5fa;transform:scale(1.02)}
+.cand.selected{border-color:#16a34a;box-shadow:0 0 12px rgba(74,222,128,0.3)}
+.cand img{width:100%;height:100%;object-fit:cover}
+.cand-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.9));padding:1px 4px;font-size:7px;color:#aaa;text-align:right}
+.verify-section{background:#0d1117;padding:0.5rem}
+.verify-row{display:flex;gap:0.5rem;align-items:center}
+.verify-img{width:200px;height:112px;border-radius:6px;overflow:hidden;background:#222;flex-shrink:0}
+.verify-img img{width:100%;height:100%;object-fit:cover}
+.verify-info{flex:1;font-size:0.75rem;color:#999;line-height:1.5}
+.verify-info .photo-id{color:#4ade80;font-family:monospace;font-size:0.7rem;word-break:break-all}
+.verify-info .cdnurl{color:#60a5fa;font-family:monospace;font-size:0.6rem;word-break:break-all}
+.verify-check{color:#4ade80;font-weight:bold;font-size:0.8rem}
+.verify-fail{color:#ef4444;font-weight:bold;font-size:0.8rem}
+.manual{padding:0.4rem 0.5rem;display:flex;gap:0.5rem;align-items:center;background:#111;border-top:1px solid #222}
+.manual input{flex:1;padding:0.3rem 0.5rem;background:#1a1a1a;border:1px solid #333;border-radius:4px;color:#fff;font-size:0.7rem;font-family:monospace}
+.manual input::placeholder{color:#555}
+.manual button{padding:0.3rem 0.75rem;background:#2563eb;border:none;color:#fff;border-radius:4px;cursor:pointer;font-size:0.7rem;white-space:nowrap}
+.manual a{color:#60a5fa;font-size:0.7rem;white-space:nowrap;text-decoration:none}
+.manual a:hover{text-decoration:underline}
+.msg{padding:0.75rem;text-align:center;color:#777;font-size:0.8rem}
 </style>
 </head>
 <body>
-<h1>🏙️ City Skyline Photo Discovery</h1>
-<div class="instructions">
-  This tool queries Unsplash's API to find real city skyline photos with verified CDN IDs.<br>
-  Click "Start Auto-Discovery" to search all 56 cities. Review results and click to select the best skyline for each city.<br>
-  If auto-search fails for a city, right-click any Unsplash photo → "Copy Image Address" → paste the URL.
+<h1>🏙️ Axseter City Photo Verification Tool</h1>
+<div class="subtitle">Find one verified hero skyline photo for each of 56 metro areas. No guessing.</div>
+<div class="process">
+  <h2>📋 Verification Process (every photo must pass all 3)</h2>
+  <ol>
+    <li><strong>Auto-search:</strong> Queries Unsplash API for "[city] skyline" — returns 8 landscape candidates</li>
+    <li><strong>Human review:</strong> YOU click the photo that actually shows that city (not some random landmark from another country)</li>
+    <li><strong>CDN load test:</strong> Tool confirms the photo loads at <code>images.unsplash.com/photo-XXX?w=1600&amp;h=900</code> — if it fails, card goes RED</li>
+  </ol>
 </div>
+<div class="stats">
+  <div class="stat"><div class="num green" id="s-verified">0</div>Verified</div>
+  <div class="stat"><div class="num red" id="s-failed">0</div>Failed</div>
+  <div class="stat"><div class="num yellow" id="s-pending">56</div>Pending</div>
+  <div class="stat"><div class="num blue" id="s-total">56</div>Total</div>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="pbar" style="width:0%"></div><div class="progress-text" id="ptext">Ready</div></div>
 <div class="controls">
-  <button class="start-btn" onclick="startDiscovery()">🚀 Start Auto-Discovery</button>
-  <button class="retry-btn" onclick="retryFailed()">🔄 Retry Failed</button>
-  <button class="export-btn" onclick="exportResults()">⬇️ Export Results JSON</button>
+  <button class="btn-start" id="startBtn" onclick="startDiscovery()">🚀 Start Auto-Discovery</button>
+  <button class="btn-retry" onclick="retryFailed()">🔄 Retry Failed</button>
+  <button class="btn-export" id="exportBtn" onclick="exportResults()" disabled>⬇️ Export Verified JSON</button>
 </div>
-<div class="progress" id="progress">Ready — 0/56 cities</div>
 <div class="city-grid" id="grid"></div>
-
 <script>
-const CITIES = [
-  "albuquerque","anchorage","atlanta","austin","baltimore","birmingham","boise","boston",
-  "charlotte","chicago","cincinnati","columbus","dallas","denver","des-moines","detroit",
-  "hartford","honolulu","houston","indianapolis","jacksonville","kansas-city","las-vegas",
-  "little-rock","los-angeles","louisville","memphis","miami","milwaukee","minneapolis",
-  "nashville","new-orleans","new-york","oklahoma-city","omaha","orlando","philadelphia",
-  "phoenix","pittsburgh","portland","raleigh","richmond","sacramento","salt-lake-city",
-  "san-antonio","san-diego","san-francisco","san-jose","san-juan","seattle","st-louis",
-  "tampa","toronto","tucson","vancouver","washington-dc"
-];
-
-const SEARCH_TERMS = {
-  "dallas": "dallas texas skyline",
-  "des-moines": "des moines iowa skyline",
-  "kansas-city": "kansas city missouri skyline",
-  "las-vegas": "las vegas strip skyline",
-  "little-rock": "little rock arkansas",
-  "los-angeles": "los angeles skyline",
-  "new-orleans": "new orleans skyline",
-  "new-york": "new york city skyline manhattan",
-  "oklahoma-city": "oklahoma city skyline",
-  "salt-lake-city": "salt lake city utah skyline",
-  "san-antonio": "san antonio texas skyline",
-  "san-diego": "san diego skyline",
-  "san-francisco": "san francisco skyline golden gate",
-  "san-jose": "san jose california skyline",
-  "san-juan": "san juan puerto rico old san juan",
-  "st-louis": "st louis gateway arch skyline",
-  "washington-dc": "washington dc capitol skyline"
-};
-
-const selections = {};
-let completed = 0;
-const grid = document.getElementById('grid');
-
-// Build city cards
-CITIES.forEach(city => {
-  const card = document.createElement('div');
-  card.className = 'city-card';
-  card.id = `card-${city}`;
-  card.innerHTML = `
-    <div class="city-header">
-      <span>${city}</span>
-      <span class="status wait" id="status-${city}">waiting</span>
-    </div>
-    <div class="photo-row" id="photos-${city}">
-      <div style="padding:1rem;color:#666">Click "Start Auto-Discovery"</div>
-    </div>
-    <div class="selected-preview" id="preview-${city}"></div>
-    <div class="manual-input">
-      <input type="text" id="input-${city}" placeholder="Or paste images.unsplash.com URL here">
-      <button onclick="manualSet('${city}')">Set</button>
-      <a href="https://unsplash.com/s/photos/${city.replace(/-/g,'+')}-skyline?orientation=landscape" target="_blank" style="color:#60a5fa;font-size:0.75rem;padding:0.25rem">🔍</a>
-    </div>
-  `;
-  grid.appendChild(card);
-});
-
-function extractPhotoId(url) {
-  // Extract photo-TIMESTAMP-HASH from any Unsplash URL
-  const m = url.match(/(photo-\d+-[a-f0-9]+)/);
-  return m ? m[1] : null;
-}
-
-async function searchCity(city) {
-  const query = SEARCH_TERMS[city] || `${city.replace(/-/g,' ')} city skyline`;
-  const card = document.getElementById(`card-${city}`);
-  const statusEl = document.getElementById(`status-${city}`);
-  const photosEl = document.getElementById(`photos-${city}`);
-  
-  card.className = 'city-card searching';
-  statusEl.className = 'status wait';
-  statusEl.textContent = 'searching...';
-  photosEl.innerHTML = '<div style="padding:0.5rem;color:#d97706">Searching Unsplash...</div>';
-  
-  try {
-    // Try Unsplash napi
-    const resp = await fetch(`https://unsplash.com/napi/search/photos?query=${encodeURIComponent(query)}&per_page=8&orientation=landscape`);
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    const data = await resp.json();
-    
-    if (!data.results || data.results.length === 0) throw new Error('No results');
-    
-    photosEl.innerHTML = '';
-    const candidates = [];
-    
-    data.results.forEach((r, i) => {
-      const rawUrl = r.urls?.raw || r.urls?.regular || '';
-      const photoId = extractPhotoId(rawUrl);
-      if (!photoId) return;
-      
-      candidates.push({
-        photoId,
-        desc: r.alt_description || r.description || '',
-        photographer: r.user?.name || 'Unknown',
-        thumb: r.urls?.small || `https://images.unsplash.com/${photoId}?w=300&h=169&fit=crop&q=60`
-      });
-      
-      const opt = document.createElement('div');
-      opt.className = 'photo-opt' + (i === 0 ? ' selected' : '');
-      opt.innerHTML = `<img src="${r.urls?.small || `https://images.unsplash.com/${photoId}?w=300&h=169&fit=crop&q=60`}" loading="lazy"><div class="pid">${photoId}</div>`;
-      opt.onclick = () => selectPhoto(city, photoId, r.urls?.small);
-      photosEl.appendChild(opt);
-    });
-    
-    if (candidates.length > 0) {
-      // Auto-select first
-      selectPhoto(city, candidates[0].photoId, candidates[0].thumb);
-      statusEl.className = 'status ok';
-      statusEl.textContent = `✓ ${candidates.length} found`;
-      card.className = 'city-card done';
-    } else {
-      throw new Error('No valid photo IDs');
-    }
-  } catch(e) {
-    console.warn(`${city}: ${e.message}`);
-    statusEl.className = 'status err';
-    statusEl.textContent = `✗ ${e.message}`;
-    card.className = 'city-card error';
-    photosEl.innerHTML = `<div style="padding:0.5rem;color:#ef4444">Auto-search failed. Use 🔍 link → right-click photo → "Copy Image Address" → paste below</div>`;
-  }
-  
-  completed++;
-  document.getElementById('progress').textContent = `${completed}/56 cities processed`;
-}
-
-function selectPhoto(city, photoId, thumbUrl) {
-  selections[city] = photoId;
-  
-  // Update visual selection
-  const photosEl = document.getElementById(`photos-${city}`);
-  photosEl.querySelectorAll('.photo-opt').forEach(el => {
-    el.classList.toggle('selected', el.querySelector('.pid')?.textContent === photoId);
-  });
-  
-  // Update preview
-  const previewEl = document.getElementById(`preview-${city}`);
-  const testUrl = `https://images.unsplash.com/${photoId}?w=600&h=338&fit=crop&q=70`;
-  previewEl.innerHTML = `
-    <img src="${testUrl}" onerror="this.parentElement.innerHTML='<div style=color:red>⚠️ Photo ID failed to load!</div>'" 
-         onload="document.getElementById('card-${city}').className='city-card done'">
-    <div class="sel-id">✓ ${photoId}</div>
-  `;
-  
-  const card = document.getElementById(`card-${city}`);
-  const statusEl = document.getElementById(`status-${city}`);
-  card.className = 'city-card done';
-  statusEl.className = 'status ok';
-  statusEl.textContent = '✓ selected';
-}
-
-function manualSet(city) {
-  const input = document.getElementById(`input-${city}`);
-  const url = input.value.trim();
-  
-  // Try to extract photo-ID from pasted URL
-  let photoId = extractPhotoId(url);
-  
-  // If just pasted a raw ID
-  if (!photoId && url.startsWith('photo-')) {
-    photoId = url.split('?')[0];
-  }
-  
-  if (photoId) {
-    selectPhoto(city, photoId);
-    input.value = '';
-  } else {
-    alert('Could not extract photo-ID from that URL. Make sure it contains "photo-XXXXXXXXXX-XXXXXXXXXXXX"');
-  }
-}
-
-async function startDiscovery() {
-  completed = 0;
-  // Process 3 cities at a time to avoid rate limiting
-  for (let i = 0; i < CITIES.length; i += 3) {
-    const batch = CITIES.slice(i, i + 3);
-    await Promise.all(batch.map(city => searchCity(city)));
-    // Small delay between batches
-    if (i + 3 < CITIES.length) {
-      await new Promise(r => setTimeout(r, 800));
-    }
-  }
-  document.getElementById('progress').textContent = `✅ Done! ${Object.keys(selections).length}/56 cities have photos. Review and export.`;
-}
-
-function retryFailed() {
-  const failed = CITIES.filter(city => !selections[city]);
-  completed = CITIES.length - failed.length;
-  failed.forEach((city, i) => {
-    setTimeout(() => searchCity(city), i * 500);
-  });
-}
-
-function exportResults() {
-  // Count verified
-  const total = Object.keys(selections).length;
-  const missing = CITIES.filter(c => !selections[c]);
-  
-  if (missing.length > 0) {
-    if (!confirm(`${missing.length} cities still missing photos:\n${missing.join(', ')}\n\nExport anyway?`)) return;
-  }
-  
-  const blob = new Blob([JSON.stringify(selections, null, 2)], {type: 'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'city-photo-ids.json';
-  a.click();
-}
+const CITIES=["albuquerque","anchorage","atlanta","austin","baltimore","birmingham","boise","boston","charlotte","chicago","cincinnati","columbus","dallas","denver","des-moines","detroit","hartford","honolulu","houston","indianapolis","jacksonville","kansas-city","las-vegas","little-rock","los-angeles","louisville","memphis","miami","milwaukee","minneapolis","nashville","new-orleans","new-york","oklahoma-city","omaha","orlando","philadelphia","phoenix","pittsburgh","portland","raleigh","richmond","sacramento","salt-lake-city","san-antonio","san-diego","san-francisco","san-jose","san-juan","seattle","st-louis","tampa","toronto","tucson","vancouver","washington-dc"];
+const Q={"albuquerque":"albuquerque new mexico city skyline","anchorage":"anchorage alaska skyline mountains","atlanta":"atlanta georgia skyline downtown","austin":"austin texas skyline","baltimore":"baltimore maryland inner harbor skyline","birmingham":"birmingham alabama skyline city","boise":"boise idaho skyline city","boston":"boston massachusetts skyline harbor","charlotte":"charlotte north carolina uptown skyline","chicago":"chicago skyline lake michigan","cincinnati":"cincinnati ohio skyline river","columbus":"columbus ohio skyline downtown","dallas":"dallas texas skyline","denver":"denver colorado skyline mountains","des-moines":"des moines iowa skyline","detroit":"detroit michigan skyline renaissance center","hartford":"hartford connecticut city skyline","honolulu":"honolulu hawaii waikiki skyline","houston":"houston texas skyline","indianapolis":"indianapolis indiana skyline monument","jacksonville":"jacksonville florida skyline river","kansas-city":"kansas city missouri skyline","las-vegas":"las vegas strip skyline night","little-rock":"little rock arkansas city skyline","los-angeles":"los angeles downtown skyline","louisville":"louisville kentucky skyline ohio river","memphis":"memphis tennessee skyline beale","miami":"miami florida skyline biscayne","milwaukee":"milwaukee wisconsin skyline lakefront","minneapolis":"minneapolis minnesota skyline","nashville":"nashville tennessee skyline cumberland river","new-orleans":"new orleans louisiana skyline mississippi","new-york":"new york city manhattan skyline","oklahoma-city":"oklahoma city skyline","omaha":"omaha nebraska skyline downtown","orlando":"orlando florida skyline lake eola","philadelphia":"philadelphia pennsylvania skyline schuylkill","phoenix":"phoenix arizona skyline camelback mountain","pittsburgh":"pittsburgh pennsylvania skyline bridges point","portland":"portland oregon skyline mount hood","raleigh":"raleigh north carolina downtown skyline","richmond":"richmond virginia skyline james river","sacramento":"sacramento california skyline capitol tower bridge","salt-lake-city":"salt lake city utah skyline mountains temple","san-antonio":"san antonio texas riverwalk tower americas","san-diego":"san diego california skyline coronado harbor","san-francisco":"san francisco golden gate bridge skyline bay","san-jose":"san jose california skyline downtown","san-juan":"san juan puerto rico old san juan colorful buildings","seattle":"seattle skyline space needle","st-louis":"st louis missouri gateway arch skyline","tampa":"tampa florida skyline hillsborough bay","toronto":"toronto canada cn tower skyline","tucson":"tucson arizona saguaro city mountains","vancouver":"vancouver canada skyline mountains stanley park","washington-dc":"washington dc capitol mall monument skyline"};
+const verified={};const failedSet=new Set();let processed=0;
+const grid=document.getElementById('grid');
+CITIES.forEach(city=>{const card=document.createElement('div');card.className='city-card';card.id=`card-${city}`;const dn=city.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());card.innerHTML=`<div class="city-header"><span>${dn}</span><span class="badge waiting" id="badge-${city}">WAITING</span></div><div class="candidates" id="cands-${city}"><div class="msg">Click "Start Auto-Discovery"</div></div><div class="verify-section" id="verify-${city}" style="display:none"></div><div class="manual"><input type="text" id="input-${city}" placeholder="Paste Unsplash image URL here"><button onclick="manualSet('${city}')">Set</button><a href="https://unsplash.com/s/photos/${encodeURIComponent(Q[city]||city.replace(/-/g,' ')+' skyline')}?orientation=landscape" target="_blank">🔍</a></div>`;grid.appendChild(card)});
+function extractPhotoId(url){const m=url.match(/(photo-\d+-[a-f0-9]+)/);return m?m[1]:null}
+function updateStats(){const v=Object.keys(verified).length;const f=failedSet.size;const p=Math.max(0,CITIES.length-v-f);document.getElementById('s-verified').textContent=v;document.getElementById('s-failed').textContent=f;document.getElementById('s-pending').textContent=p;const pct=Math.round((v/CITIES.length)*100);document.getElementById('pbar').style.width=pct+'%';document.getElementById('ptext').textContent=`${v}/56 verified (${pct}%)`;document.getElementById('exportBtn').disabled=v===0}
+function setBadge(city,type,text){const b=document.getElementById(`badge-${city}`);b.className=`badge ${type}`;b.textContent=text}
+function verifyCDN(city,photoId){return new Promise(resolve=>{const cdnUrl=`https://images.unsplash.com/${photoId}?w=1600&h=900&fit=crop&q=80`;const ve=document.getElementById(`verify-${city}`);ve.style.display='block';ve.innerHTML=`<div class="verify-row"><div class="verify-img"><img src="${cdnUrl}" id="vi-${city}"></div><div class="verify-info"><div><strong>Verifying:</strong></div><div class="photo-id">${photoId}</div><div class="cdnurl">${cdnUrl}</div><div id="vr-${city}" style="margin-top:4px">⏳ Loading from CDN...</div></div></div>`;const img=document.getElementById(`vi-${city}`);const t=setTimeout(()=>{document.getElementById(`vr-${city}`).innerHTML='<span class="verify-fail">✗ TIMEOUT</span>';failedSet.add(city);delete verified[city];document.getElementById(`card-${city}`).className='city-card failed';setBadge(city,'failed','TIMEOUT');updateStats();resolve(false)},10000);img.onload=()=>{clearTimeout(t);if(img.naturalWidth<100){document.getElementById(`vr-${city}`).innerHTML='<span class="verify-fail">✗ Too small</span>';failedSet.add(city);delete verified[city];document.getElementById(`card-${city}`).className='city-card failed';setBadge(city,'failed','BAD IMG');updateStats();resolve(false);return}document.getElementById(`vr-${city}`).innerHTML=`<span class="verify-check">✓ VERIFIED ${img.naturalWidth}×${img.naturalHeight}px</span>`;verified[city]={photoId,cdnUrl};failedSet.delete(city);document.getElementById(`card-${city}`).className='city-card verified';setBadge(city,'verified','VERIFIED ✓');updateStats();resolve(true)};img.onerror=()=>{clearTimeout(t);document.getElementById(`vr-${city}`).innerHTML='<span class="verify-fail">✗ CDN LOAD FAILED</span>';failedSet.add(city);delete verified[city];document.getElementById(`card-${city}`).className='city-card failed';setBadge(city,'failed','CDN FAIL');updateStats();resolve(false)}})}
+async function searchCity(city){const query=Q[city]||`${city.replace(/-/g,' ')} skyline`;const card=document.getElementById(`card-${city}`);const ce=document.getElementById(`cands-${city}`);card.className='city-card searching';setBadge(city,'searching','SEARCHING...');ce.innerHTML='<div class="msg" style="color:#fbbf24">🔍 Querying Unsplash...</div>';try{const r=await fetch(`https://unsplash.com/napi/search/photos?query=${encodeURIComponent(query)}&per_page=8&orientation=landscape&content_filter=high`);if(!r.ok)throw new Error(`HTTP ${r.status}`);const d=await r.json();if(!d.results||d.results.length===0)throw new Error('No results');ce.innerHTML='';let first=null;d.results.forEach((r,i)=>{const raw=r.urls?.raw||r.urls?.regular||r.urls?.full||'';const pid=extractPhotoId(raw);if(!pid)return;if(!first)first=pid;const th=r.urls?.small||`https://images.unsplash.com/${pid}?w=300&h=169&fit=crop&q=60`;const c=document.createElement('div');c.className='cand';c.title=`${r.alt_description||'No description'}\nBy ${r.user?.name||'Unknown'}`;c.innerHTML=`<img src="${th}" loading="lazy"><div class="cand-label">${i+1}</div>`;c.onclick=()=>{ce.querySelectorAll('.cand').forEach(x=>x.classList.remove('selected'));c.classList.add('selected');verifyCDN(city,pid)};ce.appendChild(c)});if(first){ce.querySelector('.cand')?.classList.add('selected');await verifyCDN(city,first)}else throw new Error('No valid IDs')}catch(e){console.warn(`${city}: ${e.message}`);ce.innerHTML=`<div class="msg" style="color:#ef4444">⚠️ ${e.message}<br>Use 🔍 → right-click photo → Copy Image Address → paste below</div>`;card.className='city-card failed';setBadge(city,'failed','SEARCH FAIL');failedSet.add(city);updateStats()}processed++}
+async function manualSet(city){const inp=document.getElementById(`input-${city}`);const url=inp.value.trim();if(!url){alert('Paste URL first');return}let pid=extractPhotoId(url);if(!pid&&url.startsWith('photo-'))pid=url.split('?')[0].trim();if(!pid){alert('Could not find photo-XXXXXXXXXX-XXXXXXXXXXXX in URL.\n\nRight-click image on Unsplash → Copy Image Address');return}inp.value='';await verifyCDN(city,pid)}
+async function startDiscovery(){document.getElementById('startBtn').disabled=true;processed=0;for(let i=0;i<CITIES.length;i+=2){const b=CITIES.slice(i,i+2);await Promise.all(b.map(c=>searchCity(c)));if(i+2<CITIES.length)await new Promise(r=>setTimeout(r,1200))}document.getElementById('startBtn').disabled=false;document.getElementById('ptext').textContent=`Done! ${Object.keys(verified).length}/56 verified. Review each city, then export.`}
+async function retryFailed(){const fl=[...failedSet];if(!fl.length){alert('No failed cities');return}for(let i=0;i<fl.length;i+=2){const b=fl.slice(i,i+2);await Promise.all(b.map(c=>searchCity(c)));if(i+2<fl.length)await new Promise(r=>setTimeout(r,1200))}}
+function exportResults(){const v=Object.keys(verified).length;const missing=CITIES.filter(c=>!verified[c]);if(missing.length>0&&!confirm(`⚠️ ${missing.length} cities NOT verified:\n${missing.join(', ')}\n\nOnly ${v} verified cities will export. Continue?`))return;const out={};CITIES.forEach(c=>{if(verified[c])out[c]=verified[c].photoId});const data={_meta:{exported:new Date().toISOString(),verified_count:v,total:CITIES.length,missing,note:"Upload to Claude. Each value is a VERIFIED photo-ID."},photos:out};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='verified-city-photos.json';a.click();alert(`✅ Exported ${v} verified photos!\nUpload verified-city-photos.json to Claude.`)}
+updateStats();
 </script>
 </body>
 </html>
