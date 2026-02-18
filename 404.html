@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Axseter Systems</title>
+  <meta name="robots" content="noindex">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'navy': { 50: '#f0f4f8', 100: '#d9e2ec', 200: '#bcccdc', 300: '#9fb3c8', 400: '#829ab1', 500: '#627d98', 600: '#486581', 700: '#334e68', 800: '#243b53', 900: '#102a43', 950: '#0a1929' },
+            'blue': { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' },
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .nav-blur { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .btn-primary { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); transition: all 0.3s ease; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px -10px rgba(59, 130, 246, 0.5); }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 nav-blur border-b border-gray-200/50" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="/" class="flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg">
+          <span class="text-3xl font-black tracking-tight text-navy-900" style="font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">AXSETER<sup class="text-sm font-semibold text-gray-400 ml-0.5">™</sup></span>
+        </a>
+        <a href="/contact.html" class="btn-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="min-h-screen flex items-center justify-center pt-20 pb-20">
+    <div class="max-w-lg mx-auto px-6 text-center">
+      <p class="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-4">404 Error</p>
+      <h1 class="text-5xl lg:text-6xl font-bold text-navy-900 mb-6">Page not found</h1>
+      <p class="text-xl text-gray-500 mb-10 leading-relaxed">The page you're looking for doesn't exist or has been moved.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/" class="btn-primary text-white font-semibold px-8 py-3.5 rounded-lg text-center">Back to Home</a>
+        <a href="/contact.html" class="text-navy-900 font-semibold px-8 py-3.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors text-center">Contact Us</a>
+      </div>
+      <div class="mt-16 pt-8 border-t border-gray-100">
+        <p class="text-sm text-gray-400 mb-4">Looking for one of these?</p>
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+          <a href="/services.html" class="text-blue-600 hover:text-blue-800 font-medium">Services</a>
+          <a href="/case-studies.html" class="text-blue-600 hover:text-blue-800 font-medium">Case Studies</a>
+          <a href="/insights.html" class="text-blue-600 hover:text-blue-800 font-medium">Insights</a>
+          <a href="/about.html" class="text-blue-600 hover:text-blue-800 font-medium">About</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

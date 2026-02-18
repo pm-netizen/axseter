@@ -35,7 +35,18 @@
   }
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{'navy':{900:'#102a43',950:'#0a1929'}}}}}</script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'navy': { 50: '#f0f4f8', 100: '#d9e2ec', 200: '#bcccdc', 300: '#9fb3c8', 400: '#829ab1', 500: '#627d98', 600: '#486581', 700: '#334e68', 800: '#243b53', 900: '#102a43', 950: '#0a1929' },
+            'blue': { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' },
+          }
+        }
+      }
+    }
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * { font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -43,45 +54,114 @@
     .btn-primary { background: linear-gradient(135deg, #3B82F6, #2563EB); }
     .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+  
+    /* Logo carousel edge fade */
+    .logo-carousel-wrap {
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+    /* Scroll reveal */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* FAQ accordion */
+    .faq-icon { transition: transform 0.3s ease; }
+    .faq-answer { transition: all 0.3s ease; }
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: #102a43;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0 0 0.5rem 0.5rem;
+      font-weight: 600;
+      transition: top 0.2s;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
   </style>
 </head>
 <body class="bg-white antialiased">
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 nav-blur border-b border-gray-200/50">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 nav-blur border-b border-gray-200/50" role="navigation" aria-label="Main navigation">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex justify-between items-center h-20">
-        <a href="/" class="flex items-center">
+        <a href="/" class="flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg">
           <span class="text-3xl font-black tracking-tight text-navy-900" style="font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">AXSETER<sup class="text-sm font-semibold text-gray-400 ml-0.5">™</sup></span>
         </a>
         
         <div class="hidden lg:flex items-center gap-8">
-          <a href="/services.html" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Services</a>
+          <a href="/services.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="services">Services</a>
           <div class="relative group">
-            <button class="text-gray-600 hover:text-navy-900 font-medium transition-colors flex items-center gap-1">
+            <button class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="industries" aria-haspopup="true" aria-expanded="false">
               Industries
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
-            <div class="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+            <div class="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300" role="menu">
               <div class="bg-white rounded-xl shadow-2xl border border-gray-100 py-2 w-52">
-                <a href="/industries/healthcare.html" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Healthcare</a>
-                <a href="/industries/financial-services.html" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Financial Services</a>
-                <a href="/industries/retail-qsr.html" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Retail & QSR</a>
-                <a href="/industries/engineering.html" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all">Engineering Firms</a>
+                <a href="/industries/healthcare.html" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all focus:outline-none focus:bg-gray-50 focus:text-navy-900" role="menuitem">Healthcare</a>
+                <a href="/industries/financial-services.html" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all focus:outline-none focus:bg-gray-50 focus:text-navy-900" role="menuitem">Financial Services</a>
+                <a href="/industries/retail-qsr.html" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all focus:outline-none focus:bg-gray-50 focus:text-navy-900" role="menuitem">Retail &amp; QSR</a>
+                <a href="/industries/engineering.html" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-navy-900 transition-all focus:outline-none focus:bg-gray-50 focus:text-navy-900" role="menuitem">Engineering Firms</a>
               </div>
             </div>
           </div>
-          <a href="/case-studies.html" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Case Studies</a>
-          <a href="/insights.html" class="text-gray-600 hover:text-navy-900 font-medium transition-colors">Insights</a>
+          <a href="/case-studies.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="case-studies">Case Studies</a>
+          <a href="/insights.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="insights">Insights</a>
         </div>
 
-        <div class="hidden lg:flex items-center gap-4">
-          <a href="/contact.html" class="btn-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm">Get Started</a>
+        <div class="flex items-center gap-4">
+          <a href="/contact.html" class="hidden lg:inline-flex btn-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            Get Started
+          </a>
+          
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" class="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg id="menu-icon-open" class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="menu-icon-close" class="w-6 h-6 text-navy-900 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-100 shadow-xl" role="menu">
+      <div class="max-w-7xl mx-auto px-6 py-6 space-y-1">
+        <a href="/services.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-navy-900 rounded-lg font-medium transition-colors" role="menuitem">Services</a>
+        <div class="px-4 py-3">
+          <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Industries</span>
+          <div class="mt-2 ml-2 space-y-1">
+            <a href="/industries/healthcare.html" class="block px-3 py-2 text-gray-600 hover:bg-gray-50 hover:text-navy-900 rounded-lg transition-colors" role="menuitem">Healthcare</a>
+            <a href="/industries/financial-services.html" class="block px-3 py-2 text-gray-600 hover:bg-gray-50 hover:text-navy-900 rounded-lg transition-colors" role="menuitem">Financial Services</a>
+            <a href="/industries/retail-qsr.html" class="block px-3 py-2 text-gray-600 hover:bg-gray-50 hover:text-navy-900 rounded-lg transition-colors" role="menuitem">Retail &amp; QSR</a>
+            <a href="/industries/engineering.html" class="block px-3 py-2 text-gray-600 hover:bg-gray-50 hover:text-navy-900 rounded-lg transition-colors" role="menuitem">Engineering Firms</a>
+          </div>
+        </div>
+        <a href="/case-studies.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-navy-900 rounded-lg font-medium transition-colors" role="menuitem">Case Studies</a>
+        <a href="/insights.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-navy-900 rounded-lg font-medium transition-colors" role="menuitem">Insights</a>
+        <a href="/about.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-navy-900 rounded-lg font-medium transition-colors" role="menuitem">About</a>
+        <div class="pt-4 px-4">
+          <a href="/contact.html" class="block w-full text-center btn-primary text-white px-5 py-3 rounded-lg font-semibold text-sm">Get Started</a>
         </div>
       </div>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section class="pt-32 pb-20 bg-navy-950 relative overflow-hidden">
+  <section id="main-content" class="pt-32 pb-20 bg-navy-950 relative overflow-hidden">
     <div class="absolute inset-0 opacity-20">
       <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
     </div>
@@ -101,7 +181,7 @@
   <!-- Challenge -->
   <section class="py-24 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal-on-scroll grid lg:grid-cols-2 gap-16 items-center">
         <div>
           <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">The Challenge</span>
           <h2 class="text-4xl font-bold text-navy-900 mt-4 mb-6">AV Consistency Across Locations</h2>
@@ -109,7 +189,7 @@
           <p class="text-lg text-gray-600 leading-relaxed">Axseter deploys standardized AV configurations across your portfolio—same equipment, same interfaces, same user experience at every location.</p>
         </div>
         <div class="relative">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Modern conference room with AV equipment" class="rounded-2xl shadow-2xl">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Modern conference room with AV equipment" class="rounded-2xl shadow-2xl">
         </div>
       </div>
     </div>
@@ -118,12 +198,12 @@
   <!-- Capabilities -->
   <section class="py-24 lg:py-32 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="reveal-on-scroll text-center max-w-3xl mx-auto mb-16">
         <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Capabilities</span>
         <h2 class="text-4xl font-bold text-navy-900 mt-4 mb-6">AV Technologies We Deploy</h2>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="reveal-on-scroll grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
           <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
             <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
@@ -181,12 +261,12 @@
       <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
     </div>
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-      <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="reveal-on-scroll text-center max-w-3xl mx-auto mb-16">
         <span class="text-blue-400 font-semibold text-sm uppercase tracking-wider">Industry Applications</span>
         <h2 class="text-4xl font-bold text-white mt-4 mb-6">AV Solutions for Your Vertical</h2>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="reveal-on-scroll grid md:grid-cols-3 gap-8">
         <a href="/industries/healthcare.html" class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-colors">
           <div class="text-4xl mb-4">🏥</div>
           <h3 class="text-xl font-bold text-white mb-3">Healthcare</h3>
@@ -214,7 +294,7 @@
   <!-- The Axseter Difference -->
   <section class="py-24 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-16 items-start">
+      <div class="reveal-on-scroll grid lg:grid-cols-2 gap-16 items-start">
         <div>
           <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">The Axseter Difference</span>
           <h2 class="text-4xl font-bold text-navy-900 mt-4 mb-6">Consistent AV Experiences at Scale</h2>
@@ -270,35 +350,60 @@
   <!-- FAQ -->
   <section class="py-24 lg:py-32 bg-gray-50">
     <div class="max-w-4xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
+      <div class="reveal-on-scroll text-center mb-16">
         <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">FAQ</span>
         <h2 class="text-4xl font-bold text-navy-900 mt-4">Common Questions About Commercial AV Installation</h2>
       </div>
 
       <div class="space-y-8">
         <div class="border-b border-gray-200 pb-8">
-          <h3 class="text-xl font-bold text-navy-900 mb-3">How long does conference room AV installation take?</h3>
-          <p class="text-gray-600 leading-relaxed">A standard huddle room takes 2-4 hours. A medium conference room takes 4-8 hours. Boardrooms with advanced DSP, multiple displays, and Crestron control typically require 1-2 days. We coordinate with your construction schedule and can deploy multiple rooms simultaneously during buildouts.</p>
+                    <button class="faq-question w-full text-left flex items-center justify-between gap-4 focus:outline-none group" aria-expanded="false">
+            <span class="text-xl font-bold text-navy-900 group-focus:text-blue-600 transition-colors">How long does conference room AV installation take?</span>
+            <span class="faq-icon text-2xl text-gray-400 flex-shrink-0 leading-none select-none">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3">
+            <p class="text-gray-600 leading-relaxed">A standard huddle room takes 2-4 hours. A medium conference room takes 4-8 hours. Boardrooms with advanced DSP, multiple displays, and Crestron control typically require 1-2 days. We coordinate with your construction schedule and can deploy multiple rooms simultaneously during buildouts.</p>
+          </div>
         </div>
 
         <div class="border-b border-gray-200 pb-8">
-          <h3 class="text-xl font-bold text-navy-900 mb-3">Does Axseter support Zoom Rooms and Microsoft Teams Rooms?</h3>
-          <p class="text-gray-600 leading-relaxed">Yes. We deploy certified Zoom Rooms, Microsoft Teams Rooms, and Webex Room devices, as well as platform-agnostic BYOD solutions. We configure the platform, register devices with your tenant, and verify audio and video quality before handoff. We also deploy native room scheduling panels from Crestron, Poly, and Neat.</p>
+                    <button class="faq-question w-full text-left flex items-center justify-between gap-4 focus:outline-none group" aria-expanded="false">
+            <span class="text-xl font-bold text-navy-900 group-focus:text-blue-600 transition-colors">Does Axseter support Zoom Rooms and Microsoft Teams Rooms?</span>
+            <span class="faq-icon text-2xl text-gray-400 flex-shrink-0 leading-none select-none">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3">
+            <p class="text-gray-600 leading-relaxed">Yes. We deploy certified Zoom Rooms, Microsoft Teams Rooms, and Webex Room devices, as well as platform-agnostic BYOD solutions. We configure the platform, register devices with your tenant, and verify audio and video quality before handoff. We also deploy native room scheduling panels from Crestron, Poly, and Neat.</p>
+          </div>
         </div>
 
         <div class="border-b border-gray-200 pb-8">
-          <h3 class="text-xl font-bold text-navy-900 mb-3">Can Axseter manage digital signage content?</h3>
-          <p class="text-gray-600 leading-relaxed">We install and configure the hardware and content management system (CMS), but content creation is typically managed by your marketing team. We work with all major signage CMS platforms including BrightSign, Samsung MagicINFO, and Scala. After installation, your team uploads and schedules content through the CMS dashboard.</p>
+                    <button class="faq-question w-full text-left flex items-center justify-between gap-4 focus:outline-none group" aria-expanded="false">
+            <span class="text-xl font-bold text-navy-900 group-focus:text-blue-600 transition-colors">Can Axseter manage digital signage content?</span>
+            <span class="faq-icon text-2xl text-gray-400 flex-shrink-0 leading-none select-none">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3">
+            <p class="text-gray-600 leading-relaxed">We install and configure the hardware and content management system (CMS), but content creation is typically managed by your marketing team. We work with all major signage CMS platforms including BrightSign, Samsung MagicINFO, and Scala. After installation, your team uploads and schedules content through the CMS dashboard.</p>
+          </div>
         </div>
 
         <div class="border-b border-gray-200 pb-8">
-          <h3 class="text-xl font-bold text-navy-900 mb-3">What AV brands does Axseter install?</h3>
-          <p class="text-gray-600 leading-relaxed">We work with all major commercial AV manufacturers. Common brands include Samsung and LG (displays), Crestron and Extron (control systems), Shure and Biamp (audio/DSP), Poly and Neat (video conferencing), and BrightSign (digital signage). We're certified partners with Crestron, Extron, and Poly.</p>
+                    <button class="faq-question w-full text-left flex items-center justify-between gap-4 focus:outline-none group" aria-expanded="false">
+            <span class="text-xl font-bold text-navy-900 group-focus:text-blue-600 transition-colors">What AV brands does Axseter install?</span>
+            <span class="faq-icon text-2xl text-gray-400 flex-shrink-0 leading-none select-none">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3">
+            <p class="text-gray-600 leading-relaxed">We work with all major commercial AV manufacturers. Common brands include Samsung and LG (displays), Crestron and Extron (control systems), Shure and Biamp (audio/DSP), Poly and Neat (video conferencing), and BrightSign (digital signage). We're certified partners with Crestron, Extron, and Poly.</p>
+          </div>
         </div>
 
         <div>
-          <h3 class="text-xl font-bold text-navy-900 mb-3">How does Axseter ensure AV consistency across locations?</h3>
-          <p class="text-gray-600 leading-relaxed">We work from your standardized room specifications—the same bill of materials, same cable routing, same configuration templates at every location. Equipment is pre-configured before it reaches the job site. After installation, we perform standardized commissioning tests and provide documentation including room diagrams, IP assignments, and configuration backups.</p>
+                    <button class="faq-question w-full text-left flex items-center justify-between gap-4 focus:outline-none group" aria-expanded="false">
+            <span class="text-xl font-bold text-navy-900 group-focus:text-blue-600 transition-colors">How does Axseter ensure AV consistency across locations?</span>
+            <span class="faq-icon text-2xl text-gray-400 flex-shrink-0 leading-none select-none">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3">
+            <p class="text-gray-600 leading-relaxed">We work from your standardized room specifications—the same bill of materials, same cable routing, same configuration templates at every location. Equipment is pre-configured before it reaches the job site. After installation, we perform standardized commissioning tests and provide documentation including room diagrams, IP assignments, and configuration backups.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -307,12 +412,12 @@
   <!-- Related Services -->
   <section class="py-24 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="reveal-on-scroll text-center max-w-3xl mx-auto mb-16">
         <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Related Services</span>
         <h2 class="text-4xl font-bold text-navy-900 mt-4">Complementary Solutions</h2>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="reveal-on-scroll grid md:grid-cols-3 gap-8">
         <a href="/services/structured-cabling.html" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover">
           <h3 class="text-xl font-bold text-navy-900 mb-3">Structured Cabling</h3>
           <p class="text-gray-600 leading-relaxed mb-4">The network backbone that powers your AV systems—Cat6A for video, fiber for AV-over-IP distribution.</p>
@@ -344,46 +449,112 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-navy-950 text-white py-16">
+  <footer class="bg-navy-950 text-white py-16" role="contentinfo">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="grid md:grid-cols-4 gap-12 mb-12">
+      <div class="reveal-on-scroll grid md:grid-cols-4 gap-12 mb-12">
         <div>
-          <span class="text-2xl font-black tracking-tight">AXSETER<sup class="text-xs">™</sup></span>
-          <p class="text-gray-400 mt-4">National low voltage contractor for multi-location enterprises.</p>
-          <p class="text-gray-400 mt-4"><a href="tel:+18772973871" class="hover:text-white transition-colors">1-877-AXSETR1</a></p>
+          <div class="mb-6">
+            <span class="text-3xl font-black tracking-tight text-white" style="font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">AXSETER<sup class="text-sm font-semibold text-gray-500 ml-0.5">™</sup></span>
+          </div>
+          <p class="text-gray-400 leading-relaxed">National low-voltage integrator for enterprise clients expanding across the United States.</p>
+          <p class="text-gray-400 mt-4"><a href="tel:+18772973871" class="hover:text-white transition-colors focus:outline-none focus:text-white">1-877-AXSETR1</a></p>
         </div>
         <div>
-          <h4 class="font-semibold mb-4">Services</h4>
-          <ul class="space-y-2 text-gray-400">
-            <li><a href="/services/structured-cabling.html" class="hover:text-white transition-colors">Structured Cabling</a></li>
-            <li><a href="/services/access-control.html" class="hover:text-white transition-colors">Access Control</a></li>
-            <li><a href="/services/video-surveillance.html" class="hover:text-white transition-colors">Video Surveillance</a></li>
-            <li><a href="/services/audio-visual.html" class="hover:text-white transition-colors">Audio Visual</a></li>
+          <h4 class="font-semibold mb-6 text-gray-200">Services</h4>
+          <ul class="space-y-4 text-gray-400">
+            <li><a href="/services/structured-cabling.html" class="hover:text-white transition-colors focus:outline-none focus:text-white">Structured Cabling</a></li>
+            <li><a href="/services/access-control.html" class="hover:text-white transition-colors focus:outline-none focus:text-white">Access Control</a></li>
+            <li><a href="/services/video-surveillance.html" class="hover:text-white transition-colors focus:outline-none focus:text-white">Video Surveillance</a></li>
+            <li><a href="/services/audio-visual.html" class="hover:text-white transition-colors focus:outline-none focus:text-white">Audio Visual</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="font-semibold mb-4">Industries</h4>
-          <ul class="space-y-2 text-gray-400">
-            <li><a href="/industries/healthcare.html" class="hover:text-white transition-colors">Healthcare</a></li>
-            <li><a href="/industries/financial-services.html" class="hover:text-white transition-colors">Financial Services</a></li>
-            <li><a href="/industries/retail-qsr.html" class="hover:text-white transition-colors">Retail & QSR</a></li>
-            <li><a href="/industries/engineering.html" class="hover:text-white transition-colors">Engineering Firms</a></li>
+          <h4 class="font-semibold mb-6 text-gray-200">Industries</h4>
+          <ul class="space-y-4 text-gray-400">
+            <li><a href="/industries/healthcare.html" class="hover:text-white transition-colors focus:outline-none focus:text-white">Healthcare</a></li>
+            <li><a href="/industries/financial-services.html" class="hover:text-white transition-colors focus:outline-none focus:text-white">Financial Services</a></li>
+            <li><a href="/industries/retail-qsr.html" class="hover:text-white transition-colors focus:outline-none focus:text-white">Retail &amp; QSR</a></li>
+            <li><a href="/industries/engineering.html" class="hover:text-white transition-colors focus:outline-none focus:text-white">Engineering Firms</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="font-semibold mb-4">Company</h4>
-          <ul class="space-y-2 text-gray-400">
-            <li><a href="/about.html" class="hover:text-white transition-colors">About</a></li>
-            <li><a href="/case-studies.html" class="hover:text-white transition-colors">Case Studies</a></li>
-            <li><a href="/insights.html" class="hover:text-white transition-colors">Insights</a></li>
-            <li><a href="/contact.html" class="hover:text-white transition-colors">Contact</a></li>
+          <h4 class="font-semibold mb-6 text-gray-200">Company</h4>
+          <ul class="space-y-4 text-gray-400">
+            <li><a href="/about.html" class="hover:text-white transition-colors focus:outline-none focus:text-white">About</a></li>
+            <li><a href="/case-studies.html" class="hover:text-white transition-colors focus:outline-none focus:text-white">Case Studies</a></li>
+            <li><a href="/insights.html" class="hover:text-white transition-colors focus:outline-none focus:text-white">Insights</a></li>
+            <li><a href="/contact.html" class="hover:text-white transition-colors focus:outline-none focus:text-white">Contact</a></li>
           </ul>
         </div>
       </div>
-      <div class="border-t border-white/10 pt-8">
-        <p class="text-gray-500 text-sm">© 2026 Axseter Systems, LLC. All rights reserved.</p>
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-gray-500 text-sm">&copy; 2026 Axseter Systems, LLC. All rights reserved.</p>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white" aria-label="Axseter on LinkedIn">LinkedIn</a>
       </div>
     </div>
   </footer>
+  <!-- Site JavaScript -->
+  <script>
+  (function() {
+    // Mobile Menu
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+    if (btn && menu) {
+      btn.addEventListener('click', function() {
+        const isOpen = !menu.classList.contains('hidden');
+        menu.classList.toggle('hidden');
+        iconOpen.classList.toggle('hidden');
+        iconClose.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', !isOpen);
+        btn.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+      });
+    }
+
+    // Active Nav State
+    const path = window.location.pathname;
+    document.querySelectorAll('.nav-link[data-nav]').forEach(function(link) {
+      const nav = link.getAttribute('data-nav');
+      if ((nav === 'services' && path.includes('/services')) ||
+          (nav === 'industries' && path.includes('/industries')) ||
+          (nav === 'case-studies' && path.includes('/case-studies')) ||
+          (nav === 'insights' && path.includes('/insights'))) {
+        link.classList.remove('text-gray-600');
+        link.classList.add('text-navy-900', 'font-semibold');
+      }
+    });
+
+    // Scroll-triggered Reveal Animations
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal-on-scroll').forEach(function(el) { observer.observe(el); });
+    }
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        const icon = this.querySelector('.faq-icon');
+        const isOpen = !answer.classList.contains('hidden');
+        // Close all
+        document.querySelectorAll('.faq-answer').forEach(function(a) { a.classList.add('hidden'); });
+        document.querySelectorAll('.faq-icon').forEach(function(i) { i.style.transform = 'rotate(0deg)'; });
+        // Toggle current
+        if (!isOpen) {
+          answer.classList.remove('hidden');
+          if (icon) icon.style.transform = 'rotate(45deg)';
+        }
+      });
+    });
+  })();
+  </script>
 </body>
 </html>
