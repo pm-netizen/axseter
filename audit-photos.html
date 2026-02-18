@@ -3,62 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Photo Audit - Axseter Location Pages</title>
+<title>Photo Audit</title>
 <style>
 body { font-family: system-ui; background: #111; color: #fff; padding: 2rem; }
-h1 { text-align: center; margin-bottom: 2rem; }
-.city { margin-bottom: 2rem; border: 1px solid #333; border-radius: 8px; overflow: hidden; }
-.city-name { background: #1e3a5f; padding: 0.75rem 1rem; font-weight: bold; font-size: 1.1rem; }
+h1 { text-align: center; margin-bottom: 1rem; }
+.status { text-align: center; margin-bottom: 2rem; font-size: 1.2rem; }
+.city { margin-bottom: 1rem; border: 1px solid #333; border-radius: 8px; overflow: hidden; }
+.city-name { background: #1e3a5f; padding: 0.5rem 1rem; font-weight: bold; }
+.city-name.bad { background: #991b1b; }
 .photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
 .photo-slot { position: relative; aspect-ratio: 16/9; background: #222; }
 .photo-slot img { width: 100%; height: 100%; object-fit: cover; }
-.photo-slot .label { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); padding: 4px 8px; font-size: 11px; }
-.photo-slot.broken img { display: none; }
-.photo-slot.broken::after { content: '❌ BROKEN'; display: flex; align-items: center; justify-content: center; position: absolute; inset: 0; font-size: 1.5rem; color: #ef4444; }
-.summary { position: fixed; top: 0; right: 0; background: #1e3a5f; padding: 1rem; border-radius: 0 0 0 8px; z-index: 100; }
+.photo-slot .label { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); padding: 3px 6px; font-size: 10px; }
+.photo-slot.broken { background: #450a0a; }
+.photo-slot.broken::after { content: '❌'; display: flex; align-items: center; justify-content: center; position: absolute; inset: 0; font-size: 2rem; pointer-events: none; }
+#btns { text-align: center; margin: 1rem 0; }
+#btns button { margin: 0.5rem; padding: 0.75rem 2rem; font-size: 1rem; border: none; border-radius: 8px; cursor: pointer; color: white; }
+#save { background: #2563eb; display: none; }
+#download { background: #16a34a; display: none; }
 </style>
 </head>
 <body>
-<h1>Axseter Location Page Photo Audit</h1>
-<div class="summary" id="summary">Loading...</div>
+<h1>Photo Audit</h1>
+<div class="status" id="status">⏳ Loading...</div>
+<div id="btns">
+  <button id="download" onclick="downloadResults()">⬇️ Download Results JSON</button>
+</div>
 <div id="grid"></div>
 <script>
-const cities = [{"city": "albuquerque", "hero": "photo-1469854523086-cc02fe5d8800", "street": "photo-1469854523086-cc02fe5d8800", "dusk": "photo-1474044159687-1ee9f3a51722"}, {"city": "anchorage", "hero": "photo-1464822759023-fed622ff2c3b", "street": "photo-1464822759023-fed622ff2c3b", "dusk": "photo-1464822759023-fed622ff2c3b"}, {"city": "atlanta", "hero": "photo-1575917649121-d5e165ee0323", "street": "photo-1555396273-367ea4eb4db5", "dusk": "photo-1575917649121-d5e165ee0323"}, {"city": "austin", "hero": "photo-1531218150217-54595bc2b934", "street": "photo-1531218150217-54595bc2b934", "dusk": "photo-1531218150217-54595bc2b934"}, {"city": "baltimore", "hero": "photo-1527786356703-4b100091cd2c", "street": "photo-1527786356703-4b100091cd2c", "dusk": "photo-1527786356703-4b100091cd2c"}, {"city": "birmingham", "hero": "photo-1486406146926-c627a92ad1ab", "street": "photo-1486406146926-c627a92ad1ab", "dusk": "photo-1486406146926-c627a92ad1ab"}, {"city": "boise", "hero": "photo-1464822759023-fed622ff2c3b", "street": "photo-1464822759023-fed622ff2c3b", "dusk": "photo-1464822759023-fed622ff2c3b"}, {"city": "boston", "hero": "photo-1501979376754-2ff867a4f659", "street": "photo-1558642452-9d2a7deb7f62", "dusk": "photo-1572120360610-d971b9d7767c"}, {"city": "charlotte", "hero": "photo-1577084381297-f3e5eb1bab89", "street": "photo-1577084381297-f3e5eb1bab89", "dusk": "photo-1577084381297-f3e5eb1bab89"}, {"city": "chicago", "hero": "photo-1477959858617-67f85cf4f1df", "street": "photo-1494522855154-9297ac14b55f", "dusk": "photo-1524168272322-bf73616d9cb5"}, {"city": "cincinnati", "hero": "photo-1513553404607-988bf2703777", "street": "photo-1513553404607-988bf2703777", "dusk": "photo-1513553404607-988bf2703777"}, {"city": "columbus", "hero": "photo-1558511337-e80cc87a1459", "street": "photo-1558511337-e80cc87a1459", "dusk": "photo-1558511337-e80cc87a1459"}, {"city": "dallas-fort-worth", "hero": "photo-1545194445-a7c28a0d1c40", "street": "photo-1570616969692-54d6ba3d0397", "dusk": "photo-1545194445-a7c28a0d1c40"}, {"city": "denver", "hero": "photo-1546156929-a4c0ac411f47", "street": "photo-1619468129361-605ebea04b44", "dusk": "photo-1596394516093-501ba68a0ba6"}, {"city": "des-moines", "hero": "photo-1486406146926-c627a92ad1ab", "street": "photo-1486406146926-c627a92ad1ab", "dusk": "photo-1486406146926-c627a92ad1ab"}, {"city": "detroit", "hero": "photo-1533929736458-ca588d08c8be", "street": "photo-1533929736458-ca588d08c8be", "dusk": "photo-1533929736458-ca588d08c8be"}, {"city": "hartford", "hero": "photo-1486406146926-c627a92ad1ab", "street": "photo-1486406146926-c627a92ad1ab", "dusk": "photo-1486406146926-c627a92ad1ab"}, {"city": "honolulu", "hero": "photo-1507876466758-bc54f384809c", "street": "photo-1507876466758-bc54f384809c", "dusk": "photo-1507876466758-bc54f384809c"}, {"city": "houston", "hero": "photo-1530089711124-9ca31fb9e863", "street": "photo-1582407947092-5e71e4e6c5a2", "dusk": "photo-1530089711124-9ca31fb9e863"}, {"city": "indianapolis", "hero": "photo-1567633839079-37175f1af724", "street": "photo-1567633839079-37175f1af724", "dusk": "photo-1567633839079-37175f1af724"}, {"city": "jacksonville", "hero": "photo-1564357645071-9726b526fd78", "street": "photo-1564357645071-9726b526fd78", "dusk": "photo-1564357645071-9726b526fd78"}, {"city": "kansas-city", "hero": "photo-1595599512088-4a2f1f4ba77b", "street": "photo-1595599512088-4a2f1f4ba77b", "dusk": "photo-1595599512088-4a2f1f4ba77b"}, {"city": "las-vegas", "hero": "photo-1605833556294-ea5c7a74f57d", "street": "photo-1581351721010-8cf859cb14a4", "dusk": "photo-1605833556294-ea5c7a74f57d"}, {"city": "little-rock", "hero": "photo-1449824913935-59a10b8d2000", "street": "photo-1449824913935-59a10b8d2000", "dusk": "photo-1449824913935-59a10b8d2000"}, {"city": "los-angeles", "hero": "photo-1580655653885-65763b2597d0", "street": "photo-1515896769750-31548aa180ed", "dusk": "photo-1444723121867-7a241cacace9"}, {"city": "louisville", "hero": "photo-1449824913935-59a10b8d2000", "street": "photo-1449824913935-59a10b8d2000", "dusk": "photo-1449824913935-59a10b8d2000"}, {"city": "memphis", "hero": "photo-1449824913935-59a10b8d2000", "street": "photo-1449824913935-59a10b8d2000", "dusk": "photo-1449824913935-59a10b8d2000"}, {"city": "miami", "hero": "photo-1533106497176-45ae19e68ba2", "street": "photo-1506966953602-c20cc11f75e3", "dusk": "photo-1514214246283-d427a95c5d2f"}, {"city": "milwaukee", "hero": "photo-1506905925346-21bda4d32df4", "street": "photo-1506905925346-21bda4d32df4", "dusk": "photo-1506905925346-21bda4d32df4"}, {"city": "minneapolis", "hero": "photo-1558452919-08ae4aea8e29", "street": "photo-1558452919-08ae4aea8e29", "dusk": "photo-1558452919-08ae4aea8e29"}, {"city": "nashville", "hero": "photo-1545419913-775e2e434e09", "street": "photo-1587162146766-e06b1189b907", "dusk": "photo-1543726969-a1da85a6d334"}, {"city": "new-orleans", "hero": "photo-1568402102990-bc541580b59f", "street": "photo-1568402102990-bc541580b59f", "dusk": "photo-1568402102990-bc541580b59f"}, {"city": "new-york", "hero": "photo-1496442226666-8d4d0e62e6e9", "street": "photo-1534430480872-3498386e7856", "dusk": "photo-1514565131-fce0801e5785"}, {"city": "oklahoma-city", "hero": "photo-1449824913935-59a10b8d2000", "street": "photo-1449824913935-59a10b8d2000", "dusk": "photo-1449824913935-59a10b8d2000"}, {"city": "omaha", "hero": "photo-1449824913935-59a10b8d2000", "street": "photo-1449824913935-59a10b8d2000", "dusk": "photo-1449824913935-59a10b8d2000"}, {"city": "orlando", "hero": "photo-1575089976121-8ed7b2a54265", "street": "photo-1575089976121-8ed7b2a54265", "dusk": "photo-1575089976121-8ed7b2a54265"}, {"city": "philadelphia", "hero": "photo-1569761316261-9a8696fa2ca3", "street": "photo-1575917649121-d5e165ee0323", "dusk": "photo-1569761316261-9a8696fa2ca3"}, {"city": "phoenix", "hero": "photo-1558618666-fcd25c85f82e", "street": "photo-1469854523086-cc02fe5d8800", "dusk": "photo-1474044159687-1ee9f3a51722"}, {"city": "pittsburgh", "hero": "photo-1558857563-b371033873b8", "street": "photo-1558857563-b371033873b8", "dusk": "photo-1558857563-b371033873b8"}, {"city": "portland", "hero": "photo-1507245338956-18e300d83c67", "street": "photo-1507245338956-18e300d83c67", "dusk": "photo-1507245338956-18e300d83c67"}, {"city": "raleigh", "hero": "photo-1560518883-ce09059eeffa", "street": "photo-1560518883-ce09059eeffa", "dusk": "photo-1560518883-ce09059eeffa"}, {"city": "richmond", "hero": "photo-1560518883-ce09059eeffa", "street": "photo-1560518883-ce09059eeffa", "dusk": "photo-1560518883-ce09059eeffa"}, {"city": "sacramento", "hero": "photo-1506146332389-18140dc7b2fb", "street": "photo-1506146332389-18140dc7b2fb", "dusk": "photo-1506146332389-18140dc7b2fb"}, {"city": "salt-lake-city", "hero": "photo-1542755005-5108cb1fc8ae", "street": "photo-1542755005-5108cb1fc8ae", "dusk": "photo-1542755005-5108cb1fc8ae"}, {"city": "san-antonio", "hero": "photo-1531307119710-accdb402cfee", "street": "photo-1531307119710-accdb402cfee", "dusk": "photo-1531307119710-accdb402cfee"}, {"city": "san-diego", "hero": "photo-1538964173425-93640e4b0e0e", "street": "photo-1519046904884-53103b34b206", "dusk": "photo-1538964173425-93640e4b0e0e"}, {"city": "san-francisco", "hero": "photo-1521464302861-ce943915d1c3", "street": "photo-1501594907352-04cda38ebc29", "dusk": "photo-1506970845246-98f44019b112"}, {"city": "san-jose", "hero": "photo-1517248135467-4c7edcad34c4", "street": "photo-1486406146926-c627a92ad1ab", "dusk": "photo-1517248135467-4c7edcad34c4"}, {"city": "san-juan", "hero": "photo-1559511260-66a68e7c5d1c", "street": "photo-1559511260-66a68e7c5d1c", "dusk": "photo-1559511260-66a68e7c5d1c"}, {"city": "seattle", "hero": "photo-1502175353174-a7a70e73b362", "street": "photo-1542223616-740fb0226f6c", "dusk": "photo-1516912481808-3406841bd33c"}, {"city": "st-louis", "hero": "photo-1530549387789-4c1017266635", "street": "photo-1530549387789-4c1017266635", "dusk": "photo-1530549387789-4c1017266635"}, {"city": "tampa", "hero": "photo-1564357645071-9726b526fd78", "street": "photo-1564357645071-9726b526fd78", "dusk": "photo-1564357645071-9726b526fd78"}, {"city": "toronto", "hero": "photo-1517090504332-eac35b904426", "street": "photo-1517090504332-eac35b904426", "dusk": "photo-1517090504332-eac35b904426"}, {"city": "tucson", "hero": "photo-1469854523086-cc02fe5d8800", "street": "photo-1469854523086-cc02fe5d8800", "dusk": "photo-1474044159687-1ee9f3a51722"}, {"city": "vancouver", "hero": "photo-1559511260-66a68e7c5d1c", "street": "photo-1559511260-66a68e7c5d1c", "dusk": "photo-1559511260-66a68e7c5d1c"}, {"city": "washington-dc", "hero": "photo-1501466044931-62695aada8e9", "street": "photo-1617581629397-a72507c3de9e", "dusk": "photo-1501466044931-62695aada8e9"}];
+const P={"albuquerque":["photo-1469854523086-cc02fe5d8800","photo-1469854523086-cc02fe5d8800","photo-1474044159687-1ee9f3a51722"],"anchorage":["photo-1464822759023-fed622ff2c3b","photo-1464822759023-fed622ff2c3b","photo-1464822759023-fed622ff2c3b"],"atlanta":["photo-1575917649121-d5e165ee0323","photo-1555396273-367ea4eb4db5","photo-1575917649121-d5e165ee0323"],"austin":["photo-1531218150217-54595bc2b934","photo-1531218150217-54595bc2b934","photo-1531218150217-54595bc2b934"],"baltimore":["photo-1527786356703-4b100091cd2c","photo-1527786356703-4b100091cd2c","photo-1527786356703-4b100091cd2c"],"birmingham":["photo-1486406146926-c627a92ad1ab","photo-1486406146926-c627a92ad1ab","photo-1486406146926-c627a92ad1ab"],"boise":["photo-1464822759023-fed622ff2c3b","photo-1464822759023-fed622ff2c3b","photo-1464822759023-fed622ff2c3b"],"boston":["photo-1501979376754-2ff867a4f659","photo-1558642452-9d2a7deb7f62","photo-1572120360610-d971b9d7767c"],"charlotte":["photo-1577084381297-f3e5eb1bab89","photo-1577084381297-f3e5eb1bab89","photo-1577084381297-f3e5eb1bab89"],"chicago":["photo-1477959858617-67f85cf4f1df","photo-1494522855154-9297ac14b55f","photo-1524168272322-bf73616d9cb5"],"cincinnati":["photo-1513553404607-988bf2703777","photo-1513553404607-988bf2703777","photo-1513553404607-988bf2703777"],"columbus":["photo-1558511337-e80cc87a1459","photo-1558511337-e80cc87a1459","photo-1558511337-e80cc87a1459"],"dallas-fort-worth":["photo-1545194445-a7c28a0d1c40","photo-1570616969692-54d6ba3d0397","photo-1545194445-a7c28a0d1c40"],"denver":["photo-1546156929-a4c0ac411f47","photo-1619468129361-605ebea04b44","photo-1596394516093-501ba68a0ba6"],"des-moines":["photo-1486406146926-c627a92ad1ab","photo-1486406146926-c627a92ad1ab","photo-1486406146926-c627a92ad1ab"],"detroit":["photo-1533929736458-ca588d08c8be","photo-1533929736458-ca588d08c8be","photo-1533929736458-ca588d08c8be"],"hartford":["photo-1486406146926-c627a92ad1ab","photo-1486406146926-c627a92ad1ab","photo-1486406146926-c627a92ad1ab"],"honolulu":["photo-1507876466758-bc54f384809c","photo-1507876466758-bc54f384809c","photo-1507876466758-bc54f384809c"],"houston":["photo-1530089711124-9ca31fb9e863","photo-1582407947092-5e71e4e6c5a2","photo-1530089711124-9ca31fb9e863"],"indianapolis":["photo-1567633839079-37175f1af724","photo-1567633839079-37175f1af724","photo-1567633839079-37175f1af724"],"jacksonville":["photo-1564357645071-9726b526fd78","photo-1564357645071-9726b526fd78","photo-1564357645071-9726b526fd78"],"kansas-city":["photo-1595599512088-4a2f1f4ba77b","photo-1595599512088-4a2f1f4ba77b","photo-1595599512088-4a2f1f4ba77b"],"las-vegas":["photo-1605833556294-ea5c7a74f57d","photo-1581351721010-8cf859cb14a4","photo-1605833556294-ea5c7a74f57d"],"little-rock":["photo-1449824913935-59a10b8d2000","photo-1449824913935-59a10b8d2000","photo-1449824913935-59a10b8d2000"],"los-angeles":["photo-1580655653885-65763b2597d0","photo-1515896769750-31548aa180ed","photo-1444723121867-7a241cacace9"],"louisville":["photo-1449824913935-59a10b8d2000","photo-1449824913935-59a10b8d2000","photo-1449824913935-59a10b8d2000"],"memphis":["photo-1449824913935-59a10b8d2000","photo-1449824913935-59a10b8d2000","photo-1449824913935-59a10b8d2000"],"miami":["photo-1533106497176-45ae19e68ba2","photo-1506966953602-c20cc11f75e3","photo-1514214246283-d427a95c5d2f"],"milwaukee":["photo-1506905925346-21bda4d32df4","photo-1506905925346-21bda4d32df4","photo-1506905925346-21bda4d32df4"],"minneapolis":["photo-1558452919-08ae4aea8e29","photo-1558452919-08ae4aea8e29","photo-1558452919-08ae4aea8e29"],"nashville":["photo-1545419913-775e2e434e09","photo-1587162146766-e06b1189b907","photo-1543726969-a1da85a6d334"],"new-orleans":["photo-1568402102990-bc541580b59f","photo-1568402102990-bc541580b59f","photo-1568402102990-bc541580b59f"],"new-york":["photo-1496442226666-8d4d0e62e6e9","photo-1534430480872-3498386e7856","photo-1514565131-fce0801e5785"],"oklahoma-city":["photo-1449824913935-59a10b8d2000","photo-1449824913935-59a10b8d2000","photo-1449824913935-59a10b8d2000"],"omaha":["photo-1449824913935-59a10b8d2000","photo-1449824913935-59a10b8d2000","photo-1449824913935-59a10b8d2000"],"orlando":["photo-1575089976121-8ed7b2a54265","photo-1575089976121-8ed7b2a54265","photo-1575089976121-8ed7b2a54265"],"philadelphia":["photo-1569761316261-9a8696fa2ca3","photo-1575917649121-d5e165ee0323","photo-1569761316261-9a8696fa2ca3"],"phoenix":["photo-1558618666-fcd25c85f82e","photo-1469854523086-cc02fe5d8800","photo-1474044159687-1ee9f3a51722"],"pittsburgh":["photo-1558857563-b371033873b8","photo-1558857563-b371033873b8","photo-1558857563-b371033873b8"],"portland":["photo-1507245338956-18e300d83c67","photo-1507245338956-18e300d83c67","photo-1507245338956-18e300d83c67"],"raleigh":["photo-1560518883-ce09059eeffa","photo-1560518883-ce09059eeffa","photo-1560518883-ce09059eeffa"],"richmond":["photo-1560518883-ce09059eeffa","photo-1560518883-ce09059eeffa","photo-1560518883-ce09059eeffa"],"sacramento":["photo-1506146332389-18140dc7b2fb","photo-1506146332389-18140dc7b2fb","photo-1506146332389-18140dc7b2fb"],"salt-lake-city":["photo-1542755005-5108cb1fc8ae","photo-1542755005-5108cb1fc8ae","photo-1542755005-5108cb1fc8ae"],"san-antonio":["photo-1531307119710-accdb402cfee","photo-1531307119710-accdb402cfee","photo-1531307119710-accdb402cfee"],"san-diego":["photo-1538964173425-93640e4b0e0e","photo-1519046904884-53103b34b206","photo-1538964173425-93640e4b0e0e"],"san-francisco":["photo-1521464302861-ce943915d1c3","photo-1501594907352-04cda38ebc29","photo-1506970845246-98f44019b112"],"san-jose":["photo-1517248135467-4c7edcad34c4","photo-1486406146926-c627a92ad1ab","photo-1517248135467-4c7edcad34c4"],"san-juan":["photo-1559511260-66a68e7c5d1c","photo-1559511260-66a68e7c5d1c","photo-1559511260-66a68e7c5d1c"],"seattle":["photo-1502175353174-a7a70e73b362","photo-1542223616-740fb0226f6c","photo-1516912481808-3406841bd33c"],"st-louis":["photo-1530549387789-4c1017266635","photo-1530549387789-4c1017266635","photo-1530549387789-4c1017266635"],"tampa":["photo-1564357645071-9726b526fd78","photo-1564357645071-9726b526fd78","photo-1564357645071-9726b526fd78"],"toronto":["photo-1517090504332-eac35b904426","photo-1517090504332-eac35b904426","photo-1517090504332-eac35b904426"],"tucson":["photo-1469854523086-cc02fe5d8800","photo-1469854523086-cc02fe5d8800","photo-1474044159687-1ee9f3a51722"],"vancouver":["photo-1559511260-66a68e7c5d1c","photo-1559511260-66a68e7c5d1c","photo-1559511260-66a68e7c5d1c"],"washington-dc":["photo-1501466044931-62695aada8e9","photo-1617581629397-a72507c3de9e","photo-1501466044931-62695aada8e9"]};
+const T=['hero','street','dusk'];
+const R={};
+let done=0;
+const total=Object.keys(P).length*3;
+const grid=document.getElementById('grid');
 
-let broken = 0, loaded = 0, total = 0;
-const grid = document.getElementById('grid');
-
-cities.forEach(c => {
-  const div = document.createElement('div');
-  div.className = 'city';
-  div.innerHTML = `<div class="city-name">${c.city}</div><div class="photos"></div>`;
-  const photos = div.querySelector('.photos');
-  
-  ['hero', 'street', 'dusk'].forEach(type => {
-    const id = c[type];
-    const slot = document.createElement('div');
-    slot.className = 'photo-slot';
-    slot.id = `${c.city}-${type}`;
-    const img = document.createElement('img');
-    img.src = `https://images.unsplash.com/${id}?w=400&h=225&fit=crop&q=60`;
-    img.alt = `${c.city} ${type}`;
-    total++;
-    img.onload = () => { loaded++; updateSummary(); };
-    img.onerror = () => { 
-      slot.classList.add('broken'); 
-      broken++; 
-      updateSummary(); 
-    };
-    slot.appendChild(img);
-    slot.innerHTML += `<div class="label">${type}: ${id}</div>`;
-    photos.appendChild(slot);
+Object.entries(P).sort().forEach(([city,ids])=>{
+  R[city]={};
+  const d=document.createElement('div');d.className='city';d.id='c-'+city;
+  d.innerHTML=`<div class="city-name">${city}</div><div class="photos"></div>`;
+  const ph=d.querySelector('.photos');
+  ids.forEach((id,i)=>{
+    const t=T[i],s=document.createElement('div');s.className='photo-slot';
+    const img=new Image();
+    img.src=`https://images.unsplash.com/${id}?w=400&h=225&fit=crop&q=60`;
+    img.onload=()=>{s.classList.add('loaded');R[city][t]='ok';done++;ck()};
+    img.onerror=()=>{s.classList.add('broken');d.querySelector('.city-name').classList.add('bad');R[city][t]='BROKEN';done++;ck()};
+    s.appendChild(img);s.innerHTML+=`<div class="label">${t}: ${id}</div>`;
+    ph.appendChild(s);
   });
-  grid.appendChild(div);
+  grid.appendChild(d);
 });
 
-function updateSummary() {
-  document.getElementById('summary').innerHTML = 
-    `✅ ${loaded} loaded | ❌ ${broken} broken | ⏳ ${total - loaded - broken} pending`;
+function ck(){
+  const b=Object.values(R).flatMap(c=>Object.values(c)).filter(r=>r==='BROKEN').length;
+  document.getElementById('status').innerHTML=done<total?`⏳ ${done}/${total} | ❌ ${b} broken`:`✅ Done! ❌ ${b} broken of ${total}`;
+  if(done>=total)document.getElementById('download').style.display='inline-block';
+}
+
+function downloadResults(){
+  const broken={};
+  Object.entries(R).forEach(([city,types])=>{
+    Object.entries(types).forEach(([type,status])=>{
+      if(status==='BROKEN'){if(!broken[city])broken[city]=[];broken[city].push(type)}
+    });
+  });
+  const data=JSON.stringify({broken_cities:broken,all:R},null,2);
+  const blob=new Blob([data],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='photo-audit-results.json';a.click();
 }
 </script>
 </body>
