@@ -127,6 +127,7 @@
           </div>
           <a href="/case-studies.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="case-studies">Case Studies</a>
           <a href="/insights.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="insights">Insights</a>
+          <a href="/about.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="about">About</a>
         </div>
 
         <div class="flex items-center gap-4">
@@ -173,7 +174,7 @@
       <div class="absolute bottom-0 left-1/4 w-64 h-64 bg-emerald-500/20 rounded-full blur-3xl"></div>
     </div>
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-      <nav class="text-sm text-gray-400 mb-6">
+      <nav aria-label="Breadcrumb" class="text-sm text-gray-400 mb-6">
         <a href="/" class="hover:text-white">Home</a><span class="mx-2">/</span>
         <a href="/services.html" class="hover:text-white">Services</a><span class="mx-2">/</span>
         <span class="text-gray-300">Access Control</span>
@@ -529,7 +530,8 @@
       if ((nav === 'services' && path.includes('/services')) ||
           (nav === 'industries' && path.includes('/industries')) ||
           (nav === 'case-studies' && path.includes('/case-studies')) ||
-          (nav === 'insights' && path.includes('/insights'))) {
+          (nav === 'insights' && path.includes('/insights')) ||
+          (nav === 'about' && path.includes('/about'))) {
         link.classList.remove('text-gray-600');
         link.classList.add('text-navy-900', 'font-semibold');
       }

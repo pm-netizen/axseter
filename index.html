@@ -194,6 +194,7 @@
           </div>
           <a href="/case-studies.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="case-studies">Case Studies</a>
           <a href="/insights.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="insights">Insights</a>
+          <a href="/about.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="about">About</a>
         </div>
 
         <div class="flex items-center gap-4">
@@ -269,7 +270,7 @@
     
     <!-- Trust Logos Carousel - Inside Hero -->
     <div class="absolute bottom-0 left-0 right-0 z-10 py-6 bg-white border-t border-gray-100">
-      <div class="relative overflow-hidden">
+      <div class="relative overflow-hidden logo-carousel-wrap">
         <div class="logo-carousel flex items-center gap-24">
           <!-- First set -->
           <img src="/logos/gallagher.png" alt="Gallagher" class="h-14 w-auto object-contain flex-shrink-0 opacity-70">
@@ -468,7 +469,7 @@
       </div>
 
       <div class="mt-12 text-center">
-        <a href="/insights/total-cost-ownership" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-semibold transition-colors">
+        <a href="/insights/total-cost-ownership.html" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-semibold transition-colors">
           Read the full TCO analysis
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
@@ -492,7 +493,8 @@
           <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-900/70 to-transparent"></div>
           <div class="absolute bottom-0 left-0 right-0 p-8">
             <h3 class="text-2xl font-bold text-white mb-2">Healthcare</h3>
-            <p class="text-gray-300">Infrastructure for fast-growing clinic and specialty practice networks.</p>
+            <p class="text-gray-300 mb-3">Infrastructure for fast-growing clinic and specialty practice networks.</p>
+            <span class="inline-flex items-center gap-2 text-white/0 group-hover:text-white text-sm font-semibold transition-all duration-300 translate-y-2 group-hover:translate-y-0">Learn more <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
           </div>
         </a>
 
@@ -501,7 +503,8 @@
           <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-900/70 to-transparent"></div>
           <div class="absolute bottom-0 left-0 right-0 p-8">
             <h3 class="text-2xl font-bold text-white mb-2">Financial Services</h3>
-            <p class="text-gray-300">For firms acquiring and building out dozens of branches per year.</p>
+            <p class="text-gray-300 mb-3">For firms acquiring and building out dozens of branches per year.</p>
+            <span class="inline-flex items-center gap-2 text-white/0 group-hover:text-white text-sm font-semibold transition-all duration-300 translate-y-2 group-hover:translate-y-0">Learn more <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
           </div>
         </a>
 
@@ -509,8 +512,9 @@
           <img loading="lazy" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80" alt="Retail store" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-900/70 to-transparent"></div>
           <div class="absolute bottom-0 left-0 right-0 p-8">
-            <h3 class="text-2xl font-bold text-white mb-2">Retail & QSR</h3>
-            <p class="text-gray-300">Fast-paced deployment for chains opening 10+ locations/year.</p>
+            <h3 class="text-2xl font-bold text-white mb-2">Retail &amp; QSR</h3>
+            <p class="text-gray-300 mb-3">Fast-paced deployment for chains opening 10+ locations/year.</p>
+            <span class="inline-flex items-center gap-2 text-white/0 group-hover:text-white text-sm font-semibold transition-all duration-300 translate-y-2 group-hover:translate-y-0">Learn more <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
           </div>
         </a>
       </div>
@@ -604,7 +608,8 @@
       if ((nav === 'services' && path.includes('/services')) ||
           (nav === 'industries' && path.includes('/industries')) ||
           (nav === 'case-studies' && path.includes('/case-studies')) ||
-          (nav === 'insights' && path.includes('/insights'))) {
+          (nav === 'insights' && path.includes('/insights')) ||
+          (nav === 'about' && path.includes('/about'))) {
         link.classList.remove('text-gray-600');
         link.classList.add('text-navy-900', 'font-semibold');
       }

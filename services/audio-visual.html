@@ -11,6 +11,18 @@
   <title>Audio-Visual Installation | Conference Rooms & Digital Signage | Axseter</title>
   <meta name="description" content="Commercial AV installation for multi-location enterprises. Conference rooms, digital signage, presentation systems, and AV-over-IP deployed nationwide with a Single Point of Contact.">
   <meta property="og:type" content="website">
+    <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.axseter.com/services/audio-visual/">
+  <meta property="og:title" content="Audio Visual Installation | Axseter Systems">
+  <meta property="og:description" content="Enterprise AV installation for conference rooms, digital signage, and presentation systems. Reliable solutions deployed nationwide.">
+  <meta property="og:image" content="https://www.axseter.com/images/og-image.jpg">
+  <meta property="og:site_name" content="Axseter Systems">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Audio Visual Installation | Axseter Systems">
+  <meta name="twitter:description" content="Enterprise AV installation for conference rooms, digital signage, and presentation systems. Reliable solutions deployed nationwide.">
+  <meta name="twitter:image" content="https://www.axseter.com/images/og-image.jpg">
   <link rel="canonical" href="https://www.axseter.com/services/audio-visual/">
   <script type="application/ld+json">
   {
@@ -121,6 +133,7 @@
           </div>
           <a href="/case-studies.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="case-studies">Case Studies</a>
           <a href="/insights.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="insights">Insights</a>
+          <a href="/about.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="about">About</a>
         </div>
 
         <div class="flex items-center gap-4">
@@ -166,7 +179,7 @@
       <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
     </div>
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-      <nav class="text-sm text-gray-400 mb-6">
+      <nav aria-label="Breadcrumb" class="text-sm text-gray-400 mb-6">
         <a href="/" class="hover:text-white">Home</a><span class="mx-2">/</span>
         <a href="/services.html" class="hover:text-white">Services</a><span class="mx-2">/</span>
         <span class="text-gray-300">Audio-Visual</span>
@@ -519,7 +532,8 @@
       if ((nav === 'services' && path.includes('/services')) ||
           (nav === 'industries' && path.includes('/industries')) ||
           (nav === 'case-studies' && path.includes('/case-studies')) ||
-          (nav === 'insights' && path.includes('/insights'))) {
+          (nav === 'insights' && path.includes('/insights')) ||
+          (nav === 'about' && path.includes('/about'))) {
         link.classList.remove('text-gray-600');
         link.classList.add('text-navy-900', 'font-semibold');
       }

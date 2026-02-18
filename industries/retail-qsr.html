@@ -129,6 +129,7 @@
           </div>
           <a href="/case-studies.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="case-studies">Case Studies</a>
           <a href="/insights.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="insights">Insights</a>
+          <a href="/about.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="about">About</a>
         </div>
 
         <div class="flex items-center gap-4">
@@ -441,7 +442,8 @@
       if ((nav === 'services' && path.includes('/services')) ||
           (nav === 'industries' && path.includes('/industries')) ||
           (nav === 'case-studies' && path.includes('/case-studies')) ||
-          (nav === 'insights' && path.includes('/insights'))) {
+          (nav === 'insights' && path.includes('/insights')) ||
+          (nav === 'about' && path.includes('/about'))) {
         link.classList.remove('text-gray-600');
         link.classList.add('text-navy-900', 'font-semibold');
       }

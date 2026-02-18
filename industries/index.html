@@ -11,6 +11,18 @@
   <title>Industries | Healthcare, Financial, Retail Infrastructure | Axseter Systems</title>
   <meta name="description" content="Low voltage infrastructure for healthcare, financial services, and retail enterprises. National installation and support for multi-location organizations.">
   <meta property="og:type" content="website">
+    <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.axseter.com/industries/">
+  <meta property="og:title" content="Industries We Serve | Axseter Systems">
+  <meta property="og:description" content="Low voltage infrastructure for healthcare, financial services, retail, and engineering firms expanding across the United States.">
+  <meta property="og:image" content="https://www.axseter.com/images/og-image.jpg">
+  <meta property="og:site_name" content="Axseter Systems">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Industries We Serve | Axseter Systems">
+  <meta name="twitter:description" content="Low voltage infrastructure for healthcare, financial services, retail, and engineering firms expanding across the United States.">
+  <meta name="twitter:image" content="https://www.axseter.com/images/og-image.jpg">
   <link rel="canonical" href="https://www.axseter.com/industries/">
     <script type="application/ld+json">
   {
@@ -108,6 +120,7 @@
           </div>
           <a href="/case-studies.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="case-studies">Case Studies</a>
           <a href="/insights.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="insights">Insights</a>
+          <a href="/about.html" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-1 py-0.5" data-nav="about">About</a>
         </div>
 
         <div class="flex items-center gap-4">
@@ -314,7 +327,8 @@
       if ((nav === 'services' && path.includes('/services')) ||
           (nav === 'industries' && path.includes('/industries')) ||
           (nav === 'case-studies' && path.includes('/case-studies')) ||
-          (nav === 'insights' && path.includes('/insights'))) {
+          (nav === 'insights' && path.includes('/insights')) ||
+          (nav === 'about' && path.includes('/about'))) {
         link.classList.remove('text-gray-600');
         link.classList.add('text-navy-900', 'font-semibold');
       }
