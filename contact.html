@@ -51,7 +51,7 @@
     .nav-blur{backdrop-filter:blur(20px)}
     .btn-primary{background:linear-gradient(135deg,#1e3a5f 0%,#102a43 100%);transition:all 0.3s ease}
     .btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 40px -10px rgba(59,130,246,0.4)}
-    input:focus,select:focus,textarea:focus{outline:none;border-color:#3B82F6;box-shadow:0 0 0 3px rgba(59,130,246,0.1)}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:#102a43;box-shadow:0 0 0 3px rgba(16,42,67,0.06)}
     select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");background-position:right 0.75rem center;background-repeat:no-repeat;background-size:1.5em 1.5em;appearance:none}
   
     /* Logo carousel edge fade */
@@ -161,138 +161,109 @@
     </div>
   </nav>
 
-  <!-- Main Content -->
-  <main id="main-content" role="main" class="pt-20 min-h-screen flex">
-    
-    <!-- Left Panel - Dark -->
-    <div class="hidden lg:flex lg:w-[42%] bg-navy-950 flex-col justify-between p-16 relative overflow-hidden">
-      <!-- Subtle ambient glow -->
-      <div class="absolute inset-0">
-        <div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(circle at 20% 30%, rgba(59,130,246,0.06) 0%, transparent 50%)"></div>
+  <!-- Hero Strip -->
+  <main id="main-content" role="main">
+    <section class="bg-navy-950 pt-32 pb-16 relative overflow-hidden">
+      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 50% 120%, rgba(59,130,246,0.08) 0%, transparent 60%)"></div>
+      <div class="max-w-2xl mx-auto px-6 text-center relative z-10">
+        <h1 class="text-3xl lg:text-4xl font-bold text-white leading-tight">Get in touch</h1>
+        <p class="text-gray-400 mt-3 text-base">Tell us about your project and we'll scope a solution within one business day.</p>
       </div>
-      
-      <div class="relative z-10">
-        <h1 class="text-4xl font-bold text-white leading-tight mb-5">Let's build your infrastructure.</h1>
-        <p class="text-gray-500 text-base leading-relaxed max-w-sm">Tell us about your expansion plans and we'll scope a solution within one business day.</p>
-      </div>
-      
-      <div class="relative z-10 space-y-4">
-        <a href="mailto:info@axseter.com" class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors text-sm">
-          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          info@axseter.com
-        </a>
-        <a href="tel:+18772973871" class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors text-sm">
-          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-          1-877-AXSETR1
-        </a>
-        <div class="flex items-center gap-3 text-gray-400 text-sm">
-          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          Libertyville, IL
-        </div>
-      </div>
-    </div>
-    
-    <!-- Right Panel - Form -->
-    <div class="flex-1 bg-gray-50 flex items-start justify-center p-8 lg:px-20 lg:py-24 overflow-y-auto">
-      <div class="w-full max-w-md">
-        
-        <!-- Mobile Header -->
-        <div class="lg:hidden mb-10">
-          <h1 class="text-3xl font-bold text-navy-900 mb-3">Let's build your infrastructure.</h1>
-          <p class="text-gray-500">Tell us about your expansion plans.</p>
-        </div>
+    </section>
 
-        <form id="contact-form" action="https://formspree.io/f/xeooqpkz" method="POST" novalidate>
+    <!-- Form Section -->
+    <section class="relative -mt-1">
+      <div class="max-w-xl mx-auto px-6 -translate-y-6">
+        
+        <form id="contact-form" action="https://formspree.io/f/xeooqpkz" method="POST" novalidate
+              class="bg-white rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-100 p-8 lg:p-10">
           
-          <!-- Success Message (hidden by default) -->
-          <div id="form-success" class="hidden bg-white border border-emerald-200 rounded-2xl p-8 text-center shadow-sm">
+          <!-- Success Message -->
+          <div id="form-success" class="hidden text-center py-8">
             <div class="w-14 h-14 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-4">
               <svg class="w-7 h-7 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <h3 class="text-xl font-bold text-navy-900 mb-2">We've received your request</h3>
-            <p class="text-gray-500 text-sm">Expect a response within one business day.</p>
+            <h3 class="text-xl font-bold text-navy-900 mb-2">Request received</h3>
+            <p class="text-gray-500 text-sm">We'll be in touch within one business day.</p>
           </div>
 
-          <!-- Error Message (hidden by default) -->
-          <div id="form-error" class="hidden bg-red-50 border border-red-100 rounded-xl p-4 text-sm text-red-600 mb-6">
+          <!-- Error Message -->
+          <div id="form-error" class="hidden bg-red-50 border border-red-100 rounded-lg p-4 text-sm text-red-600 mb-6">
             Something went wrong. Please try again or email <a href="mailto:info@axseter.com" class="underline font-medium">info@axseter.com</a>.
           </div>
 
-          <div id="form-fields" class="bg-white rounded-2xl shadow-sm border border-gray-200/60 p-8 lg:p-10">
+          <div id="form-fields" class="space-y-6">
             
-            <div class="mb-8">
-              <h2 class="text-lg font-bold text-navy-900">Request a consultation</h2>
-              <p class="text-gray-400 text-sm mt-1">We'll scope your project within one business day.</p>
+            <!-- Row 1: Name + Email -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="field-name" class="block text-sm font-medium text-navy-900 mb-1.5">Full name</label>
+                <input id="field-name" type="text" name="name" required
+                  class="w-full px-3.5 py-2.5 bg-gray-50/50 border border-gray-200 rounded-lg text-navy-900 text-sm placeholder-gray-400 transition-all hover:border-gray-300 focus:bg-white focus:border-navy-900 focus:ring-2 focus:ring-navy-900/5"
+                  placeholder="Jane Smith">
+              </div>
+              <div>
+                <label for="field-email" class="block text-sm font-medium text-navy-900 mb-1.5">Work email</label>
+                <input id="field-email" type="email" name="email" required
+                  class="w-full px-3.5 py-2.5 bg-gray-50/50 border border-gray-200 rounded-lg text-navy-900 text-sm placeholder-gray-400 transition-all hover:border-gray-300 focus:bg-white focus:border-navy-900 focus:ring-2 focus:ring-navy-900/5"
+                  placeholder="jane@company.com">
+              </div>
             </div>
 
-            <div class="space-y-5">
-              
-              <!-- Name + Email -->
-              <div class="grid grid-cols-2 gap-4">
-                <div class="relative">
-                  <input id="field-name" type="text" name="name" required placeholder=" "
-                    class="peer w-full px-0 py-3 bg-transparent border-0 border-b-2 border-gray-200 text-navy-900 text-[15px] placeholder-transparent transition-colors focus:outline-none focus:border-navy-900">
-                  <label for="field-name" class="absolute left-0 top-3 text-gray-400 text-[15px] transition-all pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-[15px] peer-focus:top-[-8px] peer-focus:text-[11px] peer-focus:text-navy-900 peer-focus:font-medium peer-[:not(:placeholder-shown)]:top-[-8px] peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-gray-400 peer-[:not(:placeholder-shown)]:font-medium">Full name *</label>
-                </div>
-                <div class="relative">
-                  <input id="field-email" type="email" name="email" required placeholder=" "
-                    class="peer w-full px-0 py-3 bg-transparent border-0 border-b-2 border-gray-200 text-navy-900 text-[15px] placeholder-transparent transition-colors focus:outline-none focus:border-navy-900">
-                  <label for="field-email" class="absolute left-0 top-3 text-gray-400 text-[15px] transition-all pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-[15px] peer-focus:top-[-8px] peer-focus:text-[11px] peer-focus:text-navy-900 peer-focus:font-medium peer-[:not(:placeholder-shown)]:top-[-8px] peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-gray-400 peer-[:not(:placeholder-shown)]:font-medium">Work email *</label>
-                </div>
+            <!-- Row 2: Company + Phone -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="field-company" class="block text-sm font-medium text-navy-900 mb-1.5">Company</label>
+                <input id="field-company" type="text" name="company" required
+                  class="w-full px-3.5 py-2.5 bg-gray-50/50 border border-gray-200 rounded-lg text-navy-900 text-sm placeholder-gray-400 transition-all hover:border-gray-300 focus:bg-white focus:border-navy-900 focus:ring-2 focus:ring-navy-900/5"
+                  placeholder="Acme Corp">
               </div>
-
-              <!-- Company + Phone -->
-              <div class="grid grid-cols-2 gap-4">
-                <div class="relative">
-                  <input id="field-company" type="text" name="company" required placeholder=" "
-                    class="peer w-full px-0 py-3 bg-transparent border-0 border-b-2 border-gray-200 text-navy-900 text-[15px] placeholder-transparent transition-colors focus:outline-none focus:border-navy-900">
-                  <label for="field-company" class="absolute left-0 top-3 text-gray-400 text-[15px] transition-all pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-[15px] peer-focus:top-[-8px] peer-focus:text-[11px] peer-focus:text-navy-900 peer-focus:font-medium peer-[:not(:placeholder-shown)]:top-[-8px] peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-gray-400 peer-[:not(:placeholder-shown)]:font-medium">Company *</label>
-                </div>
-                <div class="relative">
-                  <input id="field-phone" type="tel" name="phone" placeholder=" "
-                    class="peer w-full px-0 py-3 bg-transparent border-0 border-b-2 border-gray-200 text-navy-900 text-[15px] placeholder-transparent transition-colors focus:outline-none focus:border-navy-900">
-                  <label for="field-phone" class="absolute left-0 top-3 text-gray-400 text-[15px] transition-all pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-[15px] peer-focus:top-[-8px] peer-focus:text-[11px] peer-focus:text-navy-900 peer-focus:font-medium peer-[:not(:placeholder-shown)]:top-[-8px] peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-gray-400 peer-[:not(:placeholder-shown)]:font-medium">Phone</label>
-                </div>
+              <div>
+                <label for="field-phone" class="block text-sm font-medium text-navy-900 mb-1.5">Phone <span class="text-gray-300 font-normal">optional</span></label>
+                <input id="field-phone" type="tel" name="phone"
+                  class="w-full px-3.5 py-2.5 bg-gray-50/50 border border-gray-200 rounded-lg text-navy-900 text-sm placeholder-gray-400 transition-all hover:border-gray-300 focus:bg-white focus:border-navy-900 focus:ring-2 focus:ring-navy-900/5"
+                  placeholder="(312) 555-0100">
               </div>
+            </div>
 
-              <!-- Industry + Locations -->
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <label for="field-industry" class="block text-[11px] font-medium text-gray-400 mb-1.5">Industry</label>
-                  <select id="field-industry" name="industry" 
-                    class="w-full px-0 py-2.5 bg-transparent border-0 border-b-2 border-gray-200 text-navy-900 text-[15px] transition-colors focus:outline-none focus:border-navy-900 cursor-pointer">
-                    <option value="">Select</option>
-                    <option value="healthcare">Healthcare</option>
-                    <option value="financial">Financial Services</option>
-                    <option value="retail">Retail & QSR</option>
-                    <option value="engineering">Engineering</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="field-locations" class="block text-[11px] font-medium text-gray-400 mb-1.5">Locations</label>
-                  <select id="field-locations" name="locations"
-                    class="w-full px-0 py-2.5 bg-transparent border-0 border-b-2 border-gray-200 text-navy-900 text-[15px] transition-colors focus:outline-none focus:border-navy-900 cursor-pointer">
-                    <option value="">Select</option>
-                    <option value="1-10">1–10</option>
-                    <option value="11-50">11–50</option>
-                    <option value="51-200">51–200</option>
-                    <option value="200+">200+</option>
-                  </select>
-                </div>
+            <!-- Row 3: Industry + Locations -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="field-industry" class="block text-sm font-medium text-navy-900 mb-1.5">Industry</label>
+                <select id="field-industry" name="industry"
+                  class="w-full px-3.5 py-2.5 bg-gray-50/50 border border-gray-200 rounded-lg text-navy-900 text-sm transition-all hover:border-gray-300 focus:bg-white focus:border-navy-900 focus:ring-2 focus:ring-navy-900/5 pr-10">
+                  <option value="">Select</option>
+                  <option value="healthcare">Healthcare</option>
+                  <option value="financial">Financial Services</option>
+                  <option value="retail">Retail & QSR</option>
+                  <option value="engineering">Engineering</option>
+                  <option value="other">Other</option>
+                </select>
               </div>
-
-              <!-- Message -->
-              <div class="relative pt-2">
-                <textarea id="field-message" name="message" required rows="3" placeholder=" "
-                  class="peer w-full px-0 py-3 bg-transparent border-0 border-b-2 border-gray-200 text-navy-900 text-[15px] placeholder-transparent transition-colors resize-none focus:outline-none focus:border-navy-900"></textarea>
-                <label for="field-message" class="absolute left-0 top-5 text-gray-400 text-[15px] transition-all pointer-events-none peer-placeholder-shown:top-5 peer-placeholder-shown:text-[15px] peer-focus:top-[-2px] peer-focus:text-[11px] peer-focus:text-navy-900 peer-focus:font-medium peer-[:not(:placeholder-shown)]:top-[-2px] peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-gray-400 peer-[:not(:placeholder-shown)]:font-medium">Tell us about your project *</label>
+              <div>
+                <label for="field-locations" class="block text-sm font-medium text-navy-900 mb-1.5">Number of locations</label>
+                <select id="field-locations" name="locations"
+                  class="w-full px-3.5 py-2.5 bg-gray-50/50 border border-gray-200 rounded-lg text-navy-900 text-sm transition-all hover:border-gray-300 focus:bg-white focus:border-navy-900 focus:ring-2 focus:ring-navy-900/5 pr-10">
+                  <option value="">Select</option>
+                  <option value="1-10">1–10</option>
+                  <option value="11-50">11–50</option>
+                  <option value="51-200">51–200</option>
+                  <option value="200+">200+</option>
+                </select>
               </div>
+            </div>
 
+            <!-- Row 4: Message -->
+            <div>
+              <label for="field-message" class="block text-sm font-medium text-navy-900 mb-1.5">How can we help?</label>
+              <textarea id="field-message" name="message" required rows="4"
+                class="w-full px-3.5 py-2.5 bg-gray-50/50 border border-gray-200 rounded-lg text-navy-900 text-sm placeholder-gray-400 transition-all resize-none hover:border-gray-300 focus:bg-white focus:border-navy-900 focus:ring-2 focus:ring-navy-900/5"
+                placeholder="Expansion plans, timeline, current infrastructure challenges..."></textarea>
             </div>
 
             <!-- Submit -->
-            <button id="submit-btn" type="submit" class="w-full mt-8 bg-navy-900 hover:bg-navy-800 text-white font-semibold py-3.5 rounded-lg text-sm tracking-wide focus:outline-none focus:ring-2 focus:ring-navy-500 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed transition-all group">
+            <button id="submit-btn" type="submit" 
+              class="w-full bg-navy-900 hover:bg-navy-800 text-white font-semibold py-3 rounded-lg text-sm tracking-wide transition-all group focus:outline-none focus:ring-2 focus:ring-navy-500 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed">
               <span id="submit-text" class="flex items-center justify-center gap-2">
                 Submit Request
                 <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -302,36 +273,30 @@
                 Sending...
               </span>
             </button>
+
           </div>
-          
         </form>
-        
-        <!-- Mobile Contact Info -->
-        <div class="lg:hidden mt-12 pt-8 border-t border-gray-200 space-y-4">
-          <div class="flex justify-between">
-            <span class="text-gray-500">Email</span>
-            <a href="mailto:info@axseter.com" class="text-navy-900 font-medium">info@axseter.com</a>
-          </div>
-          <div class="flex justify-between">
-            <span class="text-gray-500">Phone</span>
-            <a href="tel:+18772973871" class="text-navy-900 font-medium">1-877-AXSETR1</a>
-          </div>
+
+        <!-- Contact details — quiet, underneath -->
+        <div class="flex items-center justify-center gap-8 mt-8 text-sm text-gray-400">
+          <a href="mailto:info@axseter.com" class="hover:text-navy-900 transition-colors">info@axseter.com</a>
+          <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+          <a href="tel:+18772973871" class="hover:text-navy-900 transition-colors">1-877-AXSETR1</a>
+          <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+          <span>Libertyville, IL</span>
         </div>
 
-        <!-- Trusted By -->
-        <div class="mt-8 text-center">
-          <div class="flex items-center justify-center gap-6 opacity-25 grayscale">
-            <img src="/logos/gallagher.png" alt="Gallagher" class="h-5 w-auto object-contain">
-            <img src="/logos/oak-street-health.png" alt="Oak Street Health" class="h-4 w-auto object-contain">
-            <img src="/logos/cvs.png" alt="CVS Health" class="h-5 w-auto object-contain">
-            <img src="/logos/ati-physical-therapy.png" alt="ATI Physical Therapy" class="h-3.5 w-auto object-contain">
-            <img src="/logos/soar-autism.png" alt="Soar Autism Center" class="h-6 w-auto object-contain">
-          </div>
+        <!-- Logos -->
+        <div class="flex items-center justify-center gap-8 mt-10 mb-16">
+          <img src="/logos/gallagher.png" alt="Gallagher" class="h-5 w-auto object-contain opacity-20 grayscale">
+          <img src="/logos/oak-street-health.png" alt="Oak Street Health" class="h-4 w-auto object-contain opacity-20 grayscale">
+          <img src="/logos/cvs.png" alt="CVS Health" class="h-5 w-auto object-contain opacity-20 grayscale">
+          <img src="/logos/ati-physical-therapy.png" alt="ATI Physical Therapy" class="h-3.5 w-auto object-contain opacity-20 grayscale">
+          <img src="/logos/soar-autism.png" alt="Soar Autism Center" class="h-6 w-auto object-contain opacity-20 grayscale">
         </div>
-        
+
       </div>
-    </div>
-    
+    </section>
   </main>
 
   <!-- Footer -->
