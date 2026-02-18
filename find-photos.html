@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City Photo Finder</title>
+<style>
+body{font-family:system-ui;background:#111;color:#fff;padding:2rem}
+h1{text-align:center;margin-bottom:1rem}
+.status{text-align:center;margin:1rem 0;font-size:1.1rem}
+.city{margin-bottom:2rem;border:1px solid #333;border-radius:8px;overflow:hidden}
+.city-name{background:#1e3a5f;padding:0.75rem 1rem;font-weight:bold}
+.candidates{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:4px;padding:4px}
+.cand{position:relative;aspect-ratio:16/9;background:#222;cursor:pointer;border:3px solid transparent}
+.cand.selected{border-color:#16a34a}
+.cand img{width:100%;height:100%;object-fit:cover}
+.cand .info{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.8);padding:4px 8px;font-size:10px}
+.cand.broken{opacity:0.3}
+#export-btn{display:block;margin:2rem auto;padding:1rem 3rem;font-size:1.2rem;background:#2563eb;color:white;border:none;border-radius:8px;cursor:pointer}
+</style>
+</head>
+<body>
+<h1>🔍 City Photo Finder</h1>
+<p class="status">For each city, click the best photo for hero/street/dusk. Then export.</p>
+<button id="export-btn" onclick="exportResults()">📋 Export Selected Photo IDs</button>
+<div id="grid"></div>
+
+<script>
+// Cities that need photos + known-good candidates from web research
+// Format: city -> array of Unsplash photo slugs to test
+const BROKEN = {
+  "atlanta": {needs:["hero","dusk"], keep:{street:"photo-1555396273-367ea4eb4db5"}},
+  "charlotte": {needs:["hero","street","dusk"], keep:{}},
+  "columbus": {needs:["hero","street","dusk"], keep:{}},
+  "dallas-fort-worth": {needs:["hero","dusk"], keep:{street:"photo-1570616969692-54d6ba3d0397"}},
+  "houston": {needs:["street"], keep:{hero:"photo-1530089711124-9ca31fb9e863",dusk:"photo-1530089711124-9ca31fb9e863"}},
+  "indianapolis": {needs:["hero","street","dusk"], keep:{}},
+  "jacksonville": {needs:["hero","street","dusk"], keep:{}},
+  "kansas-city": {needs:["hero","street","dusk"], keep:{}},
+  "nashville": {needs:["hero"], keep:{street:"photo-1587162146766-e06b1189b907",dusk:"photo-1543726969-a1da85a6d334"}},
+  "philadelphia": {needs:["street"], keep:{hero:"photo-1569761316261-9a8696fa2ca3",dusk:"photo-1569761316261-9a8696fa2ca3"}},
+  "phoenix": {needs:["hero"], keep:{street:"photo-1469854523086-cc02fe5d8800",dusk:"photo-1474044159687-1ee9f3a51722"}},
+  "portland": {needs:["hero","street","dusk"], keep:{}},
+  "salt-lake-city": {needs:["hero","street","dusk"], keep:{}},
+  "san-antonio": {needs:["hero","street","dusk"], keep:{}},
+  "san-diego": {needs:["hero","dusk"], keep:{street:"photo-1519046904884-53103b34b206"}},
+  "san-francisco": {needs:["dusk"], keep:{hero:"photo-1521464302861-ce943915d1c3",street:"photo-1501594907352-04cda38ebc29"}},
+  "san-juan": {needs:["hero","street","dusk"], keep:{}},
+  "seattle": {needs:["street"], keep:{hero:"photo-1502175353174-a7a70e73b362",dusk:"photo-1516912481808-3406841bd33c"}},
+  "tampa": {needs:["hero","street","dusk"], keep:{}},
+  "toronto": {needs:["hero","street","dusk"], keep:{}},
+  "vancouver": {needs:["hero","street","dusk"], keep:{}}
+};
+
+// Unsplash API - using demo access key (rate limited but works for this)
+const ACCESS_KEY = 'ab3411e4ac868c2646c0ed488dfd919ef612b04c264f3571c16571d0e996571';
+// Actually, let's use a different approach - query their public napi endpoint
+
+const grid = document.getElementById('grid');
+const selections = {};
+let processed = 0;
+
+async function searchCity(city) {
+  const searchTerm = city.replace(/-/g,' ') + ' city skyline';
+  try {
+    // Use Unsplash's public API endpoint
+    const resp = await fetch(`https://unsplash.com/napi/search/photos?query=${encodeURIComponent(searchTerm)}&per_page=12&orientation=landscape`);
+    if (!resp.ok) throw new Error('API error');
+    const data = await resp.json();
+    return data.results.map(r => ({
+      id: r.id,
+      url: r.urls.regular,
+      thumb: r.urls.small,
+      rawUrl: r.urls.raw,
+      desc: r.description || r.alt_description || city,
+      photographer: r.user.name
+    }));
+  } catch(e) {
+    console.error(`Failed for ${city}:`, e);
+    return [];
+  }
+}
+
+async function processAll() {
+  for (const [city, info] of Object.entries(BROKEN)) {
+    const div = document.createElement('div');
+    div.className = 'city';
+    div.innerHTML = `<div class="city-name">${city} — needs: ${info.needs.join(', ')}</div><div class="candidates" id="cands-${city}">Searching...</div>`;
+    grid.appendChild(div);
+    
+    const results = await searchCity(city);
+    const candsDiv = div.querySelector('.candidates');
+    
+    if (results.length === 0) {
+      candsDiv.textContent = '❌ No results found';
+      continue;
+    }
+    
+    candsDiv.innerHTML = '';
+    selections[city] = {needs: info.needs, keep: info.keep, picks: {}};
+    
+    results.forEach((r, i) => {
+      const slot = document.createElement('div');
+      slot.className = 'cand';
+      slot.innerHTML = `<img src="${r.thumb}" loading="lazy"><div class="info">${r.id} — ${r.photographer}</div>`;
+      
+      // Extract the photo-XXXX format from rawUrl
+      const match = r.rawUrl.match(/photo-[0-9]+-[a-f0-9]+/);
+      const photoId = match ? match[0] : r.id;
+      slot.dataset.photoId = photoId;
+      slot.dataset.rawUrl = r.rawUrl;
+      slot.dataset.city = city;
+      
+      slot.onclick = () => {
+        // Cycle through: none -> hero -> street -> dusk -> none
+        const types = info.needs;
+        const current = slot.dataset.selected;
+        const currentIdx = types.indexOf(current);
+        const nextIdx = currentIdx + 1;
+        
+        if (nextIdx >= types.length) {
+          slot.dataset.selected = '';
+          slot.classList.remove('selected');
+          slot.querySelector('.info').textContent = `${photoId}`;
+          delete selections[city].picks[current];
+        } else {
+          // Remove previous selection of this type
+          const prevType = types[nextIdx];
+          document.querySelectorAll(`[data-city="${city}"][data-selected="${prevType}"]`).forEach(el => {
+            el.dataset.selected = '';
+            el.classList.remove('selected');
+            el.querySelector('.info').textContent = el.dataset.photoId;
+          });
+          
+          if (current) delete selections[city].picks[current];
+          slot.dataset.selected = prevType;
+          slot.classList.add('selected');
+          slot.querySelector('.info').textContent = `✅ ${prevType.toUpperCase()}: ${photoId}`;
+          selections[city].picks[prevType] = photoId;
+        }
+      };
+      
+      candsDiv.appendChild(slot);
+    });
+    
+    processed++;
+    document.querySelector('.status').textContent = `Processed ${processed}/${Object.keys(BROKEN).length} cities`;
+    
+    // Small delay to avoid rate limiting
+    await new Promise(r => setTimeout(r, 500));
+  }
+  document.querySelector('.status').textContent = `✅ Done! Click photos to assign as hero/street/dusk, then export.`;
+}
+
+function exportResults() {
+  const output = {};
+  for (const [city, info] of Object.entries(selections)) {
+    output[city] = {...info.keep};
+    for (const [type, id] of Object.entries(info.picks)) {
+      output[city][type] = id;
+    }
+  }
+  
+  // Also just get the raw URLs for each city's candidates
+  const rawData = {};
+  for (const [city, info] of Object.entries(BROKEN)) {
+    const cands = document.querySelectorAll(`[data-city="${city}"]`);
+    rawData[city] = {
+      needs: info.needs,
+      candidates: Array.from(cands).map(c => ({
+        photoId: c.dataset.photoId,
+        rawUrl: c.dataset.rawUrl
+      }))
+    };
+  }
+  
+  const blob = new Blob([JSON.stringify({selections: output, rawData}, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'photo-selections.json';
+  a.click();
+}
+
+processAll();
+</script>
+</body>
+</html>
