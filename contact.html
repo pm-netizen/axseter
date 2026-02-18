@@ -235,12 +235,12 @@
         </div>
         
         <!-- Form Header (Desktop) -->
-        <div class="hidden lg:block mb-8">
+        <div class="hidden lg:block mb-10">
           <h2 class="text-2xl font-bold text-navy-900 mb-1">Request a consultation</h2>
           <p class="text-gray-400 text-sm">Fields marked with * are required</p>
         </div>
 
-        <form id="contact-form" action="https://formspree.io/f/xeooqpkz" method="POST" class="space-y-5" novalidate>
+        <form id="contact-form" action="https://formspree.io/f/xeooqpkz" method="POST" class="space-y-6" novalidate>
           
           <!-- Success Message (hidden by default) -->
           <div id="form-success" class="hidden bg-emerald-50 border border-emerald-200 rounded-xl p-6 text-center">
@@ -255,35 +255,35 @@
           </div>
 
           <div id="form-fields">
-          <div class="grid sm:grid-cols-2 gap-5">
+          <div class="grid sm:grid-cols-2 gap-6">
             <div>
-              <label for="field-name" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-1.5">Full Name <span class="text-red-400">*</span></label>
+              <label for="field-name" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-2">Full Name <span class="text-red-400">*</span></label>
               <input id="field-name" type="text" name="name" required placeholder="Jane Smith" 
                 class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-navy-900 text-sm placeholder-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent hover:border-gray-300">
             </div>
             <div>
-              <label for="field-email" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-1.5">Work Email <span class="text-red-400">*</span></label>
+              <label for="field-email" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-2">Work Email <span class="text-red-400">*</span></label>
               <input id="field-email" type="email" name="email" required placeholder="jane@company.com" 
                 class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-navy-900 text-sm placeholder-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent hover:border-gray-300">
             </div>
           </div>
           
-          <div class="grid sm:grid-cols-2 gap-5">
+          <div class="grid sm:grid-cols-2 gap-6">
             <div>
-              <label for="field-company" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-1.5">Company <span class="text-red-400">*</span></label>
+              <label for="field-company" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-2">Company <span class="text-red-400">*</span></label>
               <input id="field-company" type="text" name="company" required placeholder="Acme Corp" 
                 class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-navy-900 text-sm placeholder-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent hover:border-gray-300">
             </div>
             <div>
-              <label for="field-phone" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-1.5">Phone</label>
+              <label for="field-phone" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-2">Phone</label>
               <input id="field-phone" type="tel" name="phone" placeholder="(312) 555-0100" 
                 class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-navy-900 text-sm placeholder-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent hover:border-gray-300">
             </div>
           </div>
           
-          <div class="grid sm:grid-cols-2 gap-5">
+          <div class="grid sm:grid-cols-2 gap-6">
             <div>
-              <label for="field-industry" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-1.5">Industry</label>
+              <label for="field-industry" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-2">Industry</label>
               <select id="field-industry" name="industry" class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-navy-900 text-sm transition-all pr-10 focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent hover:border-gray-300">
                 <option value="">Select industry</option>
                 <option value="healthcare">Healthcare</option>
@@ -294,7 +294,7 @@
               </select>
             </div>
             <div>
-              <label for="field-locations" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-1.5">Number of Locations</label>
+              <label for="field-locations" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-2">Number of Locations</label>
               <select id="field-locations" name="locations" class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-navy-900 text-sm transition-all pr-10 focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent hover:border-gray-300">
                 <option value="">Select range</option>
                 <option value="1-10">1–10</option>
@@ -306,7 +306,7 @@
           </div>
           
           <div>
-            <label for="field-message" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-1.5">Tell us about your project <span class="text-red-400">*</span></label>
+            <label for="field-message" class="block text-xs font-semibold text-navy-900 uppercase tracking-wider mb-2">Tell us about your project <span class="text-red-400">*</span></label>
             <textarea id="field-message" name="message" required rows="3" placeholder="Expansion plans, timeline, infrastructure challenges..."
               class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-navy-900 text-sm placeholder-gray-300 transition-all resize-none focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent hover:border-gray-300"></textarea>
           </div>
