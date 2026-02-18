@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City Photo Discovery Tool</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0a0a0a;color:#e5e5e5;padding:1rem}
+h1{text-align:center;margin-bottom:0.5rem;font-size:1.5rem}
+.instructions{text-align:center;color:#999;margin-bottom:1rem;font-size:0.85rem;line-height:1.4}
+.controls{text-align:center;margin:1rem 0}
+.controls button{padding:0.75rem 2rem;font-size:1rem;border:none;border-radius:8px;cursor:pointer;color:white;margin:0.25rem}
+.start-btn{background:#2563eb}.export-btn{background:#16a34a}.retry-btn{background:#d97706}
+.progress{text-align:center;margin:0.5rem 0;font-size:1.1rem;font-weight:bold}
+.city-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:1rem;margin-top:1rem}
+.city-card{border:2px solid #333;border-radius:12px;overflow:hidden;background:#1a1a1a}
+.city-card.done{border-color:#16a34a}
+.city-card.error{border-color:#dc2626}
+.city-card.searching{border-color:#d97706}
+.city-header{padding:0.5rem 0.75rem;background:#1e3a5f;font-weight:bold;display:flex;justify-content:space-between;align-items:center}
+.city-header .status{font-size:0.75rem;padding:2px 8px;border-radius:4px}
+.status.ok{background:#166534}.status.err{background:#991b1b}.status.wait{background:#92400e}
+.photo-row{display:flex;gap:2px;padding:4px;min-height:100px;overflow-x:auto}
+.photo-opt{flex:0 0 160px;aspect-ratio:16/9;position:relative;cursor:pointer;border:3px solid transparent;border-radius:6px;overflow:hidden;background:#222}
+.photo-opt.selected{border-color:#16a34a}
+.photo-opt img{width:100%;height:100%;object-fit:cover}
+.photo-opt .pid{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.85);padding:2px 4px;font-size:8px;color:#999;word-break:break-all}
+.selected-preview{padding:0.5rem;text-align:center}
+.selected-preview img{max-width:100%;max-height:150px;border-radius:6px}
+.selected-preview .sel-id{font-size:0.7rem;color:#4ade80;margin-top:0.25rem}
+.manual-input{padding:0.5rem;display:flex;gap:0.5rem}
+.manual-input input{flex:1;padding:0.25rem 0.5rem;background:#222;border:1px solid #444;border-radius:4px;color:#fff;font-size:0.75rem}
+.manual-input button{padding:0.25rem 0.75rem;background:#2563eb;border:none;color:#fff;border-radius:4px;cursor:pointer;font-size:0.75rem}
+</style>
+</head>
+<body>
+<h1>🏙️ City Skyline Photo Discovery</h1>
+<div class="instructions">
+  This tool queries Unsplash's API to find real city skyline photos with verified CDN IDs.<br>
+  Click "Start Auto-Discovery" to search all 56 cities. Review results and click to select the best skyline for each city.<br>
+  If auto-search fails for a city, right-click any Unsplash photo → "Copy Image Address" → paste the URL.
+</div>
+<div class="controls">
+  <button class="start-btn" onclick="startDiscovery()">🚀 Start Auto-Discovery</button>
+  <button class="retry-btn" onclick="retryFailed()">🔄 Retry Failed</button>
+  <button class="export-btn" onclick="exportResults()">⬇️ Export Results JSON</button>
+</div>
+<div class="progress" id="progress">Ready — 0/56 cities</div>
+<div class="city-grid" id="grid"></div>
+
+<script>
+const CITIES = [
+  "albuquerque","anchorage","atlanta","austin","baltimore","birmingham","boise","boston",
+  "charlotte","chicago","cincinnati","columbus","dallas","denver","des-moines","detroit",
+  "hartford","honolulu","houston","indianapolis","jacksonville","kansas-city","las-vegas",
+  "little-rock","los-angeles","louisville","memphis","miami","milwaukee","minneapolis",
+  "nashville","new-orleans","new-york","oklahoma-city","omaha","orlando","philadelphia",
+  "phoenix","pittsburgh","portland","raleigh","richmond","sacramento","salt-lake-city",
+  "san-antonio","san-diego","san-francisco","san-jose","san-juan","seattle","st-louis",
+  "tampa","toronto","tucson","vancouver","washington-dc"
+];
+
+const SEARCH_TERMS = {
+  "dallas": "dallas texas skyline",
+  "des-moines": "des moines iowa skyline",
+  "kansas-city": "kansas city missouri skyline",
+  "las-vegas": "las vegas strip skyline",
+  "little-rock": "little rock arkansas",
+  "los-angeles": "los angeles skyline",
+  "new-orleans": "new orleans skyline",
+  "new-york": "new york city skyline manhattan",
+  "oklahoma-city": "oklahoma city skyline",
+  "salt-lake-city": "salt lake city utah skyline",
+  "san-antonio": "san antonio texas skyline",
+  "san-diego": "san diego skyline",
+  "san-francisco": "san francisco skyline golden gate",
+  "san-jose": "san jose california skyline",
+  "san-juan": "san juan puerto rico old san juan",
+  "st-louis": "st louis gateway arch skyline",
+  "washington-dc": "washington dc capitol skyline"
+};
+
+const selections = {};
+let completed = 0;
+const grid = document.getElementById('grid');
+
+// Build city cards
+CITIES.forEach(city => {
+  const card = document.createElement('div');
+  card.className = 'city-card';
+  card.id = `card-${city}`;
+  card.innerHTML = `
+    <div class="city-header">
+      <span>${city}</span>
+      <span class="status wait" id="status-${city}">waiting</span>
+    </div>
+    <div class="photo-row" id="photos-${city}">
+      <div style="padding:1rem;color:#666">Click "Start Auto-Discovery"</div>
+    </div>
+    <div class="selected-preview" id="preview-${city}"></div>
+    <div class="manual-input">
+      <input type="text" id="input-${city}" placeholder="Or paste images.unsplash.com URL here">
+      <button onclick="manualSet('${city}')">Set</button>
+      <a href="https://unsplash.com/s/photos/${city.replace(/-/g,'+')}-skyline?orientation=landscape" target="_blank" style="color:#60a5fa;font-size:0.75rem;padding:0.25rem">🔍</a>
+    </div>
+  `;
+  grid.appendChild(card);
+});
+
+function extractPhotoId(url) {
+  // Extract photo-TIMESTAMP-HASH from any Unsplash URL
+  const m = url.match(/(photo-\d+-[a-f0-9]+)/);
+  return m ? m[1] : null;
+}
+
+async function searchCity(city) {
+  const query = SEARCH_TERMS[city] || `${city.replace(/-/g,' ')} city skyline`;
+  const card = document.getElementById(`card-${city}`);
+  const statusEl = document.getElementById(`status-${city}`);
+  const photosEl = document.getElementById(`photos-${city}`);
+  
+  card.className = 'city-card searching';
+  statusEl.className = 'status wait';
+  statusEl.textContent = 'searching...';
+  photosEl.innerHTML = '<div style="padding:0.5rem;color:#d97706">Searching Unsplash...</div>';
+  
+  try {
+    // Try Unsplash napi
+    const resp = await fetch(`https://unsplash.com/napi/search/photos?query=${encodeURIComponent(query)}&per_page=8&orientation=landscape`);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    
+    if (!data.results || data.results.length === 0) throw new Error('No results');
+    
+    photosEl.innerHTML = '';
+    const candidates = [];
+    
+    data.results.forEach((r, i) => {
+      const rawUrl = r.urls?.raw || r.urls?.regular || '';
+      const photoId = extractPhotoId(rawUrl);
+      if (!photoId) return;
+      
+      candidates.push({
+        photoId,
+        desc: r.alt_description || r.description || '',
+        photographer: r.user?.name || 'Unknown',
+        thumb: r.urls?.small || `https://images.unsplash.com/${photoId}?w=300&h=169&fit=crop&q=60`
+      });
+      
+      const opt = document.createElement('div');
+      opt.className = 'photo-opt' + (i === 0 ? ' selected' : '');
+      opt.innerHTML = `<img src="${r.urls?.small || `https://images.unsplash.com/${photoId}?w=300&h=169&fit=crop&q=60`}" loading="lazy"><div class="pid">${photoId}</div>`;
+      opt.onclick = () => selectPhoto(city, photoId, r.urls?.small);
+      photosEl.appendChild(opt);
+    });
+    
+    if (candidates.length > 0) {
+      // Auto-select first
+      selectPhoto(city, candidates[0].photoId, candidates[0].thumb);
+      statusEl.className = 'status ok';
+      statusEl.textContent = `✓ ${candidates.length} found`;
+      card.className = 'city-card done';
+    } else {
+      throw new Error('No valid photo IDs');
+    }
+  } catch(e) {
+    console.warn(`${city}: ${e.message}`);
+    statusEl.className = 'status err';
+    statusEl.textContent = `✗ ${e.message}`;
+    card.className = 'city-card error';
+    photosEl.innerHTML = `<div style="padding:0.5rem;color:#ef4444">Auto-search failed. Use 🔍 link → right-click photo → "Copy Image Address" → paste below</div>`;
+  }
+  
+  completed++;
+  document.getElementById('progress').textContent = `${completed}/56 cities processed`;
+}
+
+function selectPhoto(city, photoId, thumbUrl) {
+  selections[city] = photoId;
+  
+  // Update visual selection
+  const photosEl = document.getElementById(`photos-${city}`);
+  photosEl.querySelectorAll('.photo-opt').forEach(el => {
+    el.classList.toggle('selected', el.querySelector('.pid')?.textContent === photoId);
+  });
+  
+  // Update preview
+  const previewEl = document.getElementById(`preview-${city}`);
+  const testUrl = `https://images.unsplash.com/${photoId}?w=600&h=338&fit=crop&q=70`;
+  previewEl.innerHTML = `
+    <img src="${testUrl}" onerror="this.parentElement.innerHTML='<div style=color:red>⚠️ Photo ID failed to load!</div>'" 
+         onload="document.getElementById('card-${city}').className='city-card done'">
+    <div class="sel-id">✓ ${photoId}</div>
+  `;
+  
+  const card = document.getElementById(`card-${city}`);
+  const statusEl = document.getElementById(`status-${city}`);
+  card.className = 'city-card done';
+  statusEl.className = 'status ok';
+  statusEl.textContent = '✓ selected';
+}
+
+function manualSet(city) {
+  const input = document.getElementById(`input-${city}`);
+  const url = input.value.trim();
+  
+  // Try to extract photo-ID from pasted URL
+  let photoId = extractPhotoId(url);
+  
+  // If just pasted a raw ID
+  if (!photoId && url.startsWith('photo-')) {
+    photoId = url.split('?')[0];
+  }
+  
+  if (photoId) {
+    selectPhoto(city, photoId);
+    input.value = '';
+  } else {
+    alert('Could not extract photo-ID from that URL. Make sure it contains "photo-XXXXXXXXXX-XXXXXXXXXXXX"');
+  }
+}
+
+async function startDiscovery() {
+  completed = 0;
+  // Process 3 cities at a time to avoid rate limiting
+  for (let i = 0; i < CITIES.length; i += 3) {
+    const batch = CITIES.slice(i, i + 3);
+    await Promise.all(batch.map(city => searchCity(city)));
+    // Small delay between batches
+    if (i + 3 < CITIES.length) {
+      await new Promise(r => setTimeout(r, 800));
+    }
+  }
+  document.getElementById('progress').textContent = `✅ Done! ${Object.keys(selections).length}/56 cities have photos. Review and export.`;
+}
+
+function retryFailed() {
+  const failed = CITIES.filter(city => !selections[city]);
+  completed = CITIES.length - failed.length;
+  failed.forEach((city, i) => {
+    setTimeout(() => searchCity(city), i * 500);
+  });
+}
+
+function exportResults() {
+  // Count verified
+  const total = Object.keys(selections).length;
+  const missing = CITIES.filter(c => !selections[c]);
+  
+  if (missing.length > 0) {
+    if (!confirm(`${missing.length} cities still missing photos:\n${missing.join(', ')}\n\nExport anyway?`)) return;
+  }
+  
+  const blob = new Blob([JSON.stringify(selections, null, 2)], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'city-photo-ids.json';
+  a.click();
+}
+</script>
+</body>
+</html>
