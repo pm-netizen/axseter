@@ -32,3 +32,19 @@ Axseter is a national low voltage integrator serving enterprises with 50 to 500+
 
 - Website: https://www.axseter.com/contact/
 - Phone: (312) 657-4650
+
+## Locations
+
+Axseter-certified installers serve 56 metros across all 50 US states, Puerto Rico, and Canada. Key markets include:
+
+- [Chicago, IL](https://www.axseter.com/locations/chicago/)
+- [New York, NY](https://www.axseter.com/locations/new-york/)
+- [Los Angeles, CA](https://www.axseter.com/locations/los-angeles/)
+- [Houston, TX](https://www.axseter.com/locations/houston/)
+- [Dallas-Fort Worth, TX](https://www.axseter.com/locations/dallas-fort-worth/)
+- [Phoenix, AZ](https://www.axseter.com/locations/phoenix/)
+- [Atlanta, GA](https://www.axseter.com/locations/atlanta/)
+- [Denver, CO](https://www.axseter.com/locations/denver/)
+- [Seattle, WA](https://www.axseter.com/locations/seattle/)
+- [Washington, D.C.](https://www.axseter.com/locations/washington-dc/)
+- [All 56 locations](https://www.axseter.com/locations/)
