@@ -7,6 +7,7 @@
   <title>Pipeline | Axseter Systems</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -107,25 +108,11 @@ if (sessionStorage.getItem('ax_auth') === '1') {
   window.addEventListener('DOMContentLoaded', init);
 }
 
-const LEADS = [
-  { id:1, name:"The Smilist", score:92, tier:1, vertical:"dental", vertLabel:"Dental DSO", locations:"110+", states:8, signal:"Expanded into Virginia. Now operating across CT, DE, MA, MD, NJ, NY, PA, VA. Still actively acquiring — added Park Avenue Dental in NJ in January.", contact:"VP of Real Estate or COO", contactName:"", email:"", linkedin:"", value:"$300K-$600K", play:"Vendor consolidation — 'From 8 contractors to one.' 110 locations across 8 states means managing 8+ different LV contractors.", ownership:"Corporate-owned DSO", status:"ready", outreachTemplate:"vendor_consolidation", signalDate:"2026-01-15", source:"Group Dentistry Now" },
-  { id:2, name:"Premier Care Dental Management", score:88, tier:1, vertical:"dental", vertLabel:"Dental DSO", locations:"20+", states:3, signal:"Acquired 5 Ohio offices in January 2026: Great Smiles Family Dentistry (Toledo), Laskey Family Dentistry (Toledo), Blank Dental Group (3 locations: Springfield, Hilliard, Powell).", contact:"VP of Operations", contactName:"", email:"", linkedin:"", value:"$100K-$250K", play:"Acquisition/integration template. 5 inherited infrastructure setups need standardization. Acquisition pace suggests 20-40 add-ons/year.", ownership:"Corporate-owned platform", status:"ready", outreachTemplate:"acquisition_integration", signalDate:"2026-01-26", source:"Group Dentistry Now" },
-  { id:3, name:"Crossroads Treatment Centers", score:86, tier:1, vertical:"behavioral", vertLabel:"Behavioral health", locations:"40+", states:9, signal:"CEO Dr. Rupert McCormac stated publicly: 'hoping to complete several acquisitions that would more than double our footprint in several existing states.'", contact:"CEO / VP of Facilities", contactName:"Dr. Rupert McCormac", email:"", linkedin:"", value:"$200K-$500K", play:"Doubling footprint through acquisition = massive infrastructure standardization need across 9+ states.", ownership:"Corporate-owned", status:"ready", outreachTemplate:"acquisition_integration", signalDate:"2026-01-01", source:"Behavioral Health Business" },
-  { id:4, name:"Bradford Health Services", score:82, tier:1, vertical:"behavioral", vertLabel:"Behavioral health", locations:"15+", states:4, signal:"Plans to add 8-10 new outpatient centers and sober living facilities in 2026, plus actively pursuing M&A deals.", contact:"Director of Facilities", contactName:"", email:"", linkedin:"", value:"$80K-$200K", play:"Direct expansion announcement. Each new center needs full low-voltage buildout — cabling, cameras, access control.", ownership:"Corporate-owned", status:"ready", outreachTemplate:"expansion_announcement", signalDate:"2025-10-27", source:"Behavioral Health Business" },
-  { id:5, name:"Freeway Insurance (Confie)", score:79, tier:1, vertical:"insurance", vertLabel:"Insurance", locations:"500+", states:20, signal:"500+ retail locations. Franchise program launched 2021, actively expanding. Division of Confie, the largest independent personal lines agency in the US.", contact:"VP of Real Estate / Facilities", contactName:"", email:"", linkedin:"", value:"$400K-$1M+", play:"Massive SPoC opportunity. Research corporate vs franchise split first. Confie corporate likely controls buildout standards for company-owned locations.", ownership:"Mixed corporate/franchise", status:"research", outreachTemplate:"vendor_consolidation", signalDate:"2026-02-01", source:"Franchise Research" },
-  { id:6, name:"Behavioral Framework", score:76, tier:1, vertical:"behavioral", vertLabel:"Behavioral health", locations:"10+", states:3, signal:"PE-backed (Renovus Capital Partners). Acquired Autism ETC — 5 clinics across Tennessee and Arizona.", contact:"COO / VP Operations", contactName:"", email:"", linkedin:"", value:"$80K-$150K", play:"PE-backed autism therapy platform, multi-state, actively acquiring. PE firms have acquired 500+ autism therapy centers in the last decade.", ownership:"PE-owned platform", status:"ready", outreachTemplate:"acquisition_integration", signalDate:"2026-01-15", source:"PESP Tracker" },
-  { id:7, name:"Park Dental Partners", score:68, tier:2, vertical:"dental", vertLabel:"Dental DSO", locations:"47+", states:3, signal:"NASDAQ: PARK. Completed 3 acquisitions in January — Phoenix AZ, Bloomington MN, Tucson AZ. Entered Arizona as their third state.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$150K-$350K", play:"Publicly traded DSO entering new states. Multi-state growth with ~3 acquisitions/month. Growing past the regional contractor threshold.", ownership:"Corporate-owned (public)", status:"research", outreachTemplate:"expansion_announcement", signalDate:"2026-01-15", source:"Becker's Dental" },
-  { id:8, name:"Apex Dental Partners", score:64, tier:2, vertical:"dental", vertLabel:"Dental DSO", locations:"59", states:5, signal:"Added general dentistry practice in Omaha, expanding network to 59 practices nationwide.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$150K-$400K", play:"59 locations nationwide. Past the inflection point where a national LV partner saves real money.", ownership:"Corporate-owned platform", status:"research", outreachTemplate:"vendor_consolidation", signalDate:"2026-01-10", source:"Group Dentistry Now" },
-  { id:9, name:"FYZICAL Therapy & Balance Centers", score:58, tier:2, vertical:"pt", vertLabel:"Physical therapy", locations:"539", states:40, signal:"539 locations. 21% growth over 3 years. Actively franchising — multi-unit and master franchise models.", contact:"VP of Franchise Development", contactName:"", email:"", linkedin:"", value:"$200K-$500K", play:"Preferred vendor opportunity. Franchise model limits mandate, but 539 locations means enormous buildout volume if positioned as recommended partner.", ownership:"Franchise model", status:"research", outreachTemplate:"vendor_consolidation", signalDate:"2026-02-01", source:"FYZICAL Website" },
-  { id:10, name:"Brightway Insurance", score:55, tier:2, vertical:"insurance", vertLabel:"Insurance", locations:"350+", states:35, signal:"350+ franchises across 35 states. Managing over $1B in annual premiums.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$150K-$400K", play:"35 states = fragmented contractor relationships. Franchise model, so preferred vendor path rather than mandate.", ownership:"Franchise model", status:"research", outreachTemplate:"vendor_consolidation", signalDate:"2026-01-01", source:"Franchise Research" },
-  { id:11, name:"Center for Social Dynamics", score:52, tier:2, vertical:"behavioral", vertLabel:"Behavioral health", locations:"8+", states:3, signal:"Acquired Behavior Change Institute in Alamogordo, NM to expand autism and behavioral health services.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$60K-$120K", play:"Multi-state autism/behavioral health expansion. Smaller but actively growing through acquisition.", ownership:"Corporate-owned", status:"research", outreachTemplate:"acquisition_integration", signalDate:"2026-02-15", source:"Becker's Behavioral Health" },
-  { id:12, name:"Phase 1 Equity", score:50, tier:2, vertical:"dental", vertLabel:"Dental DSO", locations:"10+", states:3, signal:"Chicago-based. Added multi-site orthodontic practice in Ohio to network. Doctor-owned, doctor-led platform for orthodontists and pediatric dentists.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$80K-$150K", play:"Local Chicago relationship opportunity. Doctor-owned platform growing into new states.", ownership:"Doctor-owned platform", status:"research", outreachTemplate:"expansion_announcement", signalDate:"2026-01-10", source:"Group Dentistry Now" },
-  { id:13, name:"Freddy's Frozen Custard", score:38, tier:3, vertical:"qsr", vertLabel:"QSR", locations:"500+", states:35, signal:"Targeting 800+ units by 2026. Expanding into non-traditional venues like casinos and airports.", contact:"VP of Construction", contactName:"", email:"", linkedin:"", value:"$200K-$500K", play:"High-velocity franchise expansion. Franchisee-controlled buildouts limit SPoC mandate.", ownership:"Franchise model", status:"monitor", outreachTemplate:"", signalDate:"2026-01-01", source:"Crunchtime Research" },
-  { id:14, name:"Estrella Insurance", score:35, tier:3, vertical:"insurance", vertLabel:"Insurance", locations:"200+", states:5, signal:"200+ locations across FL, CA, AZ, TX, CO. Supports multi-location and territory development.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$100K-$200K", play:"Franchise model. Preferred vendor play only.", ownership:"Franchise model", status:"monitor", outreachTemplate:"", signalDate:"2026-01-01", source:"Franchise Research" },
-  { id:15, name:"Potbelly", score:34, tier:3, vertical:"qsr", vertLabel:"QSR", locations:"400+", states:10, signal:"Expanding through franchise and company-owned units. Recently signed deals for 13+ new units in Washington state.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$100K-$300K", play:"Mixed corporate/franchise model. Research the split before outreach.", ownership:"Mixed", status:"monitor", outreachTemplate:"", signalDate:"2026-01-15", source:"Franchise News" },
-  { id:16, name:"Terravet Real Estate Solutions", score:30, tier:3, vertical:"vet", vertLabel:"Veterinary", locations:"varies", states:4, signal:"Acquired and renovated veterinary clinics in MD, GA, CA, and MS.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$50K-$100K", play:"Indirect path. Real estate company, not the operator. Would need to reach the vet groups they serve.", ownership:"Real estate play", status:"monitor", outreachTemplate:"", signalDate:"2026-03-01", source:"dvm360" },
-  { id:17, name:"MOVES Veterinary", score:28, tier:3, vertical:"vet", vertLabel:"Veterinary", locations:"35+", states:21, signal:"35+ board-certified specialists in 21 states. Just launched franchise model.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$50K-$100K", play:"Too early. Just launched franchise. Mobile model may not need fixed low-voltage infrastructure.", ownership:"Franchise (new)", status:"monitor", outreachTemplate:"", signalDate:"2025-12-01", source:"MOVES Website" }
-];
+const SUPABASE_URL = 'https://cvbpgjveazhmavoaszxp.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2YnBnanZlYXpobWF2b2FzenhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3ODQ2MjIsImV4cCI6MjA4OTM2MDYyMn0.PeP17xicAK_gQPricJcR0K1sGinsWUQiijmcPNNCGjM';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+let LEADS = [];
 
 const VERT_COLORS = {
   dental: { bg:'bg-purple-50', text:'text-purple-700', border:'border-purple-200' },
@@ -251,31 +238,93 @@ function markSent(id, evt) {
   if (l) {
     l.status = 'sent';
     document.getElementById('outreach-' + id).classList.remove('open');
-    renderMetrics();
-    renderFilters();
-    renderStatusFilters();
-    renderPipeline();
+    sb.from('leads').update({ status: 'sent' }).eq('id', id).then(() => {
+      const subj = document.getElementById('outreach-subject-' + id)?.value || '';
+      const body = document.getElementById('outreach-body-' + id)?.value || '';
+      sb.from('outreach').insert({ lead_id: id, template_used: l.outreach_template, subject: subj, body: body, status: 'sent', sent_at: new Date().toISOString() });
+      sb.from('activity').insert({ lead_id: id, action: 'outreach_sent', detail: 'Subject: ' + subj });
+    });
+    renderAll();
   }
 }
 
 function archiveLead(id, evt) {
   if (evt) evt.stopPropagation();
+  sb.from('leads').update({ status: 'archived', archived_at: new Date().toISOString() }).eq('id', id).then(() => {
+    sb.from('activity').insert({ lead_id: id, action: 'archived', detail: 'Lead archived' });
+  });
   const idx = LEADS.findIndex(x => x.id === id);
-  if (idx > -1) {
-    LEADS.splice(idx, 1);
-    renderMetrics();
-    renderFilters();
-    renderStatusFilters();
-    renderPipeline();
-  }
+  if (idx > -1) LEADS.splice(idx, 1);
+  renderAll();
 }
 
-function init() {
-  document.getElementById('lastUpdated').textContent = 'Updated ' + new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+function renderAll() {
   renderMetrics();
   renderFilters();
   renderStatusFilters();
   renderPipeline();
+}
+
+function mapLead(row) {
+  return {
+    id: row.id,
+    name: row.name,
+    score: row.score || 0,
+    tier: row.tier || 3,
+    vertical: row.vertical || '',
+    vertLabel: row.vertical_label || row.vertical || '',
+    locations: row.locations || '',
+    states: row.states || 0,
+    signal: row.signal || '',
+    contact: row.notes ? '' : (row.play || '').includes('Research') ? 'Research needed' : '',
+    contactName: '',
+    email: '',
+    linkedin: '',
+    value: row.estimated_value || '',
+    play: row.play || '',
+    ownership: row.ownership || '',
+    status: row.status || 'new',
+    outreachTemplate: row.outreach_template || '',
+    signalDate: row.signal_date || '',
+    source: row.signal_source || '',
+    pe_backed: row.pe_backed || false
+  };
+}
+
+async function loadLeads() {
+  const { data, error } = await sb
+    .from('leads')
+    .select('*')
+    .not('status', 'eq', 'archived')
+    .order('score', { ascending: false });
+  if (error) {
+    console.error('Failed to load leads:', error);
+    return;
+  }
+  LEADS = (data || []).map(mapLead);
+}
+
+async function loadContacts() {
+  const { data } = await sb.from('contacts').select('*');
+  if (data) {
+    for (const c of data) {
+      const l = LEADS.find(x => x.id === c.lead_id);
+      if (l) {
+        if (c.name) l.contactName = c.name;
+        if (c.title) l.contact = c.title;
+        if (c.email) l.email = c.email;
+        if (c.linkedin) l.linkedin = c.linkedin;
+      }
+    }
+  }
+}
+
+async function init() {
+  document.getElementById('lastUpdated').textContent = 'Loading...';
+  await loadLeads();
+  await loadContacts();
+  document.getElementById('lastUpdated').textContent = 'Updated ' + new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric', hour:'numeric', minute:'2-digit' });
+  renderAll();
 }
 
 function renderMetrics() {
