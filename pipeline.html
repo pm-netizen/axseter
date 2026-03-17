@@ -476,46 +476,11 @@ async function generateAIOutreach(uuid,evt){
   btn.disabled=true;
   btn.innerHTML=`<span class="ai-thinking flex gap-0.5 items-center"><span class="w-1 h-1 bg-white rounded-full inline-block"></span><span class="w-1 h-1 bg-white rounded-full inline-block"></span><span class="w-1 h-1 bg-white rounded-full inline-block"></span></span>`;
 
-  const prompt=`You are an expert B2B sales copywriter for Axseter Systems, a national low-voltage integrator.
-
-COMPANY CONTEXT:
-- Axseter is the Single Point of Contact (SPoC) model: one partner replaces 15+ regional contractors for multi-location enterprises
-- Services: structured cabling, access control, video surveillance, audio-visual, sound masking, break-fix support
-- Named clients: Oak Street Health, CVS, ATI Physical Therapy, Soar Autism Center, Pronto Insurance, Guidelight Health, Gallagher
-- 500+ locations installed nationwide
-- Key stat: $25,000+ annual overhead savings, 10-15% fewer change orders
-
-LEAD:
-- Company: ${lead.name}
-- Vertical: ${lead.vertLabel}
-- Locations: ${lead.locations} across ${lead.states} states
-- Expansion signal: ${lead.signal}
-- Ownership: ${lead.ownership}
-- Estimated deal: ${lead.value}
-${lead.contactName?`- Contact: ${lead.contactName}, ${lead.contactTitle}`:'- Contact: VP of Real Estate / Facilities (name unknown)'}
-${lead.play?`- Recommended play: ${lead.play}`:''}
-
-Write a cold outreach email. Rules:
-1. Subject line: specific, no fluff, references the actual trigger
-2. Opener: reference the specific expansion signal — don't be generic
-3. Pain: articulate the vendor fragmentation problem they're about to face (or already face)
-4. Value: Axseter's SPoC model, cite a relevant named client, use the $25K+ stat
-5. CTA: one ask — 20-minute call
-6. Tone: direct, peer-to-peer, zero filler, no buzzwords
-7. Length: 150-200 words for the body
-8. Sign off with placeholder [Sender Name] and Axseter Systems / 1-877-AXSETR1
-
-Respond ONLY with JSON: {"subject":"...","body":"..."}`;
-
-  try {
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
+  const prompt=null; // unused — prompt is built server-side in /api/draft  try {
+    const res=await fetch('/api/draft',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:1000,
-        messages:[{role:'user',content:prompt}]
-      })
+      body:JSON.stringify({lead})
     });
     const data=await res.json();
     const text=data.content.map(i=>i.text||'').join('').trim();
@@ -962,81 +927,13 @@ async function runProspector(){
   addLog('Building search queries from ICP config…');
   addLog('Calling AI with web search enabled…');
 
-  const systemPrompt=`You are the Axseter Enterprise Expansion Prospector — an expert B2B sales researcher for Axseter Systems, a national low-voltage integrator.
-
-AXSETER CONTEXT:
-- Single Point of Contact model: one partner replaces 15+ regional contractors for multi-location enterprises
-- Services: structured cabling, access control, video surveillance, audio-visual, sound masking, break-fix
-- Target: multi-location enterprises opening 10+ locations/year, healthcare rollups, financial services branch growth, retail/QSR expansion
-- Existing clients: Oak Street Health, CVS, ATI Physical Therapy, Soar Autism Center, Pronto Insurance, Guidelight Health, Gallagher
-- NOT interested in: single-location, not expanding, government/federal, residential, companies with Convergint
-
-SCORING FACTORS (0-100):
-- Expansion velocity 25pts: 20+/yr=25, 10-19=18, 5-9=10
-- Industry fit 20pts: healthcare/dental/behavioral/financial=20, retail/PT/vet=15
-- Multi-state 15pts: 5+states=15, 3-4=10, 2=5
-- Signal strength 15pts: direct announcement=15, acquisition=12, hiring=8
-- PE/institutional backing 10pts: PE=10, VC=7, public=5
-- Decision-maker identified 10pts: VP+=10, director=7
-- No known national LV partner 5pts: unknown=5, competitor present=0
-
-TARGET VERTICAL: ${vertForPrompt}
-
-Search for recent (2025-2026) expansion signals in this vertical. Find 4-6 real companies that are:
-1. Expanding physical locations (new sites, acquisitions, franchise growth)
-2. Multi-state presence or heading there
-3. Would need low-voltage infrastructure (cabling, access control, cameras, AV)
-
-For each company found, provide a complete lead profile.
-
-Return ONLY valid JSON with this exact structure:
-{
-  "leads": [
-    {
-      "name": "Company Name",
-      "vertical": "${prospectorVert==='all'?'<use the correct vertical key: dental|behavioral|pt|insurance|vet|qsr>':prospectorVert}",
-      "vertical_label": "${prospectorVert==='all'?'<matching label>':vertLabel}",
-      "score": 82,
-      "tier": 1,
-      "locations": 45,
-      "states": 8,
-      "expansion_signal": "One sentence description of the specific expansion signal found",
-      "signal_source": "Source name and date",
-      "signal_type": "direct_announcement|acquisition|hiring|financial",
-      "estimated_value": "$200K–$400K",
-      "ownership": "PE-backed|VC-backed|Public|Private",
-      "pe_backed": true,
-      "pe_sponsor": "Sponsor name or null",
-      "hq": "City, State",
-      "recommended_play": "One sentence on which Axseter angle to lead with and why",
-      "outreach_template": "expansion_announcement|acquisition_integration|vendor_consolidation",
-      "score_breakdown": {
-        "expansion_velocity": 18,
-        "industry_fit": 20,
-        "multi_state": 15,
-        "signal_strength": 15,
-        "institutional_backing": 10,
-        "decision_maker": 0,
-        "no_competitor": 5
-      },
-      "target_persona": "VP of Real Estate & Construction",
-      "why_axseter_wins": "One sentence on why Axseter is a strong fit"
-    }
-  ],
-  "scan_summary": "One sentence summary of what signals were found"
-}`;
+  // System prompt is now handled server-side in /api/prospect
 
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
+    const res=await fetch('/api/prospect',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:4000,
-        tools:[{type:'web_search_20250305',name:'web_search'}],
-        messages:[{role:'user',content:`Find ${vertForPrompt} companies actively expanding their physical footprint in 2025-2026 that would be ideal prospects for Axseter Systems. Search for real companies with recent expansion announcements, acquisitions, or growth signals. Return 4-6 high-quality leads as JSON.`}],
-        system:systemPrompt,
-      })
+      body:JSON.stringify({vertical:prospectorVert, vertLabel})
     });
 
     const data=await res.json();
