@@ -15,10 +15,10 @@
       theme: {
         extend: {
           colors: {
-            'navy': {
-              50: '#f0f4f8', 100: '#d9e2ec', 200: '#bcccdc', 300: '#9fb3c8',
-              400: '#829ab1', 500: '#627d98', 600: '#486581', 700: '#334e68',
-              800: '#243b53', 900: '#102a43', 950: '#0a1929'
+            navy: {
+              50:'#f0f4f8',100:'#d9e2ec',200:'#bcccdc',300:'#9fb3c8',
+              400:'#829ab1',500:'#627d98',600:'#486581',700:'#334e68',
+              800:'#243b53',900:'#102a43',950:'#0a1929'
             }
           }
         }
@@ -28,110 +28,97 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
-    .mono { font-family: 'Inter', monospace; }
+    *{font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+    .mono{font-family:'Inter',monospace}
 
-    /* Score ring */
-    .score-ring {
-      width: 44px; height: 44px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 700; flex-shrink: 0;
-      font-family: 'Inter', monospace;
-    }
-
-    /* Lead row hover */
-    .lead-row { transition: border-color 0.15s ease, box-shadow 0.15s ease; }
-    .lead-row:hover { box-shadow: 0 2px 12px rgba(16,42,67,0.07); }
-
-    /* Collapsible panels */
-    .collapsible { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease; opacity: 0; }
-    .collapsible.open { max-height: 1200px; opacity: 1; }
-
-    /* Vertical pills */
-    .vert-pill { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px; letter-spacing: 0.04em; text-transform: uppercase; }
-
-    /* Status badge */
-    .status-badge { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 4px; }
-
-    /* Tab underline */
-    .tab-btn { border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
-    .tab-btn.active { border-bottom-color: #102a43; color: #102a43; }
-
-    /* Outreach textarea auto-resize */
-    textarea.auto-resize { resize: none; overflow: hidden; }
-
-    /* Spin animation for loading */
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .spin { animation: spin 0.8s linear infinite; }
-
-    /* Toast */
-    #toast { transition: opacity 0.3s ease, transform 0.3s ease; }
-    #toast.hidden { opacity: 0; transform: translateY(8px); pointer-events: none; }
-
-    /* Smooth fade for filters */
-    .filter-btn { transition: all 0.15s ease; }
-
-    /* Chevron */
-    .chevron { transition: transform 0.25s ease; }
-    .chevron.rotated { transform: rotate(180deg); }
+    .score-ring{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;font-family:'Inter',monospace}
+    .lead-row{transition:border-color .15s ease,box-shadow .15s ease}
+    .lead-row:hover{box-shadow:0 2px 12px rgba(16,42,67,.07)}
+    .collapsible{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1),opacity .25s ease;opacity:0}
+    .collapsible.open{max-height:2400px;opacity:1}
+    .vert-pill{font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase}
+    .status-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px}
+    .tab-btn{border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+    .tab-btn.active{border-bottom-color:#102a43;color:#102a43}
+    textarea.auto-resize{resize:none;overflow:hidden}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .spin{animation:spin .8s linear infinite}
+    #toast{transition:opacity .3s ease,transform .3s ease}
+    #toast.hidden{opacity:0;transform:translateY(8px);pointer-events:none}
+    .filter-btn{transition:all .15s ease}
+    .chevron{transition:transform .25s ease}
+    .chevron.rotated{transform:rotate(180deg)}
+    /* Slide-over */
+    #slideOver{transition:transform .3s cubic-bezier(.4,0,.2,1)}
+    #slideOverBackdrop{transition:opacity .3s ease}
+    /* AI pulse */
+    @keyframes aipulse{0%,100%{opacity:1}50%{opacity:.4}}
+    .ai-thinking span{animation:aipulse 1.2s ease-in-out infinite}
+    .ai-thinking span:nth-child(2){animation-delay:.2s}
+    .ai-thinking span:nth-child(3){animation-delay:.4s}
+    /* Signal feed */
+    .signal-card{transition:border-color .15s,box-shadow .15s}
+    .signal-card:hover{box-shadow:0 2px 12px rgba(16,42,67,.07)}
+    /* Prospector running */
+    @keyframes scanline{0%{transform:translateY(-100%)}100%{transform:translateY(400%)}}
+    .scan-line{animation:scanline 2s linear infinite}
+    /* Prose output */
+    .prose-output p{margin-bottom:.75rem;line-height:1.65}
+    .prose-output strong{font-weight:700;color:#102a43}
+    /* Modal */
+    #modal{transition:opacity .2s ease}
+    #modal.hidden{opacity:0;pointer-events:none}
   </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
 
-<!-- ═══════════════════════════════════════════
-     AUTH GATE
-════════════════════════════════════════════ -->
+<!-- ═══ AUTH GATE ═══ -->
 <div id="authGate" class="min-h-screen flex items-center justify-center bg-navy-950">
   <div class="bg-white rounded-2xl shadow-2xl p-10 w-full max-w-sm mx-4">
     <div class="text-center mb-8">
       <a href="/" class="inline-block">
-        <span class="text-2xl font-black tracking-tight text-navy-900 mono" style="letter-spacing:-0.03em;">AXSETER<sup class="text-xs font-semibold text-gray-400 ml-0.5">™</sup></span>
+        <span class="text-2xl font-black tracking-tight text-navy-900 mono" style="letter-spacing:-.03em">AXSETER<sup class="text-xs font-semibold text-gray-400 ml-0.5">™</sup></span>
       </a>
       <p class="text-gray-500 text-sm mt-2 font-medium">Pipeline Dashboard</p>
     </div>
     <div>
       <label class="block text-xs font-semibold text-gray-600 mb-1.5 uppercase tracking-wide">Access Code</label>
-      <input
-        type="password"
-        id="authPass"
+      <input type="password" id="authPass"
         class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent transition-shadow"
-        placeholder="••••••••••••"
-        onkeydown="if(event.key==='Enter') handleAuth()"
-        autofocus
-      >
+        placeholder="••••••••••••" onkeydown="if(event.key==='Enter')handleAuth()" autofocus>
       <p id="authErr" class="text-red-500 text-xs mt-2 hidden font-medium">Incorrect access code. Try again.</p>
-      <button
-        onclick="handleAuth()"
-        class="w-full mt-4 bg-navy-900 hover:bg-navy-800 active:bg-navy-950 text-white font-semibold py-3 rounded-xl text-sm transition-colors"
-      >
-        Access Pipeline
-      </button>
+      <button onclick="handleAuth()" class="w-full mt-4 bg-navy-900 hover:bg-navy-800 active:bg-navy-950 text-white font-semibold py-3 rounded-xl text-sm transition-colors">Access Pipeline</button>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     DASHBOARD
-════════════════════════════════════════════ -->
+<!-- ═══ DASHBOARD ═══ -->
 <div id="dashboard" class="hidden min-h-screen">
 
   <!-- Header -->
   <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
       <div class="flex items-center gap-3">
-        <a href="/" class="text-lg font-black tracking-tight text-navy-900 mono" style="letter-spacing:-0.03em;">AXSETER<sup class="text-[9px] font-semibold text-gray-400 ml-0.5">™</sup></a>
+        <a href="/" class="text-lg font-black tracking-tight text-navy-900 mono" style="letter-spacing:-.03em">AXSETER<sup class="text-[9px] font-semibold text-gray-400 ml-0.5">™</sup></a>
         <span class="text-gray-300 font-light">/</span>
         <span class="text-gray-500 font-semibold text-sm">Pipeline</span>
       </div>
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3">
         <span class="text-xs text-gray-400 mono hidden sm:block" id="lastUpdated"></span>
-        <button
-          onclick="signOut()"
-          class="text-xs text-gray-400 hover:text-gray-700 font-medium transition-colors"
-        >
-          Sign out
+        <button onclick="openAddLead()" class="flex items-center gap-1.5 bg-white border border-gray-200 hover:border-navy-900 text-gray-600 hover:text-navy-900 text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          Add lead
         </button>
+        <button onclick="signOut()" class="text-xs text-gray-400 hover:text-gray-700 font-medium transition-colors">Sign out</button>
       </div>
+    </div>
+    <!-- Tab bar -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex gap-6 border-t border-gray-100">
+      <button class="tab-btn active py-3 text-xs font-semibold text-gray-500" id="tabPipeline" onclick="switchTab('pipeline')">Pipeline</button>
+      <button class="tab-btn py-3 text-xs font-semibold text-gray-500" id="tabProspector" onclick="switchTab('prospector')">
+        Prospector
+        <span class="ml-1.5 bg-navy-900 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full">AI</span>
+      </button>
     </div>
   </header>
 
@@ -149,443 +136,541 @@
     <button onclick="init()" class="bg-navy-900 hover:bg-navy-800 text-white text-sm font-semibold px-6 py-2.5 rounded-xl transition-colors">Retry</button>
   </div>
 
-  <!-- Main content (hidden until loaded) -->
-  <main id="mainContent" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- ═══ PIPELINE TAB ═══ -->
+  <main id="pipelineTab" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
     <!-- Metric cards -->
     <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 mb-8" id="metrics"></div>
 
+    <!-- Search + sort bar -->
+    <div class="flex flex-col sm:flex-row gap-3 mb-4">
+      <div class="relative flex-1">
+        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input type="text" id="searchBox" placeholder="Search companies…"
+          class="w-full pl-9 pr-4 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent bg-white"
+          oninput="renderAll()">
+      </div>
+      <select id="sortBox" class="text-xs border border-gray-200 rounded-lg px-3 py-2 text-gray-600 bg-white focus:outline-none focus:ring-2 focus:ring-navy-900" onchange="renderAll()">
+        <option value="score">Sort: Score</option>
+        <option value="value">Sort: Est. value</option>
+        <option value="name">Sort: Company name</option>
+        <option value="recent">Sort: Recently added</option>
+      </select>
+    </div>
+
     <!-- Vertical filters -->
     <div class="flex flex-wrap gap-2 mb-3" id="vertFilters"></div>
-
     <!-- Status filters -->
     <div class="flex flex-wrap gap-2 mb-6" id="statusFilters"></div>
 
     <!-- Lead list -->
     <div id="leadList" class="space-y-2"></div>
-
-    <!-- Empty state -->
     <div id="emptyState" class="hidden text-center py-20">
       <p class="text-gray-400 text-sm font-medium">No leads match the current filters.</p>
     </div>
-
   </main>
+
+  <!-- ═══ PROSPECTOR TAB ═══ -->
+  <main id="prospectorTab" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="mb-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+      <div>
+        <h2 class="text-lg font-bold text-navy-900">Expansion Signal Prospector</h2>
+        <p class="text-sm text-gray-400 mt-1">AI scans for companies expanding their physical footprint — your next Axseter clients.</p>
+      </div>
+      <button id="runProspectorBtn" onclick="runProspector()" class="flex items-center gap-2 bg-navy-900 hover:bg-navy-800 text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-colors shrink-0">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0"/></svg>
+        Find new leads
+      </button>
+    </div>
+
+    <!-- Vertical selector for prospector -->
+    <div class="flex flex-wrap gap-2 mb-6" id="prospectorVerts"></div>
+
+    <!-- Running state -->
+    <div id="prospectorRunning" class="hidden">
+      <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden mb-6">
+        <div class="relative h-1 bg-gray-100 overflow-hidden">
+          <div class="scan-line absolute inset-0 h-full bg-gradient-to-r from-transparent via-navy-900 to-transparent opacity-40"></div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+            <p class="text-sm font-semibold text-navy-900" id="prospectorStatus">Scanning expansion signals…</p>
+          </div>
+          <div id="prospectorLog" class="space-y-1 font-mono text-xs text-gray-400 max-h-48 overflow-y-auto"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="prospectorResults" class="space-y-4"></div>
+
+    <!-- Idle state -->
+    <div id="prospectorIdle" class="text-center py-24">
+      <div class="w-16 h-16 bg-navy-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-navy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      </div>
+      <p class="text-gray-600 font-semibold mb-1">Ready to prospect</p>
+      <p class="text-gray-400 text-sm">Select a vertical and run a search to find companies expanding their footprint.</p>
+    </div>
+  </main>
+
+</div><!-- /dashboard -->
+
+<!-- ═══ SLIDE-OVER: ADD LEAD ═══ -->
+<div id="slideOverBackdrop" class="fixed inset-0 z-40 bg-navy-950/40 hidden opacity-0" onclick="closeAddLead()"></div>
+<div id="slideOver" class="fixed right-0 top-0 h-full w-full max-w-lg z-50 bg-white shadow-2xl transform translate-x-full flex flex-col">
+  <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+    <h3 class="font-bold text-navy-900">Add lead manually</h3>
+    <button onclick="closeAddLead()" class="text-gray-400 hover:text-gray-600 transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="flex-1 overflow-y-auto px-6 py-6 space-y-5">
+    <div class="grid grid-cols-2 gap-4">
+      <div class="col-span-2">
+        <label class="field-label">Company name *</label>
+        <input type="text" id="af_name" class="field-input" placeholder="Sunrise Behavioral Health">
+      </div>
+      <div>
+        <label class="field-label">Vertical *</label>
+        <select id="af_vertical" class="field-input">
+          <option value="">Select…</option>
+          <option value="dental">Dental / DSO</option>
+          <option value="behavioral">Behavioral health</option>
+          <option value="pt">Physical therapy</option>
+          <option value="insurance">Insurance</option>
+          <option value="vet">Veterinary</option>
+          <option value="qsr">QSR / Retail</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div>
+        <label class="field-label">Status</label>
+        <select id="af_status" class="field-input">
+          <option value="research">Needs research</option>
+          <option value="ready">Outreach ready</option>
+          <option value="monitor">Monitoring</option>
+        </select>
+      </div>
+      <div>
+        <label class="field-label">Locations (count)</label>
+        <input type="number" id="af_locations" class="field-input" placeholder="45">
+      </div>
+      <div>
+        <label class="field-label">States (count)</label>
+        <input type="number" id="af_states" class="field-input" placeholder="8">
+      </div>
+      <div>
+        <label class="field-label">Est. value</label>
+        <input type="text" id="af_value" class="field-input" placeholder="$150K–$300K">
+      </div>
+      <div>
+        <label class="field-label">Ownership</label>
+        <select id="af_ownership" class="field-input">
+          <option value="">Unknown</option>
+          <option value="PE-backed">PE-backed</option>
+          <option value="VC-backed">VC-backed</option>
+          <option value="Public">Public</option>
+          <option value="Private">Private</option>
+        </select>
+      </div>
+      <div class="col-span-2">
+        <label class="field-label">Expansion signal *</label>
+        <textarea id="af_signal" class="field-input" rows="3" placeholder="Announced 15 new clinics in 2026 across TX, FL, AZ…"></textarea>
+      </div>
+      <div class="col-span-2">
+        <label class="field-label">Signal source</label>
+        <input type="text" id="af_source" class="field-input" placeholder="PR Newswire, March 2026">
+      </div>
+      <div class="col-span-2">
+        <label class="field-label">Recommended play</label>
+        <textarea id="af_play" class="field-input" rows="2" placeholder="Lead with vendor consolidation angle…"></textarea>
+      </div>
+      <div>
+        <label class="field-label">Outreach template</label>
+        <select id="af_template" class="field-input">
+          <option value="expansion_announcement">Expansion announcement</option>
+          <option value="acquisition_integration">Acquisition integration</option>
+          <option value="vendor_consolidation">Vendor consolidation</option>
+        </select>
+      </div>
+      <div>
+        <label class="field-label">PE backed?</label>
+        <select id="af_pe" class="field-input">
+          <option value="false">No / Unknown</option>
+          <option value="true">Yes</option>
+        </select>
+      </div>
+    </div>
+    <div class="border-t border-gray-100 pt-5">
+      <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Target contact (optional)</h4>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="field-label">Name</label>
+          <input type="text" id="af_cname" class="field-input" placeholder="Jennifer Walsh">
+        </div>
+        <div>
+          <label class="field-label">Title</label>
+          <input type="text" id="af_ctitle" class="field-input" placeholder="VP Real Estate & Development">
+        </div>
+        <div>
+          <label class="field-label">Email</label>
+          <input type="email" id="af_cemail" class="field-input" placeholder="jwalsh@company.com">
+        </div>
+        <div>
+          <label class="field-label">LinkedIn</label>
+          <input type="text" id="af_clinkedin" class="field-input" placeholder="linkedin.com/in/…">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="px-6 py-4 border-t border-gray-100 flex gap-3">
+    <button onclick="saveNewLead()" class="flex-1 bg-navy-900 hover:bg-navy-800 text-white font-semibold text-sm py-3 rounded-xl transition-colors" id="saveLeadBtn">Save lead</button>
+    <button onclick="closeAddLead()" class="px-5 py-3 border border-gray-200 text-gray-500 hover:text-gray-700 text-sm font-semibold rounded-xl transition-colors">Cancel</button>
+  </div>
 </div>
 
-<!-- Toast notification -->
-<div
-  id="toast"
-  class="hidden fixed bottom-6 right-6 z-50 bg-navy-900 text-white text-sm font-medium px-5 py-3 rounded-xl shadow-lg"
-></div>
+<!-- ═══ TOAST ═══ -->
+<div id="toast" class="hidden fixed bottom-6 right-6 z-50 bg-navy-900 text-white text-sm font-medium px-5 py-3 rounded-xl shadow-lg"></div>
 
-<!-- ═══════════════════════════════════════════
-     JAVASCRIPT
-════════════════════════════════════════════ -->
+<style>
+  .field-label{display:block;font-size:11px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+  .field-input{width:100%;padding:8px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;color:#111827;background:#fff;outline:none;transition:border-color .15s,box-shadow .15s;font-family:'Plus Jakarta Sans',sans-serif}
+  .field-input:focus{border-color:#102a43;box-shadow:0 0 0 3px rgba(16,42,67,.08)}
+  textarea.field-input{resize:vertical;line-height:1.5}
+  select.field-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:14px;padding-right:32px}
+</style>
+
+<!-- ═══ JAVASCRIPT ═══ -->
 <script>
 'use strict';
 
-// ─── Config ─────────────────────────────────────────────────────────────────
-const ACCESS_CODE    = 'axseter2026';
-const SUPABASE_URL   = 'https://cvbpgjveazhmavoaszxp.supabase.co';
-const SUPABASE_ANON  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2YnBnanZlYXpobWF2b2FzenhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3ODQ2MjIsImV4cCI6MjA4OTM2MDYyMn0.PeP17xicAK_gQPricJcR0K1sGinsWUQiijmcPNNCGjM';
-
-// ─── Supabase client ─────────────────────────────────────────────────────────
+const ACCESS_CODE   = 'axseter2026';
+const SUPABASE_URL  = 'https://cvbpgjveazhmavoaszxp.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2YnBnanZlYXpobWF2b2FzenhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3ODQ2MjIsImV4cCI6MjA4OTM2MDYyMn0.PeP17xicAK_gQPricJcR0K1sGinsWUQiijmcPNNCGjM';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
-// ─── App state ───────────────────────────────────────────────────────────────
-let LEADS         = [];   // array of mapped lead objects
-let activeVert    = 'all';
-let activeStatus  = 'all';
+let LEADS        = [];
+let activeVert   = 'all';
+let activeStatus = 'all';
+let activeTab    = 'pipeline';
+let prospectorVert = 'behavioral';
 
-// ─── Label maps ──────────────────────────────────────────────────────────────
 const VERT_LABELS = {
-  all:        'All verticals',
-  dental:     'Dental',
-  behavioral: 'Behavioral health',
-  pt:         'Physical therapy',
-  insurance:  'Insurance',
-  vet:        'Veterinary',
-  qsr:        'QSR / Retail',
+  all:'All verticals', dental:'Dental', behavioral:'Behavioral health',
+  pt:'Physical therapy', insurance:'Insurance', vet:'Veterinary', qsr:'QSR / Retail', other:'Other'
 };
-
 const STATUS_LABELS = {
-  all:       'All statuses',
-  ready:     'Outreach ready',
-  research:  'Needs research',
-  monitor:   'Monitoring',
-  sent:      'Sent',
-  responded: 'Responded',
+  all:'All statuses', ready:'Outreach ready', research:'Needs research',
+  monitor:'Monitoring', sent:'Sent', responded:'Responded'
 };
-
-// Vertical color palettes
 const VERT_COLORS = {
-  dental:     { bg: 'bg-purple-50', text: 'text-purple-700', border: 'border-purple-200' },
-  behavioral: { bg: 'bg-pink-50',   text: 'text-pink-700',   border: 'border-pink-200' },
-  pt:         { bg: 'bg-teal-50',   text: 'text-teal-700',   border: 'border-teal-200' },
-  insurance:  { bg: 'bg-blue-50',   text: 'text-blue-700',   border: 'border-blue-200' },
-  vet:        { bg: 'bg-amber-50',  text: 'text-amber-700',  border: 'border-amber-200' },
-  qsr:        { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-200' },
+  dental:    {bg:'bg-purple-50',text:'text-purple-700',border:'border-purple-200'},
+  behavioral:{bg:'bg-pink-50',  text:'text-pink-700',  border:'border-pink-200'},
+  pt:        {bg:'bg-teal-50',  text:'text-teal-700',  border:'border-teal-200'},
+  insurance: {bg:'bg-blue-50',  text:'text-blue-700',  border:'border-blue-200'},
+  vet:       {bg:'bg-amber-50', text:'text-amber-700', border:'border-amber-200'},
+  qsr:       {bg:'bg-orange-50',text:'text-orange-700',border:'border-orange-200'},
 };
 
-// ─── UUID → safe DOM id ──────────────────────────────────────────────────────
-// UUIDs contain hyphens which are invalid in certain CSS/getElementById contexts
-// We strip them to create safe element IDs, but always pass the full UUID to functions.
-function safeId(uuid) {
-  return 'l' + uuid.replace(/-/g, '');
-}
+function safeId(uuid){ return 'l'+uuid.replace(/-/g,''); }
 
-// ─── Auth ─────────────────────────────────────────────────────────────────────
-function handleAuth() {
-  const val = document.getElementById('authPass').value;
-  if (val === ACCESS_CODE) {
-    sessionStorage.setItem('ax_auth', '1');
-    showDashboard();
-  } else {
-    document.getElementById('authErr').classList.remove('hidden');
-    document.getElementById('authPass').focus();
-  }
+// ─── AUTH ────────────────────────────────────────────────────────────────────
+function handleAuth(){
+  const val=document.getElementById('authPass').value;
+  if(val===ACCESS_CODE){ sessionStorage.setItem('ax_auth','1'); showDashboard(); }
+  else{ document.getElementById('authErr').classList.remove('hidden'); document.getElementById('authPass').focus(); }
 }
-
-function showDashboard() {
+function showDashboard(){
   document.getElementById('authGate').classList.add('hidden');
   document.getElementById('dashboard').classList.remove('hidden');
   init();
 }
-
-function signOut() {
-  sessionStorage.removeItem('ax_auth');
-  location.reload();
-}
-
-// Auto-restore session
-(function() {
-  if (sessionStorage.getItem('ax_auth') === '1') {
+function signOut(){ sessionStorage.removeItem('ax_auth'); location.reload(); }
+(function(){
+  if(sessionStorage.getItem('ax_auth')==='1'){
     document.getElementById('authGate').classList.add('hidden');
     document.getElementById('dashboard').classList.remove('hidden');
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded',init);
   }
 })();
 
-// ─── Data layer ───────────────────────────────────────────────────────────────
-function mapLead(row) {
+// ─── TABS ─────────────────────────────────────────────────────────────────────
+function switchTab(tab){
+  activeTab=tab;
+  document.getElementById('pipelineTab').classList.toggle('hidden', tab!=='pipeline');
+  document.getElementById('prospectorTab').classList.toggle('hidden', tab!=='prospector');
+  document.getElementById('tabPipeline').classList.toggle('active', tab==='pipeline');
+  document.getElementById('tabProspector').classList.toggle('active', tab==='prospector');
+  if(tab==='prospector') renderProspectorVerts();
+}
+
+// ─── DATA LAYER ───────────────────────────────────────────────────────────────
+function mapLead(row){
   return {
-    id:               row.id,                         // full UUID — always use this for DB ops
-    sid:              safeId(row.id),                 // safe DOM id prefix
-    name:             row.name || '',
-    score:            row.score || 0,
-    tier:             row.tier || 3,
-    vertical:         row.vertical || '',
-    vertLabel:        row.vertical_label || VERT_LABELS[row.vertical] || row.vertical || '',
-    locations:        row.locations || '—',
-    states:           row.states || '—',
-    signal:           row.signal || '',
-    signalDate:       row.signal_date || '',
-    source:           row.signal_source || '',
-    play:             row.play || '',
-    value:            row.estimated_value || '—',
-    ownership:        row.ownership || '—',
-    status:           row.status || 'new',
-    outreachTemplate: row.outreach_template || 'expansion_announcement',
-    peBacked:         row.pe_backed || false,
-    // contact fields — enriched from contacts table
-    contactName:      '',
-    contactTitle:     '',
-    contactEmail:     '',
-    contactLinkedin:  '',
+    id:row.id, sid:safeId(row.id),
+    name:row.name||'', score:row.score||0, tier:row.tier||3,
+    vertical:row.vertical||'', vertLabel:row.vertical_label||VERT_LABELS[row.vertical]||row.vertical||'',
+    locations:row.locations||'—', states:row.states||'—',
+    signal:row.signal||'', signalDate:row.signal_date||'', source:row.signal_source||'',
+    play:row.play||'', value:row.estimated_value||'—', ownership:row.ownership||'—',
+    status:row.status||'new', outreachTemplate:row.outreach_template||'expansion_announcement',
+    peBacked:row.pe_backed||false, notes:row.notes||'', followUpDate:row.follow_up_date||'',
+    createdAt:row.created_at||'',
+    contactName:'', contactTitle:'', contactEmail:'', contactLinkedin:'',
   };
 }
-
-async function loadLeads() {
-  const { data, error } = await sb
-    .from('leads')
-    .select('*')
-    .not('status', 'eq', 'archived')
-    .order('score', { ascending: false });
-
-  if (error) throw error;
-  LEADS = (data || []).map(mapLead);
+async function loadLeads(){
+  const {data,error}=await sb.from('leads').select('*').not('status','eq','archived').order('score',{ascending:false});
+  if(error)throw error;
+  LEADS=(data||[]).map(mapLead);
 }
-
-async function loadContacts() {
-  if (!LEADS.length) return;
-  const { data } = await sb.from('contacts').select('*');
-  if (!data) return;
-  for (const c of data) {
-    const lead = LEADS.find(l => l.id === c.lead_id);
-    if (!lead) continue;
-    if (c.name)     lead.contactName     = c.name;
-    if (c.title)    lead.contactTitle    = c.title;
-    if (c.email)    lead.contactEmail    = c.email;
-    if (c.linkedin) lead.contactLinkedin = c.linkedin;
+async function loadContacts(){
+  if(!LEADS.length)return;
+  const{data}=await sb.from('contacts').select('*');
+  if(!data)return;
+  for(const c of data){
+    const lead=LEADS.find(l=>l.id===c.lead_id);
+    if(!lead)continue;
+    if(c.name)lead.contactName=c.name; if(c.title)lead.contactTitle=c.title;
+    if(c.email)lead.contactEmail=c.email; if(c.linkedin)lead.contactLinkedin=c.linkedin;
   }
 }
-
-async function saveOutreach(lead, subject, body) {
-  await sb.from('outreach').insert({
-    lead_id:       lead.id,
-    template_used: lead.outreachTemplate,
-    subject:       subject,
-    body:          body,
-    status:        'sent',
-    sent_at:       new Date().toISOString(),
-  });
+async function saveOutreach(lead,subject,body){
+  await sb.from('outreach').insert({lead_id:lead.id,template_used:lead.outreachTemplate,subject,body,status:'sent',sent_at:new Date().toISOString()});
+}
+async function logActivity(leadId,action,detail){
+  await sb.from('activity').insert({lead_id:leadId,action,detail});
 }
 
-async function logActivity(leadId, action, detail) {
-  await sb.from('activity').insert({
-    lead_id: leadId,
-    action:  action,
-    detail:  detail,
-  });
-}
-
-// ─── Outreach templates ───────────────────────────────────────────────────────
+// ─── OUTREACH TEMPLATES ───────────────────────────────────────────────────────
 const TEMPLATES = {
-  expansion_announcement(l) {
-    const peers = l.vertical === 'insurance' ? 'Pronto Insurance and Gallagher' : 'Oak Street Health and ATI Physical Therapy';
-    return {
-      subject: `Infrastructure partner for ${l.name}'s expansion`,
-      body: `Hi [First Name],
-
-I saw ${l.name} is ${(l.signal || '').split('.')[0].toLowerCase()}. Congratulations on the growth.
-
-Companies at your stage of expansion typically hit an inflection point with low-voltage infrastructure — managing a different cabling and security contractor in every market creates inconsistency, change orders, and overhead that scales with every new location.
-
-Axseter is a national low-voltage integrator built specifically for this problem. We're the single point of contact for structured cabling, access control, and surveillance across 500+ locations for companies like ${peers}. Location 47 is installed identically to location 3.
-
-Would a 20-minute conversation be useful as you plan the infrastructure side of the expansion?
-
-Best,
-[Sender Name]
-Axseter Systems
-1-877-AXSETR1`,
-    };
+  expansion_announcement(l){
+    const peers=l.vertical==='insurance'?'Pronto Insurance and Gallagher':'Oak Street Health and ATI Physical Therapy';
+    return{subject:`Infrastructure partner for ${l.name}'s expansion`,body:`Hi [First Name],\n\nI saw ${l.name} is ${(l.signal||'').split('.')[0].toLowerCase()}. Congratulations on the growth.\n\nCompanies at your stage of expansion typically hit an inflection point with low-voltage infrastructure — managing a different cabling and security contractor in every market creates inconsistency, change orders, and overhead that scales with every new location.\n\nAxseter is a national low-voltage integrator built specifically for this problem. We're the single point of contact for structured cabling, access control, and surveillance across 500+ locations for companies like ${peers}. Location 47 is installed identically to location 3.\n\nWould a 20-minute conversation be useful as you plan the infrastructure side of the expansion?\n\nBest,\n[Sender Name]\nAxseter Systems\n1-877-AXSETR1`};
   },
-
-  acquisition_integration(l) {
-    const locWord = l.vertical === 'dental' ? 'practices' : l.vertical === 'behavioral' ? 'clinics' : l.vertical === 'insurance' ? 'branches' : 'locations';
-    const peers   = (l.vertical === 'dental' || l.vertical === 'behavioral' || l.vertical === 'pt') ? 'Oak Street Health and ATI Physical Therapy' : 'Pronto Insurance and Gallagher';
-    const indWord = l.vertical === 'dental' ? 'dental' : l.vertical === 'behavioral' ? 'healthcare' : 'multi-location';
-    return {
-      subject: `Standardizing infrastructure across ${l.name}'s acquired locations`,
-      body: `Hi [First Name],
-
-Acquiring new ${locWord} means inheriting different cabling setups, camera systems, and access control configurations at every site. Most platform companies we work with find that standardization pays for itself within the first year through reduced support costs and faster integration.
-
-Axseter handles national low-voltage infrastructure for ${indWord} platforms like ${peers}. One spec, one contract, consistent execution whether you're integrating locations in one state or twenty.
-
-Happy to share how similar companies approached the standardization challenge if it's relevant to your integration roadmap.
-
-Best,
-[Sender Name]
-Axseter Systems
-1-877-AXSETR1`,
-    };
+  acquisition_integration(l){
+    const locWord=l.vertical==='dental'?'practices':l.vertical==='behavioral'?'clinics':l.vertical==='insurance'?'branches':'locations';
+    const peers=(l.vertical==='dental'||l.vertical==='behavioral'||l.vertical==='pt')?'Oak Street Health and ATI Physical Therapy':'Pronto Insurance and Gallagher';
+    const indWord=l.vertical==='dental'?'dental':l.vertical==='behavioral'?'healthcare':'multi-location';
+    return{subject:`Standardizing infrastructure across ${l.name}'s acquired locations`,body:`Hi [First Name],\n\nAcquiring new ${locWord} means inheriting different cabling setups, camera systems, and access control configurations at every site. Most platform companies we work with find that standardization pays for itself within the first year through reduced support costs and faster integration.\n\nAxseter handles national low-voltage infrastructure for ${indWord} platforms like ${peers}. One spec, one contract, consistent execution whether you're integrating locations in one state or twenty.\n\nHappy to share how similar companies approached the standardization challenge if it's relevant to your integration roadmap.\n\nBest,\n[Sender Name]\nAxseter Systems\n1-877-AXSETR1`};
   },
-
-  vendor_consolidation(l) {
-    const peers = l.vertical === 'dental' ? 'Oak Street Health and CVS' : l.vertical === 'insurance' ? 'Pronto Insurance and Gallagher' : 'ATI Physical Therapy and CVS';
-    return {
-      subject: `From ${l.states} contractors to one — ${l.name}'s infrastructure`,
-      body: `Hi [First Name],
-
-At ${l.locations} locations across ${l.states} states, ${l.name} is likely managing ${l.states}+ different low-voltage contractors — each with different quality standards, pricing, and responsiveness. That overhead compounds with every new location.
-
-Axseter replaces that fragmentation with a single national partner. One contract, one set of specs, one team that knows your infrastructure. Our clients typically see $25,000+ in annual overhead savings and 10–15% fewer change orders from the consolidation.
-
-We handle structured cabling, access control, and surveillance for companies like ${peers} — 500+ locations installed to the same standard, nationwide.
-
-Worth a conversation?
-
-Best,
-[Sender Name]
-Axseter Systems
-1-877-AXSETR1`,
-    };
+  vendor_consolidation(l){
+    const peers=l.vertical==='dental'?'Oak Street Health and CVS':l.vertical==='insurance'?'Pronto Insurance and Gallagher':'ATI Physical Therapy and CVS';
+    return{subject:`From ${l.states} contractors to one — ${l.name}'s infrastructure`,body:`Hi [First Name],\n\nAt ${l.locations} locations across ${l.states} states, ${l.name} is likely managing ${l.states}+ different low-voltage contractors — each with different quality standards, pricing, and responsiveness. That overhead compounds with every new location.\n\nAxseter replaces that fragmentation with a single national partner. One contract, one set of specs, one team that knows your infrastructure. Our clients typically see $25,000+ in annual overhead savings and 10–15% fewer change orders from the consolidation.\n\nWe handle structured cabling, access control, and surveillance for companies like ${peers} — 500+ locations installed to the same standard, nationwide.\n\nWorth a conversation?\n\nBest,\n[Sender Name]\nAxseter Systems\n1-877-AXSETR1`};
   },
 };
+function getDraft(lead){ return (TEMPLATES[lead.outreachTemplate]||TEMPLATES.expansion_announcement)(lead); }
 
-function getDraft(lead) {
-  const tmpl = TEMPLATES[lead.outreachTemplate] || TEMPLATES.expansion_announcement;
-  return tmpl(lead);
+// ─── AI OUTREACH ──────────────────────────────────────────────────────────────
+async function generateAIOutreach(uuid,evt){
+  if(evt)evt.stopPropagation();
+  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
+  const sid=lead.sid;
+  const btn=document.getElementById('aibtn-'+sid);
+  const bodyEl=document.getElementById('body-'+sid);
+  const subjEl=document.getElementById('subj-'+sid);
+  if(!btn||!bodyEl)return;
+
+  btn.disabled=true;
+  btn.innerHTML=`<span class="ai-thinking flex gap-0.5 items-center"><span class="w-1 h-1 bg-white rounded-full inline-block"></span><span class="w-1 h-1 bg-white rounded-full inline-block"></span><span class="w-1 h-1 bg-white rounded-full inline-block"></span></span>`;
+
+  const prompt=`You are an expert B2B sales copywriter for Axseter Systems, a national low-voltage integrator.
+
+COMPANY CONTEXT:
+- Axseter is the Single Point of Contact (SPoC) model: one partner replaces 15+ regional contractors for multi-location enterprises
+- Services: structured cabling, access control, video surveillance, audio-visual, sound masking, break-fix support
+- Named clients: Oak Street Health, CVS, ATI Physical Therapy, Soar Autism Center, Pronto Insurance, Guidelight Health, Gallagher
+- 500+ locations installed nationwide
+- Key stat: $25,000+ annual overhead savings, 10-15% fewer change orders
+
+LEAD:
+- Company: ${lead.name}
+- Vertical: ${lead.vertLabel}
+- Locations: ${lead.locations} across ${lead.states} states
+- Expansion signal: ${lead.signal}
+- Ownership: ${lead.ownership}
+- Estimated deal: ${lead.value}
+${lead.contactName?`- Contact: ${lead.contactName}, ${lead.contactTitle}`:'- Contact: VP of Real Estate / Facilities (name unknown)'}
+${lead.play?`- Recommended play: ${lead.play}`:''}
+
+Write a cold outreach email. Rules:
+1. Subject line: specific, no fluff, references the actual trigger
+2. Opener: reference the specific expansion signal — don't be generic
+3. Pain: articulate the vendor fragmentation problem they're about to face (or already face)
+4. Value: Axseter's SPoC model, cite a relevant named client, use the $25K+ stat
+5. CTA: one ask — 20-minute call
+6. Tone: direct, peer-to-peer, zero filler, no buzzwords
+7. Length: 150-200 words for the body
+8. Sign off with placeholder [Sender Name] and Axseter Systems / 1-877-AXSETR1
+
+Respond ONLY with JSON: {"subject":"...","body":"..."}`;
+
+  try {
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        messages:[{role:'user',content:prompt}]
+      })
+    });
+    const data=await res.json();
+    const text=data.content.map(i=>i.text||'').join('').trim();
+    const clean=text.replace(/```json|```/g,'').trim();
+    const parsed=JSON.parse(clean);
+    subjEl.value=parsed.subject||subjEl.value;
+    bodyEl.value=parsed.body||bodyEl.value;
+    autoResize(bodyEl);
+    showToast('✦ AI draft generated');
+  } catch(err){
+    console.error('AI outreach error:',err);
+    showToast('AI draft failed — using template');
+    const draft=getDraft(lead);
+    subjEl.value=draft.subject; bodyEl.value=draft.body; autoResize(bodyEl);
+  }
+  btn.disabled=false;
+  btn.innerHTML='✦ Regenerate with AI';
 }
 
-// ─── Metrics ──────────────────────────────────────────────────────────────────
-function renderMetrics() {
-  const t1    = LEADS.filter(l => l.tier === 1).length;
-  const t2    = LEADS.filter(l => l.tier === 2).length;
-  const ready = LEADS.filter(l => l.status === 'ready').length;
-  const verts = new Set(LEADS.map(l => l.vertical)).size;
-
-  // Rough pipeline value calc from estimated_value strings (e.g. "$240K–$480K")
-  let pipMin = 0, pipMax = 0;
-  LEADS.forEach(l => {
-    const m = (l.value || '').replace(/[$,]/g, '').match(/([\d.]+)K?–?([\d.]+)?K?/i);
-    if (m) {
-      const toNum = (s, k) => s ? parseFloat(s) * (k ? 1000 : 1) : 0;
-      const hasK  = /K/i.test(l.value);
-      pipMin += toNum(m[1], hasK);
-      pipMax += toNum(m[2] || m[1], hasK);
-    }
+// ─── METRICS ──────────────────────────────────────────────────────────────────
+function renderMetrics(){
+  const t1=LEADS.filter(l=>l.tier===1).length;
+  const t2=LEADS.filter(l=>l.tier===2).length;
+  const ready=LEADS.filter(l=>l.status==='ready').length;
+  const verts=new Set(LEADS.map(l=>l.vertical)).size;
+  let pipMin=0;
+  LEADS.forEach(l=>{
+    const m=(l.value||'').replace(/[$,]/g,'').match(/([\d.]+)K?/i);
+    if(m){const hasK=/K/i.test(l.value);pipMin+=parseFloat(m[1])*(hasK?1000:1);}
   });
-  const pipStr = pipMin > 0 ? `$${(pipMin / 1e6).toFixed(1)}M+` : '—';
-
-  const cards = [
-    { value: t1,     label: 'Tier 1 leads',       color: 'text-green-600' },
-    { value: t2,     label: 'Tier 2 leads',        color: 'text-blue-600' },
-    { value: ready,  label: 'Outreach ready',      color: 'text-navy-900' },
-    { value: pipStr, label: 'Est. pipeline value', color: 'text-navy-900' },
-    { value: verts,  label: 'Verticals',           color: 'text-navy-900' },
+  const pipStr=pipMin>0?`$${(pipMin/1e6).toFixed(1)}M+`:'—';
+  const cards=[
+    {value:t1,   label:'Tier 1 leads',      color:'text-green-600'},
+    {value:t2,   label:'Tier 2 leads',       color:'text-blue-600'},
+    {value:ready,label:'Outreach ready',     color:'text-navy-900'},
+    {value:pipStr,label:'Est. pipeline value',color:'text-navy-900'},
+    {value:verts,label:'Verticals',          color:'text-navy-900'},
   ];
-
-  document.getElementById('metrics').innerHTML = cards.map(c => `
+  document.getElementById('metrics').innerHTML=cards.map(c=>`
     <div class="bg-white rounded-xl border border-gray-200 p-5">
       <div class="text-2xl font-bold ${c.color} mono">${c.value}</div>
       <div class="text-[11px] text-gray-400 font-semibold mt-1 uppercase tracking-wide">${c.label}</div>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-// ─── Vertical filters ─────────────────────────────────────────────────────────
-function renderVertFilters() {
-  const verts = ['all', ...new Set(LEADS.map(l => l.vertical).filter(Boolean))];
-  document.getElementById('vertFilters').innerHTML = verts.map(v => {
-    const count = v === 'all' ? LEADS.length : LEADS.filter(l => l.vertical === v).length;
-    const on    = v === activeVert;
-    const label = VERT_LABELS[v] || v;
-    return `<button
-      class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold ${on ? 'bg-navy-900 text-white' : 'bg-white text-gray-500 border border-gray-200 hover:border-gray-300 hover:text-gray-700'}"
-      onclick="setVertFilter('${v}')"
-    >${label}${v !== 'all' ? ` (${count})` : ''}</button>`;
+// ─── FILTERS ──────────────────────────────────────────────────────────────────
+function renderVertFilters(){
+  const verts=['all',...new Set(LEADS.map(l=>l.vertical).filter(Boolean))];
+  document.getElementById('vertFilters').innerHTML=verts.map(v=>{
+    const count=v==='all'?LEADS.length:LEADS.filter(l=>l.vertical===v).length;
+    const on=v===activeVert;
+    return`<button class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold ${on?'bg-navy-900 text-white':'bg-white text-gray-500 border border-gray-200 hover:border-gray-300 hover:text-gray-700'}" onclick="setVertFilter('${v}')">${VERT_LABELS[v]||v}${v!=='all'?` (${count})`:''}</button>`;
   }).join('');
 }
+function setVertFilter(v){ activeVert=v; activeStatus='all'; renderAll(); }
 
-function setVertFilter(v) {
-  activeVert   = v;
-  activeStatus = 'all';
-  renderAll();
-}
-
-// ─── Status filters ───────────────────────────────────────────────────────────
-function renderStatusFilters() {
-  const base     = activeVert === 'all' ? LEADS : LEADS.filter(l => l.vertical === activeVert);
-  const statuses = ['all', 'ready', 'research', 'sent', 'monitor', 'responded'];
-  document.getElementById('statusFilters').innerHTML = statuses.map(s => {
-    const count = s === 'all' ? base.length : base.filter(l => l.status === s).length;
-    if (s !== 'all' && count === 0) return '';
-    const on = s === activeStatus;
-    return `<button
-      class="filter-btn px-3 py-1.5 rounded-lg text-xs font-medium ${on ? 'bg-gray-200 text-gray-800 font-semibold' : 'bg-white text-gray-400 border border-gray-100 hover:text-gray-600'}"
-      onclick="setStatusFilter('${s}')"
-    >${STATUS_LABELS[s]}${s !== 'all' ? ` (${count})` : ''}</button>`;
+function renderStatusFilters(){
+  const base=activeVert==='all'?LEADS:LEADS.filter(l=>l.vertical===activeVert);
+  const statuses=['all','ready','research','sent','monitor','responded'];
+  document.getElementById('statusFilters').innerHTML=statuses.map(s=>{
+    const count=s==='all'?base.length:base.filter(l=>l.status===s).length;
+    if(s!=='all'&&count===0)return'';
+    const on=s===activeStatus;
+    return`<button class="filter-btn px-3 py-1.5 rounded-lg text-xs font-medium ${on?'bg-gray-200 text-gray-800 font-semibold':'bg-white text-gray-400 border border-gray-100 hover:text-gray-600'}" onclick="setStatusFilter('${s}')">${STATUS_LABELS[s]}${s!=='all'?` (${count})`:''}</button>`;
   }).join('');
 }
+function setStatusFilter(s){ activeStatus=s; renderStatusFilters(); renderLeads(); }
 
-function setStatusFilter(s) {
-  activeStatus = s;
-  renderStatusFilters();
-  renderLeads();
+function statusBadge(status){
+  const map={ready:'bg-green-50 text-green-700 border border-green-200',research:'bg-amber-50 text-amber-700 border border-amber-200',sent:'bg-blue-50 text-blue-700 border border-blue-200',monitor:'bg-gray-50 text-gray-500 border border-gray-200',responded:'bg-purple-50 text-purple-700 border border-purple-200'};
+  const labels={ready:'Outreach ready',research:'Needs research',sent:'Sent',monitor:'Monitoring',responded:'Responded'};
+  return`<span class="status-badge ${map[status]||'bg-gray-50 text-gray-400 border border-gray-200'}">${labels[status]||status}</span>`;
 }
 
-// ─── Status badge HTML ────────────────────────────────────────────────────────
-function statusBadge(status) {
-  const map = {
-    ready:     'bg-green-50 text-green-700 border border-green-200',
-    research:  'bg-amber-50 text-amber-700 border border-amber-200',
-    sent:      'bg-blue-50 text-blue-700 border border-blue-200',
-    monitor:   'bg-gray-50 text-gray-500 border border-gray-200',
-    responded: 'bg-purple-50 text-purple-700 border border-purple-200',
-  };
-  const labels = { ready:'Outreach ready', research:'Needs research', sent:'Sent', monitor:'Monitoring', responded:'Responded' };
-  const cls = map[status] || 'bg-gray-50 text-gray-400 border border-gray-200';
-  const lbl = labels[status] || status;
-  return `<span class="status-badge ${cls}">${lbl}</span>`;
+// ─── SORT/SEARCH ──────────────────────────────────────────────────────────────
+function getFilteredSorted(){
+  const q=(document.getElementById('searchBox')?.value||'').toLowerCase().trim();
+  const sort=document.getElementById('sortBox')?.value||'score';
+  let arr=[...LEADS];
+  if(activeVert!=='all')arr=arr.filter(l=>l.vertical===activeVert);
+  if(activeStatus!=='all')arr=arr.filter(l=>l.status===activeStatus);
+  if(q)arr=arr.filter(l=>l.name.toLowerCase().includes(q)||l.signal.toLowerCase().includes(q)||l.vertLabel.toLowerCase().includes(q));
+  arr.sort((a,b)=>{
+    if(sort==='score')return b.score-a.score;
+    if(sort==='name')return a.name.localeCompare(b.name);
+    if(sort==='recent')return new Date(b.createdAt||0)-new Date(a.createdAt||0);
+    if(sort==='value'){
+      const toN=v=>{const m=(v||'').replace(/[$,]/g,'').match(/([\d.]+)K/i);return m?parseFloat(m[1])*1000:0;};
+      return toN(b.value)-toN(a.value);
+    }
+    return 0;
+  });
+  return arr;
 }
 
-// ─── Lead card HTML ───────────────────────────────────────────────────────────
-function buildLeadCard(lead) {
-  const vc        = VERT_COLORS[lead.vertical] || { bg:'bg-gray-50', text:'text-gray-600', border:'border-gray-200' };
-  const scoreClass= lead.tier === 1 ? 'bg-green-100 text-green-800' : lead.tier === 2 ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-500';
-  const tierClass = lead.tier === 1 ? 'text-green-600' : lead.tier === 2 ? 'text-blue-600' : 'text-gray-400';
-  const sid       = lead.sid;
+// ─── LEAD CARD ────────────────────────────────────────────────────────────────
+function buildLeadCard(lead){
+  const vc=VERT_COLORS[lead.vertical]||{bg:'bg-gray-50',text:'text-gray-600',border:'border-gray-200'};
+  const scoreClass=lead.tier===1?'bg-green-100 text-green-800':lead.tier===2?'bg-blue-100 text-blue-800':'bg-gray-100 text-gray-500';
+  const tierClass=lead.tier===1?'text-green-600':lead.tier===2?'text-blue-600':'text-gray-400';
+  const sid=lead.sid;
 
-  // Template selector options
-  const tmplOptions = [
-    { key: 'expansion_announcement', label: 'Expansion announcement' },
-    { key: 'acquisition_integration', label: 'Acquisition integration' },
-    { key: 'vendor_consolidation',   label: 'Vendor consolidation' },
-  ].map(t => `<option value="${t.key}" ${lead.outreachTemplate === t.key ? 'selected' : ''}>${t.label}</option>`).join('');
+  const tmplOptions=[
+    {key:'expansion_announcement',label:'Expansion announcement'},
+    {key:'acquisition_integration',label:'Acquisition integration'},
+    {key:'vendor_consolidation',label:'Vendor consolidation'},
+  ].map(t=>`<option value="${t.key}" ${lead.outreachTemplate===t.key?'selected':''}>${t.label}</option>`).join('');
 
-  // Outreach action buttons
-  let outreachBtn = '';
-  if (lead.status === 'ready') {
-    outreachBtn = `<button onclick="toggleOutreach('${lead.id}', event)" class="bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Approve outreach</button>`;
-  } else if (lead.status === 'research') {
-    outreachBtn = `<button onclick="toggleOutreach('${lead.id}', event)" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Draft outreach</button>`;
-  } else if (lead.status === 'sent') {
-    outreachBtn = `<span class="text-xs font-medium text-blue-600 py-2 inline-block">✓ Outreach sent</span>`;
-  }
+  let outreachBtn='';
+  if(lead.status==='ready')outreachBtn=`<button onclick="toggleOutreach('${lead.id}',event)" class="bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Approve outreach</button>`;
+  else if(lead.status==='research')outreachBtn=`<button onclick="toggleOutreach('${lead.id}',event)" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Draft outreach</button>`;
+  else if(lead.status==='sent')outreachBtn=`<span class="text-xs font-medium text-blue-600 py-2 inline-block">✓ Outreach sent</span>`;
 
-  return `
+  const statusOptions=['ready','research','monitor','sent','responded'].map(s=>
+    `<option value="${s}" ${lead.status===s?'selected':''}>${STATUS_LABELS[s]}</option>`).join('');
+
+  return`
   <div class="lead-row bg-white rounded-xl border border-gray-200" id="card-${sid}">
-
-    <!-- Row header (clickable) -->
-    <div
-      class="flex items-center gap-4 p-4 cursor-pointer select-none"
-      onclick="toggleExpand('${lead.id}')"
-      role="button"
-      aria-expanded="false"
-      id="cardrow-${sid}"
-    >
+    <div class="flex items-center gap-4 p-4 cursor-pointer select-none" onclick="toggleExpand('${lead.id}')" role="button" aria-expanded="false" id="cardrow-${sid}">
       <div class="score-ring ${scoreClass}">${lead.score}</div>
-
       <div class="flex-1 min-w-0">
         <div class="flex items-center gap-2 flex-wrap">
           <span class="font-semibold text-navy-900 text-sm">${escHtml(lead.name)}</span>
           <span class="vert-pill ${vc.bg} ${vc.text}">${escHtml(lead.vertLabel)}</span>
           ${statusBadge(lead.status)}
-          ${lead.peBacked ? '<span class="vert-pill bg-indigo-50 text-indigo-700">PE-backed</span>' : ''}
+          ${lead.peBacked?'<span class="vert-pill bg-indigo-50 text-indigo-700">PE-backed</span>':''}
         </div>
-        <div class="text-xs text-gray-400 mt-1 truncate">
-          ${lead.locations} locations&nbsp;&middot;&nbsp;${lead.states} states&nbsp;&middot;&nbsp;${escHtml(lead.ownership)}
-        </div>
+        <div class="text-xs text-gray-400 mt-1 truncate">${lead.locations} locations&nbsp;·&nbsp;${lead.states} states&nbsp;·&nbsp;${escHtml(lead.ownership)}</div>
       </div>
-
       <div class="text-right hidden sm:block shrink-0">
         <div class="text-sm font-bold text-navy-900 mono">${escHtml(lead.value)}</div>
         <div class="text-[10px] font-bold uppercase tracking-wide mt-0.5 ${tierClass}">Tier ${lead.tier}</div>
       </div>
-
-      <svg class="chevron w-5 h-5 text-gray-300 shrink-0" id="chev-${sid}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-      </svg>
+      <svg class="chevron w-5 h-5 text-gray-300 shrink-0" id="chev-${sid}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </div>
 
-    <!-- Expanded panel -->
     <div class="collapsible" id="panel-${sid}">
       <div class="border-t border-gray-100 px-6 py-5">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-          <!-- Left: Signal + Play -->
           <div>
             <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Signal</h4>
             <p class="text-sm text-gray-700 leading-relaxed">${escHtml(lead.signal)}</p>
-            ${lead.source ? `<p class="text-xs text-gray-400 mt-1.5">Source: ${escHtml(lead.source)}${lead.signalDate ? ' · ' + escHtml(lead.signalDate) : ''}</p>` : ''}
-
+            ${lead.source?`<p class="text-xs text-gray-400 mt-1.5">Source: ${escHtml(lead.source)}${lead.signalDate?' · '+escHtml(lead.signalDate):''}</p>`:''}
             <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-5 mb-2">Play</h4>
-            <p class="text-sm text-gray-700 leading-relaxed">${escHtml(lead.play)}</p>
+            <p class="text-sm text-gray-700 leading-relaxed">${escHtml(lead.play)||'—'}</p>
+            <!-- Notes -->
+            <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-5 mb-2">Notes</h4>
+            <textarea id="notes-${sid}" class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy-900 text-gray-700 bg-gray-50" rows="2" placeholder="Internal notes…" onclick="event.stopPropagation()">${escHtml(lead.notes)}</textarea>
+            <button onclick="saveNotes('${lead.id}',event)" class="mt-2 text-xs font-semibold text-navy-600 hover:text-navy-900 transition-colors">Save notes</button>
           </div>
-
-          <!-- Right: Contact + Details + Actions -->
           <div>
             <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Target contact</h4>
-            ${lead.contactName
-              ? `<p class="text-sm font-semibold text-navy-900">${escHtml(lead.contactName)}</p>
-                 <p class="text-xs text-gray-500">${escHtml(lead.contactTitle)}</p>`
-              : `<p class="text-sm text-gray-500">${escHtml(lead.contactTitle) || 'VP of Real Estate / Facilities'}</p>`
-            }
-            ${lead.contactEmail    ? `<p class="text-xs text-blue-600 mt-0.5">${escHtml(lead.contactEmail)}</p>` : ''}
-            ${lead.contactLinkedin ? `<p class="text-xs text-blue-500 mt-0.5">${escHtml(lead.contactLinkedin)}</p>` : ''}
+            ${lead.contactName?`<p class="text-sm font-semibold text-navy-900">${escHtml(lead.contactName)}</p><p class="text-xs text-gray-500">${escHtml(lead.contactTitle)}</p>`:`<p class="text-sm text-gray-500">${escHtml(lead.contactTitle)||'VP of Real Estate / Facilities'}</p>`}
+            ${lead.contactEmail?`<p class="text-xs text-blue-600 mt-0.5">${escHtml(lead.contactEmail)}</p>`:''}
+            ${lead.contactLinkedin?`<p class="text-xs text-blue-500 mt-0.5">${escHtml(lead.contactLinkedin)}</p>`:''}
 
             <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-5 mb-2">Details</h4>
             <div class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs">
@@ -595,13 +680,23 @@ function buildLeadCard(lead) {
               <div class="text-gray-400">States</div>      <div class="text-gray-700 font-medium">${lead.states}</div>
             </div>
 
-            <!-- Action buttons -->
+            <!-- Status changer -->
+            <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-5 mb-2">Status</h4>
+            <div class="flex items-center gap-2">
+              <select id="statusSel-${sid}" class="text-xs border border-gray-200 rounded-lg px-2 py-1.5 text-gray-600 bg-white focus:outline-none focus:ring-1 focus:ring-navy-900" onclick="event.stopPropagation()">${statusOptions}</select>
+              <button onclick="updateStatus('${lead.id}',event)" class="text-xs font-semibold text-navy-600 hover:text-navy-900 transition-colors px-2 py-1.5">Update</button>
+            </div>
+
+            <!-- Follow-up date -->
+            <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-4 mb-2">Follow-up date</h4>
+            <div class="flex items-center gap-2">
+              <input type="date" id="followup-${sid}" value="${lead.followUpDate||''}" class="text-xs border border-gray-200 rounded-lg px-2 py-1.5 text-gray-600 bg-white focus:outline-none focus:ring-1 focus:ring-navy-900" onclick="event.stopPropagation()">
+              <button onclick="saveFollowUp('${lead.id}',event)" class="text-xs font-semibold text-navy-600 hover:text-navy-900 transition-colors px-2 py-1.5">Save</button>
+            </div>
+
             <div class="flex flex-wrap gap-2 mt-5">
               ${outreachBtn}
-              <button
-                onclick="archiveLead('${lead.id}', event)"
-                class="bg-white border border-gray-200 text-gray-400 hover:text-red-500 hover:border-red-200 text-xs font-semibold px-4 py-2 rounded-lg transition-colors"
-              >Archive</button>
+              <button onclick="archiveLead('${lead.id}',event)" class="bg-white border border-gray-200 text-gray-400 hover:text-red-500 hover:border-red-200 text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Archive</button>
             </div>
 
             <!-- Outreach draft panel -->
@@ -609,53 +704,24 @@ function buildLeadCard(lead) {
               <div class="bg-gray-50 rounded-xl border border-gray-200 p-5">
                 <div class="flex items-center justify-between mb-3">
                   <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Draft outreach</h4>
-                  <select
-                    id="tmpl-${sid}"
-                    class="text-xs border border-gray-200 rounded-lg px-2 py-1.5 text-gray-600 bg-white focus:outline-none focus:ring-1 focus:ring-navy-900"
-                    onchange="regenerateDraft('${lead.id}', event)"
-                    onclick="event.stopPropagation()"
-                  >
-                    ${tmplOptions}
-                  </select>
+                  <select id="tmpl-${sid}" class="text-xs border border-gray-200 rounded-lg px-2 py-1.5 text-gray-600 bg-white focus:outline-none focus:ring-1 focus:ring-navy-900" onchange="regenerateDraft('${lead.id}',event)" onclick="event.stopPropagation()">${tmplOptions}</select>
                 </div>
-
                 <div class="mb-3">
                   <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wide mb-1">Subject</label>
-                  <input
-                    type="text"
-                    id="subj-${sid}"
-                    class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent bg-white"
-                    onclick="event.stopPropagation()"
-                  >
+                  <input type="text" id="subj-${sid}" class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white" onclick="event.stopPropagation()">
                 </div>
                 <div class="mb-4">
                   <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wide mb-1">Body</label>
-                  <textarea
-                    id="body-${sid}"
-                    class="auto-resize w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent bg-white leading-relaxed"
-                    rows="10"
-                    onclick="event.stopPropagation()"
-                    oninput="autoResize(this)"
-                  ></textarea>
+                  <textarea id="body-${sid}" class="auto-resize w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white leading-relaxed" rows="10" onclick="event.stopPropagation()" oninput="autoResize(this)"></textarea>
                 </div>
                 <div class="flex flex-wrap gap-2">
-                  <button
-                    id="copybtn-${sid}"
-                    onclick="copyDraft('${lead.id}', event)"
-                    class="bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors"
-                  >Copy to clipboard</button>
-                  <button
-                    onclick="markSent('${lead.id}', event)"
-                    class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors"
-                  >Mark as sent</button>
-                  <button
-                    onclick="closeOutreach('${lead.id}', event)"
-                    class="bg-white border border-gray-200 text-gray-500 hover:border-gray-300 text-xs font-semibold px-4 py-2 rounded-lg transition-colors"
-                  >Cancel</button>
+                  <button id="aibtn-${sid}" onclick="generateAIOutreach('${lead.id}',event)" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5">✦ Regenerate with AI</button>
+                  <button id="copybtn-${sid}" onclick="copyDraft('${lead.id}',event)" class="bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Copy to clipboard</button>
+                  <button onclick="markSent('${lead.id}',event)" class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Mark as sent</button>
+                  <button onclick="closeOutreach('${lead.id}',event)" class="bg-white border border-gray-200 text-gray-500 hover:border-gray-300 text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Cancel</button>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -663,228 +729,483 @@ function buildLeadCard(lead) {
   </div>`;
 }
 
-// ─── Lead list render ─────────────────────────────────────────────────────────
-function renderLeads() {
-  let filtered = LEADS;
-  if (activeVert   !== 'all') filtered = filtered.filter(l => l.vertical === activeVert);
-  if (activeStatus !== 'all') filtered = filtered.filter(l => l.status  === activeStatus);
-
-  const listEl  = document.getElementById('leadList');
-  const emptyEl = document.getElementById('emptyState');
-
-  if (filtered.length === 0) {
-    listEl.innerHTML = '';
-    emptyEl.classList.remove('hidden');
-    return;
-  }
+// ─── LEAD LIST RENDER ─────────────────────────────────────────────────────────
+function renderLeads(){
+  const filtered=getFilteredSorted();
+  const listEl=document.getElementById('leadList');
+  const emptyEl=document.getElementById('emptyState');
+  if(filtered.length===0){listEl.innerHTML='';emptyEl.classList.remove('hidden');return;}
   emptyEl.classList.add('hidden');
-  listEl.innerHTML = filtered.map(buildLeadCard).join('');
+  listEl.innerHTML=filtered.map(buildLeadCard).join('');
 }
 
-// ─── Expand/collapse ──────────────────────────────────────────────────────────
-function toggleExpand(uuid) {
-  const lead = LEADS.find(l => l.id === uuid);
-  if (!lead) return;
-  const sid      = lead.sid;
-  const panel    = document.getElementById('panel-' + sid);
-  const chevron  = document.getElementById('chev-'  + sid);
-  const rowEl    = document.getElementById('cardrow-' + sid);
-  if (!panel) return;
-
-  const isOpen = panel.classList.contains('open');
-
-  // Collapse all panels first
-  document.querySelectorAll('.collapsible.open').forEach(el => {
-    if (!el.id.startsWith('outreach-')) el.classList.remove('open');
-  });
-  document.querySelectorAll('.chevron.rotated').forEach(el => el.classList.remove('rotated'));
-  document.querySelectorAll('[aria-expanded="true"]').forEach(el => el.setAttribute('aria-expanded','false'));
-
-  if (!isOpen) {
-    panel.classList.add('open');
-    chevron.classList.add('rotated');
-    rowEl.setAttribute('aria-expanded', 'true');
-  }
+// ─── EXPAND/COLLAPSE ──────────────────────────────────────────────────────────
+function toggleExpand(uuid){
+  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
+  const{sid}=lead;
+  const panel=document.getElementById('panel-'+sid);
+  const chevron=document.getElementById('chev-'+sid);
+  const rowEl=document.getElementById('cardrow-'+sid);
+  if(!panel)return;
+  const isOpen=panel.classList.contains('open');
+  document.querySelectorAll('.collapsible.open').forEach(el=>{if(!el.id.startsWith('outreach-'))el.classList.remove('open');});
+  document.querySelectorAll('.chevron.rotated').forEach(el=>el.classList.remove('rotated'));
+  document.querySelectorAll('[aria-expanded="true"]').forEach(el=>el.setAttribute('aria-expanded','false'));
+  if(!isOpen){panel.classList.add('open');chevron.classList.add('rotated');rowEl.setAttribute('aria-expanded','true');}
 }
 
-// ─── Outreach panel ───────────────────────────────────────────────────────────
-function toggleOutreach(uuid, evt) {
-  if (evt) evt.stopPropagation();
-  const lead = LEADS.find(l => l.id === uuid);
-  if (!lead) return;
-  const sid  = lead.sid;
-  const el   = document.getElementById('outreach-' + sid);
-  if (!el) return;
-
-  const isOpen = el.classList.contains('open');
-
-  // Collapse any open outreach panels
-  document.querySelectorAll('[id^="outreach-"].open').forEach(e => e.classList.remove('open'));
-
-  if (!isOpen) {
-    // Fill draft
-    const draft = getDraft(lead);
-    document.getElementById('subj-' + sid).value = draft.subject;
-    const bodyEl = document.getElementById('body-' + sid);
-    bodyEl.value = draft.body;
+// ─── OUTREACH PANEL ───────────────────────────────────────────────────────────
+function toggleOutreach(uuid,evt){
+  if(evt)evt.stopPropagation();
+  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
+  const{sid}=lead;
+  const el=document.getElementById('outreach-'+sid); if(!el)return;
+  const isOpen=el.classList.contains('open');
+  document.querySelectorAll('[id^="outreach-"].open').forEach(e=>e.classList.remove('open'));
+  if(!isOpen){
+    const draft=getDraft(lead);
+    document.getElementById('subj-'+sid).value=draft.subject;
+    const bodyEl=document.getElementById('body-'+sid);
+    bodyEl.value=draft.body;
     el.classList.add('open');
-    setTimeout(() => autoResize(bodyEl), 50);
+    setTimeout(()=>autoResize(bodyEl),50);
   }
 }
-
-function closeOutreach(uuid, evt) {
-  if (evt) evt.stopPropagation();
-  const lead = LEADS.find(l => l.id === uuid);
-  if (!lead) return;
-  document.getElementById('outreach-' + lead.sid)?.classList.remove('open');
+function closeOutreach(uuid,evt){
+  if(evt)evt.stopPropagation();
+  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
+  document.getElementById('outreach-'+lead.sid)?.classList.remove('open');
 }
-
-function regenerateDraft(uuid, evt) {
-  if (evt) evt.stopPropagation();
-  const lead = LEADS.find(l => l.id === uuid);
-  if (!lead) return;
-  const sid    = lead.sid;
-  const tmplKey = document.getElementById('tmpl-' + sid).value;
-  lead.outreachTemplate = tmplKey;
-  const draft  = getDraft(lead);
-  document.getElementById('subj-' + sid).value = draft.subject;
-  const bodyEl = document.getElementById('body-' + sid);
-  bodyEl.value = draft.body;
-  autoResize(bodyEl);
+function regenerateDraft(uuid,evt){
+  if(evt)evt.stopPropagation();
+  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
+  const{sid}=lead;
+  lead.outreachTemplate=document.getElementById('tmpl-'+sid).value;
+  const draft=getDraft(lead);
+  document.getElementById('subj-'+sid).value=draft.subject;
+  const bodyEl=document.getElementById('body-'+sid);
+  bodyEl.value=draft.body; autoResize(bodyEl);
 }
+function autoResize(el){ el.style.height='auto'; el.style.height=el.scrollHeight+'px'; }
 
-function autoResize(el) {
-  el.style.height = 'auto';
-  el.style.height = el.scrollHeight + 'px';
-}
-
-// ─── Copy to clipboard ────────────────────────────────────────────────────────
-function copyDraft(uuid, evt) {
-  if (evt) evt.stopPropagation();
-  const lead = LEADS.find(l => l.id === uuid);
-  if (!lead) return;
-  const sid  = lead.sid;
-  const subj = document.getElementById('subj-' + sid)?.value || '';
-  const body = document.getElementById('body-' + sid)?.value || '';
-  const full = `Subject: ${subj}\n\n${body}`;
-
-  navigator.clipboard.writeText(full).then(() => {
-    const btn = document.getElementById('copybtn-' + sid);
-    if (btn) {
-      const orig = btn.textContent;
-      btn.textContent = '✓ Copied!';
-      btn.classList.replace('bg-navy-900', 'bg-green-600');
-      btn.classList.remove('hover:bg-navy-800');
-      setTimeout(() => {
-        btn.textContent = orig;
-        btn.classList.replace('bg-green-600', 'bg-navy-900');
-        btn.classList.add('hover:bg-navy-800');
-      }, 2000);
-    }
+// ─── COPY ─────────────────────────────────────────────────────────────────────
+function copyDraft(uuid,evt){
+  if(evt)evt.stopPropagation();
+  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
+  const{sid}=lead;
+  const subj=document.getElementById('subj-'+sid)?.value||'';
+  const body=document.getElementById('body-'+sid)?.value||'';
+  navigator.clipboard.writeText(`Subject: ${subj}\n\n${body}`).then(()=>{
+    const btn=document.getElementById('copybtn-'+sid);
+    if(btn){const o=btn.textContent;btn.textContent='✓ Copied!';btn.classList.replace('bg-navy-900','bg-green-600');btn.classList.remove('hover:bg-navy-800');setTimeout(()=>{btn.textContent=o;btn.classList.replace('bg-green-600','bg-navy-900');btn.classList.add('hover:bg-navy-800');},2000);}
     showToast('Copied to clipboard');
-  }).catch(() => showToast('Copy failed — try manually'));
+  }).catch(()=>showToast('Copy failed — try manually'));
 }
 
-// ─── Mark as sent ─────────────────────────────────────────────────────────────
-async function markSent(uuid, evt) {
-  if (evt) evt.stopPropagation();
-  const lead = LEADS.find(l => l.id === uuid);
-  if (!lead) return;
-  const sid  = lead.sid;
-  const subj = document.getElementById('subj-' + sid)?.value || '';
-  const body = document.getElementById('body-' + sid)?.value || '';
+// ─── MARK SENT ────────────────────────────────────────────────────────────────
+async function markSent(uuid,evt){
+  if(evt)evt.stopPropagation();
+  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
+  const{sid}=lead;
+  const subj=document.getElementById('subj-'+sid)?.value||'';
+  const body=document.getElementById('body-'+sid)?.value||'';
+  lead.status='sent';
+  document.getElementById('outreach-'+sid)?.classList.remove('open');
+  renderAll(); showToast('Marked as sent');
+  try{await sb.from('leads').update({status:'sent'}).eq('id',uuid);await saveOutreach(lead,subj,body);await logActivity(uuid,'outreach_sent',`Subject: ${subj}`);}
+  catch(err){console.error('markSent:',err);}
+}
 
-  // Optimistic update
-  lead.status = 'sent';
-  document.getElementById('outreach-' + sid)?.classList.remove('open');
-  renderAll();
-  showToast('Marked as sent');
+// ─── ARCHIVE ──────────────────────────────────────────────────────────────────
+async function archiveLead(uuid,evt){
+  if(evt)evt.stopPropagation();
+  const idx=LEADS.findIndex(l=>l.id===uuid); if(idx===-1)return;
+  LEADS.splice(idx,1); renderAll(); showToast('Lead archived');
+  try{await sb.from('leads').update({status:'archived',archived_at:new Date().toISOString()}).eq('id',uuid);await logActivity(uuid,'archived','Lead archived from pipeline');}
+  catch(err){console.error('archiveLead:',err);}
+}
 
-  // Persist
-  try {
-    await sb.from('leads').update({ status: 'sent' }).eq('id', uuid);
-    await saveOutreach(lead, subj, body);
-    await logActivity(uuid, 'outreach_sent', `Subject: ${subj}`);
-  } catch (err) {
-    console.error('markSent persist error:', err);
-    showToast('Saved locally but DB sync failed');
+// ─── UPDATE STATUS ────────────────────────────────────────────────────────────
+async function updateStatus(uuid,evt){
+  if(evt)evt.stopPropagation();
+  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
+  const newStatus=document.getElementById('statusSel-'+lead.sid)?.value;
+  if(!newStatus||newStatus===lead.status)return;
+  lead.status=newStatus; renderAll(); showToast('Status updated');
+  try{await sb.from('leads').update({status:newStatus}).eq('id',uuid);await logActivity(uuid,'status_change',`Status → ${newStatus}`);}
+  catch(err){console.error('updateStatus:',err);}
+}
+
+// ─── SAVE NOTES ───────────────────────────────────────────────────────────────
+async function saveNotes(uuid,evt){
+  if(evt)evt.stopPropagation();
+  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
+  const val=document.getElementById('notes-'+lead.sid)?.value||'';
+  lead.notes=val; showToast('Notes saved');
+  try{await sb.from('leads').update({notes:val}).eq('id',uuid);}
+  catch(err){console.error('saveNotes:',err);}
+}
+
+// ─── FOLLOW UP DATE ───────────────────────────────────────────────────────────
+async function saveFollowUp(uuid,evt){
+  if(evt)evt.stopPropagation();
+  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
+  const val=document.getElementById('followup-'+lead.sid)?.value||null;
+  lead.followUpDate=val||''; showToast('Follow-up date saved');
+  try{await sb.from('leads').update({follow_up_date:val}).eq('id',uuid);}
+  catch(err){console.error('saveFollowUp:',err);}
+}
+
+// ─── ADD LEAD SLIDE-OVER ──────────────────────────────────────────────────────
+function openAddLead(){
+  const backdrop=document.getElementById('slideOverBackdrop');
+  const panel=document.getElementById('slideOver');
+  backdrop.classList.remove('hidden');
+  setTimeout(()=>{backdrop.style.opacity='1';panel.style.transform='translateX(0)';},10);
+}
+function closeAddLead(){
+  const backdrop=document.getElementById('slideOverBackdrop');
+  const panel=document.getElementById('slideOver');
+  backdrop.style.opacity='0'; panel.style.transform='translateX(100%)';
+  setTimeout(()=>backdrop.classList.add('hidden'),300);
+}
+async function saveNewLead(){
+  const name=document.getElementById('af_name').value.trim();
+  const vertical=document.getElementById('af_vertical').value;
+  const signal=document.getElementById('af_signal').value.trim();
+  if(!name||!vertical||!signal){showToast('Company, vertical and signal are required');return;}
+
+  const btn=document.getElementById('saveLeadBtn');
+  btn.textContent='Saving…'; btn.disabled=true;
+
+  const payload={
+    name, vertical,
+    vertical_label:VERT_LABELS[vertical]||vertical,
+    status:document.getElementById('af_status').value,
+    locations:parseInt(document.getElementById('af_locations').value)||null,
+    states:parseInt(document.getElementById('af_states').value)||null,
+    estimated_value:document.getElementById('af_value').value.trim()||null,
+    ownership:document.getElementById('af_ownership').value||null,
+    signal, signal_source:document.getElementById('af_source').value.trim()||null,
+    play:document.getElementById('af_play').value.trim()||null,
+    outreach_template:document.getElementById('af_template').value,
+    pe_backed:document.getElementById('af_pe').value==='true',
+    score:0, tier:3,
+  };
+
+  try{
+    const{data,error}=await sb.from('leads').insert(payload).select().single();
+    if(error)throw error;
+    const cname=document.getElementById('af_cname').value.trim();
+    if(cname){
+      await sb.from('contacts').insert({
+        lead_id:data.id,
+        name:cname,
+        title:document.getElementById('af_ctitle').value.trim()||null,
+        email:document.getElementById('af_cemail').value.trim()||null,
+        linkedin:document.getElementById('af_clinkedin').value.trim()||null,
+      });
+    }
+    closeAddLead();
+    await loadLeads(); await loadContacts();
+    renderAll();
+    showToast('Lead added ✓');
+    // Clear form
+    ['af_name','af_signal','af_source','af_play','af_value','af_locations','af_states','af_cname','af_ctitle','af_cemail','af_clinkedin'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  }catch(err){
+    console.error('saveNewLead:',err);
+    showToast('Save failed: '+err.message);
+  }
+  btn.textContent='Save lead'; btn.disabled=false;
+}
+
+// ─── PROSPECTOR ──────────────────────────────────────────────────────────────
+const PROSPECTOR_VERTS=[
+  {key:'behavioral',label:'Behavioral health'},
+  {key:'dental',label:'Dental / DSO'},
+  {key:'pt',label:'Physical therapy'},
+  {key:'insurance',label:'Insurance'},
+  {key:'vet',label:'Veterinary'},
+  {key:'qsr',label:'QSR / Retail'},
+];
+function renderProspectorVerts(){
+  document.getElementById('prospectorVerts').innerHTML=PROSPECTOR_VERTS.map(v=>`
+    <button class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold ${prospectorVert===v.key?'bg-navy-900 text-white':'bg-white text-gray-500 border border-gray-200 hover:border-gray-300 hover:text-gray-700'}"
+      onclick="setProspectorVert('${v.key}')">${v.label}</button>`).join('');
+}
+function setProspectorVert(k){
+  prospectorVert=k;
+  renderProspectorVerts();
+}
+
+let prospectorRunning=false;
+async function runProspector(){
+  if(prospectorRunning)return;
+  prospectorRunning=true;
+  const btn=document.getElementById('runProspectorBtn');
+  btn.disabled=true; btn.innerHTML=`<div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full spin"></div> Scanning…`;
+
+  document.getElementById('prospectorIdle').classList.add('hidden');
+  document.getElementById('prospectorRunning').classList.remove('hidden');
+  document.getElementById('prospectorResults').innerHTML='';
+
+  const vertLabel=PROSPECTOR_VERTS.find(v=>v.key===prospectorVert)?.label||prospectorVert;
+  const log=document.getElementById('prospectorLog');
+  const status=document.getElementById('prospectorStatus');
+
+  function addLog(msg){ const d=document.createElement('div'); d.textContent='> '+msg; log.appendChild(d); log.scrollTop=log.scrollHeight; }
+
+  status.textContent=`Scanning ${vertLabel} expansion signals…`;
+  addLog(`Vertical: ${vertLabel}`);
+  addLog('Building search queries from ICP config…');
+  addLog('Calling AI with web search enabled…');
+
+  const systemPrompt=`You are the Axseter Enterprise Expansion Prospector — an expert B2B sales researcher for Axseter Systems, a national low-voltage integrator.
+
+AXSETER CONTEXT:
+- Single Point of Contact model: one partner replaces 15+ regional contractors for multi-location enterprises
+- Services: structured cabling, access control, video surveillance, audio-visual, sound masking, break-fix
+- Target: multi-location enterprises opening 10+ locations/year, healthcare rollups, financial services branch growth, retail/QSR expansion
+- Existing clients: Oak Street Health, CVS, ATI Physical Therapy, Soar Autism Center, Pronto Insurance, Guidelight Health, Gallagher
+- NOT interested in: single-location, not expanding, government/federal, residential, companies with Convergint
+
+SCORING FACTORS (0-100):
+- Expansion velocity 25pts: 20+/yr=25, 10-19=18, 5-9=10
+- Industry fit 20pts: healthcare/dental/behavioral/financial=20, retail/PT/vet=15
+- Multi-state 15pts: 5+states=15, 3-4=10, 2=5
+- Signal strength 15pts: direct announcement=15, acquisition=12, hiring=8
+- PE/institutional backing 10pts: PE=10, VC=7, public=5
+- Decision-maker identified 10pts: VP+=10, director=7
+- No known national LV partner 5pts: unknown=5, competitor present=0
+
+TARGET VERTICAL: ${vertLabel}
+
+Search for recent (2025-2026) expansion signals in this vertical. Find 4-6 real companies that are:
+1. Expanding physical locations (new sites, acquisitions, franchise growth)
+2. Multi-state presence or heading there
+3. Would need low-voltage infrastructure (cabling, access control, cameras, AV)
+
+For each company found, provide a complete lead profile.
+
+Return ONLY valid JSON with this exact structure:
+{
+  "leads": [
+    {
+      "name": "Company Name",
+      "vertical": "${prospectorVert}",
+      "vertical_label": "${vertLabel}",
+      "score": 82,
+      "tier": 1,
+      "locations": 45,
+      "states": 8,
+      "expansion_signal": "One sentence description of the specific expansion signal found",
+      "signal_source": "Source name and date",
+      "signal_type": "direct_announcement|acquisition|hiring|financial",
+      "estimated_value": "$200K–$400K",
+      "ownership": "PE-backed|VC-backed|Public|Private",
+      "pe_backed": true,
+      "pe_sponsor": "Sponsor name or null",
+      "hq": "City, State",
+      "recommended_play": "One sentence on which Axseter angle to lead with and why",
+      "outreach_template": "expansion_announcement|acquisition_integration|vendor_consolidation",
+      "score_breakdown": {
+        "expansion_velocity": 18,
+        "industry_fit": 20,
+        "multi_state": 15,
+        "signal_strength": 15,
+        "institutional_backing": 10,
+        "decision_maker": 0,
+        "no_competitor": 5
+      },
+      "target_persona": "VP of Real Estate & Construction",
+      "why_axseter_wins": "One sentence on why Axseter is a strong fit"
+    }
+  ],
+  "scan_summary": "One sentence summary of what signals were found"
+}`;
+
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:4000,
+        tools:[{type:'web_search_20250305',name:'web_search'}],
+        messages:[{role:'user',content:`Find ${vertLabel} companies actively expanding their physical footprint in 2025-2026 that would be ideal prospects for Axseter Systems. Search for real companies with recent expansion announcements, acquisitions, or growth signals. Return 4-6 high-quality leads as JSON.`}],
+        system:systemPrompt,
+      })
+    });
+
+    const data=await res.json();
+    addLog('AI search complete. Processing results…');
+    status.textContent='Parsing results…';
+
+    // Extract text from response (may have tool_use blocks)
+    const textBlocks=data.content.filter(b=>b.type==='text').map(b=>b.text).join('');
+    const clean=textBlocks.replace(/```json|```/g,'').trim();
+
+    let parsed;
+    try{
+      // Find JSON object in response
+      const jsonMatch=clean.match(/\{[\s\S]*\}/);
+      if(!jsonMatch)throw new Error('No JSON found');
+      parsed=JSON.parse(jsonMatch[0]);
+    }catch(e){
+      throw new Error('Could not parse AI response as JSON');
+    }
+
+    const leads=parsed.leads||[];
+    addLog(`Found ${leads.length} leads. Rendering…`);
+    status.textContent=`Found ${leads.length} ${vertLabel} prospects`;
+
+    document.getElementById('prospectorRunning').classList.add('hidden');
+    renderProspectorResults(leads, parsed.scan_summary||'');
+
+  }catch(err){
+    console.error('Prospector error:',err);
+    addLog('Error: '+err.message);
+    status.textContent='Scan failed';
+    document.getElementById('prospectorRunning').classList.add('hidden');
+    document.getElementById('prospectorResults').innerHTML=`
+      <div class="bg-white rounded-xl border border-red-100 p-6 text-center">
+        <p class="text-red-600 font-semibold text-sm">Scan failed</p>
+        <p class="text-gray-400 text-xs mt-1">${escHtml(err.message)}</p>
+      </div>`;
+    document.getElementById('prospectorIdle').classList.remove('hidden');
+  }
+
+  btn.disabled=false;
+  btn.innerHTML=`<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0"/></svg> Find new leads`;
+  prospectorRunning=false;
+}
+
+function renderProspectorResults(leads, summary){
+  const container=document.getElementById('prospectorResults');
+  if(summary){
+    container.innerHTML=`<div class="bg-navy-50 border border-navy-100 rounded-xl px-5 py-3 mb-4 text-sm text-navy-700 font-medium">✦ ${escHtml(summary)}</div>`;
+  }
+  container.innerHTML+=(leads.length?leads.map(buildProspectorCard).join(''):`<div class="text-center py-12 text-gray-400 text-sm">No leads found for this vertical. Try another vertical or run again.</div>`);
+}
+
+function buildProspectorCard(lead){
+  const vc=VERT_COLORS[lead.vertical]||{bg:'bg-gray-50',text:'text-gray-600',border:'border-gray-200'};
+  const tierColor=lead.tier===1?'bg-green-100 text-green-800':lead.tier===2?'bg-blue-100 text-blue-800':'bg-gray-100 text-gray-500';
+  const signalId='sig-'+Math.random().toString(36).slice(2,8);
+  return`
+  <div class="signal-card bg-white rounded-xl border border-gray-200 p-6 mb-3">
+    <div class="flex items-start justify-between gap-4 mb-4">
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 flex-wrap mb-1">
+          <span class="font-bold text-navy-900">${escHtml(lead.name)}</span>
+          <span class="vert-pill ${vc.bg} ${vc.text}">${escHtml(lead.vertical_label||lead.vertical)}</span>
+          ${lead.pe_backed?'<span class="vert-pill bg-indigo-50 text-indigo-700">PE-backed</span>':''}
+        </div>
+        <div class="text-xs text-gray-400">${lead.locations||'—'} locations · ${lead.states||'—'} states · ${escHtml(lead.hq||'')} · ${escHtml(lead.ownership||'—')}</div>
+      </div>
+      <div class="text-right shrink-0">
+        <div class="score-ring ${tierColor} mb-1" style="margin-left:auto">${lead.score||0}</div>
+        <div class="text-[10px] font-bold uppercase tracking-wide text-gray-400">Tier ${lead.tier||3}</div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+      <div>
+        <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Signal</div>
+        <p class="text-sm text-gray-700">${escHtml(lead.expansion_signal||'')}</p>
+        ${lead.signal_source?`<p class="text-xs text-gray-400 mt-1">${escHtml(lead.signal_source)}</p>`:''}
+      </div>
+      <div>
+        <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Why Axseter wins</div>
+        <p class="text-sm text-gray-700">${escHtml(lead.why_axseter_wins||lead.recommended_play||'')}</p>
+        <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-3 mb-1">Target persona</div>
+        <p class="text-sm text-gray-600">${escHtml(lead.target_persona||'VP of Real Estate / Facilities')}</p>
+      </div>
+    </div>
+
+    <!-- Score breakdown -->
+    <div class="flex flex-wrap gap-x-4 gap-y-1 mb-4 py-3 border-t border-b border-gray-100">
+      ${Object.entries(lead.score_breakdown||{}).map(([k,v])=>`
+        <div class="flex items-center gap-1.5">
+          <div class="text-[10px] text-gray-400 capitalize">${k.replace(/_/g,' ')}</div>
+          <div class="text-[10px] font-bold text-navy-700 mono">${v}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="flex flex-wrap gap-2 items-center">
+      <div class="text-xs font-semibold text-navy-900 mono">${escHtml(lead.estimated_value||'—')}</div>
+      <div class="flex-1"></div>
+      <button onclick="addProspectorLead(${JSON.stringify(JSON.stringify(lead))},this)" class="bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">+ Add to pipeline</button>
+    </div>
+  </div>`;
+}
+
+async function addProspectorLead(leadJson, btn){
+  let lead;
+  try{ lead=JSON.parse(leadJson); }catch(e){ showToast('Parse error'); return; }
+  btn.disabled=true; btn.textContent='Adding…';
+  const payload={
+    name:lead.name, vertical:lead.vertical, vertical_label:lead.vertical_label||lead.vertical,
+    status:'research', score:lead.score||0, tier:lead.tier||3,
+    locations:lead.locations||null, states:lead.states||null,
+    estimated_value:lead.estimated_value||null,
+    ownership:lead.ownership||null,
+    signal:lead.expansion_signal||null,
+    signal_source:lead.signal_source||null,
+    play:lead.recommended_play||null,
+    outreach_template:lead.outreach_template||'expansion_announcement',
+    pe_backed:!!lead.pe_backed,
+  };
+  try{
+    const{error}=await sb.from('leads').insert(payload);
+    if(error)throw error;
+    await loadLeads(); await loadContacts();
+    btn.textContent='✓ Added';
+    btn.className='text-xs font-semibold text-green-600 px-4 py-2';
+    showToast(`${lead.name} added to pipeline`);
+  }catch(err){
+    console.error('addProspectorLead:',err);
+    btn.disabled=false; btn.textContent='+ Add to pipeline';
+    showToast('Add failed: '+err.message);
   }
 }
 
-// ─── Archive lead ─────────────────────────────────────────────────────────────
-async function archiveLead(uuid, evt) {
-  if (evt) evt.stopPropagation();
+// ─── RENDER ALL ───────────────────────────────────────────────────────────────
+function renderAll(){ renderMetrics(); renderVertFilters(); renderStatusFilters(); renderLeads(); }
 
-  // Optimistic update
-  const idx = LEADS.findIndex(l => l.id === uuid);
-  if (idx === -1) return;
-  LEADS.splice(idx, 1);
-  renderAll();
-  showToast('Lead archived');
-
-  // Persist
-  try {
-    await sb.from('leads').update({ status: 'archived', archived_at: new Date().toISOString() }).eq('id', uuid);
-    await logActivity(uuid, 'archived', 'Lead archived from pipeline');
-  } catch (err) {
-    console.error('archiveLead persist error:', err);
-  }
-}
-
-// ─── Render all ───────────────────────────────────────────────────────────────
-function renderAll() {
-  renderMetrics();
-  renderVertFilters();
-  renderStatusFilters();
-  renderLeads();
-}
-
-// ─── Init ─────────────────────────────────────────────────────────────────────
-async function init() {
-  // Show loading, hide error + content
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+async function init(){
   document.getElementById('loadingState').classList.remove('hidden');
   document.getElementById('errorState').classList.add('hidden');
-  document.getElementById('mainContent').classList.add('hidden');
-  document.getElementById('lastUpdated').textContent = '';
-
-  try {
-    await loadLeads();
-    await loadContacts();
-
+  document.getElementById('pipelineTab').classList.add('hidden');
+  document.getElementById('lastUpdated').textContent='';
+  try{
+    await loadLeads(); await loadContacts();
     document.getElementById('loadingState').classList.add('hidden');
-    document.getElementById('mainContent').classList.remove('hidden');
-
-    document.getElementById('lastUpdated').textContent =
-      'Updated ' + new Date().toLocaleString('en-US', { month:'short', day:'numeric', year:'numeric', hour:'numeric', minute:'2-digit' });
-
+    document.getElementById('pipelineTab').classList.remove('hidden');
+    document.getElementById('lastUpdated').textContent='Updated '+new Date().toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
     renderAll();
-  } catch (err) {
+  }catch(err){
     document.getElementById('loadingState').classList.add('hidden');
     document.getElementById('errorState').classList.remove('hidden');
-    document.getElementById('errorMsg').textContent = err?.message || 'Unknown error';
-    console.error('Pipeline init error:', err);
+    document.getElementById('errorMsg').textContent=err?.message||'Unknown error';
+    console.error('Pipeline init error:',err);
   }
 }
 
-// ─── Toast ────────────────────────────────────────────────────────────────────
-let _toastTimer = null;
-function showToast(msg) {
-  const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.classList.remove('hidden');
+// ─── TOAST ────────────────────────────────────────────────────────────────────
+let _toastTimer=null;
+function showToast(msg){
+  const el=document.getElementById('toast');
+  el.textContent=msg; el.classList.remove('hidden');
   clearTimeout(_toastTimer);
-  _toastTimer = setTimeout(() => el.classList.add('hidden'), 2800);
+  _toastTimer=setTimeout(()=>el.classList.add('hidden'),2800);
 }
 
-// ─── Utility ─────────────────────────────────────────────────────────────────
-function escHtml(str) {
-  return String(str || '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+// ─── UTILITY ──────────────────────────────────────────────────────────────────
+function escHtml(str){
+  return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
-
 </script>
 </body>
 </html>
