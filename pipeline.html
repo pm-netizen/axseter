@@ -938,7 +938,9 @@ async function runProspector(){
       body:JSON.stringify({vertical:prospectorVert, vertLabel})
     });
 
-    const data=await res.json();
+    const raw=await res.text();
+    let data;
+    try{ data=JSON.parse(raw); }catch(e){ throw new Error('Non-JSON response (HTTP '+res.status+'): '+raw.slice(0,150)); }
     if(data.error){ throw new Error(data.error.message||data.error||'API error'); }
     if(!data.content){ throw new Error('Unexpected API response: '+JSON.stringify(data).slice(0,200)); }
     addLog('AI search complete. Processing results…');
