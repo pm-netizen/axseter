@@ -921,6 +921,7 @@ async function saveNewLead(){
 
 // ─── PROSPECTOR ──────────────────────────────────────────────────────────────
 const PROSPECTOR_VERTS=[
+  {key:'all',label:'All verticals'},
   {key:'behavioral',label:'Behavioral health'},
   {key:'dental',label:'Dental / DSO'},
   {key:'pt',label:'Physical therapy'},
@@ -950,6 +951,7 @@ async function runProspector(){
   document.getElementById('prospectorResults').innerHTML='';
 
   const vertLabel=PROSPECTOR_VERTS.find(v=>v.key===prospectorVert)?.label||prospectorVert;
+  const vertForPrompt=prospectorVert==='all'?'healthcare, dental/DSO, behavioral health, physical therapy, insurance, veterinary, and QSR/retail':vertLabel;
   const log=document.getElementById('prospectorLog');
   const status=document.getElementById('prospectorStatus');
 
@@ -978,7 +980,7 @@ SCORING FACTORS (0-100):
 - Decision-maker identified 10pts: VP+=10, director=7
 - No known national LV partner 5pts: unknown=5, competitor present=0
 
-TARGET VERTICAL: ${vertLabel}
+TARGET VERTICAL: ${vertForPrompt}
 
 Search for recent (2025-2026) expansion signals in this vertical. Find 4-6 real companies that are:
 1. Expanding physical locations (new sites, acquisitions, franchise growth)
@@ -992,8 +994,8 @@ Return ONLY valid JSON with this exact structure:
   "leads": [
     {
       "name": "Company Name",
-      "vertical": "${prospectorVert}",
-      "vertical_label": "${vertLabel}",
+      "vertical": "${prospectorVert==='all'?'<use the correct vertical key: dental|behavioral|pt|insurance|vet|qsr>':prospectorVert}",
+      "vertical_label": "${prospectorVert==='all'?'<matching label>':vertLabel}",
       "score": 82,
       "tier": 1,
       "locations": 45,
@@ -1032,7 +1034,7 @@ Return ONLY valid JSON with this exact structure:
         model:'claude-sonnet-4-20250514',
         max_tokens:4000,
         tools:[{type:'web_search_20250305',name:'web_search'}],
-        messages:[{role:'user',content:`Find ${vertLabel} companies actively expanding their physical footprint in 2025-2026 that would be ideal prospects for Axseter Systems. Search for real companies with recent expansion announcements, acquisitions, or growth signals. Return 4-6 high-quality leads as JSON.`}],
+        messages:[{role:'user',content:`Find ${vertForPrompt} companies actively expanding their physical footprint in 2025-2026 that would be ideal prospects for Axseter Systems. Search for real companies with recent expansion announcements, acquisitions, or growth signals. Return 4-6 high-quality leads as JSON.`}],
         system:systemPrompt,
       })
     });
