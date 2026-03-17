@@ -476,7 +476,8 @@ async function generateAIOutreach(uuid,evt){
   btn.disabled=true;
   btn.innerHTML=`<span class="ai-thinking flex gap-0.5 items-center"><span class="w-1 h-1 bg-white rounded-full inline-block"></span><span class="w-1 h-1 bg-white rounded-full inline-block"></span><span class="w-1 h-1 bg-white rounded-full inline-block"></span></span>`;
 
-  const prompt=null; // unused — prompt is built server-side in /api/draft  try {
+  // prompt is built server-side in /api/draft
+  try {
     const res=await fetch('/api/draft',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
@@ -1108,3 +1109,4 @@ function escHtml(str){
 </script>
 </body>
 </html>
+
