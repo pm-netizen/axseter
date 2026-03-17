@@ -193,20 +193,22 @@ function generateOutreach(id) {
 function showOutreach(id, evt) {
   if (evt) evt.stopPropagation();
   const l = LEADS.find(x => x.id === id);
+  if (!l) return;
+  const rid = l.rid;
   const draft = generateOutreach(id);
   if (!draft) return;
   openOutreach = id;
-  const el = document.getElementById('outreach-' + id);
+  const el = document.getElementById('outreach-' + rid);
   if (el.classList.contains('open')) {
     el.classList.remove('open');
     openOutreach = null;
     return;
   }
   document.querySelectorAll('[id^=outreach-].open').forEach(e => e.classList.remove('open'));
-  document.getElementById('outreach-subject-' + id).value = draft.subject;
-  document.getElementById('outreach-body-' + id).value = draft.body;
+  document.getElementById('outreach-subject-' + rid).value = draft.subject;
+  document.getElementById('outreach-body-' + rid).value = draft.body;
   el.classList.add('open');
-  autoResize(document.getElementById('outreach-body-' + id));
+  autoResize(document.getElementById('outreach-body-' + rid));
 }
 
 function autoResize(el) {
@@ -216,11 +218,14 @@ function autoResize(el) {
 
 function copyOutreach(id, evt) {
   if (evt) evt.stopPropagation();
-  const subj = document.getElementById('outreach-subject-' + id).value;
-  const body = document.getElementById('outreach-body-' + id).value;
+  const l = LEADS.find(x => x.id === id);
+  if (!l) return;
+  const rid = l.rid;
+  const subj = document.getElementById('outreach-subject-' + rid).value;
+  const body = document.getElementById('outreach-body-' + rid).value;
   const full = 'Subject: ' + subj + '\n\n' + body;
   navigator.clipboard.writeText(full).then(() => {
-    const btn = document.getElementById('copy-btn-' + id);
+    const btn = document.getElementById('copy-btn-' + rid);
     btn.textContent = 'Copied!';
     btn.classList.remove('bg-navy-900', 'hover:bg-navy-800');
     btn.classList.add('bg-green-600');
@@ -236,12 +241,13 @@ function markSent(id, evt) {
   if (evt) evt.stopPropagation();
   const l = LEADS.find(x => x.id === id);
   if (l) {
+    const rid = l.rid;
     l.status = 'sent';
-    document.getElementById('outreach-' + id).classList.remove('open');
+    document.getElementById('outreach-' + rid).classList.remove('open');
     sb.from('leads').update({ status: 'sent' }).eq('id', id).then(() => {
-      const subj = document.getElementById('outreach-subject-' + id)?.value || '';
-      const body = document.getElementById('outreach-body-' + id)?.value || '';
-      sb.from('outreach').insert({ lead_id: id, template_used: l.outreach_template, subject: subj, body: body, status: 'sent', sent_at: new Date().toISOString() });
+      const subj = document.getElementById('outreach-subject-' + rid)?.value || '';
+      const body = document.getElementById('outreach-body-' + rid)?.value || '';
+      sb.from('outreach').insert({ lead_id: id, template_used: l.outreachTemplate, subject: subj, body: body, status: 'sent', sent_at: new Date().toISOString() });
       sb.from('activity').insert({ lead_id: id, action: 'outreach_sent', detail: 'Subject: ' + subj });
     });
     renderAll();
@@ -268,6 +274,7 @@ function renderAll() {
 function mapLead(row) {
   return {
     id: row.id,
+    rid: row.id.replace(/-/g, ''),
     name: row.name,
     score: row.score || 0,
     tier: row.tier || 3,
@@ -276,7 +283,7 @@ function mapLead(row) {
     locations: row.locations || '',
     states: row.states || 0,
     signal: row.signal || '',
-    contact: row.notes ? '' : (row.play || '').includes('Research') ? 'Research needed' : '',
+    contact: row.play && row.play.includes('Research') ? 'Research needed' : 'VP of Real Estate / Facilities',
     contactName: '',
     email: '',
     linkedin: '',
@@ -391,7 +398,7 @@ function renderPipeline() {
 
     return `
     <div class="mb-2">
-      <div class="lead-row bg-white rounded-xl border border-gray-200 hover:border-gray-300 cursor-pointer" onclick="toggleExpand(${l.id})">
+      <div class="lead-row bg-white rounded-xl border border-gray-200 hover:border-gray-300 cursor-pointer" onclick="toggleExpand('${l.id}')">
         <div class="flex items-center gap-4 p-4">
           <div class="score-ring ${scoreColor} mono">${l.score}</div>
           <div class="flex-1 min-w-0">
@@ -406,10 +413,10 @@ function renderPipeline() {
             <div class="text-sm font-semibold text-navy-900 mono">${l.value}</div>
             <div class="text-[10px] text-gray-400 uppercase font-semibold tracking-wide mt-0.5">Tier ${l.tier}</div>
           </div>
-          <svg class="w-5 h-5 text-gray-300 flex-shrink-0 transition-transform" id="chevron-${l.id}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-5 h-5 text-gray-300 flex-shrink-0 transition-transform" id="chevron-${l.rid}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </div>
       </div>
-      <div class="expanded-panel" id="panel-${l.id}">
+      <div class="expanded-panel" id="panel-${l.rid}">
         <div class="bg-white border-x border-b border-gray-200 rounded-b-xl px-6 py-5 -mt-1">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div>
@@ -434,28 +441,28 @@ function renderPipeline() {
               </div>
 
               <div class="flex gap-2 mt-6">
-                ${l.status === 'ready' ? `<button onclick="showOutreach(${l.id}, event)" class="bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Approve outreach</button>` : ''}
+                ${l.status === 'ready' ? `<button onclick="showOutreach('${l.id}', event)" class="bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Approve outreach</button>` : ''}
                 ${l.status === 'sent' ? '<span class="text-xs text-blue-600 font-medium py-2">Outreach sent</span>' : ''}
-                ${l.status === 'research' ? `<button onclick="showOutreach(${l.id}, event)" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Draft outreach</button>` : ''}
-                <button onclick="archiveLead(${l.id}, event)" class="bg-white border border-gray-200 text-gray-400 hover:text-red-500 hover:border-red-200 text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Archive</button>
+                ${l.status === 'research' ? `<button onclick="showOutreach('${l.id}', event)" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Draft outreach</button>` : ''}
+                <button onclick="archiveLead('${l.id}', event)" class="bg-white border border-gray-200 text-gray-400 hover:text-red-500 hover:border-red-200 text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Archive</button>
               </div>
 
               <!-- Outreach draft panel -->
-              <div class="expanded-panel mt-4" id="outreach-${l.id}">
+              <div class="expanded-panel mt-4" id="outreach-${l.rid}">
                 <div class="bg-gray-50 rounded-xl border border-gray-200 p-5">
                   <h4 class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Draft outreach</h4>
                   <div class="mb-3">
                     <label class="block text-xs font-medium text-gray-500 mb-1">Subject</label>
-                    <input type="text" id="outreach-subject-${l.id}" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white" onclick="event.stopPropagation()">
+                    <input type="text" id="outreach-subject-${l.rid}" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white" onclick="event.stopPropagation()">
                   </div>
                   <div class="mb-4">
                     <label class="block text-xs font-medium text-gray-500 mb-1">Body</label>
-                    <textarea id="outreach-body-${l.id}" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white leading-relaxed resize-none" rows="12" onclick="event.stopPropagation()" oninput="autoResize(this)"></textarea>
+                    <textarea id="outreach-body-${l.rid}" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white leading-relaxed resize-none" rows="12" onclick="event.stopPropagation()" oninput="autoResize(this)"></textarea>
                   </div>
                   <div class="flex gap-2">
-                    <button id="copy-btn-${l.id}" onclick="copyOutreach(${l.id}, event)" class="bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Copy to clipboard</button>
-                    <button onclick="markSent(${l.id}, event)" class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Mark as sent</button>
-                    <button onclick="document.getElementById('outreach-${l.id}').classList.remove('open');event.stopPropagation();" class="bg-white border border-gray-200 text-gray-500 hover:border-gray-300 text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Cancel</button>
+                    <button id="copy-btn-${l.rid}" onclick="copyOutreach('${l.id}', event)" class="bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Copy to clipboard</button>
+                    <button onclick="markSent('${l.id}', event)" class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Mark as sent</button>
+                    <button onclick="document.getElementById('outreach-${l.rid}').classList.remove('open');event.stopPropagation();" class="bg-white border border-gray-200 text-gray-500 hover:border-gray-300 text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Cancel</button>
                   </div>
                 </div>
               </div>
@@ -468,8 +475,11 @@ function renderPipeline() {
 }
 
 function toggleExpand(id) {
-  const panel = document.getElementById('panel-' + id);
-  const chevron = document.getElementById('chevron-' + id);
+  const l = LEADS.find(x => x.id === id);
+  if (!l) return;
+  const rid = l.rid;
+  const panel = document.getElementById('panel-' + rid);
+  const chevron = document.getElementById('chevron-' + rid);
   const isOpen = panel.classList.contains('open');
 
   document.querySelectorAll('.expanded-panel.open').forEach(p => {
