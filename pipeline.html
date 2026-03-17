@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Pipeline | Axseter Systems</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'navy': { 50: '#f0f4f8', 100: '#d9e2ec', 200: '#bcccdc', 300: '#9fb3c8', 400: '#829ab1', 500: '#627d98', 600: '#486581', 700: '#334e68', 800: '#243b53', 900: '#102a43', 950: '#0a1929' },
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .mono { font-family: 'Inter', monospace; }
+    .score-ring { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+    .lead-row { transition: all 0.2s ease; }
+    .lead-row:hover { transform: translateX(4px); }
+    .expanded-panel { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; opacity: 0; }
+    .expanded-panel.open { max-height: 600px; opacity: 1; }
+    .vert-pill { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 999px; letter-spacing: 0.02em; }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<!-- Auth Gate -->
+<div id="authGate" class="min-h-screen flex items-center justify-center bg-navy-950">
+  <div class="bg-white rounded-2xl shadow-2xl p-10 w-full max-w-sm">
+    <div class="text-center mb-8">
+      <span class="text-2xl font-black tracking-tight text-navy-900" style="font-family: 'Inter'; letter-spacing: -0.03em;">AXSETER<sup class="text-xs font-semibold text-gray-400 ml-0.5">&trade;</sup></span>
+      <p class="text-gray-500 text-sm mt-2">Pipeline Dashboard</p>
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+      <input type="password" id="authPass" class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter access code" onkeydown="if(event.key==='Enter')checkAuth()">
+      <button onclick="checkAuth()" class="w-full mt-4 bg-navy-900 hover:bg-navy-800 text-white font-semibold py-3 rounded-lg text-sm transition-colors">Access Pipeline</button>
+      <p id="authErr" class="text-red-500 text-xs mt-2 hidden">Invalid access code.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Dashboard -->
+<div id="dashboard" class="hidden">
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
+      <div class="flex items-center gap-4">
+        <a href="/" class="text-xl font-black tracking-tight text-navy-900" style="font-family: 'Inter'; letter-spacing: -0.03em;">AXSETER<sup class="text-[10px] font-semibold text-gray-400 ml-0.5">&trade;</sup></a>
+        <span class="text-gray-300 text-lg font-light">/</span>
+        <span class="text-gray-500 font-medium text-sm">Pipeline</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-xs text-gray-400 mono" id="lastUpdated"></span>
+        <button onclick="document.getElementById('dashboard').classList.add('hidden');document.getElementById('authGate').classList.remove('hidden');sessionStorage.removeItem('ax_auth');" class="text-gray-400 hover:text-gray-600 text-sm">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 lg:px-8 py-8">
+    <!-- Metrics -->
+    <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8" id="metrics"></div>
+
+    <!-- Filters -->
+    <div class="flex flex-wrap gap-2 mb-6" id="filters"></div>
+
+    <!-- Status Filter -->
+    <div class="flex flex-wrap gap-2 mb-6" id="statusFilters"></div>
+
+    <!-- Pipeline -->
+    <div id="pipeline"></div>
+
+    <!-- Empty state -->
+    <div id="emptyState" class="hidden text-center py-16">
+      <p class="text-gray-400 text-sm">No leads match the current filter.</p>
+    </div>
+  </main>
+</div>
+
+<script>
+const ACCESS_CODE = 'axseter2026';
+
+function checkAuth() {
+  const v = document.getElementById('authPass').value;
+  if (v === ACCESS_CODE) {
+    sessionStorage.setItem('ax_auth', '1');
+    document.getElementById('authGate').classList.add('hidden');
+    document.getElementById('dashboard').classList.remove('hidden');
+    init();
+  } else {
+    document.getElementById('authErr').classList.remove('hidden');
+  }
+}
+
+if (sessionStorage.getItem('ax_auth') === '1') {
+  document.getElementById('authGate').classList.add('hidden');
+  document.getElementById('dashboard').classList.remove('hidden');
+  window.addEventListener('DOMContentLoaded', init);
+}
+
+const LEADS = [
+  { id:1, name:"The Smilist", score:92, tier:1, vertical:"dental", vertLabel:"Dental DSO", locations:"110+", states:8, signal:"Expanded into Virginia. Now operating across CT, DE, MA, MD, NJ, NY, PA, VA. Still actively acquiring — added Park Avenue Dental in NJ in January.", contact:"VP of Real Estate or COO", contactName:"", email:"", linkedin:"", value:"$300K-$600K", play:"Vendor consolidation — 'From 8 contractors to one.' 110 locations across 8 states means managing 8+ different LV contractors.", ownership:"Corporate-owned DSO", status:"ready", outreachTemplate:"vendor_consolidation", signalDate:"2026-01-15", source:"Group Dentistry Now" },
+  { id:2, name:"Premier Care Dental Management", score:88, tier:1, vertical:"dental", vertLabel:"Dental DSO", locations:"20+", states:3, signal:"Acquired 5 Ohio offices in January 2026: Great Smiles Family Dentistry (Toledo), Laskey Family Dentistry (Toledo), Blank Dental Group (3 locations: Springfield, Hilliard, Powell).", contact:"VP of Operations", contactName:"", email:"", linkedin:"", value:"$100K-$250K", play:"Acquisition/integration template. 5 inherited infrastructure setups need standardization. Acquisition pace suggests 20-40 add-ons/year.", ownership:"Corporate-owned platform", status:"ready", outreachTemplate:"acquisition_integration", signalDate:"2026-01-26", source:"Group Dentistry Now" },
+  { id:3, name:"Crossroads Treatment Centers", score:86, tier:1, vertical:"behavioral", vertLabel:"Behavioral health", locations:"40+", states:9, signal:"CEO Dr. Rupert McCormac stated publicly: 'hoping to complete several acquisitions that would more than double our footprint in several existing states.'", contact:"CEO / VP of Facilities", contactName:"Dr. Rupert McCormac", email:"", linkedin:"", value:"$200K-$500K", play:"Doubling footprint through acquisition = massive infrastructure standardization need across 9+ states.", ownership:"Corporate-owned", status:"ready", outreachTemplate:"acquisition_integration", signalDate:"2026-01-01", source:"Behavioral Health Business" },
+  { id:4, name:"Bradford Health Services", score:82, tier:1, vertical:"behavioral", vertLabel:"Behavioral health", locations:"15+", states:4, signal:"Plans to add 8-10 new outpatient centers and sober living facilities in 2026, plus actively pursuing M&A deals.", contact:"Director of Facilities", contactName:"", email:"", linkedin:"", value:"$80K-$200K", play:"Direct expansion announcement. Each new center needs full low-voltage buildout — cabling, cameras, access control.", ownership:"Corporate-owned", status:"ready", outreachTemplate:"expansion_announcement", signalDate:"2025-10-27", source:"Behavioral Health Business" },
+  { id:5, name:"Freeway Insurance (Confie)", score:79, tier:1, vertical:"insurance", vertLabel:"Insurance", locations:"500+", states:20, signal:"500+ retail locations. Franchise program launched 2021, actively expanding. Division of Confie, the largest independent personal lines agency in the US.", contact:"VP of Real Estate / Facilities", contactName:"", email:"", linkedin:"", value:"$400K-$1M+", play:"Massive SPoC opportunity. Research corporate vs franchise split first. Confie corporate likely controls buildout standards for company-owned locations.", ownership:"Mixed corporate/franchise", status:"research", outreachTemplate:"vendor_consolidation", signalDate:"2026-02-01", source:"Franchise Research" },
+  { id:6, name:"Behavioral Framework", score:76, tier:1, vertical:"behavioral", vertLabel:"Behavioral health", locations:"10+", states:3, signal:"PE-backed (Renovus Capital Partners). Acquired Autism ETC — 5 clinics across Tennessee and Arizona.", contact:"COO / VP Operations", contactName:"", email:"", linkedin:"", value:"$80K-$150K", play:"PE-backed autism therapy platform, multi-state, actively acquiring. PE firms have acquired 500+ autism therapy centers in the last decade.", ownership:"PE-owned platform", status:"ready", outreachTemplate:"acquisition_integration", signalDate:"2026-01-15", source:"PESP Tracker" },
+  { id:7, name:"Park Dental Partners", score:68, tier:2, vertical:"dental", vertLabel:"Dental DSO", locations:"47+", states:3, signal:"NASDAQ: PARK. Completed 3 acquisitions in January — Phoenix AZ, Bloomington MN, Tucson AZ. Entered Arizona as their third state.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$150K-$350K", play:"Publicly traded DSO entering new states. Multi-state growth with ~3 acquisitions/month. Growing past the regional contractor threshold.", ownership:"Corporate-owned (public)", status:"research", outreachTemplate:"expansion_announcement", signalDate:"2026-01-15", source:"Becker's Dental" },
+  { id:8, name:"Apex Dental Partners", score:64, tier:2, vertical:"dental", vertLabel:"Dental DSO", locations:"59", states:5, signal:"Added general dentistry practice in Omaha, expanding network to 59 practices nationwide.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$150K-$400K", play:"59 locations nationwide. Past the inflection point where a national LV partner saves real money.", ownership:"Corporate-owned platform", status:"research", outreachTemplate:"vendor_consolidation", signalDate:"2026-01-10", source:"Group Dentistry Now" },
+  { id:9, name:"FYZICAL Therapy & Balance Centers", score:58, tier:2, vertical:"pt", vertLabel:"Physical therapy", locations:"539", states:40, signal:"539 locations. 21% growth over 3 years. Actively franchising — multi-unit and master franchise models.", contact:"VP of Franchise Development", contactName:"", email:"", linkedin:"", value:"$200K-$500K", play:"Preferred vendor opportunity. Franchise model limits mandate, but 539 locations means enormous buildout volume if positioned as recommended partner.", ownership:"Franchise model", status:"research", outreachTemplate:"vendor_consolidation", signalDate:"2026-02-01", source:"FYZICAL Website" },
+  { id:10, name:"Brightway Insurance", score:55, tier:2, vertical:"insurance", vertLabel:"Insurance", locations:"350+", states:35, signal:"350+ franchises across 35 states. Managing over $1B in annual premiums.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$150K-$400K", play:"35 states = fragmented contractor relationships. Franchise model, so preferred vendor path rather than mandate.", ownership:"Franchise model", status:"research", outreachTemplate:"vendor_consolidation", signalDate:"2026-01-01", source:"Franchise Research" },
+  { id:11, name:"Center for Social Dynamics", score:52, tier:2, vertical:"behavioral", vertLabel:"Behavioral health", locations:"8+", states:3, signal:"Acquired Behavior Change Institute in Alamogordo, NM to expand autism and behavioral health services.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$60K-$120K", play:"Multi-state autism/behavioral health expansion. Smaller but actively growing through acquisition.", ownership:"Corporate-owned", status:"research", outreachTemplate:"acquisition_integration", signalDate:"2026-02-15", source:"Becker's Behavioral Health" },
+  { id:12, name:"Phase 1 Equity", score:50, tier:2, vertical:"dental", vertLabel:"Dental DSO", locations:"10+", states:3, signal:"Chicago-based. Added multi-site orthodontic practice in Ohio to network. Doctor-owned, doctor-led platform for orthodontists and pediatric dentists.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$80K-$150K", play:"Local Chicago relationship opportunity. Doctor-owned platform growing into new states.", ownership:"Doctor-owned platform", status:"research", outreachTemplate:"expansion_announcement", signalDate:"2026-01-10", source:"Group Dentistry Now" },
+  { id:13, name:"Freddy's Frozen Custard", score:38, tier:3, vertical:"qsr", vertLabel:"QSR", locations:"500+", states:35, signal:"Targeting 800+ units by 2026. Expanding into non-traditional venues like casinos and airports.", contact:"VP of Construction", contactName:"", email:"", linkedin:"", value:"$200K-$500K", play:"High-velocity franchise expansion. Franchisee-controlled buildouts limit SPoC mandate.", ownership:"Franchise model", status:"monitor", outreachTemplate:"", signalDate:"2026-01-01", source:"Crunchtime Research" },
+  { id:14, name:"Estrella Insurance", score:35, tier:3, vertical:"insurance", vertLabel:"Insurance", locations:"200+", states:5, signal:"200+ locations across FL, CA, AZ, TX, CO. Supports multi-location and territory development.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$100K-$200K", play:"Franchise model. Preferred vendor play only.", ownership:"Franchise model", status:"monitor", outreachTemplate:"", signalDate:"2026-01-01", source:"Franchise Research" },
+  { id:15, name:"Potbelly", score:34, tier:3, vertical:"qsr", vertLabel:"QSR", locations:"400+", states:10, signal:"Expanding through franchise and company-owned units. Recently signed deals for 13+ new units in Washington state.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$100K-$300K", play:"Mixed corporate/franchise model. Research the split before outreach.", ownership:"Mixed", status:"monitor", outreachTemplate:"", signalDate:"2026-01-15", source:"Franchise News" },
+  { id:16, name:"Terravet Real Estate Solutions", score:30, tier:3, vertical:"vet", vertLabel:"Veterinary", locations:"varies", states:4, signal:"Acquired and renovated veterinary clinics in MD, GA, CA, and MS.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$50K-$100K", play:"Indirect path. Real estate company, not the operator. Would need to reach the vet groups they serve.", ownership:"Real estate play", status:"monitor", outreachTemplate:"", signalDate:"2026-03-01", source:"dvm360" },
+  { id:17, name:"MOVES Veterinary", score:28, tier:3, vertical:"vet", vertLabel:"Veterinary", locations:"35+", states:21, signal:"35+ board-certified specialists in 21 states. Just launched franchise model.", contact:"Research needed", contactName:"", email:"", linkedin:"", value:"$50K-$100K", play:"Too early. Just launched franchise. Mobile model may not need fixed low-voltage infrastructure.", ownership:"Franchise (new)", status:"monitor", outreachTemplate:"", signalDate:"2025-12-01", source:"MOVES Website" }
+];
+
+const VERT_COLORS = {
+  dental: { bg:'bg-purple-50', text:'text-purple-700', border:'border-purple-200' },
+  behavioral: { bg:'bg-pink-50', text:'text-pink-700', border:'border-pink-200' },
+  pt: { bg:'bg-teal-50', text:'text-teal-700', border:'border-teal-200' },
+  insurance: { bg:'bg-blue-50', text:'text-blue-700', border:'border-blue-200' },
+  vet: { bg:'bg-amber-50', text:'text-amber-700', border:'border-amber-200' },
+  qsr: { bg:'bg-orange-50', text:'text-orange-700', border:'border-orange-200' }
+};
+
+const VERT_LABELS = { all:'All verticals', dental:'Dental', behavioral:'Behavioral health', pt:'Physical therapy', insurance:'Insurance', vet:'Veterinary', qsr:'QSR / Retail' };
+const STATUS_LABELS = { all:'All statuses', ready:'Outreach ready', research:'Needs research', monitor:'Monitoring', sent:'Sent', responded:'Responded' };
+
+let activeVert = 'all';
+let activeStatus = 'all';
+
+function init() {
+  document.getElementById('lastUpdated').textContent = 'Updated ' + new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+  renderMetrics();
+  renderFilters();
+  renderStatusFilters();
+  renderPipeline();
+}
+
+function renderMetrics() {
+  const t1 = LEADS.filter(l => l.tier === 1).length;
+  const t2 = LEADS.filter(l => l.tier === 2).length;
+  const ready = LEADS.filter(l => l.status === 'ready').length;
+  const verts = new Set(LEADS.map(l => l.vertical)).size;
+  const el = document.getElementById('metrics');
+  el.innerHTML = [
+    { v: t1, l: 'Tier 1 leads', c: 'text-green-600' },
+    { v: t2, l: 'Tier 2 leads', c: 'text-blue-600' },
+    { v: ready, l: 'Outreach ready', c: 'text-navy-900' },
+    { v: '$2.4M', l: 'Est. pipeline value', c: 'text-navy-900' },
+    { v: verts, l: 'Verticals', c: 'text-navy-900' },
+  ].map(m => `
+    <div class="bg-white rounded-xl border border-gray-200 p-5">
+      <div class="text-2xl font-bold ${m.c} mono">${m.v}</div>
+      <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wide">${m.l}</div>
+    </div>`).join('');
+}
+
+function renderFilters() {
+  const verts = ['all', ...new Set(LEADS.map(l => l.vertical))];
+  document.getElementById('filters').innerHTML = verts.map(v => {
+    const ct = v === 'all' ? LEADS.length : LEADS.filter(l => l.vertical === v).length;
+    const on = v === activeVert;
+    return `<button onclick="activeVert='${v}';renderFilters();renderStatusFilters();renderPipeline();" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${on ? 'bg-navy-900 text-white' : 'bg-white text-gray-500 border border-gray-200 hover:border-gray-300 hover:text-gray-700'}">${VERT_LABELS[v] || v}${v !== 'all' ? ' (' + ct + ')' : ''}</button>`;
+  }).join('');
+}
+
+function renderStatusFilters() {
+  const statuses = ['all', 'ready', 'research', 'monitor'];
+  document.getElementById('statusFilters').innerHTML = statuses.map(s => {
+    const filtered = activeVert === 'all' ? LEADS : LEADS.filter(l => l.vertical === activeVert);
+    const ct = s === 'all' ? filtered.length : filtered.filter(l => l.status === s).length;
+    const on = s === activeStatus;
+    return `<button onclick="activeStatus='${s}';renderStatusFilters();renderPipeline();" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${on ? 'bg-gray-200 text-gray-800' : 'bg-white text-gray-400 border border-gray-100 hover:text-gray-600'}">${STATUS_LABELS[s]}${s !== 'all' ? ' (' + ct + ')' : ''}</button>`;
+  }).join('');
+}
+
+function renderPipeline() {
+  let filtered = LEADS;
+  if (activeVert !== 'all') filtered = filtered.filter(l => l.vertical === activeVert);
+  if (activeStatus !== 'all') filtered = filtered.filter(l => l.status === activeStatus);
+
+  const el = document.getElementById('pipeline');
+  const empty = document.getElementById('emptyState');
+
+  if (filtered.length === 0) {
+    el.innerHTML = '';
+    empty.classList.remove('hidden');
+    return;
+  }
+  empty.classList.add('hidden');
+
+  el.innerHTML = filtered.map(l => {
+    const vc = VERT_COLORS[l.vertical] || { bg:'bg-gray-50', text:'text-gray-600' };
+    const tierColor = l.tier === 1 ? 'bg-green-50 text-green-700 border-green-200' : l.tier === 2 ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-gray-50 text-gray-500 border-gray-200';
+    const scoreColor = l.tier === 1 ? 'bg-green-100 text-green-800' : l.tier === 2 ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-500';
+    const statusBadge = l.status === 'ready' ? '<span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-green-50 text-green-600 border border-green-200">Outreach ready</span>'
+      : l.status === 'research' ? '<span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-50 text-amber-600 border border-amber-200">Needs research</span>'
+      : '<span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-gray-50 text-gray-400 border border-gray-200">Monitoring</span>';
+
+    return `
+    <div class="mb-2">
+      <div class="lead-row bg-white rounded-xl border border-gray-200 hover:border-gray-300 cursor-pointer" onclick="toggleExpand(${l.id})">
+        <div class="flex items-center gap-4 p-4">
+          <div class="score-ring ${scoreColor} mono">${l.score}</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="font-semibold text-navy-900 text-sm">${l.name}</span>
+              <span class="vert-pill ${vc.bg} ${vc.text}">${l.vertLabel}</span>
+              ${statusBadge}
+            </div>
+            <div class="text-xs text-gray-500 mt-1 truncate">${l.locations} locations &middot; ${l.states} states &middot; ${l.ownership}</div>
+          </div>
+          <div class="text-right hidden sm:block">
+            <div class="text-sm font-semibold text-navy-900 mono">${l.value}</div>
+            <div class="text-[10px] text-gray-400 uppercase font-semibold tracking-wide mt-0.5">Tier ${l.tier}</div>
+          </div>
+          <svg class="w-5 h-5 text-gray-300 flex-shrink-0 transition-transform" id="chevron-${l.id}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+      </div>
+      <div class="expanded-panel" id="panel-${l.id}">
+        <div class="bg-white border-x border-b border-gray-200 rounded-b-xl px-6 py-5 -mt-1">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div>
+              <h4 class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Signal</h4>
+              <p class="text-sm text-gray-700 leading-relaxed">${l.signal}</p>
+              <p class="text-xs text-gray-400 mt-2">Source: ${l.source} &middot; ${l.signalDate}</p>
+
+              <h4 class="text-xs font-semibold text-gray-400 uppercase tracking-wide mt-5 mb-2">Play</h4>
+              <p class="text-sm text-gray-700 leading-relaxed">${l.play}</p>
+            </div>
+            <div>
+              <h4 class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Target contact</h4>
+              <p class="text-sm text-gray-700">${l.contact}${l.contactName ? ' — ' + l.contactName : ''}</p>
+              ${l.linkedin ? '<p class="text-xs text-blue-600 mt-1">' + l.linkedin + '</p>' : ''}
+
+              <h4 class="text-xs font-semibold text-gray-400 uppercase tracking-wide mt-5 mb-2">Details</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <div class="text-gray-400">Estimated value</div><div class="text-gray-700 font-medium">${l.value}</div>
+                <div class="text-gray-400">Ownership</div><div class="text-gray-700 font-medium">${l.ownership}</div>
+                <div class="text-gray-400">Locations</div><div class="text-gray-700 font-medium">${l.locations}</div>
+                <div class="text-gray-400">States</div><div class="text-gray-700 font-medium">${l.states}</div>
+              </div>
+
+              <div class="flex gap-2 mt-6">
+                ${l.status === 'ready' ? '<button class="bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Approve outreach</button>' : ''}
+                ${l.status === 'research' ? '<button class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Research contacts</button>' : ''}
+                <button class="bg-white border border-gray-200 text-gray-600 hover:border-gray-300 text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Edit</button>
+                <button class="bg-white border border-gray-200 text-gray-400 hover:text-red-500 hover:border-red-200 text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Archive</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleExpand(id) {
+  const panel = document.getElementById('panel-' + id);
+  const chevron = document.getElementById('chevron-' + id);
+  const isOpen = panel.classList.contains('open');
+
+  document.querySelectorAll('.expanded-panel.open').forEach(p => {
+    p.classList.remove('open');
+  });
+  document.querySelectorAll('[id^=chevron-]').forEach(c => {
+    c.style.transform = '';
+  });
+
+  if (!isOpen) {
+    panel.classList.add('open');
+    chevron.style.transform = 'rotate(180deg)';
+  }
+}
+
+if (document.getElementById('dashboard').classList.contains('hidden') === false) {
+  init();
+}
+</script>
+</body>
+</html>
