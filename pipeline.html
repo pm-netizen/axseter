@@ -478,7 +478,7 @@ async function generateAIOutreach(uuid,evt){
 
   // prompt is built server-side in /api/draft
   try {
-    const res=await fetch('/api/draft',{
+    const res=await fetch('/api/draft/',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({lead})
@@ -932,7 +932,7 @@ async function runProspector(){
   // System prompt is now handled server-side in /api/prospect
 
   try{
-    const res=await fetch('/api/prospect',{
+    const res=await fetch('/api/prospect/',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({vertical:prospectorVert, vertLabel})
