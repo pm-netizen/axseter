@@ -141,6 +141,134 @@ const STATUS_LABELS = { all:'All statuses', ready:'Outreach ready', research:'Ne
 
 let activeVert = 'all';
 let activeStatus = 'all';
+let openOutreach = null;
+
+const TEMPLATES = {
+  expansion_announcement: (l) => ({
+    subject: `Infrastructure partner for ${l.name}'s expansion`,
+    body: `Hi [First Name],
+
+I saw ${l.name} is ${l.signal.split('.')[0].toLowerCase()}. Congratulations on the growth.
+
+Companies at your stage of expansion typically hit an inflection point with low-voltage infrastructure — managing a different cabling and security contractor in every market creates inconsistency, change orders, and overhead that scales with every new location.
+
+Axseter is a national low-voltage integrator built specifically for this problem. We're the single point of contact for structured cabling, access control, and surveillance across 500+ locations for companies like ${l.vertical === 'dental' ? 'Oak Street Health and CVS' : l.vertical === 'behavioral' ? 'Oak Street Health and ATI Physical Therapy' : l.vertical === 'insurance' ? 'Pronto Insurance and Gallagher' : 'Oak Street Health and CVS'}. Location 47 is installed identically to location 3.
+
+Would a 20-minute conversation be useful as you plan the infrastructure side of the expansion?
+
+Best,
+[Sender Name]
+Axseter Systems
+1-877-AXSETR1`
+  }),
+  acquisition_integration: (l) => ({
+    subject: `Standardizing infrastructure across ${l.name}'s acquired locations`,
+    body: `Hi [First Name],
+
+Acquiring new ${l.vertical === 'dental' ? 'practices' : l.vertical === 'behavioral' ? 'clinics' : l.vertical === 'insurance' ? 'branches' : 'locations'} means inheriting different cabling setups, camera systems, and access control configurations at every site. Most platform companies we work with find that standardization pays for itself within the first year through reduced support costs and faster integration.
+
+Axseter handles national low-voltage infrastructure for ${l.vertical === 'dental' ? 'dental' : l.vertical === 'behavioral' ? 'healthcare' : 'multi-location'} platforms like ${l.vertical === 'dental' || l.vertical === 'behavioral' || l.vertical === 'pt' ? 'Oak Street Health and ATI Physical Therapy' : 'Pronto Insurance and Gallagher'}. One spec, one contract, consistent execution whether you're integrating locations in one state or twenty.
+
+Happy to share how similar companies approached the standardization challenge if it's relevant to your integration roadmap.
+
+Best,
+[Sender Name]
+Axseter Systems
+1-877-AXSETR1`
+  }),
+  vendor_consolidation: (l) => ({
+    subject: `From ${l.states} contractors to one — ${l.name}'s infrastructure`,
+    body: `Hi [First Name],
+
+At ${l.locations} locations across ${l.states} states, ${l.name} is likely managing ${l.states}+ different low-voltage contractors — each with different quality standards, pricing, and responsiveness. That overhead compounds with every new location.
+
+Axseter replaces that fragmentation with a single national partner. One contract, one set of specs, one team that knows your infrastructure. Our clients typically see $25,000+ in annual overhead savings and 10-15% fewer change orders from the consolidation.
+
+We handle structured cabling, access control, and surveillance for companies like ${l.vertical === 'dental' ? 'Oak Street Health and CVS' : l.vertical === 'insurance' ? 'Pronto Insurance and Gallagher' : 'ATI Physical Therapy and CVS'} — 500+ locations installed to the same standard, nationwide.
+
+Worth a conversation?
+
+Best,
+[Sender Name]
+Axseter Systems
+1-877-AXSETR1`
+  })
+};
+
+function generateOutreach(id) {
+  const l = LEADS.find(x => x.id === id);
+  if (!l || !l.outreachTemplate) return;
+  const tmpl = TEMPLATES[l.outreachTemplate];
+  if (!tmpl) return;
+  return tmpl(l);
+}
+
+function showOutreach(id, evt) {
+  if (evt) evt.stopPropagation();
+  const l = LEADS.find(x => x.id === id);
+  const draft = generateOutreach(id);
+  if (!draft) return;
+  openOutreach = id;
+  const el = document.getElementById('outreach-' + id);
+  if (el.classList.contains('open')) {
+    el.classList.remove('open');
+    openOutreach = null;
+    return;
+  }
+  document.querySelectorAll('[id^=outreach-].open').forEach(e => e.classList.remove('open'));
+  document.getElementById('outreach-subject-' + id).value = draft.subject;
+  document.getElementById('outreach-body-' + id).value = draft.body;
+  el.classList.add('open');
+  autoResize(document.getElementById('outreach-body-' + id));
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = el.scrollHeight + 'px';
+}
+
+function copyOutreach(id, evt) {
+  if (evt) evt.stopPropagation();
+  const subj = document.getElementById('outreach-subject-' + id).value;
+  const body = document.getElementById('outreach-body-' + id).value;
+  const full = 'Subject: ' + subj + '\n\n' + body;
+  navigator.clipboard.writeText(full).then(() => {
+    const btn = document.getElementById('copy-btn-' + id);
+    btn.textContent = 'Copied!';
+    btn.classList.remove('bg-navy-900', 'hover:bg-navy-800');
+    btn.classList.add('bg-green-600');
+    setTimeout(() => {
+      btn.textContent = 'Copy to clipboard';
+      btn.classList.remove('bg-green-600');
+      btn.classList.add('bg-navy-900', 'hover:bg-navy-800');
+    }, 2000);
+  });
+}
+
+function markSent(id, evt) {
+  if (evt) evt.stopPropagation();
+  const l = LEADS.find(x => x.id === id);
+  if (l) {
+    l.status = 'sent';
+    document.getElementById('outreach-' + id).classList.remove('open');
+    renderMetrics();
+    renderFilters();
+    renderStatusFilters();
+    renderPipeline();
+  }
+}
+
+function archiveLead(id, evt) {
+  if (evt) evt.stopPropagation();
+  const idx = LEADS.findIndex(x => x.id === id);
+  if (idx > -1) {
+    LEADS.splice(idx, 1);
+    renderMetrics();
+    renderFilters();
+    renderStatusFilters();
+    renderPipeline();
+  }
+}
 
 function init() {
   document.getElementById('lastUpdated').textContent = 'Updated ' + new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
@@ -179,7 +307,7 @@ function renderFilters() {
 }
 
 function renderStatusFilters() {
-  const statuses = ['all', 'ready', 'research', 'monitor'];
+  const statuses = ['all', 'ready', 'research', 'sent', 'monitor'];
   document.getElementById('statusFilters').innerHTML = statuses.map(s => {
     const filtered = activeVert === 'all' ? LEADS : LEADS.filter(l => l.vertical === activeVert);
     const ct = s === 'all' ? filtered.length : filtered.filter(l => l.status === s).length;
@@ -209,6 +337,7 @@ function renderPipeline() {
     const scoreColor = l.tier === 1 ? 'bg-green-100 text-green-800' : l.tier === 2 ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-500';
     const statusBadge = l.status === 'ready' ? '<span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-green-50 text-green-600 border border-green-200">Outreach ready</span>'
       : l.status === 'research' ? '<span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-50 text-amber-600 border border-amber-200">Needs research</span>'
+      : l.status === 'sent' ? '<span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-50 text-blue-600 border border-blue-200">Sent</span>'
       : '<span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-gray-50 text-gray-400 border border-gray-200">Monitoring</span>';
 
     return `
@@ -256,10 +385,30 @@ function renderPipeline() {
               </div>
 
               <div class="flex gap-2 mt-6">
-                ${l.status === 'ready' ? '<button class="bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Approve outreach</button>' : ''}
-                ${l.status === 'research' ? '<button class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Research contacts</button>' : ''}
-                <button class="bg-white border border-gray-200 text-gray-600 hover:border-gray-300 text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Edit</button>
-                <button class="bg-white border border-gray-200 text-gray-400 hover:text-red-500 hover:border-red-200 text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Archive</button>
+                ${l.status === 'ready' ? `<button onclick="showOutreach(${l.id}, event)" class="bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Approve outreach</button>` : ''}
+                ${l.status === 'sent' ? '<span class="text-xs text-blue-600 font-medium py-2">Outreach sent</span>' : ''}
+                ${l.status === 'research' ? `<button onclick="showOutreach(${l.id}, event)" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Draft outreach</button>` : ''}
+                <button onclick="archiveLead(${l.id}, event)" class="bg-white border border-gray-200 text-gray-400 hover:text-red-500 hover:border-red-200 text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Archive</button>
+              </div>
+
+              <!-- Outreach draft panel -->
+              <div class="expanded-panel mt-4" id="outreach-${l.id}">
+                <div class="bg-gray-50 rounded-xl border border-gray-200 p-5">
+                  <h4 class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Draft outreach</h4>
+                  <div class="mb-3">
+                    <label class="block text-xs font-medium text-gray-500 mb-1">Subject</label>
+                    <input type="text" id="outreach-subject-${l.id}" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white" onclick="event.stopPropagation()">
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-xs font-medium text-gray-500 mb-1">Body</label>
+                    <textarea id="outreach-body-${l.id}" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white leading-relaxed resize-none" rows="12" onclick="event.stopPropagation()" oninput="autoResize(this)"></textarea>
+                  </div>
+                  <div class="flex gap-2">
+                    <button id="copy-btn-${l.id}" onclick="copyOutreach(${l.id}, event)" class="bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Copy to clipboard</button>
+                    <button onclick="markSent(${l.id}, event)" class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Mark as sent</button>
+                    <button onclick="document.getElementById('outreach-${l.id}').classList.remove('open');event.stopPropagation();" class="bg-white border border-gray-200 text-gray-500 hover:border-gray-300 text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Cancel</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
