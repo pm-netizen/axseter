@@ -1,6 +1,10 @@
 {
   "cleanUrls": true,
   "trailingSlash": true,
+  "rewrites": [
+    { "source": "/api/prospect/", "destination": "/api/prospect" },
+    { "source": "/api/draft/", "destination": "/api/draft" }
+  ],
   "headers": [
     {
       "source": "/images/(.*)",
