@@ -938,26 +938,57 @@ async function runProspector(){
       body:JSON.stringify({vertical:prospectorVert, vertLabel})
     });
 
-    const raw=await res.text();
-    let data;
-    try{ data=JSON.parse(raw); }catch(e){ throw new Error('Non-JSON response (HTTP '+res.status+'): '+raw.slice(0,150)); }
-    if(data.error){ throw new Error(data.error.message||data.error||'API error'); }
-    if(!data.content){ throw new Error('Unexpected API response: '+JSON.stringify(data).slice(0,200)); }
+    if(!res.ok){
+      const errText=await res.text();
+      throw new Error('API error (HTTP '+res.status+'): '+errText.slice(0,150));
+    }
+
+    // Read SSE stream from Anthropic (proxied through edge function)
+    const reader=res.body.getReader();
+    const decoder=new TextDecoder();
+    let buf='';
+    let textParts=[];
+    let searching=false;
+
+    while(true){
+      const {done,value}=await reader.read();
+      if(done) break;
+      buf+=decoder.decode(value,{stream:true});
+
+      const lines=buf.split('\n');
+      buf=lines.pop()||'';
+
+      for(const line of lines){
+        if(!line.startsWith('data: '))continue;
+        const payload=line.slice(6).trim();
+        if(payload==='[DONE]')continue;
+        try{
+          const evt=JSON.parse(payload);
+          // Track search activity for log
+          if(evt.type==='content_block_start'&&evt.content_block?.type==='server_tool_use'){
+            if(!searching){searching=true; addLog('AI is searching the web…'); status.textContent='Searching expansion signals…';}
+          }
+          // Collect text deltas
+          if(evt.type==='content_block_delta'&&evt.delta?.type==='text_delta'){
+            textParts.push(evt.delta.text);
+          }
+        }catch(e){}
+      }
+    }
+
     addLog('AI search complete. Processing results…');
     status.textContent='Parsing results…';
 
-    // Extract text from response (may have tool_use blocks)
-    const textBlocks=data.content.filter(b=>b.type==='text').map(b=>b.text).join('');
-    const clean=textBlocks.replace(/```json|```/g,'').trim();
+    const fullText=textParts.join('');
+    const clean=fullText.replace(/```json|```/g,'').trim();
 
     let parsed;
     try{
-      // Find JSON object in response
       const jsonMatch=clean.match(/\{[\s\S]*\}/);
-      if(!jsonMatch)throw new Error('No JSON found');
+      if(!jsonMatch)throw new Error('No JSON found in response');
       parsed=JSON.parse(jsonMatch[0]);
     }catch(e){
-      throw new Error('Could not parse AI response as JSON');
+      throw new Error('Could not parse AI response as JSON: '+clean.slice(0,200));
     }
 
     const leads=parsed.leads||[];
