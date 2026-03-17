@@ -980,7 +980,7 @@ async function runProspector(){
     status.textContent='Parsing results…';
 
     const fullText=textParts.join('');
-    const clean=fullText.replace(/```json|```/g,'').trim();
+    const clean=fullText.replace(/```json|```/g,'').replace(/<\/?cite[^>]*>/g,'').trim();
 
     let parsed;
     try{
@@ -996,7 +996,8 @@ async function runProspector(){
     status.textContent=`Found ${leads.length} ${vertLabel} prospects`;
 
     document.getElementById('prospectorRunning').classList.add('hidden');
-    renderProspectorResults(leads, parsed.scan_summary||'');
+    const summary=(parsed.scan_summary||'').replace(/<\/?cite[^>]*>/g,'');
+    renderProspectorResults(leads, summary);
 
   }catch(err){
     console.error('Prospector error:',err);
