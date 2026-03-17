@@ -33,6 +33,8 @@ Return ONLY valid JSON:
       "states": 8,
       "expansion_signal": "Specific signal found",
       "signal_source": "Source and date",
+      "source_url": "URL of the article or announcement",
+      "website": "Company website URL",
       "signal_type": "direct_announcement|acquisition|hiring|financial",
       "estimated_value": "$200K–$400K",
       "ownership": "PE-backed|VC-backed|Public|Private",
