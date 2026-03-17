@@ -53,6 +53,11 @@ Return ONLY valid JSON:
         "no_competitor": 5
       },
       "target_persona": "VP of Real Estate & Construction",
+      "decision_maker": {
+        "name": "Full name of the likely decision maker found via LinkedIn or web search",
+        "title": "Their exact title",
+        "linkedin_url": "https://linkedin.com/in/... or null if not found"
+      },
       "why_axseter_wins": "Why Axseter is a strong fit"
     }
   ],
@@ -104,7 +109,7 @@ export default async function handler(req) {
         tools: [{ type: 'web_search_20250305', name: 'web_search' }],
         messages: [{
           role: 'user',
-          content: `Find ${vertPrompt} companies actively expanding their physical footprint in 2025-2026 that would be ideal prospects for Axseter Systems. Search for real companies with recent expansion announcements, acquisitions, or growth signals. Return 4-6 high-quality leads as JSON.`,
+          content: `Find ${vertPrompt} companies actively expanding their physical footprint in 2025-2026 that would be ideal prospects for Axseter Systems. Search for real companies with recent expansion announcements, acquisitions, or growth signals. For each company, also search LinkedIn to identify the VP/Director of Real Estate, Construction, Facilities, or Operations who would own low-voltage vendor decisions. Return 4-6 high-quality leads as JSON.`,
         }],
       }),
     });
