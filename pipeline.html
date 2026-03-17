@@ -484,6 +484,7 @@ async function generateAIOutreach(uuid,evt){
       body:JSON.stringify({lead})
     });
     const data=await res.json();
+    if(data.error||!data.content) throw new Error(data.error?.message||'API error');
     const text=data.content.map(i=>i.text||'').join('').trim();
     const clean=text.replace(/```json|```/g,'').trim();
     const parsed=JSON.parse(clean);
@@ -938,6 +939,8 @@ async function runProspector(){
     });
 
     const data=await res.json();
+    if(data.error){ throw new Error(data.error.message||data.error||'API error'); }
+    if(!data.content){ throw new Error('Unexpected API response: '+JSON.stringify(data).slice(0,200)); }
     addLog('AI search complete. Processing results…');
     status.textContent='Parsing results…';
 
