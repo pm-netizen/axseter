@@ -3,7 +3,8 @@
   "trailingSlash": true,
   "rewrites": [
     { "source": "/api/prospect/", "destination": "/api/prospect" },
-    { "source": "/api/draft/", "destination": "/api/draft" }
+    { "source": "/api/draft/", "destination": "/api/draft" },
+    { "source": "/api/chat/", "destination": "/api/chat" }
   ],
   "headers": [
     {
