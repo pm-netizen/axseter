@@ -31,7 +31,7 @@ AXSETER CONTEXT:
 - Single Point of Contact (SPoC) model: one partner replaces 15+ regional contractors for multi-location enterprises
 - Services: structured cabling, access control, video surveillance, audio-visual, sound masking, break-fix support
 - 500+ locations installed nationwide
-- Key stats: $25,000+ annual overhead savings, 10-15% fewer change orders
+- Key stats: hundreds of thousands in annual overhead savings for large multi-location operators, 10-15% fewer change orders
 
 AXSETER CLIENT LIST (use these as social proof in every outreach):
 - Healthcare / Primary care: Oak Street Health, Guidelight Health
