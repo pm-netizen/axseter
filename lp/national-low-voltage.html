@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2KB4Z2M328"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2KB4Z2M328');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>National Low Voltage Contractor | Axseter Systems</title>
+  <meta name="description" content="One national low-voltage contractor for all your locations. Structured cabling, access control, video surveillance — 500+ locations installed nationwide.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { 50:'#f0f4f8',100:'#d9e2ec',200:'#bcccdc',300:'#9fb3c8',400:'#829ab1',500:'#627d98',600:'#486581',700:'#334e68',800:'#243b53',900:'#102a43',950:'#0a1929' },
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *{font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+    .mono{font-family:'Inter',monospace}
+
+    /* Hero gradient */
+    .hero-bg{
+      background: linear-gradient(135deg, #0a1929 0%, #102a43 40%, #1a365d 100%);
+      position:relative;overflow:hidden;
+    }
+    .hero-bg::before{
+      content:'';position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse 60% 40% at 70% 30%, rgba(59,130,246,0.12), transparent),
+        radial-gradient(ellipse 40% 50% at 20% 80%, rgba(59,130,246,0.08), transparent);
+    }
+    .hero-bg::after{
+      content:'';position:absolute;inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size:48px 48px;
+    }
+
+    /* Stat counter */
+    .stat-card{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      backdrop-filter:blur(8px);
+    }
+
+    /* CTA glow */
+    .cta-btn{
+      background:linear-gradient(135deg,#2563eb 0%,#3b82f6 100%);
+      box-shadow:0 4px 24px -4px rgba(37,99,235,0.5);
+      transition:all .3s ease;
+    }
+    .cta-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 8px 32px -4px rgba(37,99,235,0.6);
+    }
+
+    /* Logo strip */
+    .logo-strip img{filter:brightness(0) invert(1);opacity:0.5;transition:opacity .3s}
+    .logo-strip img:hover{opacity:0.9}
+
+    /* Section reveal */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .fade-up{animation:fadeUp .7s ease-out forwards;opacity:0}
+    .delay-1{animation-delay:.1s}
+    .delay-2{animation-delay:.2s}
+    .delay-3{animation-delay:.3s}
+    .delay-4{animation-delay:.4s}
+    .delay-5{animation-delay:.5s}
+
+    /* Pain → Solution cards */
+    .pain-card{
+      border:1px solid #e2e8f0;
+      transition:all .3s ease;
+    }
+    .pain-card:hover{
+      border-color:#bcccdc;
+      box-shadow:0 8px 32px -8px rgba(16,42,67,0.1);
+      transform:translateY(-4px);
+    }
+
+    /* Number accent */
+    .num-accent{
+      font-family:'Inter',monospace;
+      font-weight:900;
+      background:linear-gradient(135deg,#102a43,#334e68);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+
+    /* Form */
+    .form-input{
+      transition:border-color .2s,box-shadow .2s;
+    }
+    .form-input:focus{
+      outline:none;
+      border-color:#102a43;
+      box-shadow:0 0 0 3px rgba(16,42,67,0.08);
+    }
+
+    /* Scroll indicator */
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+    .scroll-hint{animation:bounce 2s ease-in-out infinite}
+
+    /* Sticky CTA bar (mobile) */
+    .sticky-cta{
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero-bg min-h-screen flex flex-col justify-center relative">
+    <div class="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-0">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+
+        <!-- Left: Messaging -->
+        <div>
+          <div class="fade-up flex items-center gap-3 mb-8">
+            <span class="text-2xl font-black tracking-tight text-white mono" style="letter-spacing:-.03em">AXSETER<sup class="text-xs font-semibold text-blue-400 ml-0.5">™</sup></span>
+          </div>
+
+          <h1 class="fade-up delay-1 text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.1] mb-6">
+            The national low-voltage contractor for
+            <span class="text-blue-400">multi-location enterprises</span>
+          </h1>
+
+          <p class="fade-up delay-2 text-lg text-gray-300 leading-relaxed mb-8 max-w-lg">
+            Stop managing a different cabling, security, and surveillance contractor in every market. One partner, one spec, one contract — nationwide.
+          </p>
+
+          <!-- Stat cards -->
+          <div class="fade-up delay-3 grid grid-cols-3 gap-3 mb-10">
+            <div class="stat-card rounded-xl px-4 py-3 text-center">
+              <div class="text-2xl font-bold text-white mono">500+</div>
+              <div class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider mt-0.5">Locations</div>
+            </div>
+            <div class="stat-card rounded-xl px-4 py-3 text-center">
+              <div class="text-2xl font-bold text-white mono">48</div>
+              <div class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider mt-0.5">States</div>
+            </div>
+            <div class="stat-card rounded-xl px-4 py-3 text-center">
+              <div class="text-2xl font-bold text-white mono">6</div>
+              <div class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider mt-0.5">Services</div>
+            </div>
+          </div>
+
+          <!-- Client logos -->
+          <div class="fade-up delay-4">
+            <p class="text-[10px] text-gray-500 font-semibold uppercase tracking-widest mb-4">Trusted by</p>
+            <div class="logo-strip flex flex-wrap items-center gap-8">
+              <img src="/logos/oak-street-health.png" alt="Oak Street Health" class="h-8 w-auto">
+              <img src="/logos/cvs.png" alt="CVS" class="h-9 w-auto">
+              <img src="/logos/gallagher.png" alt="Gallagher" class="h-10 w-auto">
+              <img src="/logos/ati-physical-therapy.png" alt="ATI Physical Therapy" class="h-7 w-auto">
+              <img src="/logos/pronto-insurance.png" alt="Pronto Insurance" class="h-7 w-auto">
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Lead Form -->
+        <div class="fade-up delay-3">
+          <div class="bg-white rounded-2xl shadow-2xl p-8 lg:p-10 relative">
+            <div class="absolute -top-px left-8 right-8 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-b-full"></div>
+
+            <h2 class="text-xl font-bold text-navy-900 mb-1">Get a consultation</h2>
+            <p class="text-sm text-gray-500 mb-6">Tell us about your locations. We'll show you what consolidation looks like.</p>
+
+            <form id="lp-form" action="https://formspree.io/f/xgolzzrl" method="POST" novalidate>
+              <input type="hidden" name="_subject" value="[Google Ads LP] New lead from National Low Voltage page">
+              <input type="hidden" name="source" value="google-ads-national-low-voltage">
+
+              <div class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">First name</label>
+                    <input type="text" name="first_name" required class="form-input w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-navy-900 placeholder-gray-400" placeholder="Jane">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Last name</label>
+                    <input type="text" name="last_name" required class="form-input w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-navy-900 placeholder-gray-400" placeholder="Smith">
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Work email</label>
+                  <input type="email" name="email" required class="form-input w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-navy-900 placeholder-gray-400" placeholder="jane@company.com">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Company</label>
+                  <input type="text" name="company" required class="form-input w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-navy-900 placeholder-gray-400" placeholder="Acme Health Systems">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Locations</label>
+                    <select name="locations" class="form-input w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-navy-900 bg-white appearance-none" style="background-image:url(&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e&quot;);background-position:right .75rem center;background-repeat:no-repeat;background-size:1.5em 1.5em">
+                      <option value="">Select</option>
+                      <option value="1-10">1–10</option>
+                      <option value="11-50">11–50</option>
+                      <option value="51-100">51–100</option>
+                      <option value="100+">100+</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">States</label>
+                    <select name="states" class="form-input w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-navy-900 bg-white appearance-none" style="background-image:url(&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e&quot;);background-position:right .75rem center;background-repeat:no-repeat;background-size:1.5em 1.5em">
+                      <option value="">Select</option>
+                      <option value="1-3">1–3</option>
+                      <option value="4-10">4–10</option>
+                      <option value="11-25">11–25</option>
+                      <option value="25+">25+</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">What do you need?</label>
+                  <select name="service_interest" class="form-input w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-navy-900 bg-white appearance-none" style="background-image:url(&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e&quot;);background-position:right .75rem center;background-repeat:no-repeat;background-size:1.5em 1.5em">
+                    <option value="">Select</option>
+                    <option value="structured-cabling">Structured cabling</option>
+                    <option value="access-control">Access control</option>
+                    <option value="video-surveillance">Video surveillance</option>
+                    <option value="full-low-voltage">Full low-voltage package</option>
+                    <option value="vendor-consolidation">Vendor consolidation</option>
+                    <option value="other">Other / not sure yet</option>
+                  </select>
+                </div>
+
+                <button type="submit" id="lp-submit" class="cta-btn w-full text-white font-bold px-6 py-4 rounded-xl text-sm tracking-wide">
+                  <span id="lp-submit-text">Request a Consultation</span>
+                  <span id="lp-submit-loading" class="hidden">Sending…</span>
+                </button>
+              </div>
+
+              <p class="text-[11px] text-gray-400 mt-4 text-center">No obligation. We'll respond within one business day.</p>
+            </form>
+
+            <!-- Success state -->
+            <div id="lp-success" class="hidden text-center py-8">
+              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-navy-900 mb-2">Request received</h3>
+              <p class="text-sm text-gray-500">We'll be in touch within one business day.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-hint hidden lg:block">
+      <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+    </div>
+  </section>
+
+
+  <!-- ═══ PAIN → SOLUTION ═══ -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <span class="text-blue-600 font-semibold text-xs uppercase tracking-widest">The problem</span>
+        <h2 class="text-3xl lg:text-4xl font-bold text-navy-900 mt-4 mb-4">Every new location adds another contractor</h2>
+        <p class="text-lg text-gray-500 leading-relaxed">Multi-location operators inherit fragmented low-voltage infrastructure — different vendors, different standards, different quality in every market. It costs more than you think.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="pain-card rounded-2xl p-8 bg-white">
+          <div class="num-accent text-5xl mb-4">15+</div>
+          <h3 class="font-bold text-navy-900 mb-2">Regional vendors</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">The average 50-location operator manages 15+ different low-voltage subcontractors. Each with different pricing, quality, and responsiveness. Every new market adds another.</p>
+        </div>
+        <div class="pain-card rounded-2xl p-8 bg-white">
+          <div class="num-accent text-5xl mb-4">$$$</div>
+          <h3 class="font-bold text-navy-900 mb-2">Hidden overhead</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Vendor management, inconsistent billing, rework from poor installs, change orders — fragmentation costs large operators hundreds of thousands annually in overhead that doesn't need to exist.</p>
+        </div>
+        <div class="pain-card rounded-2xl p-8 bg-white">
+          <div class="num-accent text-5xl mb-4">0%</div>
+          <h3 class="font-bold text-navy-900 mb-2">Standardization</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Location 47 looks nothing like location 3. Different cable specs, different camera placements, different access control systems. Troubleshooting and support become location-specific nightmares.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ SOLUTION ═══ -->
+  <section class="py-24 lg:py-32 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="text-blue-600 font-semibold text-xs uppercase tracking-widest">The Axseter model</span>
+          <h2 class="text-3xl lg:text-4xl font-bold text-navy-900 mt-4 mb-6">One contract. One spec.<br>Every location.</h2>
+          <p class="text-lg text-gray-500 leading-relaxed mb-8">Axseter is a national low-voltage integrator built specifically for multi-location enterprises. We replace the patchwork of regional contractors with a single partner who installs to your specifications — whether you have 10 locations or 500.</p>
+
+          <div class="space-y-5">
+            <div class="flex gap-4">
+              <div class="w-10 h-10 bg-navy-900 rounded-xl flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-navy-900 text-sm">Structured cabling &amp; network infrastructure</h3>
+                <p class="text-sm text-gray-500 mt-1">Cat6/6A, fiber, pathway, MDF/IDF buildouts — same spec at every site.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 bg-navy-900 rounded-xl flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-navy-900 text-sm">Access control &amp; security</h3>
+                <p class="text-sm text-gray-500 mt-1">Unified access control across your portfolio. One system, centrally managed.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 bg-navy-900 rounded-xl flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-navy-900 text-sm">Video surveillance</h3>
+                <p class="text-sm text-gray-500 mt-1">IP camera systems installed to your standard. Consistent coverage, every location.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results card -->
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
+          <div class="bg-navy-900 px-8 py-6">
+            <h3 class="text-white font-bold text-lg">What our clients get</h3>
+            <p class="text-gray-400 text-sm mt-1">Consolidation results across our portfolio</p>
+          </div>
+          <div class="p-8 space-y-6">
+            <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+              <div>
+                <div class="text-sm font-semibold text-navy-900">Annual overhead reduction</div>
+                <div class="text-xs text-gray-400 mt-0.5">Vendor management, billing, coordination</div>
+              </div>
+              <div class="text-2xl font-bold text-navy-900 mono">$100K–$500K+</div>
+            </div>
+            <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+              <div>
+                <div class="text-sm font-semibold text-navy-900">Fewer change orders</div>
+                <div class="text-xs text-gray-400 mt-0.5">Standardized specs = fewer surprises</div>
+              </div>
+              <div class="text-2xl font-bold text-navy-900 mono">10–15%</div>
+            </div>
+            <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+              <div>
+                <div class="text-sm font-semibold text-navy-900">Vendors replaced</div>
+                <div class="text-xs text-gray-400 mt-0.5">One contract instead of dozens</div>
+              </div>
+              <div class="text-2xl font-bold text-navy-900 mono">15+ → 1</div>
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-sm font-semibold text-navy-900">Locations installed</div>
+                <div class="text-xs text-gray-400 mt-0.5">Same standard, coast to coast</div>
+              </div>
+              <div class="text-2xl font-bold text-navy-900 mono">500+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ SOCIAL PROOF ═══ -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-blue-600 font-semibold text-xs uppercase tracking-widest">Who we work with</span>
+        <h2 class="text-3xl lg:text-4xl font-bold text-navy-900 mt-4">Infrastructure partner for enterprises that scale</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+          <img src="/logos/oak-street-health.png" alt="Oak Street Health" class="h-10 w-auto mb-6 opacity-80">
+          <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Healthcare</div>
+          <p class="text-sm text-gray-600 leading-relaxed">Primary care network with locations across the country. Axseter handles structured cabling and low-voltage infrastructure for new clinic buildouts nationwide.</p>
+        </div>
+        <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+          <img src="/logos/cvs.png" alt="CVS" class="h-10 w-auto mb-6 opacity-80">
+          <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Pharmacy &amp; Retail</div>
+          <p class="text-sm text-gray-600 leading-relaxed">One of the nation's largest pharmacy chains. Axseter provides consistent low-voltage installation standards across locations in multiple states.</p>
+        </div>
+        <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+          <img src="/logos/ati-physical-therapy.png" alt="ATI Physical Therapy" class="h-8 w-auto mb-6 opacity-80">
+          <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Physical therapy</div>
+          <p class="text-sm text-gray-600 leading-relaxed">National physical therapy platform with hundreds of clinics. Axseter standardizes cabling, access control, and surveillance across their footprint.</p>
+        </div>
+        <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+          <img src="/logos/gallagher.png" alt="Gallagher" class="h-12 w-auto mb-6 opacity-80">
+          <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Insurance</div>
+          <p class="text-sm text-gray-600 leading-relaxed">Global insurance brokerage with offices throughout the U.S. Axseter delivers low-voltage infrastructure with one contract and one set of standards.</p>
+        </div>
+        <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+          <img src="/logos/pronto-insurance.png" alt="Pronto Insurance" class="h-8 w-auto mb-6 opacity-80">
+          <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Insurance</div>
+          <p class="text-sm text-gray-600 leading-relaxed">Fast-growing insurance brand expanding across multiple states. Axseter ensures each new branch is wired and secured to the same standard from day one.</p>
+        </div>
+        <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+          <img src="/logos/soar-autism.png" alt="Soar Autism Center" class="h-14 w-auto mb-6 opacity-80">
+          <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Behavioral health</div>
+          <p class="text-sm text-gray-600 leading-relaxed">Autism therapy provider scaling to new markets. Axseter provides turnkey low-voltage infrastructure for each new center opening.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ FINAL CTA ═══ -->
+  <section class="hero-bg py-24 lg:py-32 relative">
+    <div class="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 text-center">
+      <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">Ready to consolidate?</h2>
+      <p class="text-lg text-gray-300 mb-8 max-w-xl mx-auto">One conversation to find out how much your vendor fragmentation is costing you — and what standardization looks like with Axseter.</p>
+      <a href="#top" onclick="document.querySelector('.form-input').focus();return false;" class="cta-btn inline-block text-white font-bold px-10 py-4 rounded-xl text-sm tracking-wide">
+        Request a Consultation
+      </a>
+      <p class="text-xs text-gray-500 mt-4">No obligation · Response within one business day</p>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="bg-navy-950 py-12">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span class="text-lg font-black tracking-tight text-white mono" style="letter-spacing:-.03em">AXSETER<sup class="text-xs font-semibold text-gray-500 ml-0.5">™</sup></span>
+        <div class="flex items-center gap-6 text-sm text-gray-500">
+          <span>1-877-AXSETR1</span>
+          <span>info@axseter.com</span>
+        </div>
+        <p class="text-xs text-gray-600">&copy; 2025 Axseter Systems. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ MOBILE STICKY CTA ═══ -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 lg:hidden sticky-cta bg-white/95 border-t border-gray-200 px-4 py-3">
+    <a href="#top" onclick="document.querySelector('.form-input').focus();window.scrollTo({top:0,behavior:'smooth'});return false;" class="cta-btn block text-center text-white font-bold px-6 py-3.5 rounded-xl text-sm">
+      Request a Consultation
+    </a>
+  </div>
+
+  <!-- ═══ FORM HANDLER ═══ -->
+  <script>
+    const form = document.getElementById('lp-form');
+    const submitBtn = document.getElementById('lp-submit');
+    const submitText = document.getElementById('lp-submit-text');
+    const submitLoading = document.getElementById('lp-submit-loading');
+    const successEl = document.getElementById('lp-success');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // Basic validation
+      const required = form.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(function(input) {
+        if (!input.value.trim()) {
+          input.classList.add('border-red-300');
+          valid = false;
+        } else {
+          input.classList.remove('border-red-300');
+        }
+      });
+      if (!valid) return;
+
+      submitBtn.disabled = true;
+      submitText.classList.add('hidden');
+      submitLoading.classList.remove('hidden');
+
+      try {
+        const data = new FormData(form);
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.classList.add('hidden');
+          successEl.classList.remove('hidden');
+
+          // GA4 event
+          if (typeof gtag === 'function') {
+            gtag('event', 'generate_lead', {
+              event_category: 'form',
+              event_label: 'google-ads-national-low-voltage',
+              value: 1
+            });
+          }
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (err) {
+        alert('Something went wrong. Please email info@axseter.com or call 1-877-AXSETR1.');
+        submitBtn.disabled = false;
+        submitText.classList.remove('hidden');
+        submitLoading.classList.add('hidden');
+      }
+    });
+
+    // Remove red border on input
+    form.querySelectorAll('.form-input').forEach(function(input) {
+      input.addEventListener('focus', function() {
+        this.classList.remove('border-red-300');
+      });
+    });
+
+    // Scroll to form on CTA clicks
+    document.getElementById('top') || document.body.setAttribute('id', 'top');
+  </script>
+</body>
+</html>
