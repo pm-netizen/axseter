@@ -30,9 +30,25 @@ export default async function handler(req) {
 AXSETER CONTEXT:
 - Single Point of Contact (SPoC) model: one partner replaces 15+ regional contractors for multi-location enterprises
 - Services: structured cabling, access control, video surveillance, audio-visual, sound masking, break-fix support
-- Named clients: Oak Street Health, CVS, ATI Physical Therapy, Soar Autism Center, Pronto Insurance, Guidelight Health, Gallagher
 - 500+ locations installed nationwide
 - Key stats: $25,000+ annual overhead savings, 10-15% fewer change orders
+
+AXSETER CLIENT LIST (use these as social proof in every outreach):
+- Healthcare / Primary care: Oak Street Health, Guidelight Health
+- Dental / DSO: (reference Oak Street Health and CVS as adjacent multi-location healthcare)
+- Behavioral health: Soar Autism Center
+- Physical therapy: ATI Physical Therapy
+- Insurance: Pronto Insurance, Gallagher
+- Pharmacy / Retail: CVS
+- General multi-location: all of the above
+
+CRITICAL RULE — CLIENT REFERENCES:
+Every email and LinkedIn message MUST name-drop 1-2 relevant Axseter clients. Match clients to the lead's vertical:
+- If the lead is dental, behavioral, PT, or healthcare → cite Oak Street Health, ATI Physical Therapy, Soar Autism Center, or CVS
+- If the lead is insurance → cite Pronto Insurance and Gallagher
+- If the lead is QSR/retail/vet → cite CVS and Oak Street Health as analogous multi-location operators
+- Frame it naturally: "We handle infrastructure for [Client] across X locations" or "companies like [Client] and [Client] use us as their single national partner"
+Never fabricate clients. Only reference the names listed above.
 
 LEAD YOU'RE WORKING ON:
 - Company: ${lead.name}
