@@ -18,7 +18,7 @@ SCORING FACTORS (0-100):
 - Decision-maker identified 10pts: VP+=10, director=7
 - No known national LV partner 5pts: unknown=5, competitor present=0
 
-Search for recent (2025-2026) expansion signals. Find 4-6 real companies that are actively expanding physical locations and would need low-voltage infrastructure.
+Search for recent (2025-2026) expansion signals. Find as many real companies as possible that are actively expanding physical locations and would need low-voltage infrastructure.
 
 Return ONLY valid JSON:
 {
@@ -110,8 +110,8 @@ export default async function handler(req) {
         messages: [{
           role: 'user',
           content: vertical === 'all'
-            ? `Search each of these verticals separately for companies expanding their physical footprint in 2025-2026: (1) dental/DSO, (2) behavioral health, (3) physical therapy, (4) insurance agencies, (5) veterinary, (6) QSR/fast-casual restaurants. Do a dedicated web search for each vertical. Find 1-2 top prospects per vertical — 6-10 leads total. For each company, also search LinkedIn to identify the VP/Director of Real Estate, Construction, Facilities, or Operations who would own low-voltage vendor decisions. Return all leads as JSON.`
-            : `Find ${vertPrompt} companies actively expanding their physical footprint in 2025-2026 that would be ideal prospects for Axseter Systems. Search for real companies with recent expansion announcements, acquisitions, or growth signals. For each company, also search LinkedIn to identify the VP/Director of Real Estate, Construction, Facilities, or Operations who would own low-voltage vendor decisions. Return 4-6 high-quality leads as JSON.`,
+            ? `Search each of these verticals separately for companies expanding their physical footprint in 2025-2026: (1) dental/DSO, (2) behavioral health, (3) physical therapy, (4) insurance agencies, (5) veterinary, (6) QSR/fast-casual restaurants. Do a dedicated web search for each vertical. Find as many qualified prospects as you can — no cap. For each company, also search LinkedIn to identify the VP/Director of Real Estate, Construction, Facilities, or Operations who would own low-voltage vendor decisions. Return all leads as JSON.`
+            : `Find ${vertPrompt} companies actively expanding their physical footprint in 2025-2026 that would be ideal prospects for Axseter Systems. Search for real companies with recent expansion announcements, acquisitions, or growth signals. For each company, also search LinkedIn to identify the VP/Director of Real Estate, Construction, Facilities, or Operations who would own low-voltage vendor decisions. Find as many qualified prospects as you can — no cap. Return all leads as JSON.`,
         }],
       }),
     });
