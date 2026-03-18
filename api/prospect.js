@@ -103,13 +103,15 @@ export default async function handler(req) {
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 4000,
+        max_tokens: 8000,
         stream: true,
         system: SYSTEM,
         tools: [{ type: 'web_search_20250305', name: 'web_search' }],
         messages: [{
           role: 'user',
-          content: `Find ${vertPrompt} companies actively expanding their physical footprint in 2025-2026 that would be ideal prospects for Axseter Systems. Search for real companies with recent expansion announcements, acquisitions, or growth signals. For each company, also search LinkedIn to identify the VP/Director of Real Estate, Construction, Facilities, or Operations who would own low-voltage vendor decisions. Return 4-6 high-quality leads as JSON.`,
+          content: vertical === 'all'
+            ? `Search each of these verticals separately for companies expanding their physical footprint in 2025-2026: (1) dental/DSO, (2) behavioral health, (3) physical therapy, (4) insurance agencies, (5) veterinary, (6) QSR/fast-casual restaurants. Do a dedicated web search for each vertical. Find 1-2 top prospects per vertical — 6-10 leads total. For each company, also search LinkedIn to identify the VP/Director of Real Estate, Construction, Facilities, or Operations who would own low-voltage vendor decisions. Return all leads as JSON.`
+            : `Find ${vertPrompt} companies actively expanding their physical footprint in 2025-2026 that would be ideal prospects for Axseter Systems. Search for real companies with recent expansion announcements, acquisitions, or growth signals. For each company, also search LinkedIn to identify the VP/Director of Real Estate, Construction, Facilities, or Operations who would own low-voltage vendor decisions. Return 4-6 high-quality leads as JSON.`,
         }],
       }),
     });
