@@ -30,9 +30,23 @@ export default async function handler(req) {
 COMPANY CONTEXT:
 - Axseter is the Single Point of Contact (SPoC) model: one partner replaces 15+ regional contractors for multi-location enterprises
 - Services: structured cabling, access control, video surveillance, audio-visual, sound masking, break-fix support
-- Named clients: Oak Street Health, CVS, ATI Physical Therapy, Soar Autism Center, Pronto Insurance, Guidelight Health, Gallagher
 - 500+ locations installed nationwide
 - Key stat: $25,000+ annual overhead savings, 10-15% fewer change orders
+
+AXSETER CLIENT LIST — USE THESE AS SOCIAL PROOF:
+- Healthcare / Primary care: Oak Street Health, Guidelight Health
+- Behavioral health: Soar Autism Center
+- Physical therapy: ATI Physical Therapy
+- Insurance: Pronto Insurance, Gallagher
+- Pharmacy / Retail: CVS
+
+CLIENT MATCHING RULES:
+- Dental, behavioral, PT, or healthcare leads → cite Oak Street Health, ATI Physical Therapy, Soar Autism Center, or CVS
+- Insurance leads → cite Pronto Insurance and Gallagher
+- QSR/retail/vet leads → cite CVS and Oak Street Health as analogous multi-location operators
+- EVERY email MUST name-drop 1-2 clients matched to the lead's vertical
+- Frame naturally: "We handle infrastructure for [Client] across X locations" or "companies like [Client] and [Client]"
+- Never fabricate clients. Only use names listed above.
 
 LEAD:
 - Company: ${lead.name}
