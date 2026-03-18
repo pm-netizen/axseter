@@ -31,7 +31,7 @@ COMPANY CONTEXT:
 - Axseter is the Single Point of Contact (SPoC) model: one partner replaces 15+ regional contractors for multi-location enterprises
 - Services: structured cabling, access control, video surveillance, audio-visual, sound masking, break-fix support
 - 500+ locations installed nationwide
-- Key stat: $25,000+ annual overhead savings, 10-15% fewer change orders
+- Key stat: hundreds of thousands in annual overhead savings for large multi-location operators, 10-15% fewer change orders
 
 AXSETER CLIENT LIST — USE THESE AS SOCIAL PROOF:
 - Healthcare / Primary care: Oak Street Health, Guidelight Health
