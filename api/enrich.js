@@ -295,7 +295,86 @@ export default async function handler(req) {
       });
     }
 
-    return json({ error: 'Unknown action. Use: enrich, patterns, domain_search, status' });
+    // ── Action: find decision-maker contact for a company ──
+    if (action === 'find_contact') {
+      if (!anthropicKey) return json({ error: 'Anthropic API key not configured' });
+      const { vertical } = body;
+      try {
+        const res = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': anthropicKey,
+            'anthropic-version': '2023-06-01',
+          },
+          body: JSON.stringify({
+            model: 'claude-sonnet-4-20250514',
+            max_tokens: 800,
+            tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+            messages: [{
+              role: 'user',
+              content: `Find the decision-maker at ${companyName} who would be responsible for facilities, construction, real estate, or infrastructure vendor decisions. This is a ${vertical || 'multi-location'} company.
+
+Search LinkedIn and the company website. Look for titles like: VP of Real Estate, VP of Construction, VP of Facilities, Director of Operations, Chief Operating Officer, VP of Development, Director of Real Estate, Head of Facilities.
+
+Also find the company's website domain and their general email pattern if possible.
+
+Return ONLY valid JSON:
+{
+  "name": "Full Name",
+  "title": "Their exact title",
+  "linkedin_url": "https://linkedin.com/in/... or null",
+  "email": "email@company.com or null",
+  "email_confidence": 0-100,
+  "company_domain": "company.com",
+  "email_pattern": "first.last or null",
+  "source": "Where you found this person"
+}`
+            }],
+          }),
+        });
+        if (!res.ok) return json({ error: 'AI search failed' });
+        const data = await res.json();
+        const text = (data.content || []).map(c => c.text || '').join('').trim();
+        const clean = text.replace(/```json|```/g, '').trim();
+        const match = clean.match(/\{[\s\S]*\}/);
+        if (!match) return json({ contact: null });
+        const parsed = JSON.parse(match[0]);
+
+        // If we found a name but no email, try to generate patterns
+        let patterns = [];
+        if (parsed.name && parsed.company_domain) {
+          const { firstName: fn, lastName: ln } = splitName(parsed.name);
+          patterns = generatePatterns(fn, ln, parsed.company_domain);
+        }
+
+        // If we found a name and have Hunter, try an email lookup too
+        let hunterResult = null;
+        if (parsed.name && parsed.company_domain && hunterKey) {
+          const { firstName: fn, lastName: ln } = splitName(parsed.name);
+          hunterResult = await hunterLookup(parsed.company_domain, fn, ln, hunterKey);
+        }
+
+        return json({
+          contact: {
+            name: parsed.name || null,
+            title: parsed.title || null,
+            linkedin: parsed.linkedin_url || null,
+            email: hunterResult?.email || parsed.email || patterns[0] || null,
+            email_confidence: hunterResult?.confidence || parsed.email_confidence || (patterns.length ? 40 : 0),
+            email_source: hunterResult ? 'hunter.io' : parsed.email ? 'ai_search' : patterns.length ? 'pattern_guess' : null,
+            domain: parsed.company_domain || null,
+            patterns,
+            source: parsed.source || 'AI web search',
+          },
+          hunter: hunterResult,
+        });
+      } catch (e) {
+        return json({ error: e.message });
+      }
+    }
+
+    return json({ error: 'Unknown action. Use: enrich, patterns, domain_search, find_contact, status' });
 
   } catch (err) {
     return json({ error: err.message });

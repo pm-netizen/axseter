@@ -1541,12 +1541,12 @@ function renderEnrichLeads(){
       <td class="px-5 py-3">
         ${hasContact
           ?`<span class="text-sm text-gray-700">${escHtml(lead.contactName)}</span><br><span class="text-xs text-gray-400">${escHtml(lead.contactTitle)}</span>`
-          :`<span class="text-xs text-gray-400 italic">No contact</span>`}
+          :`<button onclick="findContact('${lead.id}')" class="text-xs font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-2.5 py-1.5 rounded-lg border border-indigo-200 transition-colors" id="findContactBtn-${sid}">Find contact</button>`}
       </td>
       <td class="px-5 py-3">
         ${hasEmail
           ?`<a href="mailto:${escHtml(lead.contactEmail)}" class="text-sm text-blue-600 hover:underline">${escHtml(lead.contactEmail)}</a>`
-          :`<span class="text-xs text-gray-400 italic">Not found</span>`}
+          :`<span class="text-xs text-gray-400 italic">${hasContact?'Not found':'—'}</span>`}
       </td>
       <td class="px-5 py-3">
         <span class="text-xs text-gray-500">${hasEmail?sourceLabel:'—'}</span>
@@ -1556,8 +1556,8 @@ function renderEnrichLeads(){
       </td>
       <td class="px-5 py-3 text-right">
         <div class="flex items-center justify-end gap-2">
-          ${!hasEmail&&hasContact?`<button onclick="inlineEnrich('${lead.id}',event)" class="text-xs font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg border border-emerald-200 transition-colors">Find</button>`:''}
-          <button onclick="editContactEmail('${lead.id}')" class="text-xs font-semibold text-gray-400 hover:text-navy-700 px-2 py-1.5 rounded transition-colors" title="Edit manually">
+          ${!hasEmail&&hasContact?`<button onclick="inlineEnrich('${lead.id}',event)" class="text-xs font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg border border-emerald-200 transition-colors">Find email</button>`:''}
+          <button onclick="editContact('${lead.id}')" class="text-xs font-semibold text-gray-400 hover:text-navy-700 px-2 py-1.5 rounded transition-colors" title="Edit contact">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
           </button>
         </div>
@@ -1644,27 +1644,136 @@ async function inlineEnrich(uuid, evt){
 }
 
 async function bulkEnrich(){
-  const leadsToEnrich=LEADS.filter(l=>!l.contactEmail&&l.contactName);
-  if(!leadsToEnrich.length){showToast('All leads with contacts already have emails');return;}
+  const noContact=LEADS.filter(l=>!l.contactName);
+  const noEmail=LEADS.filter(l=>l.contactName&&!l.contactEmail);
+  const total=noContact.length+noEmail.length;
+  if(!total){showToast('All leads already have contacts and emails');return;}
 
   const btn=document.getElementById('bulkEnrichBtn');
   btn.disabled=true;
-  const total=leadsToEnrich.length;
-  let done=0, found=0;
+  let done=0, contactsFound=0, emailsFound=0;
 
-  for(const lead of leadsToEnrich){
+  // Phase 1: Find contacts for leads missing them
+  for(const lead of noContact){
     done++;
-    btn.innerHTML=`<div class="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full spin"></div> ${done}/${total}`;
+    btn.innerHTML=`<div class="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full spin"></div> Contacts ${done}/${total}`;
+    await findContact(lead.id, true); // silent mode
+    if(lead.contactName) contactsFound++;
+    await new Promise(r=>setTimeout(r,800));
+  }
+
+  // Phase 2: Find emails for leads that now have contacts
+  const toEnrich=LEADS.filter(l=>l.contactName&&!l.contactEmail);
+  for(const lead of toEnrich){
+    done++;
+    btn.innerHTML=`<div class="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full spin"></div> Emails ${done}/${total}`;
     await inlineEnrich(lead.id);
-    if(lead.contactEmail) found++;
-    // Rate limit - 500ms between calls
+    if(lead.contactEmail) emailsFound++;
     await new Promise(r=>setTimeout(r,500));
   }
 
   btn.disabled=false;
   btn.innerHTML='<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg> Enrich all leads';
-  showToast(`Bulk enrichment done. Found ${found}/${total} emails.`);
+  showToast(`Done: ${contactsFound} contacts found, ${emailsFound} emails found`);
   if(activeTab==='enrich') renderEnrichLeads();
+}
+
+async function findContact(uuid, silent){
+  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
+  const sid=lead.sid;
+  const btn=document.getElementById('findContactBtn-'+sid);
+  if(btn){btn.disabled=true; btn.innerHTML='<span class="ai-thinking flex gap-0.5 items-center"><span class="w-1 h-1 bg-indigo-600 rounded-full inline-block"></span><span class="w-1 h-1 bg-indigo-600 rounded-full inline-block"></span><span class="w-1 h-1 bg-indigo-600 rounded-full inline-block"></span></span>';}
+
+  try{
+    const res=await fetch('/api/enrich/',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({action:'find_contact',companyName:lead.name,vertical:lead.vertLabel})
+    });
+    const data=await res.json();
+    if(data.error) throw new Error(data.error);
+
+    if(data.contact&&data.contact.name){
+      const c=data.contact;
+      const contactPayload={
+        lead_id:uuid,
+        name:c.name,
+        title:c.title||null,
+        linkedin:c.linkedin||null,
+        email:c.email||null,
+        email_source:c.email_source||null,
+        email_confidence:c.email_confidence||0,
+      };
+
+      // Upsert contact
+      const{data:existing}=await sb.from('contacts').select('id').eq('lead_id',uuid).limit(1);
+      if(existing&&existing.length>0){
+        await sb.from('contacts').update(contactPayload).eq('lead_id',uuid);
+      } else {
+        await sb.from('contacts').insert(contactPayload);
+      }
+
+      lead.contactName=c.name;
+      lead.contactTitle=c.title||'';
+      lead.contactLinkedin=c.linkedin||'';
+      if(c.email){lead.contactEmail=c.email;lead.emailSource=c.email_source||'ai_search';lead.emailConfidence=c.email_confidence||0;}
+
+      renderAll();
+      if(activeTab==='enrich') renderEnrichLeads();
+      if(!silent) showToast(`✓ Found: ${c.name}${c.email?' · '+c.email:''}`);
+      await logActivity(uuid,'contact_found',`${c.name} (${c.title||'no title'}) via AI search`);
+    } else {
+      if(!silent) showToast('No decision-maker found for '+lead.name);
+      if(btn){btn.disabled=false; btn.textContent='Retry';}
+    }
+  }catch(err){
+    console.error('findContact:',err);
+    if(!silent) showToast('Contact search failed: '+err.message);
+    if(btn){btn.disabled=false; btn.textContent='Retry';}
+  }
+}
+
+function editContact(uuid){
+  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
+  const name=prompt('Contact name:',lead.contactName||'');
+  if(name===null)return;
+  const title=prompt('Title:',lead.contactTitle||'');
+  if(title===null)return;
+  const email=prompt('Email:',lead.contactEmail||'');
+  if(email===null)return;
+  const linkedin=prompt('LinkedIn URL:',lead.contactLinkedin||'');
+  if(linkedin===null)return;
+  saveFullContact(uuid,name.trim(),title?.trim()||'',email?.trim()||'',linkedin?.trim()||'');
+}
+
+async function saveFullContact(uuid,name,title,email,linkedin){
+  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
+
+  const contactPayload={
+    name:name||null,
+    title:title||null,
+    email:email||null,
+    email_source:email?'manual':null,
+    email_confidence:email?90:0,
+    linkedin:linkedin||null,
+  };
+
+  const{data:existing}=await sb.from('contacts').select('id').eq('lead_id',uuid).limit(1);
+  if(existing&&existing.length>0){
+    await sb.from('contacts').update(contactPayload).eq('lead_id',uuid);
+  } else {
+    await sb.from('contacts').insert({lead_id:uuid,...contactPayload});
+  }
+
+  lead.contactName=name||'';
+  lead.contactTitle=title||'';
+  lead.contactEmail=email||'';
+  lead.contactLinkedin=linkedin||'';
+  if(email){lead.emailSource='manual';lead.emailConfidence=90;}
+
+  renderAll();
+  if(activeTab==='enrich') renderEnrichLeads();
+  showToast('Contact saved');
 }
 
 async function checkEnrichServices(){
@@ -1699,31 +1808,7 @@ async function checkEnrichServices(){
   }
 }
 
-function editContactEmail(uuid){
-  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
-  const email=prompt('Enter email address:',lead.contactEmail||'');
-  if(email===null)return; // cancelled
-  saveContactEmail(uuid,email.trim(),'manual',email.trim()?90:0);
-}
-
-async function saveContactEmail(uuid,email,source,confidence){
-  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
-
-  const contactUpdate={email:email||null,email_source:source||'manual',email_confidence:confidence||0};
-  const{data:existing}=await sb.from('contacts').select('id').eq('lead_id',uuid).limit(1);
-  if(existing&&existing.length>0){
-    await sb.from('contacts').update(contactUpdate).eq('lead_id',uuid);
-  } else {
-    await sb.from('contacts').insert({lead_id:uuid,name:lead.contactName||lead.name,title:lead.contactTitle||null,...contactUpdate});
-  }
-  lead.contactEmail=email||'';
-  lead.emailSource=source||'manual';
-  lead.emailConfidence=confidence||0;
-  renderAll();
-  if(activeTab==='enrich') renderEnrichLeads();
-  if(email) showToast(`Email saved: ${email}`);
-  else showToast('Email cleared');
-}
+// editContact and saveFullContact are defined above in the enrichment section
 
 // ─── MANUAL LOOKUP ───────────────────────────────────────────────────────────
 async function manualEnrich(){
