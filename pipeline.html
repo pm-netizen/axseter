@@ -141,6 +141,10 @@
         Prospector
         <span class="ml-1.5 bg-navy-900 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full">AI</span>
       </button>
+      <button class="tab-btn py-3 text-xs font-semibold text-gray-500" id="tabEnrich" onclick="switchTab('enrich')">
+        Email Finder
+        <span class="ml-1.5 bg-emerald-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full">NEW</span>
+      </button>
     </div>
   </header>
 
@@ -235,6 +239,117 @@
       <p class="text-gray-600 font-semibold mb-1">Ready to prospect</p>
       <p class="text-gray-400 text-sm">Select a vertical and run a search to find companies expanding their footprint.</p>
     </div>
+  </main>
+
+  <!-- ═══ EMAIL FINDER TAB ═══ -->
+  <main id="enrichTab" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Header -->
+    <div class="mb-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+      <div>
+        <h2 class="text-lg font-bold text-navy-900">Email Finder</h2>
+        <p class="text-sm text-gray-400 mt-1">Find prospect emails using Hunter.io, Apollo, domain patterns, and AI search.</p>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="checkEnrichServices()" class="flex items-center gap-1.5 bg-white border border-gray-200 hover:border-navy-900 text-gray-600 hover:text-navy-900 text-xs font-semibold px-3 py-2 rounded-lg transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Service status
+        </button>
+        <button onclick="bulkEnrich()" id="bulkEnrichBtn" class="flex items-center gap-1.5 bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Enrich all leads
+        </button>
+      </div>
+    </div>
+
+    <!-- Service status banner -->
+    <div id="enrichStatus" class="hidden bg-white rounded-xl border border-gray-200 p-5 mb-6">
+      <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Enrichment services</h4>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="enrichStatusGrid"></div>
+      <p class="text-xs text-gray-400 mt-3">Add API keys to Vercel environment variables: <code class="bg-gray-100 px-1 py-0.5 rounded text-[11px] mono">HUNTER_API_KEY</code>, <code class="bg-gray-100 px-1 py-0.5 rounded text-[11px] mono">APOLLO_API_KEY</code></p>
+    </div>
+
+    <!-- Sub-tabs -->
+    <div class="flex gap-1 mb-6 bg-gray-100 rounded-lg p-1 w-fit">
+      <button class="px-4 py-2 text-xs font-semibold rounded-md bg-white text-navy-900 shadow-sm" id="enrichSubLeads" onclick="switchEnrichSub('leads')">Pipeline leads</button>
+      <button class="px-4 py-2 text-xs font-semibold rounded-md text-gray-500 hover:text-gray-700" id="enrichSubImport" onclick="switchEnrichSub('import')">CSV import</button>
+      <button class="px-4 py-2 text-xs font-semibold rounded-md text-gray-500 hover:text-gray-700" id="enrichSubManual" onclick="switchEnrichSub('manual')">Manual lookup</button>
+    </div>
+
+    <!-- Leads enrichment view -->
+    <div id="enrichLeadsView">
+      <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-100 bg-gray-50">
+                <th class="text-left px-5 py-3 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Company</th>
+                <th class="text-left px-5 py-3 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Contact</th>
+                <th class="text-left px-5 py-3 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Email</th>
+                <th class="text-left px-5 py-3 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Source</th>
+                <th class="text-left px-5 py-3 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Confidence</th>
+                <th class="text-right px-5 py-3 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Action</th>
+              </tr>
+            </thead>
+            <tbody id="enrichLeadsTable"></tbody>
+          </table>
+        </div>
+      </div>
+      <div id="enrichLeadsEmpty" class="hidden text-center py-16">
+        <p class="text-gray-400 text-sm">No leads in pipeline. Add leads first via Pipeline or Prospector tabs.</p>
+      </div>
+    </div>
+
+    <!-- CSV Import view -->
+    <div id="enrichImportView" class="hidden">
+      <div class="bg-white rounded-xl border border-gray-200 p-6">
+        <h3 class="font-semibold text-navy-900 mb-2">Import from LinkedIn Sales Navigator</h3>
+        <p class="text-sm text-gray-500 mb-4">Export your Sales Navigator lead list as CSV. Upload it here to match and enrich contacts with emails.</p>
+        <div class="border-2 border-dashed border-gray-200 rounded-xl p-8 text-center mb-4 hover:border-navy-300 transition-colors" id="csvDropZone"
+          ondragover="event.preventDefault();this.classList.add('border-navy-400','bg-navy-50')"
+          ondragleave="this.classList.remove('border-navy-400','bg-navy-50')"
+          ondrop="handleCSVDrop(event)">
+          <svg class="w-10 h-10 text-gray-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+          <p class="text-sm text-gray-500 font-medium mb-2">Drop CSV file here or</p>
+          <label class="cursor-pointer inline-flex items-center gap-1.5 bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+            Browse files
+            <input type="file" accept=".csv" class="hidden" onchange="handleCSVFile(this.files[0])">
+          </label>
+          <p class="text-xs text-gray-400 mt-2">Expected columns: First Name, Last Name, Title, Company, Company Domain</p>
+        </div>
+        <div id="csvPreview" class="hidden"></div>
+        <div id="csvResults" class="hidden"></div>
+      </div>
+    </div>
+
+    <!-- Manual lookup view -->
+    <div id="enrichManualView" class="hidden">
+      <div class="bg-white rounded-xl border border-gray-200 p-6">
+        <h3 class="font-semibold text-navy-900 mb-4">Manual email lookup</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="field-label">Contact name *</label>
+            <input type="text" id="manualName" class="field-input" placeholder="Jennifer Walsh">
+          </div>
+          <div>
+            <label class="field-label">Title</label>
+            <input type="text" id="manualTitle" class="field-input" placeholder="VP Real Estate & Development">
+          </div>
+          <div>
+            <label class="field-label">Company name *</label>
+            <input type="text" id="manualCompany" class="field-input" placeholder="Sunrise Behavioral Health">
+          </div>
+          <div>
+            <label class="field-label">Company domain</label>
+            <input type="text" id="manualDomain" class="field-input" placeholder="sunrisebehavioral.com">
+          </div>
+        </div>
+        <button onclick="manualEnrich()" id="manualEnrichBtn" class="bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-5 py-2.5 rounded-lg transition-colors">Find email</button>
+        <div id="manualResults" class="hidden mt-6"></div>
+      </div>
+    </div>
+
   </main>
 
 </div><!-- /dashboard -->
@@ -423,9 +538,12 @@ function switchTab(tab){
   activeTab=tab;
   document.getElementById('pipelineTab').classList.toggle('hidden', tab!=='pipeline');
   document.getElementById('prospectorTab').classList.toggle('hidden', tab!=='prospector');
+  document.getElementById('enrichTab').classList.toggle('hidden', tab!=='enrich');
   document.getElementById('tabPipeline').classList.toggle('active', tab==='pipeline');
   document.getElementById('tabProspector').classList.toggle('active', tab==='prospector');
+  document.getElementById('tabEnrich').classList.toggle('active', tab==='enrich');
   if(tab==='prospector') renderProspectorVerts();
+  if(tab==='enrich') renderEnrichLeads();
 }
 
 // ─── DATA LAYER ───────────────────────────────────────────────────────────────
@@ -440,7 +558,7 @@ function mapLead(row){
     status:row.status||'new', outreachTemplate:row.outreach_template||'expansion_announcement',
     peBacked:row.pe_backed||false, notes:row.notes||'', followUpDate:row.follow_up_date||'',
     createdAt:row.created_at||'',
-    contactName:'', contactTitle:'', contactEmail:'', contactLinkedin:'',
+    contactName:'', contactTitle:'', contactEmail:'', contactLinkedin:'', emailSource:'', emailConfidence:0,
   };
 }
 async function loadLeads(){
@@ -457,6 +575,7 @@ async function loadContacts(){
     if(!lead)continue;
     if(c.name)lead.contactName=c.name; if(c.title)lead.contactTitle=c.title;
     if(c.email)lead.contactEmail=c.email; if(c.linkedin)lead.contactLinkedin=c.linkedin;
+    if(c.email_source)lead.emailSource=c.email_source; if(c.email_confidence)lead.emailConfidence=c.email_confidence;
   }
 }
 async function saveOutreach(lead,subject,body){
@@ -658,8 +777,13 @@ function buildLeadCard(lead){
           <div>
             <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Target contact</h4>
             ${lead.contactName?`<p class="text-sm font-semibold text-navy-900">${escHtml(lead.contactName)}</p><p class="text-xs text-gray-500">${escHtml(lead.contactTitle)}</p>`:`<p class="text-sm text-gray-500">${escHtml(lead.contactTitle)||'VP of Real Estate / Facilities'}</p>`}
-            ${lead.contactEmail?`<p class="text-xs text-blue-600 mt-0.5">${escHtml(lead.contactEmail)}</p>`:''}
-            ${lead.contactLinkedin?`<p class="text-xs text-blue-500 mt-0.5">${escHtml(lead.contactLinkedin)}</p>`:''}
+            ${lead.contactEmail?`<p class="text-xs text-blue-600 mt-0.5"><a href="mailto:${escHtml(lead.contactEmail)}">${escHtml(lead.contactEmail)}</a>${lead.emailSource?` <span class="text-gray-400">(${escHtml(lead.emailSource)}${lead.emailConfidence?' · '+lead.emailConfidence+'%':''})</span>`:''}</p>`:''}
+            ${lead.contactLinkedin?`<a href="${escHtml(lead.contactLinkedin)}" target="_blank" rel="noopener" class="text-xs text-[#0A66C2] hover:underline mt-0.5 inline-block">${escHtml(lead.contactLinkedin.replace('https://www.linkedin.com/in/','').replace('https://linkedin.com/in/','').replace(/\/$/,''))}</a>`:''}
+            ${!lead.contactEmail&&lead.contactName?`
+              <button onclick="inlineEnrich('${lead.id}',event)" id="inlineEnrich-${sid}" class="mt-2 flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-[11px] font-semibold px-3 py-1.5 rounded-lg transition-colors border border-emerald-200">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                Find email
+              </button>`:''}
 
             <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-5 mb-2">Details</h4>
             <div class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs">
@@ -1377,6 +1501,465 @@ async function sendChat(uuid, evt) {
   }
 }
 
+// ─── EMAIL ENRICHMENT ─────────────────────────────────────────────────────────
+let enrichSubTab='leads';
+
+function switchEnrichSub(sub){
+  enrichSubTab=sub;
+  document.getElementById('enrichLeadsView').classList.toggle('hidden',sub!=='leads');
+  document.getElementById('enrichImportView').classList.toggle('hidden',sub!=='import');
+  document.getElementById('enrichManualView').classList.toggle('hidden',sub!=='manual');
+  ['enrichSubLeads','enrichSubImport','enrichSubManual'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(id==='enrichSub'+sub.charAt(0).toUpperCase()+sub.slice(1)){
+      el.className='px-4 py-2 text-xs font-semibold rounded-md bg-white text-navy-900 shadow-sm';
+    } else {
+      el.className='px-4 py-2 text-xs font-semibold rounded-md text-gray-500 hover:text-gray-700';
+    }
+  });
+  if(sub==='leads') renderEnrichLeads();
+}
+
+function renderEnrichLeads(){
+  const tbody=document.getElementById('enrichLeadsTable');
+  const empty=document.getElementById('enrichLeadsEmpty');
+  if(!LEADS.length){ tbody.innerHTML=''; empty.classList.remove('hidden'); return; }
+  empty.classList.add('hidden');
+
+  tbody.innerHTML=LEADS.map(lead=>{
+    const sid=lead.sid;
+    const hasEmail=!!lead.contactEmail;
+    const hasContact=!!lead.contactName;
+    const confColor=lead.emailConfidence>=80?'text-green-600':lead.emailConfidence>=50?'text-amber-600':'text-gray-400';
+    const sourceLabel={'hunter.io':'Hunter.io','apollo.io':'Apollo.io','pattern_guess':'Pattern','ai_search':'AI search','manual':'Manual','csv_import':'CSV import'}[lead.emailSource]||lead.emailSource||'—';
+
+    return`<tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors" id="enrich-row-${sid}">
+      <td class="px-5 py-3">
+        <span class="font-semibold text-navy-900 text-sm">${escHtml(lead.name)}</span>
+        <span class="text-xs text-gray-400 ml-1">${escHtml(lead.vertLabel)}</span>
+      </td>
+      <td class="px-5 py-3">
+        ${hasContact
+          ?`<span class="text-sm text-gray-700">${escHtml(lead.contactName)}</span><br><span class="text-xs text-gray-400">${escHtml(lead.contactTitle)}</span>`
+          :`<span class="text-xs text-gray-400 italic">No contact</span>`}
+      </td>
+      <td class="px-5 py-3">
+        ${hasEmail
+          ?`<a href="mailto:${escHtml(lead.contactEmail)}" class="text-sm text-blue-600 hover:underline">${escHtml(lead.contactEmail)}</a>`
+          :`<span class="text-xs text-gray-400 italic">Not found</span>`}
+      </td>
+      <td class="px-5 py-3">
+        <span class="text-xs text-gray-500">${hasEmail?sourceLabel:'—'}</span>
+      </td>
+      <td class="px-5 py-3">
+        ${hasEmail?`<span class="text-xs font-bold mono ${confColor}">${lead.emailConfidence||0}%</span>`:'—'}
+      </td>
+      <td class="px-5 py-3 text-right">
+        <div class="flex items-center justify-end gap-2">
+          ${!hasEmail&&hasContact?`<button onclick="inlineEnrich('${lead.id}',event)" class="text-xs font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg border border-emerald-200 transition-colors">Find</button>`:''}
+          <button onclick="editContactEmail('${lead.id}')" class="text-xs font-semibold text-gray-400 hover:text-navy-700 px-2 py-1.5 rounded transition-colors" title="Edit manually">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+          </button>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+async function inlineEnrich(uuid, evt){
+  if(evt) evt.stopPropagation();
+  const lead=LEADS.find(l=>l.id===uuid); if(!lead) return;
+
+  // Need contact name to enrich
+  if(!lead.contactName){
+    showToast('Add a contact name first');
+    return;
+  }
+
+  // Find and disable the button
+  const btns=document.querySelectorAll(`[onclick*="inlineEnrich('${uuid}'"]`);
+  btns.forEach(b=>{b.disabled=true; b.innerHTML='<span class="ai-thinking flex gap-0.5 items-center"><span class="w-1 h-1 bg-emerald-600 rounded-full inline-block"></span><span class="w-1 h-1 bg-emerald-600 rounded-full inline-block"></span><span class="w-1 h-1 bg-emerald-600 rounded-full inline-block"></span></span> Searching…';});
+
+  try{
+    const res=await fetch('/api/enrich/',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        action:'enrich',
+        companyName:lead.name,
+        contactName:lead.contactName,
+        contactTitle:lead.contactTitle,
+        website:null,
+      })
+    });
+    const data=await res.json();
+    if(data.error) throw new Error(data.error);
+
+    if(data.best&&data.best.email){
+      // Save to Supabase contacts
+      const contactUpdate={
+        email:data.best.email,
+        email_source:data.best.source||'unknown',
+        email_confidence:data.best.confidence||0,
+      };
+      if(data.best.linkedin||data.meta?.aiLinkedin){
+        contactUpdate.linkedin=data.best.linkedin||data.meta.aiLinkedin;
+      }
+
+      // Check if contact row exists
+      const{data:existing}=await sb.from('contacts').select('id').eq('lead_id',uuid).limit(1);
+      if(existing&&existing.length>0){
+        await sb.from('contacts').update(contactUpdate).eq('lead_id',uuid);
+      } else {
+        await sb.from('contacts').insert({lead_id:uuid,name:lead.contactName,title:lead.contactTitle,...contactUpdate});
+      }
+
+      lead.contactEmail=data.best.email;
+      lead.emailSource=data.best.source||'unknown';
+      lead.emailConfidence=data.best.confidence||0;
+      if(contactUpdate.linkedin) lead.contactLinkedin=contactUpdate.linkedin;
+
+      renderAll();
+      if(activeTab==='enrich') renderEnrichLeads();
+      showToast(`✓ Found: ${data.best.email} (${data.best.source}, ${data.best.confidence}%)`);
+
+      // Log activity
+      await logActivity(uuid,'email_found',`${data.best.email} via ${data.best.source} (${data.best.confidence}%)`);
+
+    } else {
+      // Show patterns as suggestions
+      const patterns=data.all?.find(r=>r.allPatterns)?.allPatterns||[];
+      if(patterns.length){
+        showToast(`No verified email. Try: ${patterns[0]}`);
+      } else {
+        showToast('No email found. Try manual lookup.');
+      }
+      btns.forEach(b=>{b.disabled=false; b.innerHTML='<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg> Retry';});
+    }
+  }catch(err){
+    console.error('Enrich error:',err);
+    showToast('Enrichment failed: '+err.message);
+    btns.forEach(b=>{b.disabled=false; b.textContent='Retry';});
+  }
+}
+
+async function bulkEnrich(){
+  const leadsToEnrich=LEADS.filter(l=>!l.contactEmail&&l.contactName);
+  if(!leadsToEnrich.length){showToast('All leads with contacts already have emails');return;}
+
+  const btn=document.getElementById('bulkEnrichBtn');
+  btn.disabled=true;
+  const total=leadsToEnrich.length;
+  let done=0, found=0;
+
+  for(const lead of leadsToEnrich){
+    done++;
+    btn.innerHTML=`<div class="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full spin"></div> ${done}/${total}`;
+    await inlineEnrich(lead.id);
+    if(lead.contactEmail) found++;
+    // Rate limit - 500ms between calls
+    await new Promise(r=>setTimeout(r,500));
+  }
+
+  btn.disabled=false;
+  btn.innerHTML='<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg> Enrich all leads';
+  showToast(`Bulk enrichment done. Found ${found}/${total} emails.`);
+  if(activeTab==='enrich') renderEnrichLeads();
+}
+
+async function checkEnrichServices(){
+  const grid=document.getElementById('enrichStatusGrid');
+  const panel=document.getElementById('enrichStatus');
+  panel.classList.remove('hidden');
+  grid.innerHTML='<div class="col-span-4 text-center py-2"><span class="text-xs text-gray-400">Checking…</span></div>';
+
+  try{
+    const res=await fetch('/api/enrich/',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({action:'status'})
+    });
+    const data=await res.json();
+    const services=[
+      {key:'hunter',  label:'Hunter.io',       icon:'🔍'},
+      {key:'apollo',  label:'Apollo.io',        icon:'🚀'},
+      {key:'anthropic',label:'AI Search',       icon:'✦'},
+      {key:'patterns',label:'Domain Patterns',  icon:'📧'},
+    ];
+    grid.innerHTML=services.map(s=>{
+      const on=data[s.key];
+      return`<div class="flex items-center gap-2 px-3 py-2 rounded-lg ${on?'bg-green-50 border border-green-200':'bg-gray-50 border border-gray-200'}">
+        <span class="text-sm">${s.icon}</span>
+        <span class="text-xs font-semibold ${on?'text-green-700':'text-gray-400'}">${s.label}</span>
+        <span class="ml-auto text-[10px] font-bold ${on?'text-green-600':'text-gray-400'}">${on?'ON':'OFF'}</span>
+      </div>`;
+    }).join('');
+  }catch(err){
+    grid.innerHTML=`<div class="col-span-4 text-center py-2 text-red-500 text-xs">${escHtml(err.message)}</div>`;
+  }
+}
+
+function editContactEmail(uuid){
+  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
+  const email=prompt('Enter email address:',lead.contactEmail||'');
+  if(email===null)return; // cancelled
+  saveContactEmail(uuid,email.trim(),'manual',email.trim()?90:0);
+}
+
+async function saveContactEmail(uuid,email,source,confidence){
+  const lead=LEADS.find(l=>l.id===uuid); if(!lead)return;
+
+  const contactUpdate={email:email||null,email_source:source||'manual',email_confidence:confidence||0};
+  const{data:existing}=await sb.from('contacts').select('id').eq('lead_id',uuid).limit(1);
+  if(existing&&existing.length>0){
+    await sb.from('contacts').update(contactUpdate).eq('lead_id',uuid);
+  } else {
+    await sb.from('contacts').insert({lead_id:uuid,name:lead.contactName||lead.name,title:lead.contactTitle||null,...contactUpdate});
+  }
+  lead.contactEmail=email||'';
+  lead.emailSource=source||'manual';
+  lead.emailConfidence=confidence||0;
+  renderAll();
+  if(activeTab==='enrich') renderEnrichLeads();
+  if(email) showToast(`Email saved: ${email}`);
+  else showToast('Email cleared');
+}
+
+// ─── MANUAL LOOKUP ───────────────────────────────────────────────────────────
+async function manualEnrich(){
+  const name=document.getElementById('manualName').value.trim();
+  const company=document.getElementById('manualCompany').value.trim();
+  const title=document.getElementById('manualTitle').value.trim();
+  const domain=document.getElementById('manualDomain').value.trim();
+  if(!name||!company){showToast('Name and company are required');return;}
+
+  const btn=document.getElementById('manualEnrichBtn');
+  btn.disabled=true; btn.textContent='Searching…';
+  const results=document.getElementById('manualResults');
+  results.classList.remove('hidden');
+  results.innerHTML='<div class="flex items-center gap-2 py-4"><div class="w-4 h-4 border-2 border-navy-900 border-t-transparent rounded-full spin"></div><span class="text-sm text-gray-500">Searching across all sources…</span></div>';
+
+  try{
+    const res=await fetch('/api/enrich/',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({action:'enrich',companyName:company,contactName:name,contactTitle:title,domain:domain||undefined})
+    });
+    const data=await res.json();
+    if(data.error) throw new Error(data.error);
+
+    let html='<h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Results</h4>';
+    html+=`<p class="text-xs text-gray-400 mb-3">Services tried: ${(data.meta?.services_tried||[]).join(', ')}</p>`;
+
+    if(data.all&&data.all.length){
+      html+='<div class="space-y-2">';
+      for(const r of data.all){
+        if(!r.email)continue;
+        const confColor=r.confidence>=80?'bg-green-100 text-green-800':r.confidence>=50?'bg-amber-100 text-amber-800':'bg-gray-100 text-gray-600';
+        const sourceLabel={'hunter.io':'Hunter.io','apollo.io':'Apollo.io','pattern_guess':'Domain pattern','pattern_guess_ai_domain':'AI domain pattern','ai_search':'AI web search','manual':'Manual'}[r.source]||r.source;
+        const isPattern=r.source==='pattern_guess'||r.source==='pattern_guess_ai_domain';
+
+        html+=`<div class="flex items-center gap-3 p-3 rounded-lg border border-gray-200 bg-gray-50">
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-semibold text-navy-900 mono">${escHtml(r.email)}</p>
+            <p class="text-xs text-gray-400">${sourceLabel}${r.verified?' · <span class="text-green-600 font-semibold">Verified</span>':''}</p>
+          </div>
+          <span class="text-[10px] font-bold px-2 py-1 rounded ${confColor}">${r.confidence}%</span>
+          <button onclick="navigator.clipboard.writeText('${escHtml(r.email)}');showToast('Copied!')" class="text-xs text-gray-400 hover:text-navy-700 px-2 py-1" title="Copy">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          </button>
+        </div>`;
+
+        // Show all patterns if this is a pattern result
+        if(isPattern&&r.allPatterns&&r.allPatterns.length>1){
+          html+=`<div class="ml-4 p-2 text-xs text-gray-400 bg-gray-50 rounded border border-gray-100">
+            <p class="font-semibold text-gray-500 mb-1">All pattern guesses:</p>
+            ${r.allPatterns.map(p=>`<span class="inline-block bg-white border border-gray-200 rounded px-2 py-0.5 mr-1 mb-1 mono text-[11px] cursor-pointer hover:border-navy-300" onclick="navigator.clipboard.writeText('${escHtml(p)}');showToast('Copied!')" title="Click to copy">${escHtml(p)}</span>`).join('')}
+          </div>`;
+        }
+      }
+      html+='</div>';
+    } else {
+      html+='<p class="text-sm text-gray-500 py-4">No emails found. Try adding the company domain for pattern-based guessing.</p>';
+    }
+
+    if(data.meta?.aiLinkedin){
+      html+=`<p class="text-xs text-gray-400 mt-3">LinkedIn: <a href="${escHtml(data.meta.aiLinkedin)}" target="_blank" rel="noopener" class="text-[#0A66C2] hover:underline">${escHtml(data.meta.aiLinkedin)}</a></p>`;
+    }
+
+    results.innerHTML=html;
+  }catch(err){
+    results.innerHTML=`<p class="text-red-500 text-sm">${escHtml(err.message)}</p>`;
+  }
+  btn.disabled=false; btn.textContent='Find email';
+}
+
+// ─── CSV IMPORT (Sales Navigator) ────────────────────────────────────────────
+function handleCSVDrop(evt){
+  evt.preventDefault();
+  evt.currentTarget.classList.remove('border-navy-400','bg-navy-50');
+  const file=evt.dataTransfer?.files?.[0];
+  if(file&&file.name.endsWith('.csv')) handleCSVFile(file);
+  else showToast('Please drop a CSV file');
+}
+
+async function handleCSVFile(file){
+  if(!file)return;
+  const text=await file.text();
+  const lines=text.split(/\r?\n/).filter(l=>l.trim());
+  if(lines.length<2){showToast('CSV has no data rows');return;}
+
+  // Parse header
+  const headers=parseCSVLine(lines[0]).map(h=>h.toLowerCase().trim());
+  const rows=lines.slice(1).map(l=>parseCSVLine(l));
+
+  // Map columns — try common Sales Navigator export headers
+  const colMap={};
+  const findCol=(names)=>headers.findIndex(h=>names.some(n=>h.includes(n)));
+  colMap.firstName=findCol(['first name','firstname','first']);
+  colMap.lastName=findCol(['last name','lastname','last']);
+  colMap.title=findCol(['title','job title','position']);
+  colMap.company=findCol(['company','company name','organization']);
+  colMap.domain=findCol(['domain','company domain','website']);
+  colMap.email=findCol(['email','email address']);
+  colMap.linkedin=findCol(['linkedin','linkedin url','profile url','person linkedin']);
+
+  const preview=document.getElementById('csvPreview');
+  preview.classList.remove('hidden');
+
+  const contacts=rows.map(row=>{
+    const get=key=>colMap[key]>=0?row[colMap[key]]?.trim()||'':'';
+    return{
+      firstName:get('firstName'),
+      lastName:get('lastName'),
+      fullName:[get('firstName'),get('lastName')].filter(Boolean).join(' '),
+      title:get('title'),
+      company:get('company'),
+      domain:get('domain'),
+      email:get('email'),
+      linkedin:get('linkedin'),
+    };
+  }).filter(c=>c.fullName&&c.company);
+
+  preview.innerHTML=`
+    <div class="mb-4 p-4 bg-navy-50 rounded-lg border border-navy-100">
+      <p class="text-sm font-semibold text-navy-900">${contacts.length} contacts found</p>
+      <p class="text-xs text-gray-500 mt-1">Columns detected: ${Object.entries(colMap).filter(([k,v])=>v>=0).map(([k])=>k).join(', ')}</p>
+    </div>
+    <div class="overflow-x-auto max-h-64 rounded-lg border border-gray-200 mb-4">
+      <table class="w-full text-xs">
+        <thead class="bg-gray-50 sticky top-0">
+          <tr>
+            <th class="px-3 py-2 text-left font-semibold text-gray-500">Name</th>
+            <th class="px-3 py-2 text-left font-semibold text-gray-500">Company</th>
+            <th class="px-3 py-2 text-left font-semibold text-gray-500">Title</th>
+            <th class="px-3 py-2 text-left font-semibold text-gray-500">Email</th>
+            <th class="px-3 py-2 text-left font-semibold text-gray-500">Match</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${contacts.slice(0,20).map(c=>{
+            const match=LEADS.find(l=>l.name.toLowerCase().trim()===c.company.toLowerCase().trim());
+            return`<tr class="border-t border-gray-100">
+              <td class="px-3 py-2 text-gray-700">${escHtml(c.fullName)}</td>
+              <td class="px-3 py-2 text-gray-700">${escHtml(c.company)}</td>
+              <td class="px-3 py-2 text-gray-400">${escHtml(c.title)}</td>
+              <td class="px-3 py-2 mono text-blue-600">${escHtml(c.email||'—')}</td>
+              <td class="px-3 py-2">${match?'<span class="text-green-600 font-semibold">✓ Match</span>':'<span class="text-gray-400">No match</span>'}</td>
+            </tr>`;
+          }).join('')}
+          ${contacts.length>20?`<tr><td colspan="5" class="px-3 py-2 text-center text-gray-400">… and ${contacts.length-20} more</td></tr>`:''}
+        </tbody>
+      </table>
+    </div>
+    <div class="flex gap-2">
+      <button onclick="importCSVContacts(${JSON.stringify(JSON.stringify(contacts))})" class="bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold px-5 py-2.5 rounded-lg transition-colors">Import & match to pipeline</button>
+      <button onclick="importCSVAsLeads(${JSON.stringify(JSON.stringify(contacts))})" class="bg-white border border-gray-200 hover:border-navy-300 text-gray-600 text-xs font-semibold px-5 py-2.5 rounded-lg transition-colors">Import as new leads</button>
+    </div>`;
+}
+
+function parseCSVLine(line){
+  const result=[]; let cur=''; let inQuotes=false;
+  for(let i=0;i<line.length;i++){
+    const c=line[i];
+    if(c==='"'){inQuotes=!inQuotes;}
+    else if(c===','&&!inQuotes){result.push(cur);cur='';}
+    else{cur+=c;}
+  }
+  result.push(cur);
+  return result;
+}
+
+async function importCSVContacts(contactsJson){
+  const contacts=JSON.parse(contactsJson);
+  let matched=0, updated=0;
+
+  for(const c of contacts){
+    const lead=LEADS.find(l=>l.name.toLowerCase().trim()===c.company.toLowerCase().trim());
+    if(!lead) continue;
+    matched++;
+
+    // Update contact info
+    const update={};
+    if(c.fullName&&!lead.contactName) update.name=c.fullName;
+    if(c.title&&!lead.contactTitle) update.title=c.title;
+    if(c.email&&!lead.contactEmail){update.email=c.email;update.email_source='csv_import';update.email_confidence=85;}
+    if(c.linkedin&&!lead.contactLinkedin) update.linkedin=c.linkedin;
+
+    if(Object.keys(update).length){
+      const{data:existing}=await sb.from('contacts').select('id').eq('lead_id',lead.id).limit(1);
+      if(existing&&existing.length>0){
+        await sb.from('contacts').update(update).eq('lead_id',lead.id);
+      } else {
+        await sb.from('contacts').insert({lead_id:lead.id,...update});
+      }
+      if(update.email){lead.contactEmail=update.email;lead.emailSource='csv_import';lead.emailConfidence=85;}
+      if(update.name) lead.contactName=update.name;
+      if(update.title) lead.contactTitle=update.title;
+      if(update.linkedin) lead.contactLinkedin=update.linkedin;
+      updated++;
+    }
+  }
+  renderAll();
+  if(activeTab==='enrich') renderEnrichLeads();
+  showToast(`Matched ${matched} contacts, updated ${updated}`);
+}
+
+async function importCSVAsLeads(contactsJson){
+  const contacts=JSON.parse(contactsJson);
+  let added=0;
+
+  for(const c of contacts){
+    // Skip if already in pipeline
+    if(LEADS.some(l=>l.name.toLowerCase().trim()===c.company.toLowerCase().trim())) continue;
+
+    const payload={
+      name:c.company,vertical:'other',vertical_label:'Other',
+      status:'research',score:0,tier:3,
+      signal:'Imported from Sales Navigator CSV',
+    };
+    try{
+      const{data:inserted,error}=await sb.from('leads').insert(payload).select('id').single();
+      if(error) continue;
+      const contactPayload={
+        lead_id:inserted.id,
+        name:c.fullName||null,
+        title:c.title||null,
+        email:c.email||null,
+        email_source:c.email?'csv_import':null,
+        email_confidence:c.email?85:0,
+        linkedin:c.linkedin||null,
+      };
+      await sb.from('contacts').insert(contactPayload);
+      added++;
+    }catch(e){console.error('CSV lead import:',e);}
+  }
+  await loadLeads(); await loadContacts();
+  renderAll();
+  if(activeTab==='enrich') renderEnrichLeads();
+  showToast(`${added} new leads imported from CSV`);
+}
+
 // ─── RENDER ALL ───────────────────────────────────────────────────────────────
 function renderAll(){ renderMetrics(); renderVertFilters(); renderStatusFilters(); renderLeads(); }
 
@@ -1416,4 +1999,5 @@ function escHtml(str){
 </script>
 </body>
 </html>
+
 
