@@ -483,7 +483,6 @@
 <script>
 'use strict';
 
-const ACCESS_CODE   = 'axseter2026';
 const SUPABASE_URL  = 'https://cvbpgjveazhmavoaszxp.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2YnBnanZlYXpobWF2b2FzenhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3ODQ2MjIsImV4cCI6MjA4OTM2MDYyMn0.PeP17xicAK_gQPricJcR0K1sGinsWUQiijmcPNNCGjM';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
@@ -514,10 +513,16 @@ const VERT_COLORS = {
 function safeId(uuid){ return 'l'+uuid.replace(/-/g,''); }
 
 // ─── AUTH ────────────────────────────────────────────────────────────────────
-function handleAuth(){
+async function handleAuth(){
   const val=document.getElementById('authPass').value;
-  if(val===ACCESS_CODE){ sessionStorage.setItem('ax_auth','1'); showDashboard(); }
-  else{ document.getElementById('authErr').classList.remove('hidden'); document.getElementById('authPass').focus(); }
+  const errEl=document.getElementById('authErr');
+  errEl.classList.add('hidden');
+  try{
+    const resp=await fetch('/api/auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:val})});
+    const data=await resp.json();
+    if(data.ok){ sessionStorage.setItem('ax_auth','1'); showDashboard(); }
+    else{ errEl.classList.remove('hidden'); document.getElementById('authPass').focus(); }
+  }catch(e){ errEl.textContent='Connection error. Try again.'; errEl.classList.remove('hidden'); }
 }
 function showDashboard(){
   document.getElementById('authGate').classList.add('hidden');
